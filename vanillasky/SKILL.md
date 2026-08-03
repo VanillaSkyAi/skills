@@ -16,8 +16,9 @@ carry the motion.
 Template ids, variables, durations, and use-when guidance live in the live
 index: **https://vanillasky.ai/llms-components.txt** (working from a repo
 checkout: `registry/llms-components.txt`, or the `registry/` directory of the
-standalone bundle). Read it before composing. Full per-template detail —
-source, complete variable schema, defaults — is at
+standalone bundle). Read it before composing. It also catalogues the
+`registry:ui` primitives and the shared libs you compose custom scenes from.
+Full per-item detail — source, complete variable schema, defaults — is at
 `https://vanillasky.ai/r/<name>.json` (repo and standalone bundle:
 `registry/r/<name>.json`).
 
@@ -210,17 +211,25 @@ Escalate only when the previous rung genuinely can't express the brief:
 2. **Adjust variables** — the full schema with types, options, and defaults is
    in the per-item JSON (`registry/r/<id>.json`, `meta.vanillasky.variableSchema`).
 3. **Eject** — take the template's source from the registry item's `files`
-   (or `npx shadcn add @vanillasky/<id>`), modify it, and inline it as the
-   scene's `componentSource` with a `templateId` starting `custom_`. Ejected
-   scenes travel inside the config and render everywhere, including the
-   browser link.
+   (`files[0].content` is the template itself; the rest is its dependency
+   closure), modify it, and inline it as the scene's `componentSource` with a
+   `templateId` starting `custom_`. Ejected scenes travel inside the config and
+   render everywhere, including the browser link. `npx shadcn add
+   @vanillasky/<id>` does the same into a project that has mapped the
+   namespace in `components.json` (see the index header); reading the item
+   JSON needs no setup.
 4. **Compose from primitives** — build a new scene from the `registry:ui`
    primitives, following [references/motion.md](references/motion.md): one
    archetype per scene, progress-driven, inline styles, deterministic.
+   The primitives and the shared libs (`animation-utils`, `text-utils`,
+   `tokens`) are catalogued at the end of the index, each with use-when
+   guidance and the templates that already use it; props are in the item's
+   own source (`registry/r/<name>.json`, `files[0].content`). The same
+   never-guess rule applies here — compose only from primitives the index
+   actually lists.
 
 ## References
 
 - [references/formats.md](references/formats.md) — the slot contract as data
-  (generated from `src/lib/format-definitions.ts`)
 - [references/motion.md](references/motion.md) — named easing curves and the
   scene archetype table

@@ -1,17 +1,17 @@
 # Motion — text archetypes, named curves, and scene archetypes
 
-Distilled from `docs/motion-library.md` §1–2 (the source of truth for motion
-work). The text-archetype table applies to the default path (it's a config
-field); everything below it is needed only on the top rungs of the escalation
-ladder — ejected templates and primitive compositions. Built-in templates
-already carry this.
+The text-archetype table applies to the default path (it's a config field);
+everything below it is needed only on the top rungs of the escalation ladder —
+ejected templates and primitive compositions. Built-in templates already carry
+this.
 
 ## Text archetypes — the `textArchetype` scene field
 
 Six complete text lifecycles (entrance + hold + exit), picked by name on the
-scene (scene-level field, never inside `variables`). Source:
-`src/lib/scene-templates/text-archetypes.ts`. Unset or unknown values fall
-back to `subtle`.
+scene (scene-level field, never inside `variables`). The implementation ships
+inside every text-led item's dependency closure as
+`src/lib/scene-templates/text-archetypes.ts` (a path within the registry item,
+not a file in this repo). Unset or unknown values fall back to `subtle`.
 
 | Value | Use when | Roles | Canvas |
 |---|---|---|---|
@@ -42,24 +42,20 @@ Every motion choice resolves to one of these. Do not reinvent values.
 `Easing.bezier`, `spring`, and the `SPRING_*` presets live in the
 `@vanillasky/animation-utils` registry item (`src/lib/react-animations/animation-utils.ts`).
 
-## One import surface
+## The motion vocabulary
 
-`src/lib/motion` (`@/lib/motion`) re-exports BOTH motion vocabularies — use it
-for any new scene code instead of deep imports:
+The `@vanillasky/animation-utils` lib item carries the core curves —
+`interpolate`, `spring`, `SPRING_SMOOTH` / `SPRING_SNAPPY` / `SPRING_BOUNCY` /
+`SPRING_CRISP`, `Easing` (incl. `Easing.bezier`), `stagger`, `cubicBezier`.
+Its full source is `files[0].content` of `registry/r/animation-utils.json`
+(live: `https://vanillasky.ai/r/animation-utils.json`).
 
-- **Core curves** (from `animation-utils`): `interpolate`, `spring`,
-  `SPRING_SMOOTH` / `SPRING_SNAPPY` / `SPRING_BOUNCY` / `SPRING_CRISP`,
-  `Easing` (incl. `Easing.bezier`), `stagger`, `cubicBezier`.
-- **Motion stdlib** (from `vibecode/motion-stdlib`, export-verified — parity
-  matrix in `docs/vibecode-stdlib-verification.md`): `EASE` named curves,
-  `phase`, `staggerWindow`, `punch`, `cascade`, `typewriter`, `countUp`,
-  `center`, `glow`, `softShadow`, `vignette`, `meshGradient`, `grain`,
-  `drift`, `pathDraw`, `orbit`, `morph`, `sweep`, `rand01`, `particles`,
-  `burst`.
+Colors and font stacks come from `@vanillasky/tokens` — resolve them there
+rather than hardcoding, so a custom scene picks up the same brand tokens the
+built-in templates do.
 
 Every helper is pure, deterministic, progress-driven, and export-safe (no
-`filter`, no transitions). Built-in templates keep their existing deep
-imports — the surface is additive.
+`filter`, no transitions).
 
 **Law of entrance vs exit:** enter on the ease-OUT family (everything above);
 exit on the ease-IN family (reversed curve, or just fade out). An ease-in

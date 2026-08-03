@@ -3,7 +3,7 @@
   "name": "conversationThread",
   "type": "registry:ui",
   "title": "Conversation Thread",
-  "description": "ConversationThread — multi-bubble chat thread with staggered reveal, typing indicators, and (for WhatsApp) animated read receipts.",
+  "description": "Multi-bubble chat thread with staggered reveal, typing indicators, and date chips. Compose for Messenger/WhatsApp-shaped stories; theme switches the platform look.",
   "dependencies": [
     "react"
   ],

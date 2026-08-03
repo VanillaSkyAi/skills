@@ -3548,7 +3548,7 @@
       "name": "barChartPrimitive",
       "type": "registry:ui",
       "title": "Bar Chart",
-      "description": "BarChart — extracted verbatim from chart-bar.tsx.",
+      "description": "Animated bar chart — bars grow from zero on EDITORIAL. Compose when several values must be compared in one frame.",
       "registryDependencies": [
         "@vanillasky/animation-utils"
       ],
@@ -3570,7 +3570,7 @@
       "name": "beforeAfterSplit",
       "type": "registry:ui",
       "title": "Before After Split",
-      "description": "BeforeAfterSplit — extracted verbatim from infographic-before-after.tsx.",
+      "description": "Split frame contrasting a problem side against a solution side, each with its own headline and emoji set. Compose for transformation beats.",
       "dependencies": [
         "react"
       ],
@@ -3617,7 +3617,7 @@
       "name": "brandMessageBubble",
       "type": "registry:ui",
       "title": "Brand Message Bubble",
-      "description": "BrandMessageBubble — extracted verbatim from brand-message.tsx.",
+      "description": "Single iMessage-style outgoing bubble over media. Compose for a direct 1:1 brand-to-viewer note.",
       "dependencies": [
         "react"
       ],
@@ -3653,7 +3653,7 @@
       "name": "codeEditorPrimitive",
       "type": "registry:ui",
       "title": "Code Editor",
-      "description": "CodeEditor — extracted verbatim from showcase-code.tsx.",
+      "description": "Editor chrome with syntax-highlighted code and a filename tab. Compose when a code or config sample is the content.",
       "dependencies": [
         "react"
       ],
@@ -3680,7 +3680,7 @@
       "name": "conversationThread",
       "type": "registry:ui",
       "title": "Conversation Thread",
-      "description": "ConversationThread — multi-bubble chat thread with staggered reveal, typing indicators, and (for WhatsApp) animated read receipts.",
+      "description": "Multi-bubble chat thread with staggered reveal, typing indicators, and date chips. Compose for Messenger/WhatsApp-shaped stories; theme switches the platform look.",
       "dependencies": [
         "react"
       ],
@@ -3716,7 +3716,7 @@
       "name": "countUpNumber",
       "type": "registry:ui",
       "title": "Count Up Number",
-      "description": "CountUpNumber — extracted verbatim from chart-counter.tsx.",
+      "description": "Hero number that counts up to a target with prefix, unit, and label. Compose whenever one real number is the point.",
       "dependencies": [
         "react"
       ],
@@ -3752,7 +3752,7 @@
       "name": "ctaMediaClose",
       "type": "registry:ui",
       "title": "CTA Media Close",
-      "description": "CtaMediaClose — extracted verbatim from cta-media.tsx.",
+      "description": "Media-backed closer with brand name, URL, and call to action. Compose for a final visual beat.",
       "dependencies": [
         "react"
       ],
@@ -3779,7 +3779,7 @@
       "name": "designedScreenFill",
       "type": "registry:ui",
       "title": "Designed Screen Fill",
-      "description": "DesignedScreenFill — brand-tinted \"designed product UI\" used to fill a device screen when no real screenshot is supplied.",
+      "description": "Brand-tinted synthetic product UI that fills a device screen when no real screenshot exists. Compose inside phoneFrame/webMockupPrimitive as a fallback — prefer a real screenshot whenever one is provided.",
       "registryDependencies": [
         "@vanillasky/animation-utils"
       ],
@@ -3801,7 +3801,7 @@
       "name": "featureGrid",
       "type": "registry:ui",
       "title": "Feature Grid",
-      "description": "FeatureGrid — extracted verbatim from infographic-feature-grid.tsx.",
+      "description": "Grid of feature cards that spring in staggered. Compose for 4+ parallel facts where a list would read too tall.",
       "dependencies": [
         "react"
       ],
@@ -3838,7 +3838,7 @@
       "name": "featureList",
       "type": "registry:ui",
       "title": "Feature List",
-      "description": "FeatureList — extracted verbatim from infographic-feature-list.tsx.",
+      "description": "Vertical list of feature rows revealed in sequence. Compose for 3–5 parallel product facts.",
       "dependencies": [
         "react"
       ],
@@ -3865,7 +3865,7 @@
       "name": "incomingCallCard",
       "type": "registry:ui",
       "title": "Incoming Call Card",
-      "description": "IncomingCallCard — extracted verbatim from incoming-call.tsx.",
+      "description": "Full-screen incoming-call UI with caller name and accept/decline actions. Compose for interruptive or dramatic beats.",
       "dependencies": [
         "react"
       ],
@@ -3892,7 +3892,7 @@
       "name": "milestoneBadge",
       "type": "registry:ui",
       "title": "Milestone Badge",
-      "description": "MilestoneBadge — numeric achievement badge with rolling counter, glow, confetti burst, and celebration pill.",
+      "description": "Numeric achievement badge with rolling counter, glow, and celebration burst. Compose for a real milestone number.",
       "dependencies": [
         "react"
       ],
@@ -3944,7 +3944,7 @@
       "name": "notificationCard",
       "type": "registry:ui",
       "title": "Notification Card",
-      "description": "NotificationCard — extracted verbatim from social-notification.tsx.",
+      "description": "OS-style notification card with app icon and message. Compose for a real notification-shaped product moment.",
       "dependencies": [
         "react"
       ],
@@ -3980,7 +3980,7 @@
       "name": "phoneFrame",
       "type": "registry:ui",
       "title": "Phone Frame",
-      "description": "PhoneFrame — extracted verbatim from showcase-phone.tsx.",
+      "description": "Portrait phone chrome that slides up and settles, wrapping up to three screens. Compose for mobile UI; pair with designedScreenFill when no screenshot exists.",
       "registryDependencies": [
         "@vanillasky/animation-utils",
         "@vanillasky/designedScreenFill",
@@ -4004,7 +4004,7 @@
       "name": "problemSolutionPrimitive",
       "type": "registry:ui",
       "title": "Problem Solution",
-      "description": "ProblemSolution — extracted verbatim from infographic-problem-solution.tsx.",
+      "description": "Two stacked statements — one pain, one fix — with labels. Compose for a literal problem→solution story.",
       "dependencies": [
         "react"
       ],
@@ -4051,7 +4051,7 @@
       "name": "progressRingPrimitive",
       "type": "registry:ui",
       "title": "Progress Ring",
-      "description": "ProgressRing — extracted verbatim from chart-progress-ring.tsx.",
+      "description": "Circular progress ring that draws from 0 with a centered value. Compose for completion, readiness, or percent-complete.",
       "dependencies": [
         "react"
       ],
@@ -4087,7 +4087,7 @@
       "name": "promptInputPill",
       "type": "registry:ui",
       "title": "Prompt Input Pill",
-      "description": "PromptInputPill — extracted verbatim from prompt-input.tsx.",
+      "description": "AI prompt pill that grows from a circle then types the prompt. Compose for prompt-UX explanations.",
       "dependencies": [
         "react"
       ],
@@ -4113,7 +4113,7 @@
       "name": "reactionClip",
       "type": "registry:ui",
       "title": "Reaction Clip",
-      "description": "ReactionClip — short full-bleed reaction/meme video clip with an optional punchline overlay.",
+      "description": "Full-bleed reaction/meme video clip with an optional punchline overlay. Compose at most once, for funny or self-aware beats.",
       "dependencies": [
         "react"
       ],
@@ -4138,7 +4138,7 @@
       "name": "reviewStackPrimitive",
       "type": "registry:ui",
       "title": "Review Stack",
-      "description": "ReviewStack — stacked review cards with staggered spring entrance.",
+      "description": "Stacked review cards with staggered spring entrance and star ratings. Compose for 2+ real attributed reviews.",
       "dependencies": [
         "react"
       ],
@@ -4165,7 +4165,7 @@
       "name": "statBadgeRow",
       "type": "registry:ui",
       "title": "Stat Badge Row",
-      "description": "StatBadgeRow — extracted verbatim from infographic-stat-row.tsx.",
+      "description": "Row of peer stat badges with comparable weight. Compose for exactly three parallel facts.",
       "dependencies": [
         "react"
       ],
@@ -4201,7 +4201,7 @@
       "name": "stepsList",
       "type": "registry:ui",
       "title": "Steps List",
-      "description": "StepsList — extracted verbatim from infographic-steps.tsx. Since the Phase 2 rewiring the template composes this component (background + headline stay in the template), so the two can no longer drift.",
+      "description": "Ordered step cards that spring in one at a time. Compose when sequence matters (connect → generate → publish).",
       "dependencies": [
         "react"
       ],
@@ -4243,7 +4243,7 @@
       "name": "terminalOutput",
       "type": "registry:ui",
       "title": "Terminal Output",
-      "description": "TerminalOutput — extracted verbatim from showcase-terminal.tsx.",
+      "description": "Terminal chrome that types a command then streams output lines. Compose when a CLI command or log IS the content.",
       "dependencies": [
         "react"
       ],
@@ -4270,7 +4270,7 @@
       "name": "testimonialCard",
       "type": "registry:ui",
       "title": "Testimonial Card",
-      "description": "TestimonialCard — extracted verbatim from social-testimonial.tsx.",
+      "description": "Single quote card with author name, role, and avatar. Compose for one real attributed quote.",
       "dependencies": [
         "react"
       ],
@@ -4307,7 +4307,7 @@
       "name": "tweetCard",
       "type": "registry:ui",
       "title": "Tweet Card",
-      "description": "TweetCard — extracted verbatim from social-tweet.tsx.",
+      "description": "X-style post card with verification badge and like/reply counters. Compose for a brand-voiced public post.",
       "dependencies": [
         "react"
       ],
@@ -4354,7 +4354,7 @@
       "name": "webMockupPrimitive",
       "type": "registry:ui",
       "title": "Web Mockup",
-      "description": "WebMockup — extracted verbatim from showcase-web.tsx.",
+      "description": "Browser/desktop chrome with an address bar, wrapping up to three landscape screens. Compose for dashboard or web UI.",
       "dependencies": [
         "react"
       ],
@@ -4381,7 +4381,7 @@
       "name": "wordmarkReveal",
       "type": "registry:ui",
       "title": "Wordmark Reveal",
-      "description": "WordmarkReveal — extracted verbatim from cta-logo.tsx.",
+      "description": "Minimal brand stamp — wordmark or logo with URL and action. Compose for a quiet closer when the video already has motion.",
       "registryDependencies": [
         "@vanillasky/animation-utils",
         "@vanillasky/text-utils",
@@ -4405,7 +4405,7 @@
       "name": "animation-utils",
       "type": "registry:lib",
       "title": "Animation Utils",
-      "description": "Animation utilities — interpolate, spring, easing.",
+      "description": "Core motion vocabulary — `interpolate`, `spring`, `Easing` (incl. `Easing.bezier`), the `SPRING_*` presets, `stagger`, `cubicBezier`. Every custom scene's curves resolve to these; do not reinvent values.",
       "files": [
         {
           "path": "src/lib/react-animations/animation-utils.ts",
@@ -4424,7 +4424,7 @@
       "name": "text-utils",
       "type": "registry:lib",
       "title": "Text Utils",
-      "description": "Shared text utilities that survive the legacy text-overlay/text-entrance deletion. Kept intentionally small.",
+      "description": "Text measurement and fitting helpers — notably `fitTextSize(text, baseSize, maxWidth)` for shrink-to-fit copy in fixed-width containers.",
       "files": [
         {
           "path": "src/lib/scene-templates/text-utils.ts",
@@ -4443,7 +4443,7 @@
       "name": "tokens",
       "type": "registry:lib",
       "title": "Tokens",
-      "description": "Canonical brand-token resolver — THE single derivation path from a video's GlobalStyle (font + brandKit) to the resolved design tokens scene templates and primitives consume.",
+      "description": "The canonical brand-token resolver: one derivation path from a config's `style` + `brandKit` to the resolved `accent` / `surface` / `surface_elevated` / `content` / `muted` / `font` / `script_font` tokens, plus `fontStack()`. Read tokens from here instead of hardcoding colors or font stacks.",
       "files": [
         {
           "path": "src/lib/scene-templates/tokens.ts",

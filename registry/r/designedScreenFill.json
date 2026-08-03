@@ -3,7 +3,7 @@
   "name": "designedScreenFill",
   "type": "registry:ui",
   "title": "Designed Screen Fill",
-  "description": "DesignedScreenFill — brand-tinted \"designed product UI\" used to fill a device screen when no real screenshot is supplied.",
+  "description": "Brand-tinted synthetic product UI that fills a device screen when no real screenshot exists. Compose inside phoneFrame/webMockupPrimitive as a fallback — prefer a real screenshot whenever one is provided.",
   "registryDependencies": [
     "@vanillasky/animation-utils"
   ],

@@ -3,7 +3,7 @@
   "name": "animation-utils",
   "type": "registry:lib",
   "title": "Animation Utils",
-  "description": "Animation utilities — interpolate, spring, easing.",
+  "description": "Core motion vocabulary — `interpolate`, `spring`, `Easing` (incl. `Easing.bezier`), the `SPRING_*` presets, `stagger`, `cubicBezier`. Every custom scene's curves resolve to these; do not reinvent values.",
   "files": [
     {
       "path": "src/lib/react-animations/animation-utils.ts",

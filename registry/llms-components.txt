@@ -4,7 +4,13 @@
 > Every template is a `registry:block` in the shadcn-compatible registry
 > (repo: `registry/registry.json`). Per-item JSON with source, full variable
 > schema, and defaults: `https://vanillasky.ai/r/<name>.json` (repo:
-> `registry/r/<name>.json`), installable via `npx shadcn add @vanillasky/<name>`.
+> `registry/r/<name>.json`).
+>
+> `npx shadcn add @vanillasky/<name>` works once the `@vanillasky` namespace is
+> mapped in the consuming project's `components.json`:
+> `{ "registries": { "@vanillasky": "https://vanillasky.ai/r/{name}.json" } }`.
+> Without that entry the namespace does not resolve. Reading the item JSON
+> directly needs no setup at all.
 >
 > All templates are orientation-responsive: the same config renders portrait
 > 9:16 (1080x1920) or landscape 16:9 (1920x1080) via the config's `orientation`
@@ -105,3 +111,52 @@ categories (category shown per template in its registry item's `meta.vanillasky.
 | Template | Use when | Register | Jobs | Duration | Variables | Tier |
 |---|---|---|---|---|---|---|
 | `ctaMedia` | *Closer fallback — prefer `ctaLogo` when a real logo exists or 2+ scenes already ran full-frame footage.* Cinematic media-backed closer with headline and URL. Default closer for launch videos when a final visual beat helps the call to action. | typography-led | ask | 2–4s | 8 | free |
+
+## Primitives (`registry:ui`)
+
+The building blocks the templates above are made of — the top rung of the
+escalation ladder. Reach for these only when no template expresses the brief:
+compose them into a custom scene following the motion rules, or install one
+with `npx shadcn add @vanillasky/<name>`. Every primitive is progress-driven,
+deterministic, and renders at both 1080x1920 and 1920x1080. Props are in the
+item's source (`registry/r/<name>.json`, `files[0].content`).
+
+| Primitive | Use when | Used by |
+|---|---|---|
+| `barChartPrimitive` | Animated bar chart — bars grow from zero on EDITORIAL. Compose when several values must be compared in one frame. | `barChart` |
+| `beforeAfterSplit` | Split frame contrasting a problem side against a solution side, each with its own headline and emoji set. Compose for transformation beats. | `beforeAfter` |
+| `brandMessageBubble` | Single iMessage-style outgoing bubble over media. Compose for a direct 1:1 brand-to-viewer note. | `brandMessage` |
+| `codeEditorPrimitive` | Editor chrome with syntax-highlighted code and a filename tab. Compose when a code or config sample is the content. | `codeEditor` |
+| `conversationThread` | Multi-bubble chat thread with staggered reveal, typing indicators, and date chips. Compose for Messenger/WhatsApp-shaped stories; theme switches the platform look. | — |
+| `countUpNumber` | Hero number that counts up to a target with prefix, unit, and label. Compose whenever one real number is the point. | `bigNumber` |
+| `ctaMediaClose` | Media-backed closer with brand name, URL, and call to action. Compose for a final visual beat. | — |
+| `designedScreenFill` | Brand-tinted synthetic product UI that fills a device screen when no real screenshot exists. Compose inside phoneFrame/webMockupPrimitive as a fallback — prefer a real screenshot whenever one is provided. | `webMockup` |
+| `featureGrid` | Grid of feature cards that spring in staggered. Compose for 4+ parallel facts where a list would read too tall. | — |
+| `featureList` | Vertical list of feature rows revealed in sequence. Compose for 3–5 parallel product facts. | — |
+| `incomingCallCard` | Full-screen incoming-call UI with caller name and accept/decline actions. Compose for interruptive or dramatic beats. | — |
+| `milestoneBadge` | Numeric achievement badge with rolling counter, glow, and celebration burst. Compose for a real milestone number. | `milestone` |
+| `notificationCard` | OS-style notification card with app icon and message. Compose for a real notification-shaped product moment. | `notification` |
+| `phoneFrame` | Portrait phone chrome that slides up and settles, wrapping up to three screens. Compose for mobile UI; pair with designedScreenFill when no screenshot exists. | `phoneMockup` |
+| `problemSolutionPrimitive` | Two stacked statements — one pain, one fix — with labels. Compose for a literal problem→solution story. | — |
+| `progressRingPrimitive` | Circular progress ring that draws from 0 with a centered value. Compose for completion, readiness, or percent-complete. | `progressRing` |
+| `promptInputPill` | AI prompt pill that grows from a circle then types the prompt. Compose for prompt-UX explanations. | `promptInput` |
+| `reactionClip` | Full-bleed reaction/meme video clip with an optional punchline overlay. Compose at most once, for funny or self-aware beats. | — |
+| `reviewStackPrimitive` | Stacked review cards with staggered spring entrance and star ratings. Compose for 2+ real attributed reviews. | `reviewStack` |
+| `statBadgeRow` | Row of peer stat badges with comparable weight. Compose for exactly three parallel facts. | `tripleStats` |
+| `stepsList` | Ordered step cards that spring in one at a time. Compose when sequence matters (connect → generate → publish). | `steps` |
+| `terminalOutput` | Terminal chrome that types a command then streams output lines. Compose when a CLI command or log IS the content. | `terminal` |
+| `testimonialCard` | Single quote card with author name, role, and avatar. Compose for one real attributed quote. | `testimonial` |
+| `tweetCard` | X-style post card with verification badge and like/reply counters. Compose for a brand-voiced public post. | `tweet` |
+| `webMockupPrimitive` | Browser/desktop chrome with an address bar, wrapping up to three landscape screens. Compose for dashboard or web UI. | — |
+| `wordmarkReveal` | Minimal brand stamp — wordmark or logo with URL and action. Compose for a quiet closer when the video already has motion. | `ctaLogo` |
+
+## Libs (`registry:lib`)
+
+Shared vocabulary for custom scenes. Import from these instead of hardcoding
+curves, colors, or font stacks.
+
+| Lib | What it gives you | Used by |
+|---|---|---|
+| `animation-utils` | Core motion vocabulary — `interpolate`, `spring`, `Easing` (incl. `Easing.bezier`), the `SPRING_*` presets, `stagger`, `cubicBezier`. Every custom scene's curves resolve to these; do not reinvent values. | `barChart`, `bigNumber`, `brandMessage`, `cardList`, `chatMessenger`, `chatWhatsapp`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
+| `text-utils` | Text measurement and fitting helpers — notably `fitTextSize(text, baseSize, maxWidth)` for shrink-to-fit copy in fixed-width containers. | `bigNumber`, `brandMessage`, `ctaMedia`, `incomingCall`, `milestone`, `progressRing`, `promptInput`, `testimonial` |
+| `tokens` | The canonical brand-token resolver: one derivation path from a config's `style` + `brandKit` to the resolved `accent` / `surface` / `surface_elevated` / `content` / `muted` / `font` / `script_font` tokens, plus `fontStack()`. Read tokens from here instead of hardcoding colors or font stacks. | `barChart`, `beforeAfter`, `bigNumber`, `brandMessage`, `cardList`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |

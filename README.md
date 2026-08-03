@@ -30,8 +30,36 @@ npx skills add VanillaSkyAi/skills --skill vanillasky
 The skill uses the live template catalog at
 [vanillasky.ai/llms-components.txt](https://vanillasky.ai/llms-components.txt)
 when online; this repo's `registry/` directory is the equivalent offline
-snapshot (`llms-components.txt` is the index, `r/<templateId>.json` has each
-template's full variable schema, defaults, and source).
+snapshot (`llms-components.txt` is the index, `r/<name>.json` has each
+item's full variable schema, defaults, and source).
+
+## The registry — components, not just templates
+
+The catalog has three layers, all shadcn-conformant and all shipped with
+source:
+
+| Layer | Type | What it is |
+| --- | --- | --- |
+| Templates | `registry:block` | Finished scenes — the default path. Pick one, set variables, render. |
+| Primitives | `registry:ui` | The building blocks templates are made of — cards, device chrome, counters, charts. Compose them when no template fits. |
+| Libs | `registry:lib` | Shared vocabulary: motion curves (`animation-utils`), text fitting (`text-utils`), and the canonical brand tokens (`tokens`). |
+
+Every item's JSON carries its own source in `files[0].content` plus its full
+dependency closure, so you can read or eject any of it without installing
+anything. To install with the shadcn CLI instead, map the namespace once in
+your project's `components.json`:
+
+```json
+{ "registries": { "@vanillasky": "https://vanillasky.ai/r/{name}.json" } }
+```
+
+```bash
+npx shadcn add @vanillasky/bigNumber      # a template
+npx shadcn add @vanillasky/countUpNumber  # a primitive
+```
+
+Without that `registries` entry the `@vanillasky` namespace does not
+resolve — reading the item JSON directly needs no setup at all.
 
 ## The renderer (CLI)
 

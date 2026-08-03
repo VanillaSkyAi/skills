@@ -3,7 +3,7 @@
   "name": "reactionClip",
   "type": "registry:ui",
   "title": "Reaction Clip",
-  "description": "ReactionClip — short full-bleed reaction/meme video clip with an optional punchline overlay.",
+  "description": "Full-bleed reaction/meme video clip with an optional punchline overlay. Compose at most once, for funny or self-aware beats.",
   "dependencies": [
     "react"
   ],
