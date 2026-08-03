@@ -1,0 +1,27 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry-item.json",
+  "name": "reactionClip",
+  "type": "registry:ui",
+  "title": "Reaction Clip",
+  "description": "ReactionClip — short full-bleed reaction/meme video clip with an optional punchline overlay.",
+  "dependencies": [
+    "react"
+  ],
+  "registryDependencies": [
+    "@vanillasky/text-utils"
+  ],
+  "files": [
+    {
+      "path": "src/lib/primitives/social/ReactionClip.tsx",
+      "type": "registry:ui",
+      "target": "vanillasky/primitives/social/ReactionClip.tsx",
+      "content": "/**\n * ReactionClip — short full-bleed reaction/meme video clip with an optional\n * punchline overlay.\n *\n * Lifted from `reaction.tsx`. The primitive owns:\n *   - the full-frame <video> element (loop + muted + playsInline)\n *   - the dark vertical scrim that keeps text readable over busy footage\n *\n * It does NOT own the SceneBackground gradient/zoom fallback or the\n * headline TemplateText — those stay in the scene composer so brand\n * background + archetype-driven typography can live around the clip.\n *\n * Props:\n *  - progress   — scene progress 0..1 (unused for now; reserved for future\n *                 fade-in/fade-out treatments)\n *  - width      — frame width\n *  - height     — frame height\n *  - videoUrl   — direct MP4 URL (typically a Pexels reaction clip). When\n *                 empty the primitive renders a transparent shell so the\n *                 scene composer's background still shows through.\n *  - punchline  — optional short caption rendered bottom-center. The\n *                 source template lifts this into a full TemplateText\n *                 archetype; the primitive only owns a simple legible\n *                 overlay for self-contained use cases.\n *  - beatIntensity — optional 0..1 audio reactivity (subtle scale pop)\n *  - accent     — brand accent (unused today, accepted for parity with\n *                 sibling social primitives so callers can pass a brand\n *                 kit uniformly)\n */\n\nimport * as React from \"react\";\nimport { stripPipe } from \"../../scene-templates/text-utils\";\n\nexport interface ReactionClipProps {\n  progress: number;\n  width: number;\n  height: number;\n  videoUrl: string;\n  punchline?: string;\n  beatIntensity?: number;\n  accent?: string;\n}\n\nexport const ReactionClip: React.FC<ReactionClipProps> = ({\n  width,\n  height,\n  videoUrl,\n  punchline,\n  beatIntensity = 0,\n}) => {\n  const dim = Math.min(width, height);\n  const hasClip = (videoUrl || \"\").trim().length > 0;\n  const text = stripPipe(punchline || \"\").trim();\n  const beatScale = 1 + beatIntensity * 0.01;\n\n  return (\n    <div\n      style={{\n        position: \"absolute\",\n        inset: 0,\n        overflow: \"hidden\",\n        backgroundColor: \"#000\",\n      }}\n    >\n      {hasClip && (\n        <video\n          src={videoUrl}\n          autoPlay\n          loop\n          muted\n          playsInline\n          style={{\n            position: \"absolute\",\n            inset: 0,\n            width: \"100%\",\n            height: \"100%\",\n            objectFit: \"cover\",\n            transform: `scale(${beatScale})`,\n          }}\n        />\n      )}\n\n      {/* Vertical scrim for legibility */}\n      <div\n        style={{\n          position: \"absolute\",\n          inset: 0,\n          background:\n            \"linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.08) 45%, rgba(0,0,0,.5))\",\n          pointerEvents: \"none\",\n        }}\n      />\n\n      {text && (\n        <div\n          style={{\n            position: \"absolute\",\n            left: 0,\n            right: 0,\n            bottom: dim * 0.1,\n            textAlign: \"center\",\n            color: \"#ffffff\",\n            fontSize: dim * 0.07,\n            fontWeight: 800,\n            letterSpacing: -0.5,\n            lineHeight: 1.1,\n            textShadow: \"0 2px 12px rgba(0,0,0,0.6)\",\n            padding: `0 ${dim * 0.06}px`,\n          }}\n        >\n          {text}\n        </div>\n      )}\n    </div>\n  );\n};\n"
+    }
+  ],
+  "meta": {
+    "vanillasky": {
+      "layer": "primitive",
+      "tier": "free"
+    }
+  }
+}

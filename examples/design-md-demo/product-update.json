@@ -1,0 +1,50 @@
+{
+  "format": "launch",
+  "orientation": "portrait",
+  "audio": { "trackId": "steady-groove-in-c" },
+  "scenes": [
+    {
+      "id": "s0",
+      "templateId": "media",
+      "backgroundEffect": "breathe",
+      "textArchetype": "slam",
+      "variables": {
+        "texts": "Cron fails silently. Until now.",
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 3 }
+    },
+    {
+      "id": "s1",
+      "templateId": "terminal",
+      "variables": {
+        "texts": "One line in your crontab",
+        "command": "curl -fsS https://perch.dev/ping/nightly-backup",
+        "output": "✓ heartbeat received,✓ next check-in expected in 24h",
+        "promptPrefix": "$"
+      },
+      "timing": { "fixedDuration": 4.5 }
+    },
+    {
+      "id": "s2",
+      "templateId": "notification",
+      "variables": {
+        "appName": "Perch",
+        "appIcon": "🦉",
+        "message": "nightly-backup missed its heartbeat — alert sent to #ops",
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 4 }
+    },
+    {
+      "id": "s3",
+      "templateId": "ctaLogo",
+      "variables": {
+        "brandName": "Perch",
+        "url": "perch.dev",
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 3.5 }
+    }
+  ]
+}

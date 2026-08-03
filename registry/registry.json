@@ -1,0 +1,4467 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "vanillasky",
+  "homepage": "https://vanillasky.ai",
+  "items": [
+    {
+      "name": "media",
+      "type": "registry:block",
+      "title": "Media",
+      "description": "Full-bleed photo, video, or gradient with open text. Use for hooks, atmospheric body beats, uploaded scenic media, or a concrete product-context sentence over footage.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/bg-media.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/bg-media.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/confetti-layer.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/confetti-layer.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "media",
+          "tier": "free",
+          "register": "motion-led",
+          "jobs": [
+            "atmosphere",
+            "setup"
+          ],
+          "useWhen": "Full-bleed photo, video, or gradient with open text. Use for hooks, atmospheric body beats, uploaded scenic media, or a concrete product-context sentence over footage.",
+          "textCanvas": "open",
+          "minDuration": 1,
+          "preferredDuration": 2,
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "Make an impact.",
+              "required": true,
+              "description": "Title text shown on the scene"
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Media",
+              "description": "Photo or video URL for the background"
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Media search keyword",
+              "default": "",
+              "description": "Used for automatic Pexels search"
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL extension. \"gradient\" is a deliberate mode — atmospheric brand-color scene with no stock footage (good for breathers between dense scenes, color-led brand moments).",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color for this scene (leave empty for auto)"
+            },
+            "confetti": {
+              "type": "boolean",
+              "label": "Confetti",
+              "default": false,
+              "description": "Layer falling confetti particles over the backdrop. Set true when the copy is celebratory (launch, milestone, win, anniversary, achievement). Works on top of any mediaType — photo, video, or gradient."
+            }
+          },
+          "defaultVariables": {
+            "texts": "Make an impact.",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "textColor": "",
+            "confetti": false
+          }
+        }
+      }
+    },
+    {
+      "name": "reaction",
+      "type": "registry:block",
+      "title": "Reaction",
+      "description": "Use once for funny/meme/self-aware/roast/silly/unhinged/lol videos. Short full-bleed reaction clip with a punchline. Hook or body payoff. Pick reactionTag from the enum; search appends `meme` to nudge Pexels toward expressive footage. Max one per video.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/reaction.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/reaction.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "media",
+          "tier": "free",
+          "register": "motion-led",
+          "jobs": [
+            "setup",
+            "claim"
+          ],
+          "useWhen": "Use once for funny/meme/self-aware/roast/silly/unhinged/lol videos. Short full-bleed reaction clip with a punchline. Hook or body payoff. Pick reactionTag from the enum; search appends `meme` to nudge Pexels toward expressive footage. Max one per video.",
+          "textCanvas": "open",
+          "minDuration": 2.5,
+          "preferredDuration": 3,
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Punchline",
+              "default": "Still editing manually?",
+              "required": true,
+              "description": "Short meme-like punchline shown over the reaction clip. Keep it to 2-6 words."
+            },
+            "reactionTag": {
+              "type": "enum",
+              "label": "Reaction tag",
+              "default": "manual",
+              "required": true,
+              "description": "Pexels meme search intent. Pick from the punchline/problem copy first, then the overall video topic.",
+              "options": [
+                "launch",
+                "productLaunch",
+                "goLive",
+                "shipIt",
+                "wow",
+                "excited",
+                "happy",
+                "success",
+                "done",
+                "panic",
+                "waiting",
+                "celebration",
+                "cheers",
+                "applause",
+                "highFive",
+                "teamwork",
+                "fail",
+                "confused",
+                "thinking",
+                "thanks",
+                "letsGo",
+                "manual",
+                "office",
+                "meeting",
+                "deadline",
+                "coding",
+                "debugging",
+                "computer",
+                "startup",
+                "presentation",
+                "sales",
+                "growth",
+                "money"
+              ]
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Reaction clip",
+              "description": "Resolved Pexels MP4 URL."
+            },
+            "mediaType": {
+              "type": "string",
+              "label": "Media type",
+              "default": "video",
+              "description": "Always 'video' for reaction clips."
+            }
+          },
+          "defaultVariables": {
+            "texts": "Still editing manually?",
+            "reactionTag": "manual",
+            "mediaUrl": "",
+            "mediaType": "video"
+          }
+        }
+      }
+    },
+    {
+      "name": "confetti",
+      "type": "registry:block",
+      "title": "Confetti",
+      "description": "Generic celebration or broad win when no specific emoji theme or numeric milestone is the main point. Prefer emojiBurst for themed emoji celebrations and milestone for numeric achievements.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/bg-confetti.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/bg-confetti.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/confetti-layer.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/confetti-layer.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "celebration",
+          "tier": "free",
+          "register": "motion-led",
+          "jobs": [
+            "atmosphere"
+          ],
+          "useWhen": "Generic celebration or broad win when no specific emoji theme or numeric milestone is the main point. Prefer emojiBurst for themed emoji celebrations and milestone for numeric achievements.",
+          "textCanvas": "open",
+          "minDuration": 1,
+          "preferredDuration": 2,
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "Celebrate.",
+              "required": true,
+              "description": "Title text shown on the scene"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "texts": "Celebrate.",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "emojiBurst",
+      "type": "registry:block",
+      "title": "Emoji Burst",
+      "description": "Themed celebration where a small emoji set communicates the moment, such as launch, love, achievement, or delight. Prefer confetti for generic celebration.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/bg-emoji.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/bg-emoji.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "celebration",
+          "tier": "free",
+          "register": "motion-led",
+          "jobs": [
+            "atmosphere"
+          ],
+          "useWhen": "Themed celebration where a small emoji set communicates the moment, such as launch, love, achievement, or delight. Prefer confetti for generic celebration.",
+          "textCanvas": "open",
+          "minDuration": 1,
+          "preferredDuration": 2,
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "Let's go!",
+              "required": true,
+              "description": "Title text shown on the scene"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "texts": "Let's go!",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "bigNumber",
+      "type": "registry:block",
+      "title": "Big Number",
+      "description": "One important real number explicitly present in the input: customer count, reduction, uplift, speed claim, percentage, rank, or headline metric. Use only when you can copy the exact number into value/prefix/unit; never invent a number or leave the default.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/countUpNumber",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/chart-counter.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/chart-counter.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/confetti-layer.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/confetti-layer.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "data",
+          "tier": "free",
+          "register": "typography-led",
+          "jobs": [
+            "claim",
+            "proof"
+          ],
+          "useWhen": "One important real number explicitly present in the input: customer count, reduction, uplift, speed claim, percentage, rank, or headline metric. Use only when you can copy the exact number into value/prefix/unit; never invent a number or leave the default.",
+          "textCanvas": "tight",
+          "minDuration": 1.5,
+          "preferredDuration": 4,
+          "gates": {
+            "requiresStat": true
+          },
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "Our biggest milestone yet.",
+              "required": true,
+              "description": "Title text shown above the chart"
+            },
+            "value": {
+              "type": "number",
+              "label": "Target number",
+              "default": 1000,
+              "required": true,
+              "description": "The number to count up to"
+            },
+            "label": {
+              "type": "string",
+              "label": "Label",
+              "default": "Total users",
+              "required": true,
+              "description": "Text displayed below the number"
+            },
+            "prefix": {
+              "type": "string",
+              "label": "Prefix",
+              "default": "",
+              "description": "Prefix before the number (e.g. $, €)"
+            },
+            "unit": {
+              "type": "string",
+              "label": "Unit suffix",
+              "default": "",
+              "description": "Suffix after the number (e.g. %, +, k, M)"
+            },
+            "chartColor": {
+              "type": "color",
+              "label": "Chart color",
+              "default": "#00e5a0",
+              "description": "Color for the chart elements (bars, line, ring). Green = growth, blue = trust, orange = energy."
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            }
+          },
+          "defaultVariables": {
+            "texts": "Our biggest milestone yet.",
+            "value": 1000,
+            "label": "Total users",
+            "prefix": "",
+            "unit": "",
+            "chartColor": "#00e5a0",
+            "textColor": "",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "barChart",
+      "type": "registry:block",
+      "title": "Bar Chart",
+      "description": "Comparison, ranking, trend, or multiple values where relative size matters. Use for category comparisons, before/after quantities, or grouped metrics.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/barChartPrimitive",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/chart-bar.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/chart-bar.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/parse-list.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/parse-list.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "data",
+          "tier": "free",
+          "register": "motion-led",
+          "jobs": [
+            "proof"
+          ],
+          "useWhen": "Comparison, ranking, trend, or multiple values where relative size matters. Use for category comparisons, before/after quantities, or grouped metrics.",
+          "textCanvas": "tight",
+          "minDuration": 2,
+          "preferredDuration": 3.5,
+          "gates": {
+            "requiresStat": true
+          },
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "Revenue up 300%.",
+              "required": true,
+              "description": "Title text shown above the chart"
+            },
+            "bars": {
+              "type": "string",
+              "label": "Bar heights",
+              "default": "30,55,45,80,65,95",
+              "description": "JSON array of values 0-100 for bar heights. The bars are decorative — they visualize the trend. Example: [30, 55, 45, 80, 65, 95]"
+            },
+            "chartColor": {
+              "type": "color",
+              "label": "Chart color",
+              "default": "#00e5a0",
+              "description": "Color for the chart elements (bars, line, ring). Green = growth, blue = trust, orange = energy."
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "texts": "Revenue up 300%.",
+            "bars": "30,55,45,80,65,95",
+            "chartColor": "#00e5a0",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "progressRing",
+      "type": "registry:block",
+      "title": "Progress Ring",
+      "description": "Completion, readiness, health score, goal progress, adoption progress, or percent complete. Do not use for generic uplift, reduction, speed, or loose percentage claims.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/progressRingPrimitive",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/chart-progress-ring.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/chart-progress-ring.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "data",
+          "tier": "free",
+          "register": "motion-led",
+          "jobs": [
+            "proof"
+          ],
+          "useWhen": "Completion, readiness, health score, goal progress, adoption progress, or percent complete. Do not use for generic uplift, reduction, speed, or loose percentage claims.",
+          "textCanvas": "tight",
+          "minDuration": 2,
+          "preferredDuration": 3.5,
+          "gates": {
+            "requiresStat": true
+          },
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "Almost there.",
+              "required": true,
+              "description": "Title text shown above the chart"
+            },
+            "value": {
+              "type": "number",
+              "label": "Value",
+              "default": 75,
+              "required": true,
+              "description": "Percentage value 0-100"
+            },
+            "label": {
+              "type": "string",
+              "label": "Label",
+              "default": "Complete",
+              "required": true,
+              "description": "Text shown below the ring"
+            },
+            "unit": {
+              "type": "string",
+              "label": "Unit",
+              "default": "%",
+              "description": "Suffix after the number (e.g. %, x, k)"
+            },
+            "chartColor": {
+              "type": "color",
+              "label": "Chart color",
+              "default": "#00e5a0",
+              "description": "Color for the chart elements (bars, line, ring). Green = growth, blue = trust, orange = energy."
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "texts": "Almost there.",
+            "value": 75,
+            "label": "Complete",
+            "unit": "%",
+            "chartColor": "#00e5a0",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "phoneMockup",
+      "type": "registry:block",
+      "title": "Phone Mockup",
+      "description": "Uploaded portrait/mobile UI screenshots or a mobile app workflow. Use one scene for up to three same-orientation phone screens.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/phoneFrame",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/showcase-phone.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/showcase-phone.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "device",
+          "tier": "free",
+          "register": "device-led",
+          "jobs": [
+            "proof",
+            "atmosphere"
+          ],
+          "useWhen": "Uploaded portrait/mobile UI screenshots or a mobile app workflow. Use one scene for up to three same-orientation phone screens.",
+          "textCanvas": "tight",
+          "minDuration": 2,
+          "preferredDuration": 3,
+          "gates": {
+            "requiresScreenshot": true
+          },
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "See it in action.",
+              "required": true,
+              "description": "Title text shown on the scene"
+            },
+            "screenMediaUrl": {
+              "type": "media",
+              "label": "Screen screenshot",
+              "description": "Screenshot to show on the phone screen"
+            },
+            "screen1Url": {
+              "type": "media",
+              "label": "Screen 1",
+              "default": "",
+              "description": "Set to enable slides mode — screens slide inside the phone"
+            },
+            "screen2Url": {
+              "type": "media",
+              "label": "Screen 2",
+              "default": "",
+              "description": "Second screen (slides mode)"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "texts": "See it in action.",
+            "screenMediaUrl": "",
+            "screen1Url": "",
+            "screen2Url": "",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "webMockup",
+      "type": "registry:block",
+      "title": "Web Mockup",
+      "description": "Uploaded landscape or square desktop/web screenshots, dashboard views, or browser/tablet product surfaces. Use one scene for up to three same-orientation screens.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/designedScreenFill",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/showcase-web.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/showcase-web.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "device",
+          "tier": "free",
+          "register": "device-led",
+          "jobs": [
+            "proof",
+            "atmosphere"
+          ],
+          "useWhen": "Uploaded landscape or square desktop/web screenshots, dashboard views, or browser/tablet product surfaces. Use one scene for up to three same-orientation screens.",
+          "textCanvas": "tight",
+          "minDuration": 2,
+          "preferredDuration": 3,
+          "gates": {
+            "requiresScreenshot": true
+          },
+          "variableSchema": {
+            "frame": {
+              "type": "enum",
+              "label": "Device frame",
+              "default": "browser",
+              "options": [
+                "browser",
+                "tablet"
+              ],
+              "description": "browser shows chrome bar + address bar, tablet shows clean frame"
+            },
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "See it in action.",
+              "required": true,
+              "description": "Title text shown on the scene"
+            },
+            "screenMediaUrl": {
+              "type": "media",
+              "label": "Screenshot",
+              "description": "Screenshot to show in the device window"
+            },
+            "screen1Url": {
+              "type": "media",
+              "label": "Screen 1"
+            },
+            "screen2Url": {
+              "type": "media",
+              "label": "Screen 2"
+            },
+            "addressBarUrl": {
+              "type": "string",
+              "label": "Address bar URL",
+              "default": "yourapp.com",
+              "description": "URL shown in browser chrome (browser frame only)"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "frame": "browser",
+            "texts": "See it in action.",
+            "screenMediaUrl": "",
+            "screen1Url": "",
+            "screen2Url": "",
+            "addressBarUrl": "yourapp.com",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "codeEditor",
+      "type": "registry:block",
+      "title": "Code Editor",
+      "description": "Developer product, API, SDK, config, codebase, tests, or code-focused workflow where a short synthetic code sample explains the product mechanism. Prefer over generic brand/card scenes when code is a core input signal.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/codeEditorPrimitive",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/showcase-code.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/showcase-code.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "device",
+          "tier": "free",
+          "register": "device-led",
+          "jobs": [
+            "proof",
+            "atmosphere"
+          ],
+          "useWhen": "Developer product, API, SDK, config, codebase, tests, or code-focused workflow where a short synthetic code sample explains the product mechanism. Prefer over generic brand/card scenes when code is a core input signal.",
+          "textCanvas": "tight",
+          "minDuration": 2,
+          "preferredDuration": 3,
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "Simple as this.",
+              "required": true,
+              "description": "Title text shown on the scene"
+            },
+            "code": {
+              "type": "string",
+              "label": "Code",
+              "default": "import { create } from \"vanillasky\";\n\nconst video = await create({\n  prompt: \"Launch trailer\",\n  style: \"cinematic\",\n});\n\nconsole.log(video.url);",
+              "required": true,
+              "description": "Code snippet — use \\n for line breaks"
+            },
+            "filename": {
+              "type": "string",
+              "label": "Filename",
+              "default": "app.ts",
+              "description": "Filename shown in the editor title bar"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "texts": "Simple as this.",
+            "code": "import { create } from \"vanillasky\";\n\nconst video = await create({\n  prompt: \"Launch trailer\",\n  style: \"cinematic\",\n});\n\nconsole.log(video.url);",
+            "filename": "app.ts",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "terminal",
+      "type": "registry:block",
+      "title": "Terminal",
+      "description": "Developer or technical product where a CLI command, install command, log output, deploy/test flow, or status result communicates the workflow better than prose. Prefer when the input includes a command or install snippet.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/terminalOutput",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/showcase-terminal.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/showcase-terminal.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/parse-list.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/parse-list.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "device",
+          "tier": "free",
+          "register": "device-led",
+          "jobs": [
+            "proof",
+            "atmosphere"
+          ],
+          "useWhen": "Developer or technical product where a CLI command, install command, log output, deploy/test flow, or status result communicates the workflow better than prose. Prefer when the input includes a command or install snippet.",
+          "textCanvas": "tight",
+          "minDuration": 2,
+          "preferredDuration": 3,
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "Ship it.",
+              "required": true,
+              "description": "Title text shown on the scene"
+            },
+            "command": {
+              "type": "string",
+              "label": "Command",
+              "default": "npx vanillasky create --trailer",
+              "required": true,
+              "description": "The command that gets typed out character by character"
+            },
+            "output": {
+              "type": "string",
+              "label": "Output lines",
+              "default": "✓ Scenes composed,✓ Beat-synced to music,✓ Ready to export",
+              "description": "JSON array of output lines that appear after the command. Send as an array — terminal output frequently contains commas. Example: [\"✓ Built /api/auth/login.ts, /api/users/me.ts\", \"✓ 12 tests passed\", \"✓ Ready to deploy\"]"
+            },
+            "promptPrefix": {
+              "type": "string",
+              "label": "Prompt",
+              "default": "$",
+              "description": "Prompt prefix character (e.g. $, >, →)"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "texts": "Ship it.",
+            "command": "npx vanillasky create --trailer",
+            "output": "✓ Scenes composed,✓ Beat-synced to music,✓ Ready to export",
+            "promptPrefix": "$",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "tweet",
+      "type": "registry:block",
+      "title": "Tweet",
+      "description": "X-style post card with optional 1-4 image grid (tweetImage1..4). Brand-voiced announcement that reads like a real public post, launch quote, founder update, or compact social claim. Avoid for generic product explainers.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens",
+        "@vanillasky/tweetCard"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/social-tweet.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/social-tweet.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "social",
+          "tier": "free",
+          "register": "card-led",
+          "jobs": [
+            "claim",
+            "proof"
+          ],
+          "useWhen": "X-style post card with optional 1-4 image grid (tweetImage1..4). Brand-voiced announcement that reads like a real public post, launch quote, founder update, or compact social claim. Avoid for generic product explainers.",
+          "textCanvas": "open",
+          "minDuration": 2.5,
+          "preferredDuration": 3.5,
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "authorName": {
+              "type": "string",
+              "label": "Author name",
+              "default": "Your brand",
+              "required": true,
+              "description": "Display name shown bold next to the verified checkmark."
+            },
+            "authorHandle": {
+              "type": "string",
+              "label": "Handle",
+              "default": "",
+              "description": "Username in @format. Leave empty to auto-derive from author name (e.g. 'Linear' → '@linear')."
+            },
+            "authorVerified": {
+              "type": "boolean",
+              "label": "Verified checkmark",
+              "default": true,
+              "description": "Show the blue verified checkmark next to the author name."
+            },
+            "message": {
+              "type": "string",
+              "label": "Tweet text",
+              "default": "Just shipped the new feature 🚀",
+              "required": true,
+              "description": "The tweet/post content. Reads best at 1-3 lines (~80-180 chars). Emoji land naturally at the end of a phrase."
+            },
+            "likes": {
+              "type": "number",
+              "label": "Likes",
+              "default": 602,
+              "description": "Target like count (rolls up from 0)."
+            },
+            "replies": {
+              "type": "number",
+              "label": "Replies",
+              "default": 19,
+              "description": "Target reply count (rolls up from 0)."
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            }
+          },
+          "defaultVariables": {
+            "authorName": "Your brand",
+            "authorHandle": "",
+            "authorVerified": true,
+            "message": "Just shipped the new feature 🚀",
+            "likes": 602,
+            "replies": 19,
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "notification",
+      "type": "registry:block",
+      "title": "Notification",
+      "description": "A real notification-shaped product moment: alert, reminder, task done, system update, approval, message, or 'your X is ready' event. Avoid for generic URL launches, broad brand announcements, or product explanations.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/notificationCard",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/social-notification.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/social-notification.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "social",
+          "tier": "free",
+          "register": "card-led",
+          "jobs": [
+            "proof",
+            "setup"
+          ],
+          "useWhen": "A real notification-shaped product moment: alert, reminder, task done, system update, approval, message, or 'your X is ready' event. Avoid for generic URL launches, broad brand announcements, or product explanations.",
+          "textCanvas": "tight",
+          "minDuration": 2,
+          "preferredDuration": 3,
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "appName": {
+              "type": "string",
+              "label": "App name",
+              "default": "Reminder",
+              "required": true,
+              "description": "App name shown in the notification header (e.g. Reminder, Lume, Linear, GitHub)."
+            },
+            "appIcon": {
+              "type": "string",
+              "label": "App icon",
+              "default": "🔔",
+              "description": "Single emoji used as the app icon. Override the default 🔔 to retheme: 📅 reminder, ✅ task done, 💌 message, 🎉 celebration, ⚡ system event."
+            },
+            "message": {
+              "type": "string",
+              "label": "Message",
+              "default": "Believe in your dreams, they will lead you.",
+              "required": true,
+              "description": "The notification body — 1-2 lines reads best."
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)."
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            }
+          },
+          "defaultVariables": {
+            "appName": "Reminder",
+            "appIcon": "🔔",
+            "message": "Believe in your dreams, they will lead you.",
+            "textColor": "",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "chatMessenger",
+      "type": "registry:block",
+      "title": "Chat Messenger",
+      "description": "Short synthetic Messenger-style conversation when a back-and-forth helps explain a use case, objection, or punchline. Use sparingly because it is long.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/social-conversation.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/social-conversation.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/normalize-var.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/normalize-var.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "social",
+          "tier": "free",
+          "register": "mockup-led",
+          "jobs": [
+            "proof",
+            "setup"
+          ],
+          "useWhen": "Short synthetic Messenger-style conversation when a back-and-forth helps explain a use case, objection, or punchline. Use sparingly because it is long.",
+          "textCanvas": "tight",
+          "minDuration": 5,
+          "preferredDuration": 8,
+          "variableSchema": {
+            "msg1": {
+              "type": "string",
+              "label": "Message 1 (received)",
+              "default": "Have you tried it yet?",
+              "required": true,
+              "description": "First message — left/received by default. Append |in or |out to override side. Aim for 3-4 messages total (most common). Use 5 with date chips only when narrative spans days AND scene is 10s+."
+            },
+            "msg2": {
+              "type": "string",
+              "label": "Message 2 (received or sent)",
+              "default": "It saves me hours every week",
+              "required": true,
+              "description": "Second message — left/received by default. Override with |out for ping-pong."
+            },
+            "msg3": {
+              "type": "string",
+              "label": "Message 3 (received)",
+              "default": "And the team loves it",
+              "required": true,
+              "description": "Third message — left/received by default. Skip (leave blank) for a 2-message exchange."
+            },
+            "msg4": {
+              "type": "string",
+              "label": "Message 4 (sent)",
+              "default": "Sounds great — sharing access now",
+              "description": "Fourth message — right/sent by default. Optional. Most chats end here on the reply."
+            },
+            "dateChip1": {
+              "type": "string",
+              "label": "Date chip 1",
+              "default": "",
+              "description": "Optional date label between message 3 and message 4 (e.g. 'Monday'). Use only when the conversation explicitly spans a real time gap. Leave blank otherwise."
+            },
+            "dateChip2": {
+              "type": "string",
+              "label": "Date chip 2",
+              "default": "",
+              "description": "Optional date label between message 4 and message 5 (e.g. 'Yesterday'). Same rule as dateChip1."
+            },
+            "msg5": {
+              "type": "string",
+              "label": "Message 5 (sent)",
+              "default": "",
+              "description": "Fifth message — right/sent by default. Optional. Use only for the 5-message + chips 'spans days' pattern."
+            }
+          },
+          "defaultVariables": {
+            "theme": "messenger",
+            "msg1": "Have you tried it yet?",
+            "msg2": "It saves me hours every week",
+            "msg3": "And the team loves it",
+            "msg4": "Sounds great — sharing access now",
+            "msg5": "",
+            "dateChip1": "",
+            "dateChip2": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "chatWhatsapp",
+      "type": "registry:block",
+      "title": "Chat Whatsapp",
+      "description": "Short synthetic WhatsApp-style conversation when the product story is naturally conversational or customer-service oriented. Use sparingly because it is long.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/social-conversation.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/social-conversation.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/normalize-var.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/normalize-var.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "social",
+          "tier": "free",
+          "register": "mockup-led",
+          "jobs": [
+            "proof",
+            "setup"
+          ],
+          "useWhen": "Short synthetic WhatsApp-style conversation when the product story is naturally conversational or customer-service oriented. Use sparingly because it is long.",
+          "textCanvas": "tight",
+          "minDuration": 5,
+          "preferredDuration": 8,
+          "variableSchema": {
+            "msg1": {
+              "type": "string",
+              "label": "Message 1 (received)",
+              "default": "Have you tried it yet?",
+              "required": true,
+              "description": "First message — left/received by default. Append |in or |out to override side. Aim for 3-4 messages total (most common). Use 5 with date chips only when narrative spans days AND scene is 10s+."
+            },
+            "msg2": {
+              "type": "string",
+              "label": "Message 2 (received or sent)",
+              "default": "It saves me hours every week",
+              "required": true,
+              "description": "Second message — left/received by default. Override with |out for ping-pong."
+            },
+            "msg3": {
+              "type": "string",
+              "label": "Message 3 (received)",
+              "default": "And the team loves it",
+              "required": true,
+              "description": "Third message — left/received by default. Skip (leave blank) for a 2-message exchange."
+            },
+            "msg4": {
+              "type": "string",
+              "label": "Message 4 (sent)",
+              "default": "Sounds great — sharing access now",
+              "description": "Fourth message — right/sent by default. Optional. Most chats end here on the reply."
+            },
+            "dateChip1": {
+              "type": "string",
+              "label": "Date chip 1",
+              "default": "",
+              "description": "Optional date label between message 3 and message 4 (e.g. 'Monday'). Use only when the conversation explicitly spans a real time gap. Leave blank otherwise."
+            },
+            "dateChip2": {
+              "type": "string",
+              "label": "Date chip 2",
+              "default": "",
+              "description": "Optional date label between message 4 and message 5 (e.g. 'Yesterday'). Same rule as dateChip1."
+            },
+            "msg5": {
+              "type": "string",
+              "label": "Message 5 (sent)",
+              "default": "",
+              "description": "Fifth message — right/sent by default. Optional. Use only for the 5-message + chips 'spans days' pattern."
+            }
+          },
+          "defaultVariables": {
+            "theme": "whatsapp",
+            "msg1": "Have you tried it yet?",
+            "msg2": "It saves me hours every week",
+            "msg3": "And the team loves it",
+            "msg4": "Sounds great — sharing access now",
+            "msg5": "",
+            "dateChip1": "",
+            "dateChip2": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "milestone",
+      "type": "registry:block",
+      "title": "Milestone",
+      "description": "Real numeric achievement explicitly in the input: users, revenue, years, installs, customers, stars, or adoption count. Use exact targetNumber; never for generic releases, versions, 'free', or proof without an achievement count.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/milestoneBadge",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/social-milestone.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/social-milestone.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "social",
+          "tier": "free",
+          "register": "typography-led",
+          "jobs": [
+            "claim",
+            "proof"
+          ],
+          "useWhen": "Real numeric achievement explicitly in the input: users, revenue, years, installs, customers, stars, or adoption count. Use exact targetNumber; never for generic releases, versions, 'free', or proof without an achievement count.",
+          "textCanvas": "open",
+          "minDuration": 2.5,
+          "preferredDuration": 4,
+          "gates": {
+            "requiresStat": true
+          },
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "label": {
+              "type": "string",
+              "label": "Label",
+              "default": "Followers",
+              "required": true,
+              "description": "Label above the number (e.g. Followers, Subscribers, Downloads)"
+            },
+            "targetNumber": {
+              "type": "number",
+              "label": "Target number",
+              "default": 10000,
+              "required": true,
+              "description": "The milestone number to reach"
+            },
+            "startNumber": {
+              "type": "number",
+              "label": "Start number",
+              "default": "",
+              "description": "Number the counter starts rolling from. Leave empty to auto-calculate (~98% of target)."
+            },
+            "badgeText": {
+              "type": "string",
+              "label": "Badge text",
+              "default": "10K Followers!",
+              "description": "Celebration badge text that pops in at milestone"
+            },
+            "badgeEmoji": {
+              "type": "string",
+              "label": "Badge emoji",
+              "default": "🎉",
+              "description": "Emoji shown in the celebration badge"
+            },
+            "badgeColor": {
+              "type": "color",
+              "label": "Badge color",
+              "default": "#facc15",
+              "description": "Background color of the celebration badge"
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            }
+          },
+          "defaultVariables": {
+            "label": "Followers",
+            "targetNumber": 10000,
+            "startNumber": "",
+            "badgeText": "10K Followers!",
+            "badgeEmoji": "🎉",
+            "badgeColor": "#facc15",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "reviewStack",
+      "type": "registry:block",
+      "title": "Review Stack",
+      "description": "Two or more real attributed reviews, ratings, or quotes that should appear as social proof together. Requires real quote/source content.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/reviewStackPrimitive",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/social-review-stack.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/social-review-stack.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "social",
+          "tier": "free",
+          "register": "card-led",
+          "jobs": [
+            "proof"
+          ],
+          "useWhen": "Two or more real attributed reviews, ratings, or quotes that should appear as social proof together. Requires real quote/source content.",
+          "textCanvas": "open",
+          "minDuration": 2.5,
+          "preferredDuration": 4,
+          "gates": {
+            "requiresQuote": true
+          },
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "review1Title": {
+              "type": "string",
+              "label": "Review 1 — Title",
+              "default": "Life changing app",
+              "required": true,
+              "description": "Headline of the first review"
+            },
+            "review1Body": {
+              "type": "string",
+              "label": "Review 1 — Body",
+              "default": "Been using this for a month and can't imagine going back",
+              "description": "Body text of the first review"
+            },
+            "review1Author": {
+              "type": "string",
+              "label": "Review 1 — Author",
+              "default": "Sarah M.",
+              "description": "Author name for the first review"
+            },
+            "review2Title": {
+              "type": "string",
+              "label": "Review 2 — Title",
+              "default": "Best in class",
+              "required": true,
+              "description": "Headline of the second review"
+            },
+            "review2Body": {
+              "type": "string",
+              "label": "Review 2 — Body",
+              "default": "Finally an app that just works. No bloat, no nonsense.",
+              "description": "Body text of the second review"
+            },
+            "review2Author": {
+              "type": "string",
+              "label": "Review 2 — Author",
+              "default": "Mike R.",
+              "description": "Author name for the second review"
+            },
+            "review3Title": {
+              "type": "string",
+              "label": "Review 3 — Title",
+              "default": "Exceeded expectations",
+              "required": true,
+              "description": "Headline of the third review"
+            },
+            "review3Body": {
+              "type": "string",
+              "label": "Review 3 — Body",
+              "default": "Worth every penny. The team clearly cares about quality.",
+              "description": "Body text of the third review"
+            },
+            "review3Author": {
+              "type": "string",
+              "label": "Review 3 — Author",
+              "default": "Alex K.",
+              "description": "Author name for the third review"
+            },
+            "starColor": {
+              "type": "color",
+              "label": "Star color",
+              "default": "#facc15",
+              "description": "Color for the star ratings"
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            }
+          },
+          "defaultVariables": {
+            "review1Title": "Life changing app",
+            "review1Body": "Been using this for a month and can't imagine going back",
+            "review1Author": "Sarah M.",
+            "review2Title": "Best in class",
+            "review2Body": "Finally an app that just works. No bloat, no nonsense.",
+            "review2Author": "Mike R.",
+            "review3Title": "Exceeded expectations",
+            "review3Body": "Worth every penny. The team clearly cares about quality.",
+            "review3Author": "Alex K.",
+            "starColor": "#facc15",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "testimonial",
+      "type": "registry:block",
+      "title": "Testimonial",
+      "description": "One real attributed customer quote, testimonial, review, or named endorsement. Do not fabricate names, roles, or quotes.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/testimonialCard",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/social-testimonial.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/social-testimonial.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "social",
+          "tier": "free",
+          "register": "card-led",
+          "jobs": [
+            "proof"
+          ],
+          "useWhen": "One real attributed customer quote, testimonial, review, or named endorsement. Do not fabricate names, roles, or quotes.",
+          "textCanvas": "open",
+          "minDuration": 2.5,
+          "preferredDuration": 4,
+          "gates": {
+            "requiresQuote": true
+          },
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "quote": {
+              "type": "string",
+              "label": "Quote",
+              "default": "Best decision I made this year. Our conversion rate doubled in the first week.",
+              "required": true,
+              "description": "Quote text"
+            },
+            "authorName": {
+              "type": "string",
+              "label": "Author name",
+              "default": "Jessica Torres",
+              "required": true,
+              "description": "Name of the person being quoted"
+            },
+            "authorRole": {
+              "type": "string",
+              "label": "Role / title",
+              "default": "VP of Marketing, Acme Inc",
+              "description": "Job title or description below the name"
+            },
+            "avatarColor": {
+              "type": "color",
+              "label": "Avatar color",
+              "default": "#ec4899",
+              "description": "Avatar circle color. Defaults to pink."
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            }
+          },
+          "defaultVariables": {
+            "quote": "Best decision I made this year. Our conversion rate doubled in the first week.",
+            "authorName": "Jessica Torres",
+            "authorRole": "VP of Marketing, Acme Inc",
+            "avatarColor": "#ec4899",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "incomingCall",
+      "type": "registry:block",
+      "title": "Incoming Call",
+      "description": "Urgent, interruptive, comeback, or dramatic moment where the brand/product conceptually calls the viewer. Avoid as the default for generic URL launches or calm explanations.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/incoming-call.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/incoming-call.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "social",
+          "tier": "free",
+          "register": "card-led",
+          "jobs": [
+            "setup",
+            "atmosphere"
+          ],
+          "useWhen": "Urgent, interruptive, comeback, or dramatic moment where the brand/product conceptually calls the viewer. Avoid as the default for generic URL launches or calm explanations.",
+          "textCanvas": "open",
+          "minDuration": 2.5,
+          "preferredDuration": 4,
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "callerName": {
+              "type": "string",
+              "label": "Caller name",
+              "default": "Your brand",
+              "required": true,
+              "description": "Brand or product name shown as the caller (e.g. 'Linear', 'Stripe', 'Sales', 'Your trial'). 1-3 words reads best — long names wrap to two lines."
+            },
+            "subtitle": {
+              "type": "string",
+              "label": "Subtitle",
+              "default": "is calling....",
+              "description": "Smaller text below the caller name. Default 'is calling....' completes the iOS framing. Override for variations like 'is asking...', 'wants you back...', 'needs you...'."
+            },
+            "declineLabel": {
+              "type": "string",
+              "label": "Decline label",
+              "default": "Decline",
+              "description": "Label below the red button. Usually leave as 'Decline'."
+            },
+            "acceptLabel": {
+              "type": "string",
+              "label": "Accept label",
+              "default": "Accept",
+              "description": "Label below the green button. Usually leave as 'Accept'."
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for white — usually best on media)."
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            }
+          },
+          "defaultVariables": {
+            "callerName": "Your brand",
+            "subtitle": "is calling....",
+            "declineLabel": "Decline",
+            "acceptLabel": "Accept",
+            "textColor": "",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "brandMessage",
+      "type": "registry:block",
+      "title": "Brand Message",
+      "description": "Single iMessage-style outgoing bubble over media. Use only when a direct 1:1 brand-to-viewer note is the point: thanks, invitation, personal promise, concise launch note. Avoid as generic filler, explanation, or proof.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/brandMessageBubble",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/brand-message.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/brand-message.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "social",
+          "tier": "free",
+          "register": "card-led",
+          "jobs": [
+            "claim",
+            "setup"
+          ],
+          "useWhen": "Single iMessage-style outgoing bubble over media. Use only when a direct 1:1 brand-to-viewer note is the point: thanks, invitation, personal promise, concise launch note. Avoid as generic filler, explanation, or proof.",
+          "textCanvas": "open",
+          "minDuration": 2.5,
+          "preferredDuration": 4,
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "brandName": {
+              "type": "string",
+              "label": "Brand name",
+              "default": "Your brand",
+              "required": true,
+              "description": "Small italic label at the top-left of the bubble identifying who the message is from (like 'you' in iMessage screenshots). 1-3 words reads best."
+            },
+            "message": {
+              "type": "string",
+              "label": "Message",
+              "default": "We built this for you.",
+              "required": true,
+              "description": "The brand-voiced message rendered as a single iMessage-style outgoing bubble (right side, cream) over the media background. 4-12 words reads best — short messages produce a tight bubble; longer ones wrap inside the 75% width cap. Examples: 'We built this for you.', 'Thanks for being here.', 'See what's new this week.'"
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            }
+          },
+          "defaultVariables": {
+            "brandName": "Your brand",
+            "message": "We built this for you.",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "promptInput",
+      "type": "registry:block",
+      "title": "Prompt Input",
+      "description": "Centered AI prompt-input demo: pill grows from a circle with sparkles icon, then types the prompt. Use for product PROMPT UX: 'describe what you want', 'ask the AI', or 'show how to prompt'.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/promptInputPill",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/prompt-input.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/prompt-input.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "social",
+          "tier": "free",
+          "register": "card-led",
+          "jobs": [
+            "setup",
+            "atmosphere"
+          ],
+          "useWhen": "Centered AI prompt-input demo: pill grows from a circle with sparkles icon, then types the prompt. Use for product PROMPT UX: 'describe what you want', 'ask the AI', or 'show how to prompt'.",
+          "textCanvas": "open",
+          "minDuration": 2.5,
+          "preferredDuration": 4,
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "promptText": {
+              "type": "string",
+              "label": "Prompt text",
+              "default": "Make a launch video for our app",
+              "required": true,
+              "description": "Example prompt that types into the AI prompt bar. 3-7 words / ~25-40 characters reads best. Longer prompts auto-shrink the font-size to fit the pill width, but stay most legible at the natural size. Demonstrates the product's prompt UX (e.g. 'Make a launch video for our app', 'Generate a customer testimonial', 'Build a 6-second product showcase')."
+            },
+            "pillBg": {
+              "type": "color",
+              "label": "Pill background",
+              "default": "",
+              "description": "Prompt-pill background color. Leave empty for white."
+            },
+            "pillTextColor": {
+              "type": "color",
+              "label": "Pill text color",
+              "default": "",
+              "description": "Color of the prompt text. Leave empty for slate-grey (#374151, the AI-prompt-UI standard) — feels more considered than raw black."
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            }
+          },
+          "defaultVariables": {
+            "promptText": "Make a launch video for our app",
+            "pillBg": "",
+            "pillTextColor": "",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "beforeAfter",
+      "type": "registry:block",
+      "title": "Before After",
+      "description": "Clear transformation or contrast between two states, especially symbolic or visual before/after: manual to automated, chaos to order, old way to new way.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/beforeAfterSplit",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/infographic-before-after.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/infographic-before-after.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/parse-list.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/parse-list.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "explainer",
+          "tier": "free",
+          "register": "motion-led",
+          "jobs": [
+            "proof",
+            "setup"
+          ],
+          "useWhen": "Clear transformation or contrast between two states, especially symbolic or visual before/after: manual to automated, chaos to order, old way to new way.",
+          "textCanvas": "open",
+          "minDuration": 3,
+          "preferredDuration": 4.5,
+          "variableSchema": {
+            "problemLabel": {
+              "type": "string",
+              "label": "Before label",
+              "default": "BEFORE",
+              "description": "Uppercase pill label shown above the before headline."
+            },
+            "problemHeadline": {
+              "type": "string",
+              "label": "Before headline",
+              "default": "Your calendar today.",
+              "required": true,
+              "description": "Headline shown during the before phase. 2-5 words. Sits centered, beneath the BEFORE pill."
+            },
+            "solutionLabel": {
+              "type": "string",
+              "label": "After label",
+              "default": "AFTER",
+              "description": "Uppercase pill label shown above the after headline."
+            },
+            "solutionHeadline": {
+              "type": "string",
+              "label": "After headline",
+              "default": "Calmly organized.",
+              "required": true,
+              "description": "Headline shown during the after phase. 2-5 words. Sits centered, beneath the AFTER pill."
+            },
+            "problemEmojis": {
+              "type": "string",
+              "label": "Before emojis",
+              "default": "📅,😰,💼,📊,⏰,💬,📞,🔔",
+              "required": true,
+              "description": "JSON array of emojis for the chaos / before state (5-8 types, cycled to fill 16 slots distributed around the central text). Example: [\"📅\", \"😰\", \"💼\", \"📊\", \"⏰\", \"💬\", \"📞\", \"🔔\"]"
+            },
+            "solutionEmojis": {
+              "type": "string",
+              "label": "After emojis",
+              "default": "✨,📋,✅,🎯",
+              "required": true,
+              "description": "JSON array of emojis for the calm / after state (3-5 types, cycled to fill 16 slots distributed around the central text). Example: [\"✨\", \"📋\", \"✅\", \"🎯\"]"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)."
+            }
+          },
+          "defaultVariables": {
+            "problemLabel": "BEFORE",
+            "problemHeadline": "Your calendar today.",
+            "solutionLabel": "AFTER",
+            "solutionHeadline": "Calmly organized.",
+            "problemEmojis": "📅,😰,💼,📊,⏰,💬,📞,🔔",
+            "solutionEmojis": "✨,📋,✅,🎯",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "tripleStats",
+      "type": "registry:block",
+      "title": "Triple Stats",
+      "description": "Exactly three peer stats or compact specs from the input with comparable weight. Prefer over bigNumber for three parallel facts. Avoid when one number is the hero or values are just brand/tool names.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/statBadgeRow",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/infographic-stat-row.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/infographic-stat-row.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "data",
+          "tier": "free",
+          "register": "typography-led",
+          "jobs": [
+            "claim",
+            "proof"
+          ],
+          "useWhen": "Exactly three peer stats or compact specs from the input with comparable weight. Prefer over bigNumber for three parallel facts. Avoid when one number is the hero or values are just brand/tool names.",
+          "textCanvas": "tight",
+          "minDuration": 2,
+          "preferredDuration": 3,
+          "gates": {
+            "requiresStat": true
+          },
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "By the numbers.",
+              "required": true,
+              "description": "Title text"
+            },
+            "stat1Value": {
+              "type": "string",
+              "label": "Stat 1 value",
+              "default": "10K",
+              "required": true,
+              "description": "First stat number (e.g. 10K, 99.9%, $2M)"
+            },
+            "stat1Label": {
+              "type": "string",
+              "label": "Stat 1 label",
+              "default": "Users",
+              "required": true,
+              "description": "Short label below the first number"
+            },
+            "stat2Value": {
+              "type": "string",
+              "label": "Stat 2 value",
+              "default": "99.9%",
+              "required": true,
+              "description": "Second stat number"
+            },
+            "stat2Label": {
+              "type": "string",
+              "label": "Stat 2 label",
+              "default": "Uptime",
+              "required": true,
+              "description": "Short label below the second number"
+            },
+            "stat3Value": {
+              "type": "string",
+              "label": "Stat 3 value",
+              "default": "<50ms",
+              "required": true,
+              "description": "Third stat number"
+            },
+            "stat3Label": {
+              "type": "string",
+              "label": "Stat 3 label",
+              "default": "Latency",
+              "required": true,
+              "description": "Short label below the third number"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "texts": "By the numbers.",
+            "stat1Value": "10K",
+            "stat1Label": "Users",
+            "stat2Value": "99.9%",
+            "stat2Label": "Uptime",
+            "stat3Value": "<50ms",
+            "stat3Label": "Latency",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "problemSolution",
+      "type": "registry:block",
+      "title": "Problem Solution",
+      "description": "Literal pain-to-fix story where the central message is one problem statement and one solution statement. Avoid for generic SaaS launches without a crisp pain/fix pair.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/infographic-problem-solution.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/infographic-problem-solution.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "explainer",
+          "tier": "free",
+          "register": "card-led",
+          "jobs": [
+            "setup",
+            "proof"
+          ],
+          "useWhen": "Literal pain-to-fix story where the central message is one problem statement and one solution statement. Avoid for generic SaaS launches without a crisp pain/fix pair.",
+          "textCanvas": "open",
+          "minDuration": 3,
+          "preferredDuration": 5.5,
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "problemLabel": {
+              "type": "string",
+              "label": "Problem label",
+              "default": "THE PROBLEM",
+              "description": "Uppercase label shown above the problem text"
+            },
+            "problemText": {
+              "type": "string",
+              "label": "Problem",
+              "default": "Teams waste 40% of time in meetings",
+              "required": true,
+              "description": "The problem statement — keep it punchy, 1 sentence"
+            },
+            "solutionLabel": {
+              "type": "string",
+              "label": "Solution label",
+              "default": "THE SOLUTION",
+              "description": "Uppercase label shown above the solution text"
+            },
+            "solutionText": {
+              "type": "string",
+              "label": "Solution",
+              "default": "AI that summarizes in seconds",
+              "required": true,
+              "description": "The solution statement — your value prop in 1 sentence"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "problemLabel": "THE PROBLEM",
+            "problemText": "Teams waste 40% of time in meetings",
+            "solutionLabel": "THE SOLUTION",
+            "solutionText": "AI that summarizes in seconds",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "cardList",
+      "type": "registry:block",
+      "title": "Card List",
+      "description": "Three to five concrete product facts, benefits, use cases, integrations, or feature bullets. Good for product comprehension when the facts are parallel.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/infographic-feature-list.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/infographic-feature-list.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/parse-list.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/parse-list.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "explainer",
+          "tier": "free",
+          "register": "card-led",
+          "jobs": [
+            "proof",
+            "setup"
+          ],
+          "useWhen": "Three to five concrete product facts, benefits, use cases, integrations, or feature bullets. Good for product comprehension when the facts are parallel.",
+          "textCanvas": "tight",
+          "minDuration": 2,
+          "preferredDuration": 3.5,
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "What you get.",
+              "required": true,
+              "description": "Title text"
+            },
+            "items": {
+              "type": "string",
+              "label": "Features",
+              "default": "Automate your savings on energy bills,Cleaner energy without raising your bill,Same account and service guaranteed",
+              "required": true,
+              "description": "JSON array of feature descriptions (max 3 — pick the strongest). Items themselves often contain commas (e.g. \"Slack, GitHub & Google\"), so always send as an array — comma-joined strings will split mid-item. Example: [\"Docs, wikis, databases & project trackers\", \"Custom AI agents that run your workflows\", \"Connected to Slack, GitHub, Google & more\"]"
+            },
+            "itemEmojis": {
+              "type": "string",
+              "label": "Feature emojis",
+              "default": "💰,⚡,🔒",
+              "required": true,
+              "description": "JSON array of emojis, one per feature row. Example: [\"💰\", \"⚡\", \"🔒\"]"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "texts": "What you get.",
+            "items": "Automate your savings on energy bills,Cleaner energy without raising your bill,Same account and service guaranteed",
+            "itemEmojis": "💰,⚡,🔒",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "steps",
+      "type": "registry:block",
+      "title": "Steps",
+      "description": "Sequential workflow or how-it-works explanation where order matters: connect, generate, review, publish. Avoid for unordered feature lists.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/stepsList",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/infographic-steps.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/infographic-steps.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/parse-list.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/parse-list.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "explainer",
+          "tier": "free",
+          "register": "card-led",
+          "jobs": [
+            "proof",
+            "setup"
+          ],
+          "useWhen": "Sequential workflow or how-it-works explanation where order matters: connect, generate, review, publish. Avoid for unordered feature lists.",
+          "textCanvas": "tight",
+          "minDuration": 2,
+          "preferredDuration": 3.5,
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "texts": {
+              "type": "string",
+              "label": "Text",
+              "default": "How it works.",
+              "required": true,
+              "description": "Title text"
+            },
+            "steps": {
+              "type": "string",
+              "label": "Steps",
+              "default": "Describe,Preview,Export",
+              "required": true,
+              "description": "JSON array of step labels (max 3 steps). Keep each label to 1-3 words. Send as an array so labels with internal punctuation render correctly. Example: [\"Describe\", \"Preview\", \"Export\"]"
+            },
+            "stepEmojis": {
+              "type": "string",
+              "label": "Step emojis",
+              "default": "✍️,👀,🚀",
+              "description": "JSON array of emojis, one per step (optional). Leave empty for numbered circles. Example: [\"✍️\", \"👀\", \"🚀\"]"
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for auto)"
+            }
+          },
+          "defaultVariables": {
+            "texts": "How it works.",
+            "steps": "Describe,Preview,Export",
+            "stepEmojis": "✍️,👀,🚀",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "ctaLogo",
+      "type": "registry:block",
+      "title": "CTA Logo",
+      "description": "Minimal brand stamp closer when the video already has enough motion or proof and only needs brand, URL, or a simple next action.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens",
+        "@vanillasky/wordmarkReveal"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/cta-logo.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/cta-logo.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "closer",
+          "tier": "free",
+          "register": "typography-led",
+          "jobs": [
+            "ask"
+          ],
+          "useWhen": "Minimal brand stamp closer when the video already has enough motion or proof and only needs brand, URL, or a simple next action.",
+          "textCanvas": "open",
+          "minDuration": 2,
+          "preferredDuration": 3.5,
+          "variableSchema": {
+            "brandName": {
+              "type": "string",
+              "label": "Brand name",
+              "default": "YourBrand",
+              "required": true,
+              "description": "Shown as a wordmark when no logo is uploaded."
+            },
+            "url": {
+              "type": "string",
+              "label": "URL",
+              "default": "yoursite.com",
+              "description": "URL shown below the logo. Leave empty to fall back to CTA text."
+            },
+            "cta": {
+              "type": "string",
+              "label": "CTA fallback",
+              "default": "",
+              "description": "Optional. Shown ONLY when url is empty — use for 'Coming soon', 'Available now', etc. Leave empty when a URL is set; it would never render."
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override text color (leave empty for white)."
+            }
+          },
+          "defaultVariables": {
+            "brandName": "VanillaSky",
+            "url": "yoursite.com",
+            "cta": "",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": "",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "ctaMedia",
+      "type": "registry:block",
+      "title": "CTA Media",
+      "description": "Cinematic media-backed closer with headline and URL. Default closer for launch videos when a final visual beat helps the call to action.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/cta-media.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/cta-media.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/types.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/types.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "template",
+          "category": "closer",
+          "tier": "free",
+          "register": "typography-led",
+          "jobs": [
+            "ask"
+          ],
+          "useWhen": "Cinematic media-backed closer with headline and URL. Default closer for launch videos when a final visual beat helps the call to action.",
+          "textCanvas": "open",
+          "minDuration": 2,
+          "preferredDuration": 4,
+          "allowsStockMedia": true,
+          "variableSchema": {
+            "headline": {
+              "type": "string",
+              "label": "Headline",
+              "default": "Make every moment count",
+              "required": true,
+              "description": "The big closing message. 2-7 words reads best."
+            },
+            "url": {
+              "type": "string",
+              "label": "URL",
+              "default": "www.yoursite.com",
+              "description": "URL shown small at the bottom. Leave empty to fall back to CTA text."
+            },
+            "cta": {
+              "type": "string",
+              "label": "CTA fallback",
+              "default": "",
+              "description": "Optional. Shown ONLY when url is empty — use for 'Coming soon', 'Available now', etc. Leave empty when a URL is set; it would never render."
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
+            },
+            "textColor": {
+              "type": "color",
+              "label": "Text color",
+              "default": "",
+              "description": "Override headline + URL color (leave empty for white)."
+            }
+          },
+          "defaultVariables": {
+            "headline": "Make every moment count",
+            "url": "www.yoursite.com",
+            "cta": "",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": "",
+            "textColor": ""
+          }
+        }
+      }
+    },
+    {
+      "name": "barChartPrimitive",
+      "type": "registry:ui",
+      "title": "Bar Chart",
+      "description": "BarChart — extracted verbatim from chart-bar.tsx.",
+      "registryDependencies": [
+        "@vanillasky/animation-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/charts/BarChart.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/charts/BarChart.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "beforeAfterSplit",
+      "type": "registry:ui",
+      "title": "Before After Split",
+      "description": "BeforeAfterSplit — extracted verbatim from infographic-before-after.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/infographic/BeforeAfterSplit.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/infographic/BeforeAfterSplit.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "brandMessageBubble",
+      "type": "registry:ui",
+      "title": "Brand Message Bubble",
+      "description": "BrandMessageBubble — extracted verbatim from brand-message.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/typography/BrandMessageBubble.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/typography/BrandMessageBubble.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "codeEditorPrimitive",
+      "type": "registry:ui",
+      "title": "Code Editor",
+      "description": "CodeEditor — extracted verbatim from showcase-code.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/devices/CodeEditor.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/devices/CodeEditor.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "conversationThread",
+      "type": "registry:ui",
+      "title": "Conversation Thread",
+      "description": "ConversationThread — multi-bubble chat thread with staggered reveal, typing indicators, and (for WhatsApp) animated read receipts.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/social/ConversationThread.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/social/ConversationThread.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "countUpNumber",
+      "type": "registry:ui",
+      "title": "Count Up Number",
+      "description": "CountUpNumber — extracted verbatim from chart-counter.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/typography/CountUpNumber.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/typography/CountUpNumber.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "ctaMediaClose",
+      "type": "registry:ui",
+      "title": "CTA Media Close",
+      "description": "CtaMediaClose — extracted verbatim from cta-media.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/typography/CtaMediaClose.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/typography/CtaMediaClose.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "designedScreenFill",
+      "type": "registry:ui",
+      "title": "Designed Screen Fill",
+      "description": "DesignedScreenFill — brand-tinted \"designed product UI\" used to fill a device screen when no real screenshot is supplied.",
+      "registryDependencies": [
+        "@vanillasky/animation-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/devices/DesignedScreenFill.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/devices/DesignedScreenFill.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "featureGrid",
+      "type": "registry:ui",
+      "title": "Feature Grid",
+      "description": "FeatureGrid — extracted verbatim from infographic-feature-grid.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/infographic/FeatureGrid.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/infographic/FeatureGrid.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "featureList",
+      "type": "registry:ui",
+      "title": "Feature List",
+      "description": "FeatureList — extracted verbatim from infographic-feature-list.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/infographic/FeatureList.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/infographic/FeatureList.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "incomingCallCard",
+      "type": "registry:ui",
+      "title": "Incoming Call Card",
+      "description": "IncomingCallCard — extracted verbatim from incoming-call.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/social/IncomingCallCard.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/social/IncomingCallCard.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "milestoneBadge",
+      "type": "registry:ui",
+      "title": "Milestone Badge",
+      "description": "MilestoneBadge — numeric achievement badge with rolling counter, glow, confetti burst, and celebration pill.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/social/MilestoneBadge.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/social/MilestoneBadge.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/confetti-layer.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/confetti-layer.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "notificationCard",
+      "type": "registry:ui",
+      "title": "Notification Card",
+      "description": "NotificationCard — extracted verbatim from social-notification.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/social/NotificationCard.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/social/NotificationCard.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "phoneFrame",
+      "type": "registry:ui",
+      "title": "Phone Frame",
+      "description": "PhoneFrame — extracted verbatim from showcase-phone.tsx.",
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/designedScreenFill",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/devices/PhoneFrame.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/devices/PhoneFrame.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "problemSolutionPrimitive",
+      "type": "registry:ui",
+      "title": "Problem Solution",
+      "description": "ProblemSolution — extracted verbatim from infographic-problem-solution.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/infographic/ProblemSolution.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/infographic/ProblemSolution.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/template-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/template-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "progressRingPrimitive",
+      "type": "registry:ui",
+      "title": "Progress Ring",
+      "description": "ProgressRing — extracted verbatim from chart-progress-ring.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/charts/ProgressRing.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/charts/ProgressRing.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "promptInputPill",
+      "type": "registry:ui",
+      "title": "Prompt Input Pill",
+      "description": "PromptInputPill — extracted verbatim from prompt-input.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/typography/PromptInputPill.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/typography/PromptInputPill.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "reactionClip",
+      "type": "registry:ui",
+      "title": "Reaction Clip",
+      "description": "ReactionClip — short full-bleed reaction/meme video clip with an optional punchline overlay.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/text-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/social/ReactionClip.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/social/ReactionClip.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "reviewStackPrimitive",
+      "type": "registry:ui",
+      "title": "Review Stack",
+      "description": "ReviewStack — stacked review cards with staggered spring entrance.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/social/ReviewStack.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/social/ReviewStack.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "statBadgeRow",
+      "type": "registry:ui",
+      "title": "Stat Badge Row",
+      "description": "StatBadgeRow — extracted verbatim from infographic-stat-row.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/typography/StatBadgeRow.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/typography/StatBadgeRow.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "stepsList",
+      "type": "registry:ui",
+      "title": "Steps List",
+      "description": "StepsList — extracted verbatim from infographic-steps.tsx. Since the Phase 2 rewiring the template composes this component (background + headline stay in the template), so the two can no longer drift.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/infographic/StepsList.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/infographic/StepsList.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "terminalOutput",
+      "type": "registry:ui",
+      "title": "Terminal Output",
+      "description": "TerminalOutput — extracted verbatim from showcase-terminal.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/devices/TerminalOutput.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/devices/TerminalOutput.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "testimonialCard",
+      "type": "registry:ui",
+      "title": "Testimonial Card",
+      "description": "TestimonialCard — extracted verbatim from social-testimonial.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/social/TestimonialCard.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/social/TestimonialCard.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "tweetCard",
+      "type": "registry:ui",
+      "title": "Tweet Card",
+      "description": "TweetCard — extracted verbatim from social-tweet.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/social/TweetCard.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/social/TweetCard.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "webMockupPrimitive",
+      "type": "registry:ui",
+      "title": "Web Mockup",
+      "description": "WebMockup — extracted verbatim from showcase-web.tsx.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/devices/WebMockup.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/devices/WebMockup.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "wordmarkReveal",
+      "type": "registry:ui",
+      "title": "Wordmark Reveal",
+      "description": "WordmarkReveal — extracted verbatim from cta-logo.tsx.",
+      "registryDependencies": [
+        "@vanillasky/animation-utils",
+        "@vanillasky/text-utils",
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/primitives/typography/WordmarkReveal.tsx",
+          "type": "registry:ui",
+          "target": "vanillasky/primitives/typography/WordmarkReveal.tsx"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "primitive",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "animation-utils",
+      "type": "registry:lib",
+      "title": "Animation Utils",
+      "description": "Animation utilities — interpolate, spring, easing.",
+      "files": [
+        {
+          "path": "src/lib/react-animations/animation-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/react-animations/animation-utils.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "lib",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "text-utils",
+      "type": "registry:lib",
+      "title": "Text Utils",
+      "description": "Shared text utilities that survive the legacy text-overlay/text-entrance deletion. Kept intentionally small.",
+      "files": [
+        {
+          "path": "src/lib/scene-templates/text-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-utils.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "lib",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "tokens",
+      "type": "registry:lib",
+      "title": "Tokens",
+      "description": "Canonical brand-token resolver — THE single derivation path from a video's GlobalStyle (font + brandKit) to the resolved design tokens scene templates and primitives consume.",
+      "files": [
+        {
+          "path": "src/lib/scene-templates/tokens.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/tokens.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "lib",
+          "tier": "free"
+        }
+      }
+    }
+  ]
+}

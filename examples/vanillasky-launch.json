@@ -1,0 +1,65 @@
+{
+  "format": "launch",
+  "orientation": "portrait",
+  "style": {
+    "font": "Inter",
+    "brandKit": { "accent": "#E25081", "secondary": "#ED992C" }
+  },
+  "audio": { "trackId": "launchpad-loop" },
+  "scenes": [
+    {
+      "id": "s0",
+      "templateId": "media",
+      "backgroundEffect": "slow-zoom-in",
+      "textArchetype": "heroWord",
+      "variables": {
+        "texts": "The shadcn for video.",
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 2.5 }
+    },
+    {
+      "id": "s1",
+      "templateId": "promptInput",
+      "variables": {
+        "promptText": "A launch video for our beta — vertical, 15 seconds",
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 3.5 }
+    },
+    {
+      "id": "s2",
+      "templateId": "terminal",
+      "variables": {
+        "texts": "Install scenes like components",
+        "command": "npx shadcn add @vanillasky/bigNumber",
+        "output": "✓ bigNumber → registry/scenes,$ vanillasky render launch.json,✓ launch.mp4 · 1080×1920",
+        "promptPrefix": "$"
+      },
+      "timing": { "fixedDuration": 3.5 }
+    },
+    {
+      "id": "s3",
+      "templateId": "beforeAfter",
+      "variables": {
+        "problemLabel": "OLD WAY",
+        "problemHeadline": "A timeline, a render farm, a week.",
+        "problemEmojis": "🎬,🖥️,⏳,😵",
+        "solutionLabel": "NEW WAY",
+        "solutionHeadline": "One prompt. Rendered on your laptop.",
+        "solutionEmojis": "💬,⚡,✅"
+      },
+      "timing": { "fixedDuration": 4 }
+    },
+    {
+      "id": "s4",
+      "templateId": "ctaLogo",
+      "variables": {
+        "brandName": "VanillaSky",
+        "url": "vanillasky.ai",
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 3 }
+    }
+  ]
+}

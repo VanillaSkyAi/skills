@@ -1,0 +1,63 @@
+{
+  "format": "launch",
+  "orientation": "portrait",
+  "style": { "font": "Inter" },
+  "audio": { "trackId": "launch-sequence-alpha" },
+  "scenes": [
+    {
+      "id": "s0",
+      "templateId": "media",
+      "backgroundEffect": "slow-zoom-in",
+      "variables": {
+        "texts": "Launch videos from your terminal",
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 2.5 }
+    },
+    {
+      "id": "s1",
+      "templateId": "terminal",
+      "variables": {
+        "texts": "One command.",
+        "command": "npx vanillasky render launch.json",
+        "output": "✓ config valid — 5 scenes,✓ 450 frames @ 30fps,✓ launch.mp4 · 15s · 9:16",
+        "promptPrefix": "$"
+      },
+      "timing": { "fixedDuration": 3 }
+    },
+    {
+      "id": "s2",
+      "templateId": "cardList",
+      "variables": {
+        "texts": "Why founders use it",
+        "items": "Validate before you render,Inspect any frame in seconds,Deterministic MP4 output",
+        "itemEmojis": "✅,🔍,🎬"
+      },
+      "timing": { "fixedDuration": 3.5 }
+    },
+    {
+      "id": "s3",
+      "templateId": "tweet",
+      "variables": {
+        "authorName": "VanillaSky",
+        "authorHandle": "vanillasky_ai",
+        "authorVerified": true,
+        "message": "Wrote a JSON file, got a launch video. No timeline, no render farm — just my laptop. 🎬",
+        "likes": 214,
+        "replies": 12,
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 3 }
+    },
+    {
+      "id": "s4",
+      "templateId": "ctaLogo",
+      "variables": {
+        "brandName": "VanillaSky",
+        "url": "vanillasky.ai",
+        "cta": "Render yours"
+      },
+      "timing": { "fixedDuration": 3 }
+    }
+  ]
+}

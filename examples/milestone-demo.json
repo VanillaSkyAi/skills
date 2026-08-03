@@ -1,0 +1,63 @@
+{
+  "format": "launch",
+  "orientation": "portrait",
+  "style": {
+    "font": "Manrope",
+    "brandKit": { "accent": "#6C5CE7", "secondary": "#00CEC9" }
+  },
+  "audio": { "trackId": "soft-celebration-win" },
+  "scenes": [
+    {
+      "id": "s0",
+      "templateId": "media",
+      "backgroundEffect": "drift",
+      "textArchetype": "cinematic",
+      "variables": {
+        "texts": "We started with zero.",
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 2.5 }
+    },
+    {
+      "id": "s1",
+      "templateId": "milestone",
+      "variables": {
+        "label": "users",
+        "targetNumber": 10000,
+        "startNumber": 0,
+        "badgeText": "10,000 users!",
+        "badgeEmoji": "🎉",
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 4 }
+    },
+    {
+      "id": "s2",
+      "templateId": "cardList",
+      "variables": {
+        "texts": "Forms people actually finish",
+        "items": "Conversational forms that feel like chat,Logic jumps without spreadsheet formulas,Answers land straight in your CRM",
+        "itemEmojis": "💬,🧠,📥"
+      },
+      "timing": { "fixedDuration": 3.5 }
+    },
+    {
+      "id": "s3",
+      "templateId": "emojiBurst",
+      "variables": {
+        "texts": "Thank you."
+      },
+      "timing": { "fixedDuration": 2 }
+    },
+    {
+      "id": "s4",
+      "templateId": "ctaLogo",
+      "variables": {
+        "brandName": "Loopform",
+        "url": "loopform.app",
+        "mediaType": "gradient"
+      },
+      "timing": { "fixedDuration": 3 }
+    }
+  ]
+}
