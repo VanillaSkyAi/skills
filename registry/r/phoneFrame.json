@@ -20,7 +20,54 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "PhoneFrame",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "screenMediaUrl": {
+          "type": "string",
+          "required": false,
+          "description": "Single screen URL (used when `screens` is empty). Leave empty for the designed default fill."
+        },
+        "screens": {
+          "type": "string[]",
+          "required": false,
+          "description": "Multi-screen mode — sliding strip of screens (1-3). When set, ignores screenMediaUrl."
+        },
+        "width": {
+          "type": "number",
+          "required": true
+        },
+        "height": {
+          "type": "number",
+          "required": true
+        },
+        "font": {
+          "type": "string",
+          "required": false
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false
+        },
+        "accent": {
+          "type": "string",
+          "required": false,
+          "description": "Brand colors for the designed default app-screen fill (empty-slot case)."
+        },
+        "secondary": {
+          "type": "string",
+          "required": false
+        },
+        "bg": {
+          "type": "string",
+          "required": false
+        }
+      }
     }
   }
 }

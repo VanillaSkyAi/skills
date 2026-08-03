@@ -35,7 +35,65 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "TestimonialCard",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true,
+          "description": "Scene progress 0→1"
+        },
+        "quote": {
+          "type": "string",
+          "required": true,
+          "description": "The testimonial quote"
+        },
+        "authorName": {
+          "type": "string",
+          "required": true,
+          "description": "Author name (initial used in avatar)"
+        },
+        "authorRole": {
+          "type": "string",
+          "required": false,
+          "description": "Author role / title (optional, rendered as a smaller line below name)"
+        },
+        "avatarColor": {
+          "type": "string",
+          "required": false,
+          "description": "Avatar background color. Defaults to \"#ec4899\"."
+        },
+        "accent": {
+          "type": "string",
+          "required": false,
+          "description": "Accent color for the quote mark. Defaults to \"#00e5a0\"."
+        },
+        "surfaceElevated": {
+          "type": "string",
+          "required": false
+        },
+        "muted": {
+          "type": "string",
+          "required": false,
+          "description": "Explicit brand-kit muted text color for the role line."
+        },
+        "width": {
+          "type": "number",
+          "required": true,
+          "description": "Frame width"
+        },
+        "height": {
+          "type": "number",
+          "required": true,
+          "description": "Frame height"
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false,
+          "description": "Beat pulse 0→1"
+        }
+      }
     }
   }
 }

@@ -47,7 +47,67 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "BeforeAfterSplit",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "width": {
+          "type": "number",
+          "required": true
+        },
+        "height": {
+          "type": "number",
+          "required": true
+        },
+        "problemHeadline": {
+          "type": "string",
+          "required": true
+        },
+        "solutionHeadline": {
+          "type": "string",
+          "required": true
+        },
+        "problemEmojis": {
+          "type": "string[]",
+          "required": false
+        },
+        "solutionEmojis": {
+          "type": "string[]",
+          "required": false
+        },
+        "beforeLabel": {
+          "type": "string",
+          "required": false
+        },
+        "afterLabel": {
+          "type": "string",
+          "required": false
+        },
+        "beforeUrl": {
+          "type": "string",
+          "required": false
+        },
+        "afterUrl": {
+          "type": "string",
+          "required": false
+        },
+        "textColor": {
+          "type": "string",
+          "required": false
+        },
+        "font": {
+          "type": "string",
+          "required": false
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false
+        }
+      }
     }
   }
 }

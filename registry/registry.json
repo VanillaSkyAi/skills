@@ -3562,7 +3562,32 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "BarChart",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "barValues": {
+              "type": "number[]",
+              "required": true,
+              "description": "Bar values 0-100"
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -3609,7 +3634,67 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "BeforeAfterSplit",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "problemHeadline": {
+              "type": "string",
+              "required": true
+            },
+            "solutionHeadline": {
+              "type": "string",
+              "required": true
+            },
+            "problemEmojis": {
+              "type": "string[]",
+              "required": false
+            },
+            "solutionEmojis": {
+              "type": "string[]",
+              "required": false
+            },
+            "beforeLabel": {
+              "type": "string",
+              "required": false
+            },
+            "afterLabel": {
+              "type": "string",
+              "required": false
+            },
+            "beforeUrl": {
+              "type": "string",
+              "required": false
+            },
+            "afterUrl": {
+              "type": "string",
+              "required": false
+            },
+            "textColor": {
+              "type": "string",
+              "required": false
+            },
+            "font": {
+              "type": "string",
+              "required": false
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -3645,7 +3730,41 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "BrandMessageBubble",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "sceneDuration": {
+              "type": "number",
+              "required": true
+            },
+            "brandName": {
+              "type": "string",
+              "required": true,
+              "description": "Sender label (italic, top-left of bubble)"
+            },
+            "message": {
+              "type": "string",
+              "required": true,
+              "description": "Message text"
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "safeZone": {
+              "type": "{ top: number; right: number; bottom: number; left: number }",
+              "required": true
+            }
+          }
         }
       }
     },
@@ -3672,7 +3791,46 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "CodeEditor",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true,
+              "description": "Scene progress 0→1"
+            },
+            "code": {
+              "type": "string",
+              "required": true,
+              "description": "Code snippet — literal \"\\n\" sequences are expanded to real newlines"
+            },
+            "filename": {
+              "type": "string",
+              "required": false,
+              "description": "Filename shown in the title bar (default \"app.ts\")"
+            },
+            "width": {
+              "type": "number",
+              "required": true,
+              "description": "Frame width"
+            },
+            "height": {
+              "type": "number",
+              "required": true,
+              "description": "Frame height"
+            },
+            "accent": {
+              "type": "string",
+              "required": false,
+              "description": "Reserved brand accent (not used in the syntax palette today). Defaults to \"#00e5a0\"."
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false,
+              "description": "Beat pulse 0→1"
+            }
+          }
         }
       }
     },
@@ -3708,7 +3866,55 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "ConversationThread",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "sceneDuration": {
+              "type": "number",
+              "required": true
+            },
+            "messages": {
+              "type": "Array<{ author: string; text: string; side: \"left\" | \"right\" }>",
+              "required": true
+            },
+            "theme": {
+              "type": "\"whatsapp\" | \"messenger\"",
+              "required": false
+            },
+            "dateChip1": {
+              "type": "string",
+              "required": false
+            },
+            "dateChip2": {
+              "type": "string",
+              "required": false
+            },
+            "safeZoneTop": {
+              "type": "number",
+              "required": false
+            },
+            "accent": {
+              "type": "string",
+              "required": false
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -3744,7 +3950,81 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "CountUpNumber",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true,
+              "description": "Scene progress 0→1"
+            },
+            "target": {
+              "type": "number",
+              "required": true,
+              "description": "Number to count up to"
+            },
+            "prefix": {
+              "type": "string",
+              "required": false,
+              "description": "Optional prefix (e.g. \"$\", \"€\") — rendered in chartColor"
+            },
+            "unit": {
+              "type": "string",
+              "required": false,
+              "description": "Optional unit suffix (e.g. \"%\", \"k\", \"M\") — rendered in chartColor"
+            },
+            "label": {
+              "type": "string",
+              "required": true,
+              "description": "Label rendered below the number — fades in 0.2→0.4 progress"
+            },
+            "width": {
+              "type": "number",
+              "required": true,
+              "description": "Frame width"
+            },
+            "height": {
+              "type": "number",
+              "required": true,
+              "description": "Frame height"
+            },
+            "numberColor": {
+              "type": "string",
+              "required": false,
+              "description": "Color for the number digits"
+            },
+            "labelColor": {
+              "type": "string",
+              "required": false,
+              "description": "Color for the label below"
+            },
+            "chartColor": {
+              "type": "string",
+              "required": false,
+              "description": "Color for prefix/unit accents — defaults to numberColor"
+            },
+            "font": {
+              "type": "string",
+              "required": false,
+              "description": "Font family"
+            },
+            "hasMediaShadow": {
+              "type": "boolean",
+              "required": false,
+              "description": "When true, applies stronger text-shadow for media backgrounds"
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false,
+              "description": "Beat pulse 0→1"
+            },
+            "labelFontSize": {
+              "type": "number",
+              "required": false,
+              "description": "Optional override for label font size (default: getResponsiveFontSize × 1.3)"
+            }
+          }
         }
       }
     },
@@ -3771,7 +4051,66 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "CtaMediaClose",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true,
+              "description": "Scene progress 0→1"
+            },
+            "width": {
+              "type": "number",
+              "required": true,
+              "description": "Frame width"
+            },
+            "height": {
+              "type": "number",
+              "required": true,
+              "description": "Frame height"
+            },
+            "brandName": {
+              "type": "string",
+              "required": true,
+              "description": "Brand name (rendered as a text wordmark when no logoUrl is set). Required."
+            },
+            "logoUrl": {
+              "type": "string",
+              "required": false,
+              "description": "Optional logo image URL. When set, renders as an <img> in place of the wordmark."
+            },
+            "url": {
+              "type": "string",
+              "required": false,
+              "description": "URL shown small at the bottom. Preferred over `cta`."
+            },
+            "cta": {
+              "type": "string",
+              "required": false,
+              "description": "Fallback bottom text. Used only when `url` is empty."
+            },
+            "font": {
+              "type": "string",
+              "required": false,
+              "description": "Font family. Default \"Inter\"."
+            },
+            "textColor": {
+              "type": "string",
+              "required": false,
+              "description": "Color for wordmark + bottom line. Default \"#ffffff\"."
+            },
+            "accent": {
+              "type": "string",
+              "required": false,
+              "description": "Reserved brand accent. Default \"#00e5a0\"."
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false,
+              "description": "Beat pulse 0→1"
+            }
+          }
         }
       }
     },
@@ -3793,7 +4132,50 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "DesignedScreenFill",
+          "composable": false,
+          "propSchema": {
+            "accent": {
+              "type": "string",
+              "required": true,
+              "description": "Brand accent (primary)."
+            },
+            "secondary": {
+              "type": "string",
+              "required": true,
+              "description": "Brand secondary (second chart series / chips)."
+            },
+            "bg": {
+              "type": "string",
+              "required": false,
+              "description": "Brand background — decides whether the surface reads light or dark."
+            },
+            "font": {
+              "type": "string",
+              "required": true
+            },
+            "s": {
+              "type": "number",
+              "required": true,
+              "description": "Per-template scale factor (Math.min(w,h)/1080)."
+            },
+            "w": {
+              "type": "number",
+              "required": true,
+              "description": "Width of the screen area in px."
+            },
+            "h": {
+              "type": "number",
+              "required": true,
+              "description": "Height of the screen area in px."
+            },
+            "progress": {
+              "type": "number",
+              "required": true,
+              "description": "Scene progress 0→1 (drives a calm chart/progress grow)."
+            }
+          }
         }
       }
     },
@@ -3830,7 +4212,39 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "FeatureGrid",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "features": {
+              "type": "Array<{ title: string; description?: string; icon?: string }>",
+              "required": true
+            },
+            "textColor": {
+              "type": "string",
+              "required": false
+            },
+            "font": {
+              "type": "string",
+              "required": false
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -3857,7 +4271,39 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "FeatureList",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "features": {
+              "type": "Array<{ title: string; description?: string; icon?: string }>",
+              "required": true
+            },
+            "textColor": {
+              "type": "string",
+              "required": false
+            },
+            "font": {
+              "type": "string",
+              "required": false
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -3884,7 +4330,71 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "IncomingCallCard",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true,
+              "description": "Scene progress 0→1"
+            },
+            "width": {
+              "type": "number",
+              "required": true,
+              "description": "Frame width"
+            },
+            "height": {
+              "type": "number",
+              "required": true,
+              "description": "Frame height"
+            },
+            "sceneDuration": {
+              "type": "number",
+              "required": true,
+              "description": "Real seconds — drives the vibration cadence"
+            },
+            "safeZone": {
+              "type": "{ top: number; bottom: number }",
+              "required": true,
+              "description": "Safe-zone padding (matches SceneTemplateProps.safeZone shape)"
+            },
+            "callerName": {
+              "type": "string",
+              "required": true,
+              "description": "Brand / product name shown as the caller. Required."
+            },
+            "subtitle": {
+              "type": "string",
+              "required": false,
+              "description": "Smaller line below the caller name. Default \"is calling....\"."
+            },
+            "declineLabel": {
+              "type": "string",
+              "required": false,
+              "description": "Label below the red button. Default \"Decline\"."
+            },
+            "acceptLabel": {
+              "type": "string",
+              "required": false,
+              "description": "Label below the green button. Default \"Accept\"."
+            },
+            "textColor": {
+              "type": "string",
+              "required": false,
+              "description": "Color for caller / subtitle / button labels. Default \"#FFFFFF\"."
+            },
+            "accent": {
+              "type": "string",
+              "required": false,
+              "description": "Reserved brand accent. Default \"#00e5a0\"."
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false,
+              "description": "Beat pulse 0→1 — feeds accept-button glow"
+            }
+          }
         }
       }
     },
@@ -3936,7 +4446,76 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "MilestoneBadge",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "targetNumber": {
+              "type": "number",
+              "required": true
+            },
+            "label": {
+              "type": "string",
+              "required": true
+            },
+            "prefix": {
+              "type": "string",
+              "required": false
+            },
+            "suffix": {
+              "type": "string",
+              "required": false
+            },
+            "startNumber": {
+              "type": "number",
+              "required": false
+            },
+            "badgeText": {
+              "type": "string",
+              "required": false
+            },
+            "badgeEmoji": {
+              "type": "string",
+              "required": false
+            },
+            "badgeColor": {
+              "type": "string",
+              "required": false
+            },
+            "accent": {
+              "type": "string",
+              "required": false
+            },
+            "hasMedia": {
+              "type": "boolean",
+              "required": false
+            },
+            "muted": {
+              "type": "string",
+              "required": false,
+              "description": "Explicit brand-kit muted color for the label (gradient mode)."
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            },
+            "confettiBgColor": {
+              "type": "string",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -3972,7 +4551,40 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "NotificationCard",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "appName": {
+              "type": "string",
+              "required": true
+            },
+            "appIcon": {
+              "type": "string",
+              "required": false,
+              "description": "Single emoji icon. Default 🔔."
+            },
+            "message": {
+              "type": "string",
+              "required": true
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -3996,7 +4608,54 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "PhoneFrame",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "screenMediaUrl": {
+              "type": "string",
+              "required": false,
+              "description": "Single screen URL (used when `screens` is empty). Leave empty for the designed default fill."
+            },
+            "screens": {
+              "type": "string[]",
+              "required": false,
+              "description": "Multi-screen mode — sliding strip of screens (1-3). When set, ignores screenMediaUrl."
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "font": {
+              "type": "string",
+              "required": false
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            },
+            "accent": {
+              "type": "string",
+              "required": false,
+              "description": "Brand colors for the designed default app-screen fill (empty-slot case)."
+            },
+            "secondary": {
+              "type": "string",
+              "required": false
+            },
+            "bg": {
+              "type": "string",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -4043,7 +4702,51 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "ProblemSolution",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "problemText": {
+              "type": "string",
+              "required": true
+            },
+            "solutionText": {
+              "type": "string",
+              "required": true
+            },
+            "problemLabel": {
+              "type": "string",
+              "required": false
+            },
+            "solutionLabel": {
+              "type": "string",
+              "required": false
+            },
+            "textColor": {
+              "type": "string",
+              "required": false
+            },
+            "font": {
+              "type": "string",
+              "required": false
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -4079,7 +4782,50 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "ProgressRing",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "targetValue": {
+              "type": "number",
+              "required": true,
+              "description": "Target percentage (0-100) the ring fills to"
+            },
+            "unit": {
+              "type": "string",
+              "required": false,
+              "description": "Suffix after the number (e.g. \"%\", \"x\")"
+            },
+            "chartColor": {
+              "type": "string",
+              "required": false,
+              "description": "Ring stroke + accent color (e.g. \"#00e5a0\"). Default \"#ffffff\"."
+            },
+            "textColor": {
+              "type": "string",
+              "required": false,
+              "description": "Center number color. Default \"#ffffff\"."
+            },
+            "width": {
+              "type": "number",
+              "required": true,
+              "description": "Frame width"
+            },
+            "height": {
+              "type": "number",
+              "required": true,
+              "description": "Frame height"
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false,
+              "description": "Beat pulse 0→1"
+            }
+          }
         }
       }
     },
@@ -4105,7 +4851,44 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "PromptInputPill",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "sceneDuration": {
+              "type": "number",
+              "required": true
+            },
+            "promptText": {
+              "type": "string",
+              "required": true,
+              "description": "Prompt text typed into the pill"
+            },
+            "pillBg": {
+              "type": "string",
+              "required": false,
+              "description": "Pill background color (default #FFFFFF)"
+            },
+            "pillTextColor": {
+              "type": "string",
+              "required": false,
+              "description": "Color of the typed text (default #374151 — Tailwind gray-700)"
+            },
+            "width": {
+              "type": "number",
+              "required": true,
+              "description": "Frame width"
+            },
+            "height": {
+              "type": "number",
+              "required": true,
+              "description": "Frame height"
+            }
+          }
         }
       }
     },
@@ -4130,7 +4913,39 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "ReactionClip",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "videoUrl": {
+              "type": "string",
+              "required": true
+            },
+            "punchline": {
+              "type": "string",
+              "required": false
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            },
+            "accent": {
+              "type": "string",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -4157,7 +4972,44 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "ReviewStack",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "reviews": {
+              "type": "ReviewStackEntry[]",
+              "required": true
+            },
+            "starColor": {
+              "type": "string",
+              "required": false
+            },
+            "surfaceElevated": {
+              "type": "string",
+              "required": false,
+              "description": "Explicit brand-kit elevated surface for the card fill."
+            },
+            "accent": {
+              "type": "string",
+              "required": false
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -4193,7 +5045,36 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "StatBadgeRow",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "stats": {
+              "type": "{ value: string; label: string }[]",
+              "required": true,
+              "description": "1-4 stats. Empty values are filtered out."
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "font": {
+              "type": "string",
+              "required": false
+            },
+            "textColor": {
+              "type": "string",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -4235,7 +5116,47 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "StepsList",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "steps": {
+              "type": "Array<{ title: string; description?: string }>",
+              "required": true
+            },
+            "stepEmojis": {
+              "type": "string[]",
+              "required": false
+            },
+            "accent": {
+              "type": "string",
+              "required": false
+            },
+            "textColor": {
+              "type": "string",
+              "required": false
+            },
+            "font": {
+              "type": "string",
+              "required": false
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -4262,7 +5183,51 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "TerminalOutput",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true,
+              "description": "Scene progress 0→1"
+            },
+            "command": {
+              "type": "string",
+              "required": true,
+              "description": "The command that typewrites"
+            },
+            "outputLines": {
+              "type": "string[]",
+              "required": true,
+              "description": "Output lines that appear after the command"
+            },
+            "promptPrefix": {
+              "type": "string",
+              "required": false,
+              "description": "Prompt prefix character ($, >, →)"
+            },
+            "width": {
+              "type": "number",
+              "required": true,
+              "description": "Frame width"
+            },
+            "height": {
+              "type": "number",
+              "required": true,
+              "description": "Frame height"
+            },
+            "accent": {
+              "type": "string",
+              "required": false,
+              "description": "Accent color for the prompt prefix. Defaults to \"#00e5a0\"."
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false,
+              "description": "Beat pulse 0→1"
+            }
+          }
         }
       }
     },
@@ -4299,7 +5264,65 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "TestimonialCard",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true,
+              "description": "Scene progress 0→1"
+            },
+            "quote": {
+              "type": "string",
+              "required": true,
+              "description": "The testimonial quote"
+            },
+            "authorName": {
+              "type": "string",
+              "required": true,
+              "description": "Author name (initial used in avatar)"
+            },
+            "authorRole": {
+              "type": "string",
+              "required": false,
+              "description": "Author role / title (optional, rendered as a smaller line below name)"
+            },
+            "avatarColor": {
+              "type": "string",
+              "required": false,
+              "description": "Avatar background color. Defaults to \"#ec4899\"."
+            },
+            "accent": {
+              "type": "string",
+              "required": false,
+              "description": "Accent color for the quote mark. Defaults to \"#00e5a0\"."
+            },
+            "surfaceElevated": {
+              "type": "string",
+              "required": false
+            },
+            "muted": {
+              "type": "string",
+              "required": false,
+              "description": "Explicit brand-kit muted text color for the role line."
+            },
+            "width": {
+              "type": "number",
+              "required": true,
+              "description": "Frame width"
+            },
+            "height": {
+              "type": "number",
+              "required": true,
+              "description": "Frame height"
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false,
+              "description": "Beat pulse 0→1"
+            }
+          }
         }
       }
     },
@@ -4346,7 +5369,58 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "TweetCard",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true
+            },
+            "authorName": {
+              "type": "string",
+              "required": true
+            },
+            "authorHandle": {
+              "type": "string",
+              "required": false
+            },
+            "authorVerified": {
+              "type": "boolean",
+              "required": false
+            },
+            "message": {
+              "type": "string",
+              "required": true
+            },
+            "targetLikes": {
+              "type": "number",
+              "required": false,
+              "description": "Decorative engagement counter. Default 0 (counter just rolls to 0)."
+            },
+            "targetReplies": {
+              "type": "number",
+              "required": false,
+              "description": "Decorative engagement counter. Default 0."
+            },
+            "accent": {
+              "type": "string",
+              "required": false,
+              "description": "Avatar background tint (defaults to hashed hue of authorName)"
+            },
+            "width": {
+              "type": "number",
+              "required": true
+            },
+            "height": {
+              "type": "number",
+              "required": true
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false
+            }
+          }
         }
       }
     },
@@ -4373,7 +5447,61 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "WebMockup",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true,
+              "description": "Scene progress 0→1"
+            },
+            "width": {
+              "type": "number",
+              "required": true,
+              "description": "Frame width"
+            },
+            "height": {
+              "type": "number",
+              "required": true,
+              "description": "Frame height"
+            },
+            "frame": {
+              "type": "\"browser\" | \"tablet\"",
+              "required": false,
+              "description": "Device frame style. Defaults to \"browser\"."
+            },
+            "screenMediaUrl": {
+              "type": "string",
+              "required": false,
+              "description": "Single screen URL (used when `screens` is empty). Leave empty for placeholder."
+            },
+            "screens": {
+              "type": "string[]",
+              "required": false,
+              "description": "Multi-screen mode — sliding strip of screens. When set, ignores screenMediaUrl."
+            },
+            "addressBarUrl": {
+              "type": "string",
+              "required": false,
+              "description": "URL shown in browser chrome (browser frame only). Default \"yourapp.com\"."
+            },
+            "font": {
+              "type": "string",
+              "required": false,
+              "description": "Font family for placeholder text. Default \"Inter\"."
+            },
+            "accent": {
+              "type": "string",
+              "required": false,
+              "description": "Reserved brand accent (not used in chrome today). Default \"#00e5a0\"."
+            },
+            "beatIntensity": {
+              "type": "number",
+              "required": false,
+              "description": "Beat pulse 0→1"
+            }
+          }
         }
       }
     },
@@ -4397,7 +5525,56 @@
       "meta": {
         "vanillasky": {
           "layer": "primitive",
-          "tier": "free"
+          "tier": "free",
+          "component": "WordmarkReveal",
+          "composable": true,
+          "propSchema": {
+            "progress": {
+              "type": "number",
+              "required": true,
+              "description": "Scene progress 0→1"
+            },
+            "brandName": {
+              "type": "string",
+              "required": true,
+              "description": "Brand name — rendered as wordmark when no logoUrl is set"
+            },
+            "url": {
+              "type": "string",
+              "required": false,
+              "description": "Optional URL shown below — falls back to `cta` if empty"
+            },
+            "cta": {
+              "type": "string",
+              "required": false,
+              "description": "Fallback CTA text shown when url is empty"
+            },
+            "logoUrl": {
+              "type": "string",
+              "required": false,
+              "description": "Optional logo image URL — when set, replaces the wordmark"
+            },
+            "width": {
+              "type": "number",
+              "required": true,
+              "description": "Frame width"
+            },
+            "height": {
+              "type": "number",
+              "required": true,
+              "description": "Frame height"
+            },
+            "font": {
+              "type": "string",
+              "required": false,
+              "description": "Font family"
+            },
+            "textColor": {
+              "type": "string",
+              "required": false,
+              "description": "Text color"
+            }
+          }
         }
       }
     },

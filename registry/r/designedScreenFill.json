@@ -18,7 +18,50 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "DesignedScreenFill",
+      "composable": false,
+      "propSchema": {
+        "accent": {
+          "type": "string",
+          "required": true,
+          "description": "Brand accent (primary)."
+        },
+        "secondary": {
+          "type": "string",
+          "required": true,
+          "description": "Brand secondary (second chart series / chips)."
+        },
+        "bg": {
+          "type": "string",
+          "required": false,
+          "description": "Brand background — decides whether the surface reads light or dark."
+        },
+        "font": {
+          "type": "string",
+          "required": true
+        },
+        "s": {
+          "type": "number",
+          "required": true,
+          "description": "Per-template scale factor (Math.min(w,h)/1080)."
+        },
+        "w": {
+          "type": "number",
+          "required": true,
+          "description": "Width of the screen area in px."
+        },
+        "h": {
+          "type": "number",
+          "required": true,
+          "description": "Height of the screen area in px."
+        },
+        "progress": {
+          "type": "number",
+          "required": true,
+          "description": "Scene progress 0→1 (drives a calm chart/progress grow)."
+        }
+      }
     }
   }
 }

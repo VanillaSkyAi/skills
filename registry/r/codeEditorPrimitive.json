@@ -23,7 +23,46 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "CodeEditor",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true,
+          "description": "Scene progress 0→1"
+        },
+        "code": {
+          "type": "string",
+          "required": true,
+          "description": "Code snippet — literal \"\\n\" sequences are expanded to real newlines"
+        },
+        "filename": {
+          "type": "string",
+          "required": false,
+          "description": "Filename shown in the title bar (default \"app.ts\")"
+        },
+        "width": {
+          "type": "number",
+          "required": true,
+          "description": "Frame width"
+        },
+        "height": {
+          "type": "number",
+          "required": true,
+          "description": "Frame height"
+        },
+        "accent": {
+          "type": "string",
+          "required": false,
+          "description": "Reserved brand accent (not used in the syntax palette today). Defaults to \"#00e5a0\"."
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false,
+          "description": "Beat pulse 0→1"
+        }
+      }
     }
   }
 }

@@ -210,23 +210,52 @@ Escalate only when the previous rung genuinely can't express the brief:
 1. **Template as-is** — defaults plus your copy.
 2. **Adjust variables** — the full schema with types, options, and defaults is
    in the per-item JSON (`registry/r/<id>.json`, `meta.vanillasky.variableSchema`).
-3. **Eject** — take the template's source from the registry item's `files`
-   (`files[0].content` is the template itself; the rest is its dependency
-   closure), modify it, and inline it as the scene's `componentSource` with a
-   `templateId` starting `custom_`. Ejected scenes travel inside the config and
-   render everywhere, including the browser link. `npx shadcn add
-   @vanillasky/<id>` does the same into a project that has mapped the
-   namespace in `components.json` (see the index header); reading the item
-   JSON needs no setup.
-4. **Compose from primitives** — build a new scene from the `registry:ui`
-   primitives, following [references/motion.md](references/motion.md): one
-   archetype per scene, progress-driven, inline styles, deterministic.
-   The primitives and the shared libs (`animation-utils`, `text-utils`,
-   `tokens`) are catalogued at the end of the index, each with use-when
-   guidance and the templates that already use it; props are in the item's
-   own source (`registry/r/<name>.json`, `files[0].content`). The same
-   never-guess rule applies here — compose only from primitives the index
-   actually lists.
+3. **Eject** — write your own scene body as `componentSource` on a scene whose
+   `templateId` starts `custom_`. Read the registry item's source
+   (`files[0].content`) as the reference for how the built-in does it, then
+   write a body that satisfies the contract below. Ejected scenes travel
+   inside the config and render everywhere, including the browser link.
+4. **Compose from primitives** — same mechanism as rung 3, but build the body
+   out of the `registry:ui` primitives instead of from scratch. They're
+   catalogued at the end of the index with use-when guidance, the templates
+   that use them, and a full prop schema in each item
+   (`meta.vanillasky.propSchema`). The same never-guess rule applies —
+   compose only from primitives the index lists.
+
+### The custom-scene contract (rungs 3 and 4)
+
+Both upper rungs produce the same thing: a `componentSource` string. It is
+**not** a module — it's a body compiled in a sandbox with every helper already
+in lexical scope.
+
+- **Exactly one `function Component({ progress, width, height, ... })`.** The
+  registry item's source exports a *named* template (`ChartCounterTemplate`,
+  not `Component`) with imports and TypeScript types — it will not work
+  verbatim. Reshape it.
+- **No `import`, no `export`.** Every helper is already a global: React
+  (`createElement`, `useMemo`, …), the motion vocabulary (`interpolate`,
+  `spring`, `Easing`, `EASE`, `phase`, `punch`, `cascade`, `typewriter`,
+  `countUp`, `particles`, `burst`, …), color helpers (`withOpacity`,
+  `shiftHue`, `autoTextColor`), text helpers (`fitTextSize`, `TemplateText`),
+  and **every primitive by its component name** (`CountUpNumber`, `TweetCard`,
+  `PhoneFrame`, …). `vanillasky scope` prints the exact list.
+- **Body-only.** The brand gradient, the main title, and the safe zones are
+  rendered by the frame *around* your body — don't paint a background or
+  repeat the title. `gradientBackground`, `TitleTop`, and `TitleCenter` are
+  deliberately not in scope.
+- **Deterministic and export-safe**: no `Math.random`, `Date.now`,
+  `setTimeout`, or `requestAnimationFrame`; no `className` (inline `style`
+  only); no CSS `filter`. Drive everything off `progress`.
+- 16,000 characters max.
+
+`vanillasky validate` enforces all of this, so a custom scene fails loudly and
+specifically instead of rendering blank.
+
+`npx shadcn add @vanillasky/<id>` installs an item's source into a React
+project that has mapped the namespace in `components.json` (see the index
+header). That's for building your own app around these components — it does
+**not** change what the `vanillasky` CLI renders. To change a scene here, use
+`componentSource`.
 
 ## References
 

@@ -47,7 +47,58 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "TweetCard",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "authorName": {
+          "type": "string",
+          "required": true
+        },
+        "authorHandle": {
+          "type": "string",
+          "required": false
+        },
+        "authorVerified": {
+          "type": "boolean",
+          "required": false
+        },
+        "message": {
+          "type": "string",
+          "required": true
+        },
+        "targetLikes": {
+          "type": "number",
+          "required": false,
+          "description": "Decorative engagement counter. Default 0 (counter just rolls to 0)."
+        },
+        "targetReplies": {
+          "type": "number",
+          "required": false,
+          "description": "Decorative engagement counter. Default 0."
+        },
+        "accent": {
+          "type": "string",
+          "required": false,
+          "description": "Avatar background tint (defaults to hashed hue of authorName)"
+        },
+        "width": {
+          "type": "number",
+          "required": true
+        },
+        "height": {
+          "type": "number",
+          "required": true
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false
+        }
+      }
     }
   }
 }

@@ -23,7 +23,51 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "TerminalOutput",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true,
+          "description": "Scene progress 0→1"
+        },
+        "command": {
+          "type": "string",
+          "required": true,
+          "description": "The command that typewrites"
+        },
+        "outputLines": {
+          "type": "string[]",
+          "required": true,
+          "description": "Output lines that appear after the command"
+        },
+        "promptPrefix": {
+          "type": "string",
+          "required": false,
+          "description": "Prompt prefix character ($, >, →)"
+        },
+        "width": {
+          "type": "number",
+          "required": true,
+          "description": "Frame width"
+        },
+        "height": {
+          "type": "number",
+          "required": true,
+          "description": "Frame height"
+        },
+        "accent": {
+          "type": "string",
+          "required": false,
+          "description": "Accent color for the prompt prefix. Defaults to \"#00e5a0\"."
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false,
+          "description": "Beat pulse 0→1"
+        }
+      }
     }
   }
 }

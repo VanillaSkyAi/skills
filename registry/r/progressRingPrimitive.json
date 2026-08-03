@@ -34,7 +34,50 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "ProgressRing",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "targetValue": {
+          "type": "number",
+          "required": true,
+          "description": "Target percentage (0-100) the ring fills to"
+        },
+        "unit": {
+          "type": "string",
+          "required": false,
+          "description": "Suffix after the number (e.g. \"%\", \"x\")"
+        },
+        "chartColor": {
+          "type": "string",
+          "required": false,
+          "description": "Ring stroke + accent color (e.g. \"#00e5a0\"). Default \"#ffffff\"."
+        },
+        "textColor": {
+          "type": "string",
+          "required": false,
+          "description": "Center number color. Default \"#ffffff\"."
+        },
+        "width": {
+          "type": "number",
+          "required": true,
+          "description": "Frame width"
+        },
+        "height": {
+          "type": "number",
+          "required": true,
+          "description": "Frame height"
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false,
+          "description": "Beat pulse 0→1"
+        }
+      }
     }
   }
 }

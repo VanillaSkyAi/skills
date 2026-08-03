@@ -242,6 +242,21 @@ async function openRenderPage(browser, { baseUrl, b64, W, H, baseW, baseH }) {
   const ready = async () => {
     await page.waitForFunction(() => window.__ready === true, { timeout: READY_TIMEOUT_MS });
 
+    // A custom_* scene whose componentSource was rejected renders an empty
+    // body inside SceneFrame — i.e. a black frame — and used to exit 0. The
+    // render page records those rejections; fail loudly with the real reason
+    // instead of writing a black PNG.
+    const hydrationErrors = await page.evaluate(
+      () => window.__vanillaskyHydrationErrors ?? [],
+    );
+    if (hydrationErrors.length > 0) {
+      const lines = hydrationErrors.map((e) => `  ✗ ${e.templateId}: ${e.reason}`).join("\n");
+      throw new Error(
+        `custom scene${hydrationErrors.length > 1 ? "s" : ""} failed to load — the frame would render empty:\n${lines}\n` +
+          `  Run \`vanillasky validate <config>\` for the full contract, or \`vanillasky scope\` for the helpers a componentSource can use.`,
+      );
+    }
+
     // Media backstop from trigger/export-video.ts: images complete AND
     // videos past HAVE_CURRENT_DATA, so the first capture can't screenshot
     // a black/poster frame. Safety valves keep a slow CDN from hanging.

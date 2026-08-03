@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import { parseArgs } from "node:util";
 import { renderCommand } from "../lib/render.mjs";
-import { validateCommand } from "../lib/validate.mjs";
+import { validateCommand, registryData } from "../lib/validate.mjs";
 import { loadConfig, encodeConfig } from "../lib/config.mjs";
 import { brandCommand } from "../lib/design-md.mjs";
 import { tracksCommand } from "../lib/audio-library.mjs";
@@ -14,6 +14,7 @@ Usage:
   vanillasky render <config.json> [options]
   vanillasky validate <config.json> [--json] [--format <id>]
   vanillasky tracks [--json]
+  vanillasky scope [--json]
   vanillasky brand [path] [--json]
   vanillasky link <config.json> [--base <url>]
 
@@ -54,6 +55,7 @@ Examples:
   vanillasky render video.json
   vanillasky render video.json --frame 1.2 --out check.png   # pick a mid-scene time, not a scene boundary
   vanillasky tracks
+  vanillasky scope                                            # globals a custom_ scene can use
   vanillasky brand
   vanillasky link video.json --base http://localhost:8090
 
@@ -81,7 +83,7 @@ if (!cmd || cmd === "help" || cmd === "--help" || cmd === "-h") {
   process.exit(cmd ? 0 : 1);
 }
 
-const COMMANDS = ["setup", "render", "validate", "tracks", "brand", "link"];
+const COMMANDS = ["setup", "render", "validate", "tracks", "brand", "link", "scope"];
 if (!COMMANDS.includes(cmd)) {
   console.error(`Unknown command "${cmd}" — expected one of: ${COMMANDS.join(", ")}.\n`);
   console.error(HELP);
@@ -127,6 +129,27 @@ if (cmd === "brand") {
 
 if (cmd === "tracks") {
   process.exit(tracksCommand({ json: Boolean(values.json) }));
+}
+
+// The exact global surface a `custom_*` scene's componentSource can reach.
+// Custom source has no imports — everything below is already in scope — so
+// this list is the difference between composing and guessing.
+if (cmd === "scope") {
+  const { customScene } = registryData;
+  if (values.json) {
+    console.log(JSON.stringify(customScene.scopeNames, null, 2));
+  } else {
+    console.log(
+      `componentSource globals (${customScene.scopeNames.length}) — no imports needed or allowed:\n`,
+    );
+    console.log(customScene.scopeNames.join(", "));
+    console.log(
+      `\nBody-only: gradientBackground, TitleTop and TitleCenter are deliberately NOT in scope —\n` +
+        `the frame renders the background and title around your body.\n` +
+        `Max source: ${customScene.maxSourceChars} chars. Must declare exactly one \`function Component(...)\`.`,
+    );
+  }
+  process.exit(0);
 }
 
 const configPath = positionals[0];

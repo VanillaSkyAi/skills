@@ -115,11 +115,18 @@ categories (category shown per template in its registry item's `meta.vanillasky.
 ## Primitives (`registry:ui`)
 
 The building blocks the templates above are made of — the top rung of the
-escalation ladder. Reach for these only when no template expresses the brief:
-compose them into a custom scene following the motion rules, or install one
-with `npx shadcn add @vanillasky/<name>`. Every primitive is progress-driven,
-deterministic, and renders at both 1080x1920 and 1920x1080. Props are in the
-item's source (`registry/r/<name>.json`, `files[0].content`).
+escalation ladder. Reach for these only when no template expresses the brief.
+
+Inside a `custom_*` scene's `componentSource` every primitive below is
+**already in scope by its component name** — custom source takes no imports.
+`vanillasky scope` prints the exact global list, and SKILL.md carries the full
+custom-scene contract. Each item's `meta.vanillasky.propSchema` documents its
+props (name, type, required, description); the source is `files[0].content`.
+`npx shadcn add @vanillasky/<name>` is for installing into your own React
+project — it does not change what the `vanillasky` CLI renders.
+
+Every primitive is progress-driven, deterministic, and renders at both
+1080x1920 and 1920x1080.
 
 | Primitive | Use when | Used by |
 |---|---|---|
@@ -130,7 +137,7 @@ item's source (`registry/r/<name>.json`, `files[0].content`).
 | `conversationThread` | Multi-bubble chat thread with staggered reveal, typing indicators, and date chips. Compose for Messenger/WhatsApp-shaped stories; theme switches the platform look. | — |
 | `countUpNumber` | Hero number that counts up to a target with prefix, unit, and label. Compose whenever one real number is the point. | `bigNumber` |
 | `ctaMediaClose` | Media-backed closer with brand name, URL, and call to action. Compose for a final visual beat. | — |
-| `designedScreenFill` | Brand-tinted synthetic product UI that fills a device screen when no real screenshot exists. Compose inside phoneFrame/webMockupPrimitive as a fallback — prefer a real screenshot whenever one is provided. | `webMockup` |
+| `designedScreenFill` | Brand-tinted synthetic product UI that fills a device screen when no real screenshot exists. Compose inside phoneFrame/webMockupPrimitive as a fallback — prefer a real screenshot whenever one is provided. *(install-only — not in scope inside `componentSource`)* | `webMockup` |
 | `featureGrid` | Grid of feature cards that spring in staggered. Compose for 4+ parallel facts where a list would read too tall. | — |
 | `featureList` | Vertical list of feature rows revealed in sequence. Compose for 3–5 parallel product facts. | — |
 | `incomingCallCard` | Full-screen incoming-call UI with caller name and accept/decline actions. Compose for interruptive or dramatic beats. | — |

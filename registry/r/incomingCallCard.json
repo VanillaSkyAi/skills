@@ -23,7 +23,71 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "IncomingCallCard",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true,
+          "description": "Scene progress 0→1"
+        },
+        "width": {
+          "type": "number",
+          "required": true,
+          "description": "Frame width"
+        },
+        "height": {
+          "type": "number",
+          "required": true,
+          "description": "Frame height"
+        },
+        "sceneDuration": {
+          "type": "number",
+          "required": true,
+          "description": "Real seconds — drives the vibration cadence"
+        },
+        "safeZone": {
+          "type": "{ top: number; bottom: number }",
+          "required": true,
+          "description": "Safe-zone padding (matches SceneTemplateProps.safeZone shape)"
+        },
+        "callerName": {
+          "type": "string",
+          "required": true,
+          "description": "Brand / product name shown as the caller. Required."
+        },
+        "subtitle": {
+          "type": "string",
+          "required": false,
+          "description": "Smaller line below the caller name. Default \"is calling....\"."
+        },
+        "declineLabel": {
+          "type": "string",
+          "required": false,
+          "description": "Label below the red button. Default \"Decline\"."
+        },
+        "acceptLabel": {
+          "type": "string",
+          "required": false,
+          "description": "Label below the green button. Default \"Accept\"."
+        },
+        "textColor": {
+          "type": "string",
+          "required": false,
+          "description": "Color for caller / subtitle / button labels. Default \"#FFFFFF\"."
+        },
+        "accent": {
+          "type": "string",
+          "required": false,
+          "description": "Reserved brand accent. Default \"#00e5a0\"."
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false,
+          "description": "Beat pulse 0→1 — feeds accept-button glow"
+        }
+      }
     }
   }
 }

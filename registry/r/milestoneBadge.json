@@ -53,7 +53,76 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "MilestoneBadge",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "width": {
+          "type": "number",
+          "required": true
+        },
+        "height": {
+          "type": "number",
+          "required": true
+        },
+        "targetNumber": {
+          "type": "number",
+          "required": true
+        },
+        "label": {
+          "type": "string",
+          "required": true
+        },
+        "prefix": {
+          "type": "string",
+          "required": false
+        },
+        "suffix": {
+          "type": "string",
+          "required": false
+        },
+        "startNumber": {
+          "type": "number",
+          "required": false
+        },
+        "badgeText": {
+          "type": "string",
+          "required": false
+        },
+        "badgeEmoji": {
+          "type": "string",
+          "required": false
+        },
+        "badgeColor": {
+          "type": "string",
+          "required": false
+        },
+        "accent": {
+          "type": "string",
+          "required": false
+        },
+        "hasMedia": {
+          "type": "boolean",
+          "required": false
+        },
+        "muted": {
+          "type": "string",
+          "required": false,
+          "description": "Explicit brand-kit muted color for the label (gradient mode)."
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false
+        },
+        "confettiBgColor": {
+          "type": "string",
+          "required": false
+        }
+      }
     }
   }
 }

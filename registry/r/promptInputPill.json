@@ -22,7 +22,44 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "PromptInputPill",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "sceneDuration": {
+          "type": "number",
+          "required": true
+        },
+        "promptText": {
+          "type": "string",
+          "required": true,
+          "description": "Prompt text typed into the pill"
+        },
+        "pillBg": {
+          "type": "string",
+          "required": false,
+          "description": "Pill background color (default #FFFFFF)"
+        },
+        "pillTextColor": {
+          "type": "string",
+          "required": false,
+          "description": "Color of the typed text (default #374151 — Tailwind gray-700)"
+        },
+        "width": {
+          "type": "number",
+          "required": true,
+          "description": "Frame width"
+        },
+        "height": {
+          "type": "number",
+          "required": true,
+          "description": "Frame height"
+        }
+      }
     }
   }
 }

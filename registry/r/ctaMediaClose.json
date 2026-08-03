@@ -23,7 +23,66 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "CtaMediaClose",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true,
+          "description": "Scene progress 0→1"
+        },
+        "width": {
+          "type": "number",
+          "required": true,
+          "description": "Frame width"
+        },
+        "height": {
+          "type": "number",
+          "required": true,
+          "description": "Frame height"
+        },
+        "brandName": {
+          "type": "string",
+          "required": true,
+          "description": "Brand name (rendered as a text wordmark when no logoUrl is set). Required."
+        },
+        "logoUrl": {
+          "type": "string",
+          "required": false,
+          "description": "Optional logo image URL. When set, renders as an <img> in place of the wordmark."
+        },
+        "url": {
+          "type": "string",
+          "required": false,
+          "description": "URL shown small at the bottom. Preferred over `cta`."
+        },
+        "cta": {
+          "type": "string",
+          "required": false,
+          "description": "Fallback bottom text. Used only when `url` is empty."
+        },
+        "font": {
+          "type": "string",
+          "required": false,
+          "description": "Font family. Default \"Inter\"."
+        },
+        "textColor": {
+          "type": "string",
+          "required": false,
+          "description": "Color for wordmark + bottom line. Default \"#ffffff\"."
+        },
+        "accent": {
+          "type": "string",
+          "required": false,
+          "description": "Reserved brand accent. Default \"#00e5a0\"."
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false,
+          "description": "Beat pulse 0→1"
+        }
+      }
     }
   }
 }

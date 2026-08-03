@@ -47,7 +47,51 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "ProblemSolution",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "width": {
+          "type": "number",
+          "required": true
+        },
+        "height": {
+          "type": "number",
+          "required": true
+        },
+        "problemText": {
+          "type": "string",
+          "required": true
+        },
+        "solutionText": {
+          "type": "string",
+          "required": true
+        },
+        "problemLabel": {
+          "type": "string",
+          "required": false
+        },
+        "solutionLabel": {
+          "type": "string",
+          "required": false
+        },
+        "textColor": {
+          "type": "string",
+          "required": false
+        },
+        "font": {
+          "type": "string",
+          "required": false
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false
+        }
+      }
     }
   }
 }

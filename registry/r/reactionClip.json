@@ -21,7 +21,39 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "ReactionClip",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "width": {
+          "type": "number",
+          "required": true
+        },
+        "height": {
+          "type": "number",
+          "required": true
+        },
+        "videoUrl": {
+          "type": "string",
+          "required": true
+        },
+        "punchline": {
+          "type": "string",
+          "required": false
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false
+        },
+        "accent": {
+          "type": "string",
+          "required": false
+        }
+      }
     }
   }
 }

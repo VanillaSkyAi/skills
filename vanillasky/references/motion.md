@@ -44,15 +44,25 @@ Every motion choice resolves to one of these. Do not reinvent values.
 
 ## The motion vocabulary
 
-The `@vanillasky/animation-utils` lib item carries the core curves —
-`interpolate`, `spring`, `SPRING_SMOOTH` / `SPRING_SNAPPY` / `SPRING_BOUNCY` /
-`SPRING_CRISP`, `Easing` (incl. `Easing.bezier`), `stagger`, `cubicBezier`.
-Its full source is `files[0].content` of `registry/r/animation-utils.json`
-(live: `https://vanillasky.ai/r/animation-utils.json`).
+Inside a `custom_*` scene's `componentSource` these are **already in scope** —
+custom source has no imports (see the custom-scene contract in SKILL.md).
+`vanillasky scope` prints the exact list.
 
-Colors and font stacks come from `@vanillasky/tokens` — resolve them there
-rather than hardcoding, so a custom scene picks up the same brand tokens the
-built-in templates do.
+- Core curves: `interpolate`, `spring`, `Easing` (incl. `Easing.bezier`),
+  `SPRING_SMOOTH` / `SPRING_SNAPPY` / `SPRING_BOUNCY`, `stagger`, `cubicBezier`.
+- Higher-level effects: `EASE`, `phase`, `staggerWindow`, `punch`, `cascade`,
+  `typewriter`, `countUp`, `center`, `glow`, `softShadow`, `vignette`, `grain`,
+  `drift`, `pathDraw`, `orbit`, `morph`, `sweep`, `rand01`, `particles`, `burst`.
+- Color + text: `withOpacity`, `shiftHue`, `autoTextColor`, `isColorDark`,
+  `fitTextSize`, `getResponsiveFontSize`, `TemplateText`.
+
+Reading the source is still useful — `files[0].content` of
+`registry/r/animation-utils.json` (live:
+`https://vanillasky.ai/r/animation-utils.json`) — but you never import it.
+
+`@vanillasky/tokens` is the canonical brand-token resolver. Its `registry:lib`
+item matters when you install these components into your own React project;
+inside a custom scene the brand values arrive as props on the frame instead.
 
 Every helper is pure, deterministic, progress-driven, and export-safe (no
 `filter`, no transitions).

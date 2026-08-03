@@ -23,7 +23,61 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "WebMockup",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true,
+          "description": "Scene progress 0→1"
+        },
+        "width": {
+          "type": "number",
+          "required": true,
+          "description": "Frame width"
+        },
+        "height": {
+          "type": "number",
+          "required": true,
+          "description": "Frame height"
+        },
+        "frame": {
+          "type": "\"browser\" | \"tablet\"",
+          "required": false,
+          "description": "Device frame style. Defaults to \"browser\"."
+        },
+        "screenMediaUrl": {
+          "type": "string",
+          "required": false,
+          "description": "Single screen URL (used when `screens` is empty). Leave empty for placeholder."
+        },
+        "screens": {
+          "type": "string[]",
+          "required": false,
+          "description": "Multi-screen mode — sliding strip of screens. When set, ignores screenMediaUrl."
+        },
+        "addressBarUrl": {
+          "type": "string",
+          "required": false,
+          "description": "URL shown in browser chrome (browser frame only). Default \"yourapp.com\"."
+        },
+        "font": {
+          "type": "string",
+          "required": false,
+          "description": "Font family for placeholder text. Default \"Inter\"."
+        },
+        "accent": {
+          "type": "string",
+          "required": false,
+          "description": "Reserved brand accent (not used in chrome today). Default \"#00e5a0\"."
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false,
+          "description": "Beat pulse 0→1"
+        }
+      }
     }
   }
 }

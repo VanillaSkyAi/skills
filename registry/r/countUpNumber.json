@@ -34,7 +34,81 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "CountUpNumber",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true,
+          "description": "Scene progress 0→1"
+        },
+        "target": {
+          "type": "number",
+          "required": true,
+          "description": "Number to count up to"
+        },
+        "prefix": {
+          "type": "string",
+          "required": false,
+          "description": "Optional prefix (e.g. \"$\", \"€\") — rendered in chartColor"
+        },
+        "unit": {
+          "type": "string",
+          "required": false,
+          "description": "Optional unit suffix (e.g. \"%\", \"k\", \"M\") — rendered in chartColor"
+        },
+        "label": {
+          "type": "string",
+          "required": true,
+          "description": "Label rendered below the number — fades in 0.2→0.4 progress"
+        },
+        "width": {
+          "type": "number",
+          "required": true,
+          "description": "Frame width"
+        },
+        "height": {
+          "type": "number",
+          "required": true,
+          "description": "Frame height"
+        },
+        "numberColor": {
+          "type": "string",
+          "required": false,
+          "description": "Color for the number digits"
+        },
+        "labelColor": {
+          "type": "string",
+          "required": false,
+          "description": "Color for the label below"
+        },
+        "chartColor": {
+          "type": "string",
+          "required": false,
+          "description": "Color for prefix/unit accents — defaults to numberColor"
+        },
+        "font": {
+          "type": "string",
+          "required": false,
+          "description": "Font family"
+        },
+        "hasMediaShadow": {
+          "type": "boolean",
+          "required": false,
+          "description": "When true, applies stronger text-shadow for media backgrounds"
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false,
+          "description": "Beat pulse 0→1"
+        },
+        "labelFontSize": {
+          "type": "number",
+          "required": false,
+          "description": "Optional override for label font size (default: getResponsiveFontSize × 1.3)"
+        }
+      }
     }
   }
 }

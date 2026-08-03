@@ -34,7 +34,55 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "ConversationThread",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "width": {
+          "type": "number",
+          "required": true
+        },
+        "height": {
+          "type": "number",
+          "required": true
+        },
+        "sceneDuration": {
+          "type": "number",
+          "required": true
+        },
+        "messages": {
+          "type": "Array<{ author: string; text: string; side: \"left\" | \"right\" }>",
+          "required": true
+        },
+        "theme": {
+          "type": "\"whatsapp\" | \"messenger\"",
+          "required": false
+        },
+        "dateChip1": {
+          "type": "string",
+          "required": false
+        },
+        "dateChip2": {
+          "type": "string",
+          "required": false
+        },
+        "safeZoneTop": {
+          "type": "number",
+          "required": false
+        },
+        "accent": {
+          "type": "string",
+          "required": false
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false
+        }
+      }
     }
   }
 }

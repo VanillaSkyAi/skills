@@ -23,7 +23,39 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "FeatureList",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "width": {
+          "type": "number",
+          "required": true
+        },
+        "height": {
+          "type": "number",
+          "required": true
+        },
+        "features": {
+          "type": "Array<{ title: string; description?: string; icon?: string }>",
+          "required": true
+        },
+        "textColor": {
+          "type": "string",
+          "required": false
+        },
+        "font": {
+          "type": "string",
+          "required": false
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false
+        }
+      }
     }
   }
 }

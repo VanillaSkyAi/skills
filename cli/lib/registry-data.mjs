@@ -71,6 +71,172 @@ export default {
       }
     }
   },
+  "customScene": {
+    "idPrefix": "custom_",
+    "maxSourceChars": 16000,
+    "bannedTokens": [
+      {
+        "source": "\\bMath\\.random\\b",
+        "flags": "",
+        "reason": "Math.random breaks export determinism — seed with a hash of variables instead"
+      },
+      {
+        "source": "\\bDate\\.now\\b",
+        "flags": "",
+        "reason": "Date.now breaks determinism"
+      },
+      {
+        "source": "\\bnew\\s+Date\\b",
+        "flags": "",
+        "reason": "new Date() breaks determinism"
+      },
+      {
+        "source": "\\bperformance\\.now\\b",
+        "flags": "",
+        "reason": "performance.now breaks determinism"
+      },
+      {
+        "source": "\\bsetTimeout\\b",
+        "flags": "",
+        "reason": "setTimeout breaks deterministic rendering"
+      },
+      {
+        "source": "\\bsetInterval\\b",
+        "flags": "",
+        "reason": "setInterval breaks deterministic rendering"
+      },
+      {
+        "source": "\\brequestAnimationFrame\\b",
+        "flags": "",
+        "reason": "requestAnimationFrame breaks deterministic rendering — use the progress prop"
+      },
+      {
+        "source": "\\bimport\\s*[({]",
+        "flags": "",
+        "reason": "dynamic import is not allowed"
+      },
+      {
+        "source": "\\bimport\\s+[{\\w*\"']",
+        "flags": "",
+        "reason": "static imports are not allowed — helpers are in scope"
+      },
+      {
+        "source": "^\\s*export\\s+",
+        "flags": "m",
+        "reason": "exports are not allowed — define a single `Component` function"
+      },
+      {
+        "source": "\\bclassName\\s*[:=]",
+        "flags": "",
+        "reason": "className not allowed — use inline style={{ ... }}"
+      },
+      {
+        "source": "\\bdangerouslySetInnerHTML\\b",
+        "flags": "",
+        "reason": "dangerouslySetInnerHTML not allowed — write the JSX directly"
+      },
+      {
+        "source": "\\son(?:error|click|load|focus|focusin|focusout|mouseenter|mouseover|mouseout|mousemove|input|change|submit|toggle|abort|animationend|transitionend|drag|drop|paste|copy|cut|keydown|keyup|keypress|select|wheel|scroll|contextmenu|reset|invalid|beforeunload|unload)\\s*=",
+        "flags": "i",
+        "reason": "HTML event handler attributes not allowed — templates are pure animation"
+      },
+      {
+        "source": "javascript\\s*:",
+        "flags": "i",
+        "reason": "javascript: URIs not allowed"
+      },
+      {
+        "source": "<\\s*script\\b",
+        "flags": "i",
+        "reason": "<script> tags not allowed"
+      },
+      {
+        "source": "\\bgradientBackground\\s*\\(",
+        "flags": "",
+        "reason": "do not call gradientBackground — the brand gradient is rendered by <SceneFrame> around your body"
+      },
+      {
+        "source": "\\b(?:TitleTop|TitleCenter)\\b",
+        "flags": "",
+        "reason": "do not render TitleTop/TitleCenter — the main title is rendered by <SceneFrame> around your body"
+      }
+    ],
+    "scopeNames": [
+      "BarChart",
+      "BeforeAfterSplit",
+      "BrandMessageBubble",
+      "CodeEditor",
+      "ConversationThread",
+      "CountUpNumber",
+      "CtaMediaClose",
+      "EASE",
+      "Easing",
+      "FeatureGrid",
+      "FeatureList",
+      "Fragment",
+      "IncomingCallCard",
+      "Math",
+      "MilestoneBadge",
+      "NotificationCard",
+      "PhoneFrame",
+      "ProblemSolution",
+      "ProgressRing",
+      "PromptInputPill",
+      "React",
+      "ReactionClip",
+      "ReviewStack",
+      "SPRING_BOUNCY",
+      "SPRING_SMOOTH",
+      "SPRING_SNAPPY",
+      "StatBadgeRow",
+      "StepsList",
+      "TEXT_ARCHETYPES",
+      "TemplateText",
+      "TerminalOutput",
+      "TestimonialCard",
+      "TweetCard",
+      "WebMockup",
+      "WordmarkReveal",
+      "autoTextColor",
+      "burst",
+      "cascade",
+      "center",
+      "countUp",
+      "createElement",
+      "cubicBezier",
+      "drift",
+      "fitTextSize",
+      "getResponsiveFontSize",
+      "glow",
+      "grain",
+      "interpolate",
+      "isColorDark",
+      "meshGradient",
+      "morph",
+      "orbit",
+      "orderDarkToLight",
+      "particles",
+      "pathDraw",
+      "phase",
+      "punch",
+      "rand01",
+      "shiftHue",
+      "softShadow",
+      "spring",
+      "stagger",
+      "staggerWindow",
+      "stripPipe",
+      "sweep",
+      "typewriter",
+      "useCallback",
+      "useEffect",
+      "useMemo",
+      "useRef",
+      "useState",
+      "vignette",
+      "withOpacity"
+    ]
+  },
   "templates": {
     "media": {
       "category": "media",

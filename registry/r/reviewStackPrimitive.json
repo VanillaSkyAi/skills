@@ -23,7 +23,44 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "ReviewStack",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "width": {
+          "type": "number",
+          "required": true
+        },
+        "height": {
+          "type": "number",
+          "required": true
+        },
+        "reviews": {
+          "type": "ReviewStackEntry[]",
+          "required": true
+        },
+        "starColor": {
+          "type": "string",
+          "required": false
+        },
+        "surfaceElevated": {
+          "type": "string",
+          "required": false,
+          "description": "Explicit brand-kit elevated surface for the card fill."
+        },
+        "accent": {
+          "type": "string",
+          "required": false
+        },
+        "beatIntensity": {
+          "type": "number",
+          "required": false
+        }
+      }
     }
   }
 }

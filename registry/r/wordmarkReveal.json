@@ -20,7 +20,56 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "WordmarkReveal",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true,
+          "description": "Scene progress 0→1"
+        },
+        "brandName": {
+          "type": "string",
+          "required": true,
+          "description": "Brand name — rendered as wordmark when no logoUrl is set"
+        },
+        "url": {
+          "type": "string",
+          "required": false,
+          "description": "Optional URL shown below — falls back to `cta` if empty"
+        },
+        "cta": {
+          "type": "string",
+          "required": false,
+          "description": "Fallback CTA text shown when url is empty"
+        },
+        "logoUrl": {
+          "type": "string",
+          "required": false,
+          "description": "Optional logo image URL — when set, replaces the wordmark"
+        },
+        "width": {
+          "type": "number",
+          "required": true,
+          "description": "Frame width"
+        },
+        "height": {
+          "type": "number",
+          "required": true,
+          "description": "Frame height"
+        },
+        "font": {
+          "type": "string",
+          "required": false,
+          "description": "Font family"
+        },
+        "textColor": {
+          "type": "string",
+          "required": false,
+          "description": "Text color"
+        }
+      }
     }
   }
 }

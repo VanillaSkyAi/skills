@@ -34,7 +34,41 @@
   "meta": {
     "vanillasky": {
       "layer": "primitive",
-      "tier": "free"
+      "tier": "free",
+      "component": "BrandMessageBubble",
+      "composable": true,
+      "propSchema": {
+        "progress": {
+          "type": "number",
+          "required": true
+        },
+        "sceneDuration": {
+          "type": "number",
+          "required": true
+        },
+        "brandName": {
+          "type": "string",
+          "required": true,
+          "description": "Sender label (italic, top-left of bubble)"
+        },
+        "message": {
+          "type": "string",
+          "required": true,
+          "description": "Message text"
+        },
+        "width": {
+          "type": "number",
+          "required": true
+        },
+        "height": {
+          "type": "number",
+          "required": true
+        },
+        "safeZone": {
+          "type": "{ top: number; right: number; bottom: number; left: number }",
+          "required": true
+        }
+      }
     }
   }
 }

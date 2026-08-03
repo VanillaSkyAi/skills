@@ -18,10 +18,45 @@ import { getPexelsApiKey } from "./pexels.mjs";
 
 export { registryData };
 
-const { templates: TEMPLATES, aliases: ALIASES, formats: FORMATS, backgroundEffects: BACKGROUND_EFFECTS } = registryData;
+const { templates: TEMPLATES, aliases: ALIASES, formats: FORMATS, backgroundEffects: BACKGROUND_EFFECTS, customScene: CUSTOM } = registryData;
 
 /** Fields that live on the scene object, not inside scene.variables. */
 const SCENE_LEVEL_FIELDS = ["backgroundEffect", "textArchetype"];
+
+const isCustomId = (id) => typeof id === "string" && id.startsWith(CUSTOM.idPrefix);
+
+/**
+ * Validate an ejected/custom scene: a `custom_*` templateId whose component
+ * travels inside the config as `componentSource`. The render page rehydrates
+ * these (hydrateCustomTemplatesFromConfig) and compiles them in the
+ * /vibeframe sandbox, so the rules below mirror that compiler exactly —
+ * they're generated from it, not restated.
+ *
+ * Returns an array of [code, message] pairs; empty means valid.
+ */
+function customSceneIssues(scene) {
+  const src = scene.componentSource;
+  if (typeof src !== "string" || src.trim().length === 0) {
+    return [[
+      "custom-source-missing",
+      `carries a "${CUSTOM.idPrefix}" templateId but no componentSource — an ejected scene must inline its component as a "componentSource" string on the scene`,
+    ]];
+  }
+  if (src.length > CUSTOM.maxSourceChars) {
+    return [["custom-source-too-long", `componentSource is ${src.length} chars (max ${CUSTOM.maxSourceChars}) — trim it or compose from primitives instead`]];
+  }
+  if (!/function\s+Component\s*\(/.test(src)) {
+    return [[
+      "custom-source-shape",
+      "componentSource must declare a single `function Component({ progress, width, height, ... })` — registry item source exports a named template and must be reshaped into that form before it can be used as a custom scene",
+    ]];
+  }
+  const issues = [];
+  for (const { source, flags, reason } of CUSTOM.bannedTokens) {
+    if (new RegExp(source, flags).test(src)) issues.push(["custom-source-banned", `componentSource: ${reason}`]);
+  }
+  return issues;
+}
 
 const resolveAlias = (id) => ALIASES[id] ?? id;
 const getTemplate = (id) => TEMPLATES[id] ?? TEMPLATES[resolveAlias(id)];
@@ -145,6 +180,16 @@ export function validateConfig(config, { format, pexelsKeyAvailable = false } = 
     }
 
     const rawId = scene.templateId;
+
+    // Ejected/custom scenes carry their component instead of naming a
+    // registered template — validate the source, not the registry.
+    if (isCustomId(rawId)) {
+      for (const [code, message] of customSceneIssues(scene)) {
+        err(code, `${label(i)}: ${message}`, i, rawId);
+      }
+      continue;
+    }
+
     const canonicalId = resolveAlias(rawId);
     const tpl = getTemplate(rawId);
     if (!tpl) {
