@@ -115,6 +115,14 @@ optional — validation catches schema errors, only your eyes catch a bad frame.
 `"landscape"` (16:9, 1920x1080). Both are first-class — every template is
 responsive to either — and a config that omits it renders portrait.
 
+`style.preset` picks the frame-level look — background family, headline type
+treatment, and default title placement, moved together by one token. It's the
+main lever against every video looking the same, so **choose one deliberately
+per video** from the preset table in the index rather than leaving it unset by
+habit. Set it once on `style`, never per scene; unset resolves to the default,
+which is the original look. The validator rejects an unknown name instead of
+letting it silently fall back.
+
 `style` is required by the renderer — the validator warns when it's missing
 and `vanillasky render` injects a minimal default (`{ "font": "Inter" }`), but
 a config shared via `vanillasky link` gets no such safety net, so always set

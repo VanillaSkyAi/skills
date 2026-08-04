@@ -54,6 +54,20 @@ canvases (cards, mockups).
 | `cinematic` | Trailer fly-in from depth that recedes on exit — dramatic brand statements. | hook, body, closer | open |
 | `heroWord` | One oversized word per beat fills the frame — ultra-short declarations where each word is a beat. | hook, body, closer | open |
 
+## Style presets (video-level `style.preset`)
+
+The frame-level look: background family, headline type treatment, and default
+title placement, moved together by one token. Set it ONCE on `style`, not per
+scene. This is the main lever against every video looking alike — two videos
+with the same brand colors and different presets read as different pieces.
+Unset resolves to the default, which is the original look.
+
+| Preset | Use when | Background | Title |
+|---|---|---|---|
+| `bold` *(default)* | The default. Drifting two-color brand mesh, heavy tight headlines at the top. Launches, hype, product moments — the loudest of the three. | mesh | top |
+| `editorial` | Calm vertical wash, lighter and wider-tracked headlines, centered. Reviews, thoughtful updates, premium or B2B brands — when the copy should feel considered rather than shouted. | wash | centered, lighter, wider tracking, larger (1.08×) |
+| `stark` | Single hard spotlight on near-black, uppercase and tightly tracked. Dev tools, technical claims, high-contrast statements — maximum weight on very few words. | spotlight | top, uppercase, heavier, tighter tracking |
+
 ## Full catalog
 
 The remaining templates, by category. Core templates above also belong to these

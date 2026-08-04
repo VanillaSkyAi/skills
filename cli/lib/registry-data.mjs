@@ -11,6 +11,14 @@ export default {
     "slow-tilt",
     "camera-shake"
   ],
+  "stylePresets": {
+    "default": "bold",
+    "ids": [
+      "bold",
+      "editorial",
+      "stark"
+    ]
+  },
   "aliases": {
     "chatConversation": "chatMessenger",
     "chatBubbles": "chatMessenger",

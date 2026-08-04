@@ -18,7 +18,7 @@ import { getPexelsApiKey } from "./pexels.mjs";
 
 export { registryData };
 
-const { templates: TEMPLATES, aliases: ALIASES, formats: FORMATS, backgroundEffects: BACKGROUND_EFFECTS, customScene: CUSTOM } = registryData;
+const { templates: TEMPLATES, aliases: ALIASES, formats: FORMATS, backgroundEffects: BACKGROUND_EFFECTS, customScene: CUSTOM, stylePresets: PRESETS } = registryData;
 
 /** Fields that live on the scene object, not inside scene.variables. */
 const SCENE_LEVEL_FIELDS = ["backgroundEffect", "textArchetype"];
@@ -153,6 +153,16 @@ export function validateConfig(config, { format, pexelsKeyAvailable = false } = 
     warn("missing-style", 'config has no style block — the renderer requires one; add at least "style": { "font": "Inter" } (vanillasky render injects this default automatically)');
   } else if (typeof style.font !== "string" || !style.font.trim()) {
     warn("missing-style", 'config.style has no font — the renderer requires one; add e.g. "font": "Inter" (vanillasky render injects this default automatically)');
+  }
+
+  // An unknown preset silently falls back to the default at render time —
+  // which reads as "the preset did nothing" rather than "the name is wrong".
+  const presetId = config.style?.preset;
+  if (presetId !== undefined && !PRESETS.ids.includes(presetId)) {
+    err(
+      "unknown-preset",
+      `style.preset "${presetId}" is not a known preset — it would silently fall back to "${PRESETS.default}". Valid presets: ${PRESETS.ids.join(", ")}`,
+    );
   }
 
   const activeFormat = format ?? (typeof config.format === "string" ? config.format : undefined);
