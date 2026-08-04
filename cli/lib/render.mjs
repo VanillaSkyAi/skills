@@ -8,7 +8,7 @@
  * page pool (frames are independent under the seek contract); encode
  * order stays sequential via an ordered drain into ffmpeg's stdin.
  */
-import { spawn } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { once } from "node:events";
 import { writeFileSync, mkdirSync, mkdtempSync, rmSync, copyFileSync, statSync, existsSync } from "node:fs";
 import { join, resolve, extname } from "node:path";
@@ -208,6 +208,39 @@ async function resolveAudioFile(config, tmpDir) {
     }
   }
   return null;
+}
+
+/**
+ * Post-mux guard: the muxed audio must reach the end of the video.
+ *
+ * `-shortest` used to truncate it by a constant ~8.4s, and nothing in the
+ * normal verification loop catches that — frames and contact sheets are silent.
+ * The check costs one fast decode pass, so it always runs. It warns rather than
+ * throws: a video with a short tail is still a video, and failing here would
+ * discard a completed render.
+ */
+const AUDIO_TAIL_TOLERANCE_S = 0.35;
+
+function verifyAudioTail(ffmpegPath, file, expected) {
+  try {
+    const probe = spawnSync(
+      ffmpegPath,
+      ["-v", "error", "-i", file, "-map", "0:a:0", "-f", "null", "-progress", "pipe:1", "-"],
+      { encoding: "utf8", maxBuffer: 8 * 1024 * 1024 },
+    );
+    const times = [...String(probe.stdout || "").matchAll(/out_time_us=(\d+)/g)].map((m) => Number(m[1]));
+    if (!times.length) return;
+    const actual = Math.max(...times) / 1e6;
+    const missing = expected - actual;
+    if (missing > AUDIO_TAIL_TOLERANCE_S) {
+      console.warn(
+        `[vanillasky] WARNING: audio stops ${missing.toFixed(2)}s before the video ends ` +
+          `(${actual.toFixed(2)}s of ${expected.toFixed(2)}s) — the tail will be silent`,
+      );
+    }
+  } catch {
+    // A diagnostic must never be the thing that breaks a render.
+  }
 }
 
 /**
@@ -473,6 +506,8 @@ async function runDraft(browser, shared, opts) {
     if (code !== 0) {
       console.warn(`[vanillasky] audio mux failed (${ffErr.slice(-200)}) — writing silent video`);
       writeFileSync(out, mp4);
+    } else {
+      verifyAudioTail(shared.ffmpegPath, out, shared.duration);
     }
   } else {
     if (audioPath && !shared.ffmpegPath) console.warn("[vanillasky] ffmpeg unavailable — draft written without audio");
@@ -586,6 +621,7 @@ async function runFullRender(browser, shared, opts) {
   if (spawnErr) throw new Error(`ffmpeg failed to start: ${spawnErr.message}`);
   if (code !== 0) throw new Error(`ffmpeg exited ${code}: ${ffmpegError.slice(-500)}`);
   const encodeTailMs = Date.now() - tEnc0;
+  if (audioPath) verifyAudioTail(ffmpegPath, out, duration);
 
   const size = statSync(out).size;
   const totalS = (Date.now() - shared.tStart) / 1000;
