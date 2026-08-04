@@ -214,7 +214,11 @@ async function resolveAudioFile(config, tmpDir) {
  * Audio filter mirroring the client export (trimAndFade + defaultFadeOutMs):
  * volume scaling and a fade-out that ends exactly at the video end, clamped
  * to the video length. Track shorter than the video loops (-stream_loop -1
- * on the input + -shortest on the output trims to video length).
+ * on the input + an explicit -t on the output trims to video length).
+ *
+ * -t rather than -shortest: with frames arriving over a slow pipe, -shortest
+ * ended the audio stream early (a constant ~8.4s short regardless of video
+ * length), leaving the tail of every render silent.
  */
 function audioFilterFor(config, duration) {
   const fadeMs = config.audio?.fadeOutMs ?? DEFAULT_AUDIO_FADE_MS;
@@ -461,7 +465,7 @@ async function runDraft(browser, shared, opts) {
       "-stream_loop", "-1", "-i", audioPath,
       "-c:v", "copy", "-c:a", "aac", "-b:a", "192k",
       ...(filter ? ["-af", filter] : []),
-      "-shortest", "-movflags", "+faststart", out,
+      "-t", shared.duration.toFixed(3), "-movflags", "+faststart", out,
     ], { stdio: ["ignore", "ignore", "pipe"] });
     let ffErr = "";
     ff.stderr.on("data", (d) => { ffErr += d; });
@@ -502,7 +506,7 @@ async function runFullRender(browser, shared, opts) {
     "-f", "image2pipe", "-c:v", "mjpeg", "-framerate", String(fps), "-i", "pipe:0",
     ...(audioPath ? ["-stream_loop", "-1", "-i", audioPath] : []),
     "-c:v", "libx264", "-preset", "fast", "-crf", "18", "-pix_fmt", "yuv420p",
-    ...(audioPath ? ["-c:a", "aac", "-b:a", "192k", ...(filter ? ["-af", filter] : []), "-shortest"] : []),
+    ...(audioPath ? ["-c:a", "aac", "-b:a", "192k", ...(filter ? ["-af", filter] : []), "-t", duration.toFixed(3)] : []),
     "-movflags", "+faststart", out,
   ], { stdio: ["pipe", "ignore", "pipe"] });
   let ffmpegError = "";
