@@ -243,7 +243,165 @@ export default {
       "useState",
       "vignette",
       "withOpacity"
-    ]
+    ],
+    "scopeDocs": {
+      "autoTextColor": {
+        "sig": "autoTextColor(background) → \"#fff\" | \"#000\"",
+        "use": "Pick legible text for an arbitrary background. Use whenever the backdrop colour is data-driven."
+      },
+      "burst": {
+        "sig": "burst(count, progress, { radius?, spread?, seed? }) → Particle[]",
+        "use": "Radial one-shot emission from a point. For impacts and celebrations."
+      },
+      "cascade": {
+        "sig": "cascade(text, progress, { overlap?, easing? }) → CascadeItem[]",
+        "use": "Per-word or per-character reveal data for a line of copy. Prefer this to hand-slicing strings."
+      },
+      "center": {
+        "sig": "center(xPct?, yPct?, extraTransform?) → CSSProperties",
+        "use": "Absolute-centre an element without hand-writing the translate. Append your own transform via the third argument so you don't clobber the centring."
+      },
+      "countUp": {
+        "sig": "countUp(progress, target, { from?, easing?, format? }) → { value, display }",
+        "use": "Roll a number up to a target. Only use with a real figure from the brief — never a placeholder."
+      },
+      "cubicBezier": {
+        "sig": "cubicBezier(x1, y1, x2, y2) → (t) => number",
+        "use": "Build a custom curve when the named EASE set genuinely has no fit. Prefer EASE first."
+      },
+      "drift": {
+        "sig": "drift(progress, { amount?, speed?, axis? }) → transform string",
+        "use": "Slow ambient float. Keeps a static composition alive without pulling focus — good on backgrounds and idle objects."
+      },
+      "EASE": {
+        "sig": "EASE.<name>",
+        "use": "Named curves already tuned for scene work — reach here before composing your own bezier, so motion reads consistently across scenes."
+      },
+      "Easing": {
+        "sig": "Easing.bezier(a,b,c,d) · Easing.out(Easing.cubic) · linear|quad|cubic|sin|exp|circle · in|out|inOut",
+        "use": "Curve constructors. `Easing.out(Easing.cubic)` is the default for anything entering; `inOut` for anything that travels across the frame and settles."
+      },
+      "fitTextSize": {
+        "sig": "fitTextSize(text, baseSize, maxWidth, opts?) → number",
+        "use": "Shrink-to-fit for fixed-width containers. Use it rather than guessing a size — the export rasteriser renders text a few percent wider than the preview, so anything tuned by eye can overflow."
+      },
+      "getResponsiveFontSize": {
+        "sig": "getResponsiveFontSize(length, base, min, max) → number",
+        "use": "Scale type down as copy gets longer. For slots whose text length varies."
+      },
+      "glow": {
+        "sig": "glow(color, { size?, x?, y?, intensity? }) → CSSProperties",
+        "use": "A soft radial bloom. Layer two or three at different sizes for depth. Build glows from this rather than a large blurred box-shadow, which bands into a visible rectangle at scale."
+      },
+      "grain": {
+        "sig": "grain(opacity?, seed?) → CSSProperties",
+        "use": "Film grain overlay. Takes the plastic sheen off large flat gradients."
+      },
+      "interpolate": {
+        "sig": "interpolate(value, inputRange, outputRange, { easing?, extrapolateLeft?, extrapolateRight? })",
+        "use": "Map progress onto any numeric range. Pass `extrapolate*: \"clamp\"` unless you want the value to keep running past the window — unclamped values sliding out of range is the most common cause of an element that drifts off-frame."
+      },
+      "isColorDark": {
+        "sig": "isColorDark(color) → boolean",
+        "use": "Branch on background luminance."
+      },
+      "meshGradient": {
+        "sig": "meshGradient(colors, seed?) → background string",
+        "use": "Multi-stop colour field. Note the frame already paints the brand background — use this inside an element, not as a full-bleed backdrop."
+      },
+      "morph": {
+        "sig": "morph(progress, fromValue, toValue, easing?)",
+        "use": "Interpolate between two shapes/values as one unit."
+      },
+      "orbit": {
+        "sig": "orbit(progress, { radius, speed?, phase? }) → { x, y, deg }",
+        "use": "Circular travel. Also the cheapest way to make several elements move as a related system rather than independently."
+      },
+      "orderDarkToLight": {
+        "sig": "orderDarkToLight(colors) → colors",
+        "use": "Sort a palette so gradients and stacks read consistently."
+      },
+      "particles": {
+        "sig": "particles(count, progress, { spread?, gravity?, seed?, easing? }) → Particle[]",
+        "use": "Deterministic particle field. Seeded, so it renders identically every time — never reach for Math.random, which the sandbox rejects."
+      },
+      "pathDraw": {
+        "sig": "pathDraw(progress, pathLength, { easing? }) → { strokeDasharray, strokeDashoffset }",
+        "use": "Stroke an SVG path on as progress advances. Use for diagrams, routes, filaments — anything whose construction is the story. Normalise your per-item stagger with staggerWindow so every path finishes inside the scene."
+      },
+      "phase": {
+        "sig": "phase(progress, [start, end], easing?) → 0..1",
+        "use": "Remap scene progress to a local 0..1 inside one beat, clamped. The backbone of multi-beat scenes — reach for this before writing a bare interpolate for enter/hold/exit."
+      },
+      "punch": {
+        "sig": "punch(progress, { at?, width?, amount? }) → scale multiplier",
+        "use": "A 1 → 1+amount → 1 bump around a moment. Multiply into a transform for beat hits and emphasis."
+      },
+      "rand01": {
+        "sig": "rand01(seed, index?) → 0..1",
+        "use": "Deterministic pseudo-random. The ONLY sanctioned source of randomness in a custom scene. For an even spread over a disc, prefer a golden-angle spiral over repeated rand01 draws — random angles clump into visible arcs."
+      },
+      "shiftHue": {
+        "sig": "shiftHue(color, degrees) → color",
+        "use": "Derive a related hue from the accent — the sanctioned way to get a second brand colour instead of inventing one."
+      },
+      "softShadow": {
+        "sig": "softShadow(elevation?, color?) → boxShadow string",
+        "use": "Consistent elevation for cards and floating chrome."
+      },
+      "spring": {
+        "sig": "spring(progress, { damping, stiffness }) → number",
+        "use": "Spring-shaped easing over a 0..1 input. Feed it a phase()/interpolate() result, not raw time. Pair with the SPRING_* presets rather than inventing constants."
+      },
+      "SPRING_BOUNCY": {
+        "sig": "SPRING_BOUNCY",
+        "use": "Overshoots visibly. For celebratory pops and stamps — one per scene at most, or it reads cartoonish."
+      },
+      "SPRING_SMOOTH": {
+        "sig": "SPRING_SMOOTH",
+        "use": "Settled, no visible bounce. The default for entrances that shouldn't draw attention to themselves."
+      },
+      "SPRING_SNAPPY": {
+        "sig": "SPRING_SNAPPY",
+        "use": "Fast and tight. For elements that should feel mechanical or instant."
+      },
+      "stagger": {
+        "sig": "stagger(progress, index, total, staggerDelay?, startAt?) → 0..1",
+        "use": "Delay-based sibling of staggerWindow: each item waits its turn by a fixed delay. Use when the gap between items matters more than filling the scene; use staggerWindow when every item must finish inside the beat."
+      },
+      "staggerWindow": {
+        "sig": "staggerWindow(progress, index, count, { overlap?, from?, seed?, easing? }) → 0..1",
+        "use": "Per-item progress for a group, with overlapping windows normalised so item 0 starts at 0 and the LAST item ends exactly at 1. Always prefer this to a hand-rolled `start + i * step`, which silently pushes late items past 1.0 so they never animate. `from: \"center\"` radiates outward; `\"random\"` is seeded and therefore deterministic."
+      },
+      "stripPipe": {
+        "sig": "stripPipe(text) → string",
+        "use": "Strip the `|` line-break marker from authored copy before measuring or rendering it raw."
+      },
+      "sweep": {
+        "sig": "sweep(progress, { from?, to?, softness? })",
+        "use": "A band of light or attention travelling across the frame. Use when the subject is 'something is being scanned or read'."
+      },
+      "TemplateText": {
+        "sig": "<TemplateText text archetype progress … />",
+        "use": "Render copy with a text archetype's full entrance/hold/exit lifecycle instead of hand-animating opacity."
+      },
+      "TEXT_ARCHETYPES": {
+        "sig": "TEXT_ARCHETYPES",
+        "use": "The archetype table (subtle, typewriter, wordStagger, slam, cinematic, heroWord) — read it to pick a lifecycle rather than inventing one."
+      },
+      "typewriter": {
+        "sig": "typewriter(text, progress, { cursor? }) → { shown, caretVisible }",
+        "use": "Character-by-character typing with a caret. For terminal/prompt moments — deterministic, unlike a timer-driven cursor."
+      },
+      "vignette": {
+        "sig": "vignette(strength?) → CSSProperties",
+        "use": "Darken the frame edges to hold the eye centre-frame. Cheap depth on an otherwise flat composition."
+      },
+      "withOpacity": {
+        "sig": "withOpacity(color, alpha) → rgba string",
+        "use": "Fade a token colour without hardcoding an rgba literal."
+      }
+    }
   },
   "templates": {
     "media": {

@@ -142,7 +142,23 @@ if (cmd === "scope") {
     console.log(
       `componentSource globals (${customScene.scopeNames.length}) — no imports needed or allowed:\n`,
     );
-    console.log(customScene.scopeNames.join(", "));
+    // A flat list of names is not discoverable — an agent hand-rolls its own
+    // stagger while staggerWindow sits unused. Print what each thing is FOR.
+    const docs = customScene.scopeDocs ?? {};
+    const documented = Object.keys(docs);
+    if (documented.length > 0) {
+      console.log("Authoring vocabulary — reach for these before hand-rolling:\n");
+      for (const name of documented) {
+        console.log(`  ${name}`);
+        console.log(`      ${docs[name].sig}`);
+        console.log(`      ${docs[name].use}\n`);
+      }
+      const rest = customScene.scopeNames.filter((n) => !docs[n]);
+      console.log(`Also in scope (React runtime + registry primitives — see the agent index for props):\n`);
+      console.log(`  ${rest.join(", ")}\n`);
+    } else {
+      console.log(customScene.scopeNames.join(", "));
+    }
     console.log(
       `\nBody-only: gradientBackground, TitleTop and TitleCenter are deliberately NOT in scope —\n` +
         `the frame renders the background and title around your body.\n` +

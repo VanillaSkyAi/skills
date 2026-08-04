@@ -98,6 +98,12 @@ change the brief.
 **Never deliver an uninspected video.** The frame/sheet step is mandatory, not
 optional — validation catches schema errors, only your eyes catch a bad frame.
 
+Two things your eyes cannot catch, so check them explicitly:
+- **Audio.** Contact sheets are silent. The renderer warns if the muxed audio
+  stops before the video ends — read its output rather than assuming.
+- **The other orientation.** A portrait frame check says nothing about
+  landscape. If a config declares one and you claim both work, render both.
+
 ## Config skeleton
 
 ```json
@@ -246,7 +252,9 @@ in lexical scope.
   `countUp`, `particles`, `burst`, …), color helpers (`withOpacity`,
   `shiftHue`, `autoTextColor`), text helpers (`fitTextSize`, `TemplateText`),
   and **every primitive by its component name** (`CountUpNumber`, `TweetCard`,
-  `PhoneFrame`, …). `vanillasky scope` prints the exact list.
+  `PhoneFrame`, …). `vanillasky scope` prints the exact list with the call shape and use-when
+  for each — read it before hand-rolling motion, since the helper you are
+  about to write probably already exists.
 - **Body-only.** The brand gradient, the main title, and the safe zones are
   rendered by the frame *around* your body — don't paint a background or
   repeat the title. `gradientBackground`, `TitleTop`, and `TitleCenter` are
@@ -270,3 +278,7 @@ header). That's for building your own app around these components — it does
 - [references/formats.md](references/formats.md) — the slot contract as data
 - [references/motion.md](references/motion.md) — named easing curves and the
   scene archetype table
+- [references/visual-rules.md](references/visual-rules.md) — how a custom scene
+  should look: type sizes, orientation layout, colour and glow, composition.
+  Read before writing a `custom_*` body; templates already follow these, so a
+  scene that ignores them reads as the odd one out in its own video.
