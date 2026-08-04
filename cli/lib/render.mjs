@@ -249,9 +249,9 @@ function verifyAudioTail(ffmpegPath, file, expected) {
  * to the video length. Track shorter than the video loops (-stream_loop -1
  * on the input + an explicit -t on the output trims to video length).
  *
- * -t rather than -shortest: with frames arriving over a slow pipe, -shortest
- * ended the audio stream early (a constant ~8.4s short regardless of video
- * length), leaving the tail of every render silent.
+ * -t rather than -shortest: with frames arriving over the capture pipe,
+ * -shortest ended the audio stream early — a constant ~8.4s short whatever
+ * the video length — leaving the tail of every render silent.
  */
 function audioFilterFor(config, duration) {
   const fadeMs = config.audio?.fadeOutMs ?? DEFAULT_AUDIO_FADE_MS;
