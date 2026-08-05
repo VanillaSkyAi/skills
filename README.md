@@ -17,7 +17,6 @@ the bundled `vanillasky` CLI. Deterministic — same config, same MP4.
 | | |
 | --- | --- |
 | **28 scene templates** | Hooks, stats, device mockups, social cards, explainers, closers — each with a variable schema and a preferred duration. [Browse](https://vanillasky.ai/templates) |
-| **26 motion primitives** | The pieces the templates are built from, for composing a scene the catalog doesn't cover |
 | **4 shared libs** | The motion vocabulary, text fitting, and the brand token resolver — all installable, all readable |
 | **12 licensed tracks** | Bundled with the CLI, tagged by mood and energy, no download step. [Listen](https://vanillasky.ai/audio) |
 | **4 formats** | `launch`, `review`, `milestone`, `update` — each with its own slot contract the validator enforces |

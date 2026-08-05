@@ -17,7 +17,7 @@ Template ids, variables, durations, and use-when guidance live in the live
 index: **https://vanillasky.ai/llms-components.txt** (working from a repo
 checkout: `registry/llms-components.txt`, or the `registry/` directory of the
 standalone bundle). Read it before composing. It also catalogues the
-`registry:ui` primitives and the shared libs you compose custom scenes from.
+the shared libs you compose custom scenes from.
 Full per-item detail — source, complete variable schema, defaults — is at
 `https://vanillasky.ai/r/<name>.json` (repo and standalone bundle:
 `registry/r/<name>.json`).
@@ -273,16 +273,13 @@ Escalate only when the previous rung genuinely can't express the brief:
    (`files[0].content`) as the reference for how the built-in does it, then
    write a body that satisfies the contract below. Ejected scenes travel
    inside the config and render everywhere, including the browser link.
-4. **Compose from primitives** — same mechanism as rung 3, but build the body
-   out of the `registry:ui` primitives instead of from scratch. **Check the
-   `Bounds` column before combining any two.** Most primitives are `frame` —
-   they compute their own position from `width`/`height` and are one per
-   scene; two of them land on top of each other. `anchored` ones coexist if
-   their anchors differ, and `fill` fills the parent box you place it in. They're
-   catalogued at the end of the index with use-when guidance, the templates
-   that use them, and a full prop schema in each item
-   (`meta.vanillasky.propSchema`). The same never-guess rule applies —
-   compose only from primitives the index lists.
+4. **Compose from what's in scope** — same mechanism as rung 3, but instead of
+   writing every element yourself, reach for the scene components already in
+   the sandbox (`CountUpNumber`, `TweetCard`, `PhoneFrame`, …). `vanillasky
+   scope` prints the exact list with call shapes. These are not a catalog
+   layer and are not installable: **most take the whole frame**, so use one
+   per scene and build the rest around it. If you want two things side by
+   side, lay them out yourself.
 
 ### The custom-scene contract (rungs 3 and 4)
 
