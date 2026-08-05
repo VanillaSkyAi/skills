@@ -29,6 +29,13 @@ import { existsSync, readFileSync, renameSync, unlinkSync, watch, writeFileSync 
 import { basename, dirname, join } from "node:path";
 
 const WATCH_DEBOUNCE_MS = 120;
+/**
+ * fs.watch is not guaranteed. It coalesces events, can report a null filename,
+ * and misses writes outright on some platforms and network filesystems — a
+ * missed event means the agent edits the config and the Studio never notices.
+ * A slow poll alongside it makes live reload eventually-correct regardless.
+ */
+const POLL_MS = 1500;
 const READ_RETRIES = 5;
 const READ_RETRY_MS = 40;
 
@@ -47,6 +54,7 @@ export class LocalSession {
     this.lastRenderPath = null;
     this.watcher = null;
     this.debounce = null;
+    this.poll = null;
 
     const initial = this.readFromDisk();
     this.contentHash = hash(initial.raw);
@@ -114,10 +122,13 @@ export class LocalSession {
       });
       this.watcher.on("error", () => { this.watcher = null; });
     } catch {
-      // No watcher (unsupported platform, deleted dir) — the Studio still
-      // works, it just won't live-update.
+      // No watcher (unsupported platform, deleted dir) — the poll below still
+      // delivers changes, just less promptly.
       this.watcher = null;
     }
+    this.poll = setInterval(() => this.checkForExternalChange(), POLL_MS);
+    // Don't hold the process open on the poll alone.
+    this.poll.unref?.();
   }
 
   checkForExternalChange() {
@@ -157,6 +168,7 @@ export class LocalSession {
 
   close() {
     clearTimeout(this.debounce);
+    clearInterval(this.poll);
     try { this.watcher?.close(); } catch { /* already gone */ }
     this.watcher = null;
     this.listeners.clear();
