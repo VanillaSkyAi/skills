@@ -101,13 +101,21 @@ change the brief.
    says why. **Prefer a real https URL or a local file path for media over
    embedding base64**, and the links keep working.
 
-   **`vanillasky studio video.json` opens the bundled editor** — scene list,
-   per-scene variables, template swap, motion, live preview — served from
-   localhost and saving straight back to the file. It works offline and for
-   any config, including one carrying inline media that has no share link, so
-   it is the answer to "how do I change this myself?". Point the user at it
-   when you deliver. Re-run `vanillasky render` afterwards for the final MP4;
-   the Studio edits the config, it doesn't write the video.
+   **`vanillasky studio video.json` is how you hand off.** It opens the bundled
+   editor — scene list, per-scene variables, template swap, motion, live
+   preview — served from localhost, saving straight back to the file. From
+   there the user edits and presses **Export MP4**, which runs this same
+   renderer and writes `video.mp4` next to the config.
+
+   Two things this changes for you:
+   - **A full render is no longer a precondition for delivering.** The preview
+     is instant; a render is 25s. Compose, inspect with `--sheet`, open the
+     Studio, and let the user look. Render yourself only when they ask for the
+     file or there's no browser (CI, remote shell).
+   - **Keep editing the config while they watch.** The Studio follows the file
+     live, so when the user asks you for a change, write it and it appears in
+     their preview. If they have unsaved edits of their own, your write is
+     surfaced as a conflict rather than silently overwriting them.
 
 **Never deliver an uninspected video.** The frame/sheet step is mandatory, not
 optional — validation catches schema errors, only your eyes catch a bad frame.

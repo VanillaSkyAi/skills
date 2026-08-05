@@ -109,14 +109,15 @@ export async function renderCommand(configPath, opts) {
       ffmpegPath, tmpDir, tStart,
     };
 
-    if (mode === "frame") await runFrame(browser, shared, opts);
-    else if (mode === "sheet") await runSheet(browser, shared, opts);
-    else {
-      const out = mode === "draft"
-        ? await runDraft(browser, shared, opts)
-        : await runFullRender(browser, shared, opts);
-      printOutputAffordances(out, shared, opts);
-    }
+    if (mode === "frame") return await runFrame(browser, shared, opts);
+    if (mode === "sheet") return await runSheet(browser, shared, opts);
+    const out = mode === "draft"
+      ? await runDraft(browser, shared, opts)
+      : await runFullRender(browser, shared, opts);
+    // Quiet for programmatic callers (the Studio's render route) — they get
+    // the path back and render their own UI.
+    if (opts.quiet !== true) printOutputAffordances(out, shared, opts);
+    return out;
   } finally {
     if (browser) await browser.close().catch(() => {});
     await server.close();
@@ -580,10 +581,14 @@ async function runFullRender(browser, shared, opts) {
   };
 
   const tCap0 = Date.now();
+  // opts.onProgress is the machine-readable channel — the Studio consumes
+  // this rather than scraping the console line below, which is presentation
+  // text (\r in a TTY, 2s cadence when piped) and not an interface.
   const progress = setInterval(() => {
     const elapsed = (Date.now() - tCap0) / 1000;
     const rate = captured / Math.max(elapsed, 0.001);
     const eta = rate > 0 ? (totalFrames - captured) / rate : 0;
+    opts.onProgress?.({ phase: "capture", frames: captured, total: totalFrames, fps: rate, etaSec: Math.ceil(eta) });
     const line = `[vanillasky] ${captured}/${totalFrames} frames  ${rate.toFixed(1)} fps  ETA ${Math.ceil(eta)}s`;
     if (process.stdout.isTTY) process.stdout.write(`\r${line}   `);
     else console.log(line);

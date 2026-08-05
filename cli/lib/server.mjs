@@ -6,7 +6,8 @@
  * referencing stale JS hashes renders a blank page).
  */
 import { createServer } from "node:http";
-import { existsSync, statSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, statSync, readFileSync } from "node:fs";
+import { handleLocalRoute } from "./local-routes.mjs";
 import { join, extname, dirname, resolve, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
 
@@ -38,24 +39,23 @@ export function resolveDist() {
 /**
  * Start serving `dist` on an ephemeral localhost port.
  *
- * `opts.localConfig` ({ path, token }) additionally exposes GET/POST
- * `/__local/config` so the bundled Studio can read and write the config file
- * on disk. That route is the only way this server touches the filesystem for
- * writes, so it is gated twice: the socket is loopback-only, and every
- * request must carry the token the CLI minted at startup and handed to the
- * page. Without the token check, any web page open in the same browser could
- * POST to the port and rewrite the user's config.
+ * `opts.session` (a LocalSession) additionally mounts the `/__local/*` API the
+ * bundled Studio uses to read, save, watch and render the config. See
+ * local-routes.mjs for why loopback binding alone isn't the security boundary.
  */
 export function startServer(dist, opts = {}) {
-  const localConfig = opts.localConfig ?? null;
+  const session = opts.session ?? null;
+  let boundPort = 0;
   return new Promise((resolvePromise, rejectPromise) => {
     const server = createServer((req, res) => {
       try {
         const url = new URL(req.url, "http://localhost");
         const pathname = decodeURIComponent(url.pathname);
 
-        if (localConfig && pathname === "/__local/config") {
-          handleLocalConfig(req, res, url, localConfig);
+        if (session && pathname.startsWith("/__local/")) {
+          void handleLocalRoute(req, res, url, {
+            session, port: boundPort, validate: opts.validate, renderCommand: opts.renderCommand,
+          });
           return;
         }
 
@@ -89,6 +89,7 @@ export function startServer(dist, opts = {}) {
     // 127.0.0.1, never 0.0.0.0 — the write route must not be reachable off-box.
     server.listen(0, "127.0.0.1", () => {
       const { port } = server.address();
+      boundPort = port;
       resolvePromise({
         port,
         baseUrl: `http://127.0.0.1:${port}`,
@@ -96,65 +97,4 @@ export function startServer(dist, opts = {}) {
       });
     });
   });
-}
-
-// ─── Local config route (bundled Studio) ────────────────────────
-
-const MAX_LOCAL_CONFIG_BYTES = 8 * 1024 * 1024;
-
-const jsonRes = (res, status, body) => {
-  res.writeHead(status, { "Content-Type": "application/json", "Cache-Control": "no-store" });
-  res.end(JSON.stringify(body));
-};
-
-/**
- * GET  → { config, path } read fresh from disk
- * POST → { config } written back, pretty-printed so the file stays diffable
- *
- * Both require the startup token. No CORS header is sent here on purpose:
- * this route is same-origin only, unlike the static assets which the
- * /vibeframe opaque origin needs to fetch.
- */
-function handleLocalConfig(req, res, url, localConfig) {
-  const token = req.headers["x-vs-token"] || url.searchParams.get("token");
-  if (token !== localConfig.token) return jsonRes(res, 403, { error: "bad or missing token" });
-
-  if (req.method === "GET") {
-    try {
-      const raw = readFileSync(localConfig.path, "utf8");
-      return jsonRes(res, 200, { config: JSON.parse(raw), path: localConfig.path });
-    } catch (err) {
-      return jsonRes(res, 500, { error: `could not read ${localConfig.path}: ${err?.message ?? err}` });
-    }
-  }
-
-  if (req.method === "POST") {
-    let raw = "";
-    let tooBig = false;
-    req.on("data", (chunk) => {
-      raw += chunk;
-      if (raw.length > MAX_LOCAL_CONFIG_BYTES && !tooBig) {
-        tooBig = true;
-        jsonRes(res, 413, { error: "config too large" });
-        req.destroy();
-      }
-    });
-    req.on("end", () => {
-      if (tooBig) return;
-      try {
-        const body = JSON.parse(raw);
-        const config = body?.config;
-        if (!config || typeof config !== "object" || !Array.isArray(config.scenes)) {
-          return jsonRes(res, 400, { error: "body must be { config } with a scenes array" });
-        }
-        writeFileSync(localConfig.path, JSON.stringify(config, null, 2) + "\n");
-        return jsonRes(res, 200, { ok: true, path: localConfig.path });
-      } catch (err) {
-        return jsonRes(res, 400, { error: `invalid JSON: ${err?.message ?? err}` });
-      }
-    });
-    return;
-  }
-
-  return jsonRes(res, 405, { error: "GET or POST only" });
 }

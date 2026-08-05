@@ -1,39 +1,56 @@
 /**
  * `vanillasky studio <config.json>` — serve the bundled editor locally.
  *
- * Starts the same static server the renderer uses, plus the loopback-only
- * `/__local/config` route, and opens /studio in the platform browser. Edits
- * save straight back to the file on disk. Nothing leaves the machine.
+ * The agent composes a config and hands off here; the user edits, watches the
+ * preview, and exports when it looks right. Nothing leaves the machine: the
+ * page, the preview, the render and the file writes are all local.
  *
- * The process stays alive until Ctrl+C, because the page needs the server.
+ * The token goes in the URL *fragment*, not the query string — fragments are
+ * never sent in HTTP requests, so it stays out of Referer headers and server
+ * logs. The page reads it once and strips it from history.
  */
 import { spawn } from "node:child_process";
-import { randomBytes } from "node:crypto";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { resolveDist, startServer } from "./server.mjs";
 import { loadConfig } from "./config.mjs";
+import { validateConfig } from "./validate.mjs";
+import { renderCommand } from "./render.mjs";
+import { LocalSession } from "./local-session.mjs";
 
 export async function studioCommand(configPath, opts = {}) {
   const path = resolve(configPath);
   if (!existsSync(path)) throw new Error(`no such config: ${path}`);
-  // Parse once up front so an unopenable config fails here with the good
-  // error message, not as a fetch failure inside the page.
+  // Parse once up front so a broken config fails here with a good message
+  // rather than as a fetch error inside the page.
   const config = loadConfig(path);
 
   const dist = resolveDist();
-  const token = randomBytes(24).toString("hex");
-  const server = await startServer(dist, { localConfig: { path, token } });
-  const url = `${server.baseUrl}/studio?token=${token}`;
+  const session = new LocalSession(path);
+  session.startWatching();
 
+  const server = await startServer(dist, {
+    session,
+    validate: (cfg) => {
+      const r = validateConfig(cfg);
+      return { errors: r.errors ?? [], warnings: r.warnings ?? [] };
+    },
+    renderCommand,
+  });
+
+  const url = `${server.baseUrl}/studio#token=${session.token}`;
   console.log(`[vanillasky] studio: ${config.scenes.length} scene(s) from ${path}`);
   console.log(`[vanillasky] ${url}`);
-  console.log(`[vanillasky] edits save back to ${path} — Ctrl+C to stop`);
+  console.log(`[vanillasky] edits save to ${path}; external changes reload live — Ctrl+C to stop`);
   if (opts.open !== false) openInBrowser(url);
 
   await new Promise((resolvePromise) => {
+    let stopping = false;
     const stop = () => {
+      if (stopping) return;
+      stopping = true;
       console.log("\n[vanillasky] studio stopped");
+      session.close();
       server.close().then(resolvePromise, resolvePromise);
     };
     process.on("SIGINT", stop);
