@@ -24,6 +24,7 @@
       "tier": "free",
       "component": "ReactionClip",
       "composable": true,
+      "bounds": "frame",
       "propSchema": {
         "progress": {
           "type": "number",

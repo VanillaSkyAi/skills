@@ -26,6 +26,7 @@
       "tier": "free",
       "component": "TerminalOutput",
       "composable": true,
+      "bounds": "anchored",
       "propSchema": {
         "progress": {
           "type": "number",

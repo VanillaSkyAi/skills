@@ -3567,6 +3567,7 @@
           "tier": "free",
           "component": "BarChart",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -3639,6 +3640,7 @@
           "tier": "free",
           "component": "BeforeAfterSplit",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -3735,6 +3737,7 @@
           "tier": "free",
           "component": "BrandMessageBubble",
           "composable": true,
+          "bounds": "anchored",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -3796,6 +3799,7 @@
           "tier": "free",
           "component": "CodeEditor",
           "composable": true,
+          "bounds": "anchored",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -3871,6 +3875,7 @@
           "tier": "free",
           "component": "ConversationThread",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -3955,6 +3960,7 @@
           "tier": "free",
           "component": "CountUpNumber",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4056,6 +4062,7 @@
           "tier": "free",
           "component": "CtaMediaClose",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4137,6 +4144,7 @@
           "tier": "free",
           "component": "DesignedScreenFill",
           "composable": false,
+          "bounds": "fill",
           "propSchema": {
             "accent": {
               "type": "string",
@@ -4217,6 +4225,7 @@
           "tier": "free",
           "component": "FeatureGrid",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4276,6 +4285,7 @@
           "tier": "free",
           "component": "FeatureList",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4335,6 +4345,7 @@
           "tier": "free",
           "component": "IncomingCallCard",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4451,6 +4462,7 @@
           "tier": "free",
           "component": "MilestoneBadge",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4556,6 +4568,7 @@
           "tier": "free",
           "component": "NotificationCard",
           "composable": true,
+          "bounds": "anchored",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4613,6 +4626,7 @@
           "tier": "free",
           "component": "PhoneFrame",
           "composable": true,
+          "bounds": "anchored",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4707,6 +4721,7 @@
           "tier": "free",
           "component": "ProblemSolution",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4787,6 +4802,7 @@
           "tier": "free",
           "component": "ProgressRing",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4856,6 +4872,7 @@
           "tier": "free",
           "component": "PromptInputPill",
           "composable": true,
+          "bounds": "anchored",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4918,6 +4935,7 @@
           "tier": "free",
           "component": "ReactionClip",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -4977,6 +4995,7 @@
           "tier": "free",
           "component": "ReviewStack",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -5050,6 +5069,7 @@
           "tier": "free",
           "component": "StatBadgeRow",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -5121,6 +5141,7 @@
           "tier": "free",
           "component": "StepsList",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -5188,6 +5209,7 @@
           "tier": "free",
           "component": "TerminalOutput",
           "composable": true,
+          "bounds": "anchored",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -5269,6 +5291,7 @@
           "tier": "free",
           "component": "TestimonialCard",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -5374,6 +5397,7 @@
           "tier": "free",
           "component": "TweetCard",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -5452,6 +5476,7 @@
           "tier": "free",
           "component": "WebMockup",
           "composable": true,
+          "bounds": "anchored",
           "propSchema": {
             "progress": {
               "type": "number",
@@ -5530,6 +5555,7 @@
           "tier": "free",
           "component": "WordmarkReveal",
           "composable": true,
+          "bounds": "frame",
           "propSchema": {
             "progress": {
               "type": "number",

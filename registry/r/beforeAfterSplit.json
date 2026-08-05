@@ -50,6 +50,7 @@
       "tier": "free",
       "component": "BeforeAfterSplit",
       "composable": true,
+      "bounds": "frame",
       "propSchema": {
         "progress": {
           "type": "number",

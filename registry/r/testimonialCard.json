@@ -38,6 +38,7 @@
       "tier": "free",
       "component": "TestimonialCard",
       "composable": true,
+      "bounds": "frame",
       "propSchema": {
         "progress": {
           "type": "number",

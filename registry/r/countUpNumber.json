@@ -37,6 +37,7 @@
       "tier": "free",
       "component": "CountUpNumber",
       "composable": true,
+      "bounds": "frame",
       "propSchema": {
         "progress": {
           "type": "number",

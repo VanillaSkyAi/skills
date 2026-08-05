@@ -23,6 +23,7 @@
       "tier": "free",
       "component": "WordmarkReveal",
       "composable": true,
+      "bounds": "frame",
       "propSchema": {
         "progress": {
           "type": "number",

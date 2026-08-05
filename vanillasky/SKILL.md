@@ -274,7 +274,11 @@ Escalate only when the previous rung genuinely can't express the brief:
    write a body that satisfies the contract below. Ejected scenes travel
    inside the config and render everywhere, including the browser link.
 4. **Compose from primitives** — same mechanism as rung 3, but build the body
-   out of the `registry:ui` primitives instead of from scratch. They're
+   out of the `registry:ui` primitives instead of from scratch. **Check the
+   `Bounds` column before combining any two.** Most primitives are `frame` —
+   they compute their own position from `width`/`height` and are one per
+   scene; two of them land on top of each other. `anchored` ones coexist if
+   their anchors differ, and `fill` fills the parent box you place it in. They're
    catalogued at the end of the index with use-when guidance, the templates
    that use them, and a full prop schema in each item
    (`meta.vanillasky.propSchema`). The same never-guess rule applies —

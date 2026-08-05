@@ -38,6 +38,7 @@
       "tier": "free",
       "component": "FeatureGrid",
       "composable": true,
+      "bounds": "frame",
       "propSchema": {
         "progress": {
           "type": "number",

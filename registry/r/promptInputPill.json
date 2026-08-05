@@ -25,6 +25,7 @@
       "tier": "free",
       "component": "PromptInputPill",
       "composable": true,
+      "bounds": "anchored",
       "propSchema": {
         "progress": {
           "type": "number",

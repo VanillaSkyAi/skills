@@ -131,6 +131,15 @@ categories (category shown per template in its registry item's `meta.vanillasky.
 The building blocks the templates above are made of — the top rung of the
 escalation ladder. Reach for these only when no template expresses the brief.
 
+**`Bounds` is the composition contract** — what space the primitive takes, and
+therefore whether two can share a scene:
+
+- `frame` — occupies or anchors against the whole frame. **One per scene**;
+  two frame primitives land on top of each other. Most are this.
+- `anchored` — self-positions at a computed anchor in a bounded box. Two with
+  different anchors coexist; the same anchor collides.
+- `fill` — fills the parent box you place it in. Composable by design.
+
 Inside a `custom_*` scene's `componentSource` every primitive below is
 **already in scope by its component name** — custom source takes no imports.
 `vanillasky scope` prints the exact global list, and SKILL.md carries the full
@@ -142,34 +151,34 @@ project — it does not change what the `vanillasky` CLI renders.
 Every primitive is progress-driven, deterministic, and renders at both
 1080x1920 and 1920x1080.
 
-| Primitive | Use when | Used by |
-|---|---|---|
-| `barChartPrimitive` | Animated bar chart — bars grow from zero on EDITORIAL. Compose when several values must be compared in one frame. | `barChart` |
-| `beforeAfterSplit` | Split frame contrasting a problem side against a solution side, each with its own headline and emoji set. Compose for transformation beats. | `beforeAfter` |
-| `brandMessageBubble` | Single iMessage-style outgoing bubble over media. Compose for a direct 1:1 brand-to-viewer note. | `brandMessage` |
-| `codeEditorPrimitive` | Editor chrome with syntax-highlighted code and a filename tab. Compose when a code or config sample is the content. | `codeEditor` |
-| `conversationThread` | Multi-bubble chat thread with staggered reveal, typing indicators, and date chips. Compose for Messenger/WhatsApp-shaped stories; theme switches the platform look. | — |
-| `countUpNumber` | Hero number that counts up to a target with prefix, unit, and label. Compose whenever one real number is the point. | `bigNumber` |
-| `ctaMediaClose` | Media-backed closer with brand name, URL, and call to action. Compose for a final visual beat. | — |
-| `designedScreenFill` | Brand-tinted synthetic product UI that fills a device screen when no real screenshot exists. Compose inside phoneFrame/webMockupPrimitive as a fallback — prefer a real screenshot whenever one is provided. *(install-only — not in scope inside `componentSource`)* | `webMockup` |
-| `featureGrid` | Grid of feature cards that spring in staggered. Compose for 4+ parallel facts where a list would read too tall. | — |
-| `featureList` | Vertical list of feature rows revealed in sequence. Compose for 3–5 parallel product facts. | — |
-| `incomingCallCard` | Full-screen incoming-call UI with caller name and accept/decline actions. Compose for interruptive or dramatic beats. | — |
-| `milestoneBadge` | Numeric achievement badge with rolling counter, glow, and celebration burst. Compose for a real milestone number. | `milestone` |
-| `notificationCard` | OS-style notification card with app icon and message. Compose for a real notification-shaped product moment. | `notification` |
-| `phoneFrame` | Portrait phone chrome that slides up and settles, wrapping up to three screens. Compose for mobile UI; pair with designedScreenFill when no screenshot exists. | `phoneMockup` |
-| `problemSolutionPrimitive` | Two stacked statements — one pain, one fix — with labels. Compose for a literal problem→solution story. | — |
-| `progressRingPrimitive` | Circular progress ring that draws from 0 with a centered value. Compose for completion, readiness, or percent-complete. | `progressRing` |
-| `promptInputPill` | AI prompt pill that grows from a circle then types the prompt. Compose for prompt-UX explanations. | `promptInput` |
-| `reactionClip` | Full-bleed reaction/meme video clip with an optional punchline overlay. Compose at most once, for funny or self-aware beats. | — |
-| `reviewStackPrimitive` | Stacked review cards with staggered spring entrance and star ratings. Compose for 2+ real attributed reviews. | `reviewStack` |
-| `statBadgeRow` | Row of peer stat badges with comparable weight. Compose for exactly three parallel facts. | `tripleStats` |
-| `stepsList` | Ordered step cards that spring in one at a time. Compose when sequence matters (connect → generate → publish). | `steps` |
-| `terminalOutput` | Terminal chrome that types a command then streams output lines. Compose when a CLI command or log IS the content. | `terminal` |
-| `testimonialCard` | Single quote card with author name, role, and avatar. Compose for one real attributed quote. | `testimonial` |
-| `tweetCard` | X-style post card with verification badge and like/reply counters. Compose for a brand-voiced public post. | `tweet` |
-| `webMockupPrimitive` | Browser/desktop chrome with an address bar, wrapping up to three landscape screens. Compose for dashboard or web UI. | — |
-| `wordmarkReveal` | Minimal brand stamp — wordmark or logo with URL and action. Compose for a quiet closer when the video already has motion. | `ctaLogo` |
+| Primitive | Bounds | Use when | Used by |
+|---|---|---|---|
+| `barChartPrimitive` | `frame` | Animated bar chart — bars grow from zero on EDITORIAL. Compose when several values must be compared in one frame. | `barChart` |
+| `beforeAfterSplit` | `frame` | Split frame contrasting a problem side against a solution side, each with its own headline and emoji set. Compose for transformation beats. | `beforeAfter` |
+| `brandMessageBubble` | `anchored` | Single iMessage-style outgoing bubble over media. Compose for a direct 1:1 brand-to-viewer note. | `brandMessage` |
+| `codeEditorPrimitive` | `anchored` | Editor chrome with syntax-highlighted code and a filename tab. Compose when a code or config sample is the content. | `codeEditor` |
+| `conversationThread` | `frame` | Multi-bubble chat thread with staggered reveal, typing indicators, and date chips. Compose for Messenger/WhatsApp-shaped stories; theme switches the platform look. | — |
+| `countUpNumber` | `frame` | Hero number that counts up to a target with prefix, unit, and label. Compose whenever one real number is the point. | `bigNumber` |
+| `ctaMediaClose` | `frame` | Media-backed closer with brand name, URL, and call to action. Compose for a final visual beat. | — |
+| `designedScreenFill` | `fill` | Brand-tinted synthetic product UI that fills a device screen when no real screenshot exists. Compose inside phoneFrame/webMockupPrimitive as a fallback — prefer a real screenshot whenever one is provided. *(install-only — not in scope inside `componentSource`)* | `webMockup` |
+| `featureGrid` | `frame` | Grid of feature cards that spring in staggered. Compose for 4+ parallel facts where a list would read too tall. | — |
+| `featureList` | `frame` | Vertical list of feature rows revealed in sequence. Compose for 3–5 parallel product facts. | — |
+| `incomingCallCard` | `frame` | Full-screen incoming-call UI with caller name and accept/decline actions. Compose for interruptive or dramatic beats. | — |
+| `milestoneBadge` | `frame` | Numeric achievement badge with rolling counter, glow, and celebration burst. Compose for a real milestone number. | `milestone` |
+| `notificationCard` | `anchored` | OS-style notification card with app icon and message. Compose for a real notification-shaped product moment. | `notification` |
+| `phoneFrame` | `anchored` | Portrait phone chrome that slides up and settles, wrapping up to three screens. Compose for mobile UI; pair with designedScreenFill when no screenshot exists. | `phoneMockup` |
+| `problemSolutionPrimitive` | `frame` | Two stacked statements — one pain, one fix — with labels. Compose for a literal problem→solution story. | — |
+| `progressRingPrimitive` | `frame` | Circular progress ring that draws from 0 with a centered value. Compose for completion, readiness, or percent-complete. | `progressRing` |
+| `promptInputPill` | `anchored` | AI prompt pill that grows from a circle then types the prompt. Compose for prompt-UX explanations. | `promptInput` |
+| `reactionClip` | `frame` | Full-bleed reaction/meme video clip with an optional punchline overlay. Compose at most once, for funny or self-aware beats. | — |
+| `reviewStackPrimitive` | `frame` | Stacked review cards with staggered spring entrance and star ratings. Compose for 2+ real attributed reviews. | `reviewStack` |
+| `statBadgeRow` | `frame` | Row of peer stat badges with comparable weight. Compose for exactly three parallel facts. | `tripleStats` |
+| `stepsList` | `frame` | Ordered step cards that spring in one at a time. Compose when sequence matters (connect → generate → publish). | `steps` |
+| `terminalOutput` | `anchored` | Terminal chrome that types a command then streams output lines. Compose when a CLI command or log IS the content. | `terminal` |
+| `testimonialCard` | `frame` | Single quote card with author name, role, and avatar. Compose for one real attributed quote. | `testimonial` |
+| `tweetCard` | `frame` | X-style post card with verification badge and like/reply counters. Compose for a brand-voiced public post. | `tweet` |
+| `webMockupPrimitive` | `anchored` | Browser/desktop chrome with an address bar, wrapping up to three landscape screens. Compose for dashboard or web UI. | — |
+| `wordmarkReveal` | `frame` | Minimal brand stamp — wordmark or logo with URL and action. Compose for a quiet closer when the video already has motion. | `ctaLogo` |
 
 ## Motion stdlib (in scope inside `componentSource`)
 
@@ -228,7 +237,7 @@ curves, colors, or font stacks.
 
 | Lib | What it gives you | Used by |
 |---|---|---|
-| `animation-utils` | Core motion vocabulary — `interpolate`, `spring`, `Easing` (incl. `Easing.bezier`), the `SPRING_*` presets, `stagger`, `cubicBezier`. Every custom scene's curves resolve to these; do not reinvent values. | `barChart`, `bigNumber`, `brandMessage`, `cardList`, `chatMessenger`, `chatWhatsapp`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
-| `text-utils` | Text measurement and fitting helpers — notably `fitTextSize(text, baseSize, maxWidth)` for shrink-to-fit copy in fixed-width containers. | `bigNumber`, `brandMessage`, `ctaMedia`, `incomingCall`, `milestone`, `progressRing`, `promptInput`, `testimonial` |
-| `tokens` | The canonical brand-token resolver: one derivation path from a config's `style` + `brandKit` to the resolved `accent` / `surface` / `surface_elevated` / `content` / `muted` / `font` / `script_font` tokens, plus `fontStack()`. Read tokens from here instead of hardcoding colors or font stacks. | `barChart`, `beforeAfter`, `bigNumber`, `brandMessage`, `cardList`, `chatMessenger`, `chatWhatsapp`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
-| `motion-stdlib` | The higher-level motion vocabulary custom scenes compose with — `phase`, `staggerWindow`, `punch`, `cascade`, `typewriter`, `countUp`, `particles`, `burst`, `glow`, `vignette`, `grain`, `drift`, `sweep`, `morph`, `orbit`, `pathDraw`. These are already globals inside a `custom_*` scene; install this item when you want them in your own project. | — |
+| `animation-utils` | — | Core motion vocabulary — `interpolate`, `spring`, `Easing` (incl. `Easing.bezier`), the `SPRING_*` presets, `stagger`, `cubicBezier`. Every custom scene's curves resolve to these; do not reinvent values. | `barChart`, `bigNumber`, `brandMessage`, `cardList`, `chatMessenger`, `chatWhatsapp`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
+| `text-utils` | — | Text measurement and fitting helpers — notably `fitTextSize(text, baseSize, maxWidth)` for shrink-to-fit copy in fixed-width containers. | `bigNumber`, `brandMessage`, `ctaMedia`, `incomingCall`, `milestone`, `progressRing`, `promptInput`, `testimonial` |
+| `tokens` | — | The canonical brand-token resolver: one derivation path from a config's `style` + `brandKit` to the resolved `accent` / `surface` / `surface_elevated` / `content` / `muted` / `font` / `script_font` tokens, plus `fontStack()`. Read tokens from here instead of hardcoding colors or font stacks. | `barChart`, `beforeAfter`, `bigNumber`, `brandMessage`, `cardList`, `chatMessenger`, `chatWhatsapp`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
+| `motion-stdlib` | — | The higher-level motion vocabulary custom scenes compose with — `phase`, `staggerWindow`, `punch`, `cascade`, `typewriter`, `countUp`, `particles`, `burst`, `glow`, `vignette`, `grain`, `drift`, `sweep`, `morph`, `orbit`, `pathDraw`. These are already globals inside a `custom_*` scene; install this item when you want them in your own project. | — |

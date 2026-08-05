@@ -44,6 +44,7 @@
       "tier": "free",
       "component": "StepsList",
       "composable": true,
+      "bounds": "frame",
       "propSchema": {
         "progress": {
           "type": "number",

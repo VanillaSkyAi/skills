@@ -21,6 +21,7 @@
       "tier": "free",
       "component": "DesignedScreenFill",
       "composable": false,
+      "bounds": "fill",
       "propSchema": {
         "accent": {
           "type": "string",

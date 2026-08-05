@@ -26,6 +26,7 @@
       "tier": "free",
       "component": "IncomingCallCard",
       "composable": true,
+      "bounds": "frame",
       "propSchema": {
         "progress": {
           "type": "number",

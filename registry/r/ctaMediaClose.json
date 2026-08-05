@@ -26,6 +26,7 @@
       "tier": "free",
       "component": "CtaMediaClose",
       "composable": true,
+      "bounds": "frame",
       "propSchema": {
         "progress": {
           "type": "number",

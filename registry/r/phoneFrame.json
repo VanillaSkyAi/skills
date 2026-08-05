@@ -23,6 +23,7 @@
       "tier": "free",
       "component": "PhoneFrame",
       "composable": true,
+      "bounds": "anchored",
       "propSchema": {
         "progress": {
           "type": "number",

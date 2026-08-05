@@ -21,6 +21,7 @@
       "tier": "free",
       "component": "BarChart",
       "composable": true,
+      "bounds": "frame",
       "propSchema": {
         "progress": {
           "type": "number",

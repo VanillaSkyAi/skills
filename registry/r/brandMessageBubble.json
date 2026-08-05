@@ -37,6 +37,7 @@
       "tier": "free",
       "component": "BrandMessageBubble",
       "composable": true,
+      "bounds": "anchored",
       "propSchema": {
         "progress": {
           "type": "number",
