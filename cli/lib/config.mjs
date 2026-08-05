@@ -61,6 +61,34 @@ export function encodeConfig(config) {
   return Buffer.from(JSON.stringify(config), "utf8").toString("base64url");
 }
 
+/**
+ * Longest base64 fragment still worth printing as a link. A long URL is ugly
+ * but works; the pathological case (one real config hit 247KB) is what wedges
+ * a tab, and in practice that only happens when media is inlined as base64.
+ * So this ceiling is deliberately generous — an ejected `custom_*` scene can
+ * carry 16KB of source on its own, and those configs are perfectly linkable.
+ */
+export const MAX_USABLE_FRAGMENT = 64 * 1024;
+
+const INLINE_MEDIA_RE = /^data:(image|video)\//i;
+
+/**
+ * True when the config carries media inlined as a `data:` URL. Those are what
+ * blow the fragment past any usable size — a screenshot or logo embedded as
+ * base64 rather than referenced by path or https URL.
+ */
+export function hasInlineMedia(config) {
+  let found = false;
+  const visit = (node) => {
+    if (found) return;
+    if (typeof node === "string") { if (INLINE_MEDIA_RE.test(node)) found = true; return; }
+    if (Array.isArray(node)) { node.forEach(visit); return; }
+    if (node && typeof node === "object") Object.values(node).forEach(visit);
+  };
+  visit(config);
+  return found;
+}
+
 /** Ported from computeTotalDuration in src/lib/export-video.ts. */
 export function computeTotalDuration(config) {
   const lastEndTime = config.scenes.reduce((max, s) => {
@@ -111,5 +139,11 @@ export function collectMediaUrls(config) {
       if (typeof val === "string" && /^https?:\/\//.test(val)) urls.add(val);
     }
   }
+  // The brand logo lives outside scenes but is still an <img src> the capture
+  // has to fetch, and a published config always references it by URL. Without
+  // it here a dead logo URL is silently invisible in the closer instead of
+  // failing the render like every other unreachable media URL.
+  const logo = config.style?.brandKit?.logoDataUrl;
+  if (typeof logo === "string" && /^https?:\/\//.test(logo)) urls.add(logo);
   return [...urls];
 }

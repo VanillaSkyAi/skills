@@ -88,12 +88,26 @@ change the brief.
 4. **Full render**: `vanillasky render video.json` → `./video.mp4`. Watch it.
 5. **Deliver**: open the finished video for the user — pass `--open` on the
    render, or use the platform opener (macOS `open video.mp4`, Linux
-   `xdg-open video.mp4`) — and include BOTH links from the render's
-   completion block in your delivery message: "Watch in browser"
-   (`<base>/render#config=...`, zero-install playback for anyone without
-   local Chrome) and "Open in Studio" (`<base>/create#config=...`,
-   chat-driven iteration on the exact rendered config).
-   `vanillasky link video.json` reprints the watch URL on demand.
+   `xdg-open video.mp4`) — and include BOTH links from the render's completion
+   block in your delivery message: "Watch in browser" (zero-install playback
+   for anyone without local Chrome) and "Open in Studio" (iteration on the
+   exact rendered config). `vanillasky link video.json` reprints them on
+   demand.
+
+   Nothing here talks to a server: the links carry the config in the URL
+   fragment, and the render itself is entirely local. The one limit is size —
+   media inlined as a `data:` URL (a base64 screenshot or logo) makes the
+   fragment far too long to be a URL, and the CLI then prints no links and
+   says why. **Prefer a real https URL or a local file path for media over
+   embedding base64**, and the links keep working.
+
+   **`vanillasky studio video.json` opens the bundled editor** — scene list,
+   per-scene variables, template swap, motion, live preview — served from
+   localhost and saving straight back to the file. It works offline and for
+   any config, including one carrying inline media that has no share link, so
+   it is the answer to "how do I change this myself?". Point the user at it
+   when you deliver. Re-run `vanillasky render` afterwards for the final MP4;
+   the Studio edits the config, it doesn't write the video.
 
 **Never deliver an uninspected video.** The frame/sheet step is mandatory, not
 optional — validation catches schema errors, only your eyes catch a bad frame.

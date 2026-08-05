@@ -180,8 +180,13 @@ export async function fillPexelsMedia(config, { apiKey, fetchImpl = globalThis.f
       if (searchType === "video") {
         if (isEmpty(vars.mediaType)) vars.mediaType = "video";
         // Sibling poster convention from the web path: mediaUrl → mediaPoster.
+        // Only when the template actually declares that variable — `media`
+        // does not, and writing it there made the fill produce a config the
+        // CLI's own validator then rejected ("unknown variable mediaPoster").
         const posterVarName = varName.replace(/Url$/, "Poster");
-        if (posterVarName !== varName && picked.thumbnail) vars[posterVarName] = picked.thumbnail;
+        if (posterVarName !== varName && picked.thumbnail && posterVarName in schema) {
+          vars[posterVarName] = picked.thumbnail;
+        }
       }
       filled.push({ sceneIndex: i, templateId: scene.templateId, varName, keyword, type: searchType, src: picked.src, photographer: picked.photographer });
       log(`[vanillasky] pexels: scene ${i + 1} (${scene.templateId}) ${varName} ← ${searchType} "${keyword}"${picked.photographer ? ` by ${picked.photographer}` : ""} (pexels.com)`);

@@ -21,6 +21,7 @@ import { resolveDist, startServer } from "./server.mjs";
 import {
   loadConfig, encodeConfig, computeTotalDuration, sceneTimeRanges,
   collectMediaUrls, DEFAULT_AUDIO_FADE_MS, DEFAULT_FONT, ensureRenderableStyle,
+  MAX_USABLE_FRAGMENT, hasInlineMedia,
 } from "./config.mjs";
 import { validateConfig, formatReport } from "./validate.mjs";
 import { mergeDesignMdIntoConfig } from "./design-md.mjs";
@@ -642,16 +643,35 @@ async function runFullRender(browser, shared, opts) {
  * plus zero-install links to watch it in the browser and open it in the
  * Studio for chat-driven iteration. shared.b64 is the exact config that was
  * rendered (post DESIGN.md merge / Pexels fill / style injection).
+ *
+ * The links carry the config in the URL fragment, so they need no server of
+ * ours — but a config that inlines a screenshot or logo as a `data:` URL
+ * blows past any usable URL length. In that case say so instead of printing
+ * a quarter-megabyte link nobody can use.
  */
 function printOutputAffordances(out, shared, opts) {
   const base = (opts.base ?? "https://vanillasky.ai").replace(/\/+$/, "");
   const size = statSync(out).size;
-  console.log(
-    `\n  Output:           ${out} (${shared.duration.toFixed(1)}s, ${(size / 1024 / 1024).toFixed(1)} MB)\n` +
-    `  Watch in browser: ${base}/render#config=${shared.b64}\n` +
-    `  Open in Studio:   ${base}/create#config=${shared.b64}\n` +
-    `  (links require the deployed site to support inline configs — use --base for previews)`,
-  );
+  const header = `\n  Output:           ${out} (${shared.duration.toFixed(1)}s, ${(size / 1024 / 1024).toFixed(1)} MB)`;
+
+  const inline = hasInlineMedia(shared.config);
+  if (inline || shared.b64.length > MAX_USABLE_FRAGMENT) {
+    console.log(
+      `${header}\n` +
+      `  Share links:      none — this config is ${(shared.b64.length / 1024).toFixed(0)}KB in a URL.\n` +
+      (inline
+        ? `                    It embeds media as data: URLs. Reference that media by https URL\n` +
+          `                    or a local file path to get shareable links back.`
+        : `                    Trim it below ${MAX_USABLE_FRAGMENT / 1024}KB to get shareable links back.`),
+    );
+  } else {
+    console.log(
+      `${header}\n` +
+      `  Watch in browser: ${base}/render#config=${shared.b64}\n` +
+      `  Open in Studio:   ${base}/create#config=${shared.b64}\n` +
+      `  (links require the deployed site to support inline configs — use --base for previews)`,
+    );
+  }
   if (opts.open) openWithPlatformViewer(out);
 }
 

@@ -2,16 +2,18 @@
 import { parseArgs } from "node:util";
 import { renderCommand } from "../lib/render.mjs";
 import { validateCommand, registryData } from "../lib/validate.mjs";
-import { loadConfig, encodeConfig } from "../lib/config.mjs";
+import { loadConfig, encodeConfig, MAX_USABLE_FRAGMENT, hasInlineMedia } from "../lib/config.mjs";
 import { brandCommand } from "../lib/design-md.mjs";
 import { tracksCommand } from "../lib/audio-library.mjs";
 import { setupCommand } from "../lib/setup.mjs";
+import { studioCommand } from "../lib/studio.mjs";
 
 const HELP = `vanillasky — validate, render, and share VanillaSky video configs locally
 
 Usage:
   vanillasky setup [--check]
   vanillasky render <config.json> [options]
+  vanillasky studio <config.json> [--no-open]
   vanillasky validate <config.json> [--json] [--format <id>]
   vanillasky tracks [--json]
   vanillasky scope [--json]
@@ -40,6 +42,9 @@ Render options:
   --open           Open the finished MP4 with the platform viewer (best-effort)
   --base <url>     Host for the Watch/Studio links in the completion block
                    (default https://vanillasky.ai)
+
+Studio options:
+  --no-open        Print the URL instead of opening a browser
 
 Validate options:
   --json           Machine-readable JSON output
@@ -83,7 +88,7 @@ if (!cmd || cmd === "help" || cmd === "--help" || cmd === "-h") {
   process.exit(cmd ? 0 : 1);
 }
 
-const COMMANDS = ["setup", "render", "validate", "tracks", "brand", "link", "scope"];
+const COMMANDS = ["setup", "render", "studio", "validate", "tracks", "brand", "link", "scope"];
 if (!COMMANDS.includes(cmd)) {
   console.error(`Unknown command "${cmd}" — expected one of: ${COMMANDS.join(", ")}.\n`);
   console.error(HELP);
@@ -110,6 +115,7 @@ try {
       format: { type: "string" },
       base: { type: "string" },
       open: { type: "boolean" },
+      "no-open": { type: "boolean" },
       check: { type: "boolean" },
     },
   }));
@@ -187,7 +193,29 @@ if (cmd === "link") {
   try {
     const config = loadConfig(configPath);
     const base = (values.base ?? "https://vanillasky.ai").replace(/\/+$/, "");
-    console.log(`${base}/render#config=${encodeConfig(config)}`);
+    const b64 = encodeConfig(config);
+    const inline = hasInlineMedia(config);
+    if (inline || b64.length > MAX_USABLE_FRAGMENT) {
+      console.error(
+        `[vanillasky] error: this config is ${(b64.length / 1024).toFixed(0)}KB in a URL — no shareable link.\n` +
+        (inline
+          ? `  It embeds media as data: URLs. Reference that media by https URL or a local file path.`
+          : `  Trim it below ${MAX_USABLE_FRAGMENT / 1024}KB to get a shareable link.`),
+      );
+      process.exit(1);
+    }
+    console.log(`${base}/render#config=${b64}`);
+    console.log(`${base}/create#config=${b64}`);
+    process.exit(0);
+  } catch (err) {
+    console.error(`[vanillasky] error: ${err?.message ?? err}`);
+    process.exit(1);
+  }
+}
+
+if (cmd === "studio") {
+  try {
+    await studioCommand(configPath, { open: !values["no-open"] });
     process.exit(0);
   } catch (err) {
     console.error(`[vanillasky] error: ${err?.message ?? err}`);
