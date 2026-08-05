@@ -59,6 +59,29 @@ export async function handleLocalRoute(req, res, url, ctx) {
   const route = url.pathname.slice("/__local".length);
 
   if (!originOk(req, port)) return json(res, 403, { error: "bad Host or Origin" }), true;
+
+  // Bundled music is fetched by an <audio> element, which cannot send a
+  // custom header — requiring the token here 403s the file, the element never
+  // loads, and since playback advances off audioElement.currentTime the whole
+  // preview sits frozen at zero. These are non-sensitive static assets that
+  // ship with the tool, served only for filenames present in the manifest,
+  // and the loopback + Host checks above still apply.
+  if (route.startsWith("/audio/") && req.method === "GET") {
+    const wanted = decodeURIComponent(route.slice("/audio/".length));
+    const { tracks, audioDir } = ctx.loadTrackLibrary();
+    const track = tracks.find((t) => t.file === wanted);
+    if (!track) return json(res, 404, { error: "no such track" }), true;
+    const file = join(audioDir, track.file);
+    if (!existsSync(file)) return json(res, 404, { error: "track file missing" }), true;
+    res.writeHead(200, {
+      "Content-Type": "audio/mpeg",
+      "Cache-Control": "no-cache",
+      "Referrer-Policy": "no-referrer",
+      "Accept-Ranges": "none",
+    });
+    createReadStream(file).pipe(res);
+    return true;
+  }
   // Header only. A query-string token would ride in Referer, browser history
   // and any copied URL, and would make a simple cross-origin POST possible.
   if (req.headers["x-vs-token"] !== session.token) return json(res, 403, { error: "bad or missing token" }), true;
@@ -120,19 +143,6 @@ export async function handleLocalRoute(req, res, url, ctx) {
           types: [],
         })),
       }), true;
-    }
-
-    if (route.startsWith("/audio/") && req.method === "GET") {
-      // Filename must match a manifest entry — never a client-supplied path.
-      const wanted = decodeURIComponent(route.slice("/audio/".length));
-      const { tracks, audioDir } = ctx.loadTrackLibrary();
-      const track = tracks.find((t) => t.file === wanted);
-      if (!track) return json(res, 404, { error: "no such track" }), true;
-      const file = join(audioDir, track.file);
-      if (!existsSync(file)) return json(res, 404, { error: "track file missing" }), true;
-      res.writeHead(200, { "Content-Type": "audio/mpeg", "Cache-Control": "no-cache", "Referrer-Policy": "no-referrer" });
-      createReadStream(file).pipe(res);
-      return true;
     }
 
     if (route === "/search-media" && req.method === "POST") {
