@@ -16,6 +16,7 @@ import { resolveDist, startServer } from "./server.mjs";
 import { loadConfig } from "./config.mjs";
 import { validateConfig } from "./validate.mjs";
 import { renderCommand } from "./render.mjs";
+import { getPexelsApiKey, searchPexels } from "./pexels.mjs";
 import { LocalSession } from "./local-session.mjs";
 
 export async function studioCommand(configPath, opts = {}) {
@@ -36,12 +37,19 @@ export async function studioCommand(configPath, opts = {}) {
       return { errors: r.errors ?? [], warnings: r.warnings ?? [] };
     },
     renderCommand,
+    getPexelsApiKey,
+    searchPexels,
   });
 
   const url = `${server.baseUrl}/studio#token=${session.token}`;
   console.log(`[vanillasky] studio: ${config.scenes.length} scene(s) from ${path}`);
   console.log(`[vanillasky] ${url}`);
   console.log(`[vanillasky] edits save to ${path}; external changes reload live — Ctrl+C to stop`);
+  // Stock search is the one editor feature that needs something from the
+  // user. Say so once here rather than letting them find an empty picker.
+  if (!getPexelsApiKey()) {
+    console.log(`[vanillasky] no Pexels key — stock search is off. Add one free at pexels.com/api, then \`vanillasky setup\``);
+  }
   if (opts.open !== false) openInBrowser(url);
 
   await new Promise((resolvePromise) => {

@@ -104,6 +104,33 @@ export async function handleLocalRoute(req, res, url, ctx) {
       return true;
     }
 
+    if (route === "/search-media" && req.method === "POST") {
+      const body = JSON.parse(await readBody(req, 8 * 1024));
+      const query = typeof body?.query === "string" ? body.query.trim() : "";
+      if (!query) return json(res, 400, { error: "query required" }), true;
+      // The key is the user's own and the request goes straight from this
+      // machine to Pexels — no VanillaSky endpoint in the path.
+      const key = ctx.getPexelsApiKey?.();
+      if (!key) {
+        return json(res, 200, {
+          configured: false,
+          hint: "Add a free Pexels key to search stock footage — run `vanillasky setup`, or set PEXELS_API_KEY.",
+        }), true;
+      }
+      try {
+        const results = await ctx.searchPexels({
+          apiKey: key.key,
+          query,
+          type: body.type === "photo" ? "photo" : "video",
+          orientation: body.orientation === "landscape" ? "landscape" : "portrait",
+          perPage: 15,
+        });
+        return json(res, 200, { configured: true, results }), true;
+      } catch (err) {
+        return json(res, 200, { configured: true, results: [], error: String(err?.message ?? err) }), true;
+      }
+    }
+
     if (route === "/render" && req.method === "POST") {
       if (session.render?.running) return json(res, 409, { error: "a render is already running" }), true;
       startRender(ctx).catch(() => { /* reported over SSE */ });

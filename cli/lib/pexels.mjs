@@ -62,7 +62,16 @@ function pickVideoFile(video, orientation) {
   );
 }
 
-async function searchPexels({ apiKey, query, type, orientation, perPage, fetchImpl }) {
+/**
+ * Search Pexels with the user's own key. Exported so the bundled Studio's
+ * media picker can use the same code path the renderer's auto-fill does —
+ * the request goes from this machine straight to Pexels, so stock search
+ * works locally without any VanillaSky endpoint.
+ *
+ * Returns [{ src, thumbnail, photographer }], the same shape the web app's
+ * search-pexels function returns, so the picker needs no second mapping.
+ */
+export async function searchPexels({ apiKey, query, type, orientation, perPage = 15, fetchImpl = globalThis.fetch }) {
   const base = type === "video" ? "https://api.pexels.com/videos/search" : "https://api.pexels.com/v1/search";
   const url = `${base}?query=${encodeURIComponent(query)}&orientation=${orientation}&per_page=${perPage}`;
   const controller = new AbortController();

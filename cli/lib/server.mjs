@@ -55,6 +55,7 @@ export function startServer(dist, opts = {}) {
         if (session && pathname.startsWith("/__local/")) {
           void handleLocalRoute(req, res, url, {
             session, port: boundPort, validate: opts.validate, renderCommand: opts.renderCommand,
+            getPexelsApiKey: opts.getPexelsApiKey, searchPexels: opts.searchPexels,
           });
           return;
         }

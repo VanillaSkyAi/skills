@@ -162,6 +162,10 @@ it explicitly.
 `cinematic`, `heroWord`) are documented with use-when guidance in
 [references/motion.md](references/motion.md).
 
+A Pexels key is worth setting up front: it powers both `mediaKeyword`
+resolution here AND stock search inside `vanillasky studio`, so without one the
+user's media picker is empty. It's free at pexels.com/api.
+
 `mediaKeyword` resolves to stock footage automatically when `PEXELS_API_KEY`
 is set (free at pexels.com/api; env var, or `~/.vanillasky/config.json`
 `{ "pexelsApiKey": "..." }` — env wins; `--no-pexels` opts out). Without a
