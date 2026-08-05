@@ -12,6 +12,17 @@ the bundled `vanillasky` CLI. Deterministic — same config, same MP4.
 | --- | --- |
 | [`vanillasky`](vanillasky/) | Compose + render finished social videos from a brief. Curated scene templates, music tracks, motion/composition rules, brand ingestion from your repo's DESIGN.md. |
 
+## What's in the box
+
+| | |
+| --- | --- |
+| **28 scene templates** | Hooks, stats, device mockups, social cards, explainers, closers — each with a variable schema and a preferred duration. [Browse](https://vanillasky.ai/templates) |
+| **26 motion primitives** | The pieces the templates are built from, for composing a scene the catalog doesn't cover |
+| **4 shared libs** | The motion vocabulary, text fitting, and the brand token resolver — all installable, all readable |
+| **12 licensed tracks** | Bundled with the CLI, tagged by mood and energy, no download step. [Listen](https://vanillasky.ai/audio) |
+| **4 formats** | `launch`, `review`, `milestone`, `update` — each with its own slot contract the validator enforces |
+| **A local editor** | `vanillasky studio` — timeline, variables, music, live preview, MP4 export. No account, no upload |
+
 ## Install the skill
 
 **Claude Code / Claude-compatible agents:**
@@ -32,6 +43,22 @@ The skill uses the live template catalog at
 when online; this repo's `registry/` directory is the equivalent offline
 snapshot (`llms-components.txt` is the index, `r/<name>.json` has each
 item's full variable schema, defaults, and source).
+
+## Edit it without writing JSON
+
+```bash
+vanillasky studio video.json
+```
+
+Opens a visual editor served from `127.0.0.1` — scene timeline, per-scene
+variables, template swap, stock search with your own Pexels key, the music
+library, live preview, and **Export MP4** running the same renderer the CLI
+uses. Edits autosave to the file, and the page follows external changes, so an
+agent can keep editing the same config while you watch it update.
+
+No account, no upload, no telemetry. The AI chat from the hosted Studio is
+deliberately absent — that is what lets the whole editor ship inside the skill
+with no backend.
 
 ## The registry — components, not just templates
 
@@ -94,6 +121,27 @@ Portrait 9:16 and landscape 16:9 are equal citizens — swap in
 `orientation` field decides; portrait when omitted).
 `node cli/bin/vanillasky.mjs help` lists everything (contact sheets, draft
 mode, scale/fps, share links).
+
+## Ejecting, and staying informed
+
+Any item can be ejected: read its source from `registry/r/<id>.json` and
+inline your own version as `componentSource` on a `custom_*` scene. That
+gives you the code, and the cost is that your copy stops receiving fixes.
+
+An ejected scene records where it came from in `scene.origin` — the item, the
+version, and a hash of the upstream source at eject time — so:
+
+```bash
+vanillasky diff video.json
+```
+
+tells you when the item you started from has changed since, and points at what
+to compare. It reports; it never merges, because your copy diverged on purpose.
+
+Note that `npx shadcn add` installs an item's source into a React project —
+useful for building your own app around these components. It does **not**
+change what the `vanillasky` CLI renders; to change a scene there, use
+`componentSource`.
 
 ## Offline behavior
 

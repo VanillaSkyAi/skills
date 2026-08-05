@@ -204,14 +204,28 @@ templates to a flat brand backdrop — prefer omitting `background`/`surface`
 from DESIGN.md (or leaving `bg` unset) when scenes should keep their generated
 brand gradients.
 
-## Slot contract (format `launch`)
+## Slot contract (formats)
 
-hook → 3 bodies → closer, 5 scenes by default at each template's preferred
-duration (typically 15–20s total). Exact bounds, banned hook templates, and
-the category map are in [references/formats.md](references/formats.md); the
-validator enforces them mechanically when the config declares
-`"format": "launch"`. The judgment part: bodies cover three roles — framing,
-comprehension, proof — and the closer is the address (brand / URL / action).
+Four formats ship. Declare one with `"format": "<id>"` and the validator
+enforces its slot contract mechanically. Pick by what the video IS, not by
+which is most familiar — they differ in body roles, scene budget and hook bans:
+
+| Format | Use for | Bodies cover | Scenes |
+|---|---|---|---|
+| `launch` | A product or feature going live | framing, comprehension, proof | 3–8, default 5 |
+| `review` | A real customer quote | the quote, who said it, what changed | 4–7, default 5 |
+| `milestone` | A number worth celebrating | the number, the context, the thanks | 3–6, default 4 |
+| `update` | A changelog / shipped-something post | what changed, what it looks like, why it matters | 4–7, default 5 |
+
+`review` additionally bans `testimonial` and `reviewStack` as the hook, and
+`milestone` bans `milestone` and `bigNumber` — opening on the payoff spends it
+in the first two seconds and leaves the bodies nothing to reveal. `milestone`
+is deliberately the shortest: it outstays its welcome faster than a launch.
+
+Exact bounds, banned hook templates and the category map are in
+[references/formats.md](references/formats.md), generated from the same
+definitions the validator uses. The judgment part is the body roles — and the
+closer is always the address (brand / URL / action).
 
 ## Anti-boring rules (hard negatives)
 
@@ -251,7 +265,11 @@ Escalate only when the previous rung genuinely can't express the brief:
 2. **Adjust variables** — the full schema with types, options, and defaults is
    in the per-item JSON (`registry/r/<id>.json`, `meta.vanillasky.variableSchema`).
 3. **Eject** — write your own scene body as `componentSource` on a scene whose
-   `templateId` starts `custom_`. Read the registry item's source
+   `templateId` starts `custom_`. **Record where it came from** in
+   `scene.origin` (`{ item, version, sourceHash, ejectedAt }`) — that's what
+   makes `vanillasky diff <config>` able to tell the user later that the item
+   they started from has changed upstream. An ejected scene without it is an
+   anonymous blob nobody can maintain. Read the registry item's source
    (`files[0].content`) as the reference for how the built-in does it, then
    write a body that satisfies the contract below. Ejected scenes travel
    inside the config and render everywhere, including the browser link.

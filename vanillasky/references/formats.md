@@ -14,6 +14,36 @@ Tech/SaaS launch moment: hook → 3 bodies (framing, comprehension, proof) → c
 - **Closer**: the last scene must use a `closer`-category template, and `closer` templates may appear ONLY in the final slot.
 - **Diversity**: adjacent scenes must come from different template categories; adjacent scenes must not use the same template. Exempt categories: `media` (multi-upload carve-out — distinct assets or deliberately different mediaKeywords).
 
+## review
+
+Customer review moment: hook → 2-3 bodies (the quote, who they are, what changed) → closer. The quote must be real and attributed — never invent a reviewer, a company or a number. Default 5 scenes, typically 15-20s.
+
+- **Scenes**: 4–7, default 5. First scene is the hook, last is the closer, everything between is a body.
+- **Hook**: default template `media`. Banned as hook (motion too slow to land in the first 2–3s): `chatWhatsapp`, `chatMessenger`, `appFeed`, `problemSolution`, `beforeAfter`, `testimonial`, `reviewStack`.
+- **Bodies**: 2–5, default 3. Role budget for the default build — one body per role: quote, attribution, outcome.
+- **Closer**: the last scene must use a `closer`-category template, and `closer` templates may appear ONLY in the final slot.
+- **Diversity**: adjacent scenes must come from different template categories; adjacent scenes must not use the same template. Exempt categories: `media` (multi-upload carve-out — distinct assets or deliberately different mediaKeywords).
+
+## milestone
+
+Numeric achievement: hook → 2-3 bodies (the number, the context, the thanks) → closer. Use the exact figure from the input; never round up an invented one. Default 4 scenes, typically 12-16s — a milestone outstays its welcome faster than a launch.
+
+- **Scenes**: 3–6, default 4. First scene is the hook, last is the closer, everything between is a body.
+- **Hook**: default template `media`. Banned as hook (motion too slow to land in the first 2–3s): `chatWhatsapp`, `chatMessenger`, `appFeed`, `problemSolution`, `beforeAfter`, `milestone`, `bigNumber`.
+- **Bodies**: 2–4, default 2. Role budget for the default build — one body per role: number, context, gratitude.
+- **Closer**: the last scene must use a `closer`-category template, and `closer` templates may appear ONLY in the final slot.
+- **Diversity**: adjacent scenes must come from different template categories; adjacent scenes must not use the same template. Exempt categories: `media` (multi-upload carve-out — distinct assets or deliberately different mediaKeywords).
+
+## update
+
+Product update / changelog: hook → 2-4 bodies (what changed, what it looks like, why it matters) → closer. Show the actual surface that changed — a real screenshot beats a synthesized one. Default 5 scenes, typically 14-18s.
+
+- **Scenes**: 4–7, default 5. First scene is the hook, last is the closer, everything between is a body.
+- **Hook**: default template `media`. Banned as hook (motion too slow to land in the first 2–3s): `chatWhatsapp`, `chatMessenger`, `appFeed`, `problemSolution`, `beforeAfter`.
+- **Bodies**: 2–5, default 3. Role budget for the default build — one body per role: change, demonstration, benefit.
+- **Closer**: the last scene must use a `closer`-category template, and `closer` templates may appear ONLY in the final slot.
+- **Diversity**: adjacent scenes must come from different template categories; adjacent scenes must not use the same template. Exempt categories: `media` (multi-upload carve-out — distinct assets or deliberately different mediaKeywords).
+
 ## Template categories
 
 The category map the diversity + closer rules run against:

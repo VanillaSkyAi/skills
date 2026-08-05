@@ -7,6 +7,7 @@ import { brandCommand } from "../lib/design-md.mjs";
 import { tracksCommand } from "../lib/audio-library.mjs";
 import { setupCommand } from "../lib/setup.mjs";
 import { studioCommand } from "../lib/studio.mjs";
+import { diffCommand } from "../lib/diff.mjs";
 
 const HELP = `vanillasky — validate, render, and share VanillaSky video configs locally
 
@@ -15,6 +16,7 @@ Usage:
   vanillasky render <config.json> [options]
   vanillasky studio <config.json> [--no-open]
   vanillasky validate <config.json> [--json] [--format <id>]
+  vanillasky diff <config.json> [--json]
   vanillasky tracks [--json]
   vanillasky scope [--json]
   vanillasky brand [path] [--json]
@@ -50,6 +52,9 @@ Validate options:
   --json           Machine-readable JSON output
   --format <id>    Enforce a format's slot contract (e.g. launch);
                    defaults to the config's "format" field when present
+
+Diff options:
+  --json           Machine-readable JSON output
 
 Link options:
   --base <url>     Host for the render link (default https://vanillasky.ai)
@@ -88,7 +93,7 @@ if (!cmd || cmd === "help" || cmd === "--help" || cmd === "-h") {
   process.exit(cmd ? 0 : 1);
 }
 
-const COMMANDS = ["setup", "render", "studio", "validate", "tracks", "brand", "link", "scope"];
+const COMMANDS = ["setup", "render", "studio", "validate", "diff", "tracks", "brand", "link", "scope"];
 if (!COMMANDS.includes(cmd)) {
   console.error(`Unknown command "${cmd}" — expected one of: ${COMMANDS.join(", ")}.\n`);
   console.error(HELP);
@@ -211,6 +216,10 @@ if (cmd === "link") {
     console.error(`[vanillasky] error: ${err?.message ?? err}`);
     process.exit(1);
   }
+}
+
+if (cmd === "diff") {
+  process.exit(diffCommand(configPath, { json: Boolean(values.json) }));
 }
 
 if (cmd === "studio") {

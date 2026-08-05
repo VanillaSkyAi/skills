@@ -77,6 +77,136 @@ export default {
           "media"
         ]
       }
+    },
+    "review": {
+      "id": "review",
+      "description": "Customer review moment: hook → 2-3 bodies (the quote, who they are, what changed) → closer. The quote must be real and attributed — never invent a reviewer, a company or a number. Default 5 scenes, typically 15-20s.",
+      "slots": {
+        "hook": {
+          "bannedTemplateIds": [
+            "chatWhatsapp",
+            "chatMessenger",
+            "appFeed",
+            "problemSolution",
+            "beforeAfter",
+            "testimonial",
+            "reviewStack"
+          ],
+          "defaultTemplateId": "media"
+        },
+        "body": {
+          "roleBudget": [
+            "quote",
+            "attribution",
+            "outcome"
+          ],
+          "min": 2,
+          "max": 5,
+          "default": 3
+        },
+        "closer": {
+          "requiredCategory": "closer",
+          "onlyInFinalSlot": true
+        }
+      },
+      "sceneCount": {
+        "min": 4,
+        "max": 7,
+        "default": 5
+      },
+      "diversity": {
+        "noSameCategoryAdjacent": true,
+        "noSameTemplateAdjacent": true,
+        "adjacencyExemptCategories": [
+          "media"
+        ]
+      }
+    },
+    "milestone": {
+      "id": "milestone",
+      "description": "Numeric achievement: hook → 2-3 bodies (the number, the context, the thanks) → closer. Use the exact figure from the input; never round up an invented one. Default 4 scenes, typically 12-16s — a milestone outstays its welcome faster than a launch.",
+      "slots": {
+        "hook": {
+          "bannedTemplateIds": [
+            "chatWhatsapp",
+            "chatMessenger",
+            "appFeed",
+            "problemSolution",
+            "beforeAfter",
+            "milestone",
+            "bigNumber"
+          ],
+          "defaultTemplateId": "media"
+        },
+        "body": {
+          "roleBudget": [
+            "number",
+            "context",
+            "gratitude"
+          ],
+          "min": 2,
+          "max": 4,
+          "default": 2
+        },
+        "closer": {
+          "requiredCategory": "closer",
+          "onlyInFinalSlot": true
+        }
+      },
+      "sceneCount": {
+        "min": 3,
+        "max": 6,
+        "default": 4
+      },
+      "diversity": {
+        "noSameCategoryAdjacent": true,
+        "noSameTemplateAdjacent": true,
+        "adjacencyExemptCategories": [
+          "media"
+        ]
+      }
+    },
+    "update": {
+      "id": "update",
+      "description": "Product update / changelog: hook → 2-4 bodies (what changed, what it looks like, why it matters) → closer. Show the actual surface that changed — a real screenshot beats a synthesized one. Default 5 scenes, typically 14-18s.",
+      "slots": {
+        "hook": {
+          "bannedTemplateIds": [
+            "chatWhatsapp",
+            "chatMessenger",
+            "appFeed",
+            "problemSolution",
+            "beforeAfter"
+          ],
+          "defaultTemplateId": "media"
+        },
+        "body": {
+          "roleBudget": [
+            "change",
+            "demonstration",
+            "benefit"
+          ],
+          "min": 2,
+          "max": 5,
+          "default": 3
+        },
+        "closer": {
+          "requiredCategory": "closer",
+          "onlyInFinalSlot": true
+        }
+      },
+      "sceneCount": {
+        "min": 4,
+        "max": 7,
+        "default": 5
+      },
+      "diversity": {
+        "noSameCategoryAdjacent": true,
+        "noSameTemplateAdjacent": true,
+        "adjacencyExemptCategories": [
+          "media"
+        ]
+      }
     }
   },
   "customScene": {
