@@ -268,8 +268,26 @@ Both upper rungs produce the same thing: a `componentSource` string. It is
 **not** a module — it's a body compiled in a sandbox with every helper already
 in lexical scope.
 
-- **Exactly one `function Component({ progress, width, height, ... })`.** The
-  registry item's source exports a *named* template (`ChartCounterTemplate`,
+- **Exactly one `function Component({ ... })`**, destructuring from this prop
+  set — all of it is passed on every frame:
+
+  | Prop | What it is |
+  |---|---|
+  | `progress` | 0→1 across the scene. Drive everything positional off this. |
+  | `width`, `height` | 1080x1920 portrait or 1920x1080 landscape. Size off `Math.min(width, height)`. |
+  | `sceneDuration` | Seconds. Convert any seconds-based timing to progress with it. |
+  | `beatIntensity` | 0→1 pulse for accent hits. Never drive layout from it. |
+  | `safeZone` | Platform-aware inset in px — keep critical text inside it. |
+  | `tokens` | **Brand tokens already resolved** — `accent`, `secondary`, `surface`, `surface_elevated`, `content`, `muted`, `font`, `script_font`. |
+  | `style`, `variables` | The raw config, if you need something tokens doesn't cover. |
+
+  **Use `tokens`, not hardcoded colors or font stacks.** The frame around your
+  body is drawing from the same values; a body that hardcodes white and a
+  drop-shadow looks generic next to a frame that's on-brand. Built-in templates
+  call `resolveTokens(style)` — custom source can't import, which is exactly why
+  this arrives as a prop.
+
+  The registry item's source exports a *named* template (`ChartCounterTemplate`,
   not `Component`) with imports and TypeScript types — it will not work
   verbatim. Reshape it.
 - **No `import`, no `export`.** Every helper is already a global: React
@@ -302,8 +320,12 @@ header). That's for building your own app around these components — it does
 ## References
 
 - [references/formats.md](references/formats.md) — the slot contract as data
-- [references/motion.md](references/motion.md) — named easing curves and the
-  scene archetype table
+- [references/motion.md](references/motion.md) — how to choreograph a scene:
+  the timebase, phase grammar, reading-time constraints, focal hierarchy and
+  cut continuity. **Read this before writing a custom scene** — it's the
+  difference between video motion and a web animation rendered to MP4.
+- [references/motion-api.md](references/motion-api.md) — the spring constants,
+  easing names and every function in scope, generated from source
 - [references/visual-rules.md](references/visual-rules.md) — how a custom scene
   should look: type sizes, orientation layout, colour and glow, composition.
   Read before writing a `custom_*` body; templates already follow these, so a

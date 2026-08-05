@@ -1640,7 +1640,8 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils"
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
       ],
       "files": [
         {
@@ -1747,7 +1748,8 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils"
+        "@vanillasky/animation-utils",
+        "@vanillasky/tokens"
       ],
       "files": [
         {
@@ -5631,6 +5633,31 @@
           "path": "src/lib/video-config.ts",
           "type": "registry:lib",
           "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "lib",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "motion-stdlib",
+      "type": "registry:lib",
+      "title": "Motion Stdlib",
+      "description": "The higher-level motion vocabulary custom scenes compose with — `phase`, `staggerWindow`, `punch`, `cascade`, `typewriter`, `countUp`, `particles`, `burst`, `glow`, `vignette`, `grain`, `drift`, `sweep`, `morph`, `orbit`, `pathDraw`. These are already globals inside a `custom_*` scene; install this item when you want them in your own project.",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/animation-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/vibecode/motion-stdlib.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/vibecode/motion-stdlib.ts"
         }
       ],
       "meta": {
