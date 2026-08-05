@@ -11,7 +11,7 @@
  * over HTTP, and the page strips it from history on load.
  */
 import { spawn } from "node:child_process";
-import { existsSync, lstatSync, realpathSync, renameSync, unlinkSync } from "node:fs";
+import { createReadStream, existsSync, lstatSync, realpathSync, renameSync, unlinkSync } from "node:fs";
 import { dirname, join } from "node:path";
 
 const MAX_CONFIG_BYTES = 8 * 1024 * 1024;
@@ -101,6 +101,37 @@ export async function handleLocalRoute(req, res, url, ctx) {
       const cleanup = () => { clearInterval(heartbeat); off(); };
       req.on("close", cleanup);
       req.on("error", cleanup);
+      return true;
+    }
+
+    if (route === "/tracks" && req.method === "GET") {
+      // The bundled manifest, shaped like the web app's track_configs rows so
+      // AudioTab needs no changes. audio_url points back at this server.
+      const { tracks } = ctx.loadTrackLibrary();
+      return json(res, 200, {
+        tracks: tracks.map((t) => ({
+          id: t.id, // slug — what `trackId` in a config means to the renderer
+          name: t.name,
+          audio_url: `/__local/audio/${encodeURIComponent(t.file)}`,
+          duration: t.duration,
+          beat_markers: null,
+          description: t.description ?? null,
+          mood_tags: { mood: t.moods ?? [], energy: t.energy, movement: t.movement },
+          types: [],
+        })),
+      }), true;
+    }
+
+    if (route.startsWith("/audio/") && req.method === "GET") {
+      // Filename must match a manifest entry — never a client-supplied path.
+      const wanted = decodeURIComponent(route.slice("/audio/".length));
+      const { tracks, audioDir } = ctx.loadTrackLibrary();
+      const track = tracks.find((t) => t.file === wanted);
+      if (!track) return json(res, 404, { error: "no such track" }), true;
+      const file = join(audioDir, track.file);
+      if (!existsSync(file)) return json(res, 404, { error: "track file missing" }), true;
+      res.writeHead(200, { "Content-Type": "audio/mpeg", "Cache-Control": "no-cache", "Referrer-Policy": "no-referrer" });
+      createReadStream(file).pipe(res);
       return true;
     }
 

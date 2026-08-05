@@ -56,6 +56,7 @@ export function startServer(dist, opts = {}) {
           void handleLocalRoute(req, res, url, {
             session, port: boundPort, validate: opts.validate, renderCommand: opts.renderCommand,
             getPexelsApiKey: opts.getPexelsApiKey, searchPexels: opts.searchPexels,
+            loadTrackLibrary: opts.loadTrackLibrary,
           });
           return;
         }

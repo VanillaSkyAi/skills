@@ -17,6 +17,7 @@ import { loadConfig } from "./config.mjs";
 import { validateConfig } from "./validate.mjs";
 import { renderCommand } from "./render.mjs";
 import { getPexelsApiKey, searchPexels } from "./pexels.mjs";
+import { loadTrackLibrary } from "./audio-library.mjs";
 import { LocalSession } from "./local-session.mjs";
 
 export async function studioCommand(configPath, opts = {}) {
@@ -39,6 +40,7 @@ export async function studioCommand(configPath, opts = {}) {
     renderCommand,
     getPexelsApiKey,
     searchPexels,
+    loadTrackLibrary,
   });
 
   const url = `${server.baseUrl}/studio#token=${session.token}`;
