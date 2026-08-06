@@ -220,6 +220,7 @@ Use the lowest rung that expresses the brief:
 
 The default path stops at rung 2. Before using rung 3 or 4, read
 [references/custom-scenes.md](references/custom-scenes.md),
+[references/libraries.md](references/libraries.md),
 [references/motion.md](references/motion.md), and
 [references/visual-rules.md](references/visual-rules.md). Use
 `vanillasky scope` and the generated
@@ -233,6 +234,8 @@ The default path stops at rung 2. Before using rung 3 or 4, read
   template categories.
 - [references/custom-scenes.md](references/custom-scenes.md) — ejection,
   provenance, sandbox contract, and validation rules.
+- [references/libraries.md](references/libraries.md) — generated five-library
+  map, audience guidance, dependencies, install targets, and exact export groups.
 - [references/motion.md](references/motion.md) — choreography, reading time,
   focal hierarchy, and cut continuity.
 - [references/motion-api.md](references/motion-api.md) — generated functions,

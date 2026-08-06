@@ -57,10 +57,12 @@ Then install an item with shadcn:
 
 ```bash
 npx shadcn add @vanillasky/bigNumber
-npx shadcn add @vanillasky/animation-utils
+npx shadcn add @vanillasky/motion
 ```
 
 This installs source into your React project. It does not alter what the VanillaSky CLI renders.
+
+The five stable library entrypoints and their dependency graph are documented in the [scene authoring libraries guide](/docs/libraries). Implementation files such as `animation-utils.ts` and `tokens.ts` are shipped behind those facades, not as separate public items.
 
 ## Customize a scene in a video
 

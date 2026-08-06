@@ -66,9 +66,11 @@ work verbatim as `componentSource`; reshape it into the sandbox contract.
   caller-defined bounds and you have verified the non-overlapping layout in
   both orientations.
 
-The sandbox provides React helpers, motion functions, color utilities, text
-fitting, and internal scene elements as globals. `motion-api.md` is the generated
-API reference; do not rely on remembered names.
+The sandbox provides selected functions from the public `theme`, `motion`, and
+`typography` libraries plus internal scene elements as globals. There are no
+module imports in `componentSource`. `libraries.md` explains the boundary and
+`motion-api.md` lists the generated runtime motion API; do not rely on
+remembered names.
 
 ## Required reading and verification
 
@@ -77,6 +79,7 @@ Before writing custom source, read:
 - `motion.md` for timebase, phase grammar, reading time, and cut continuity.
 - `visual-rules.md` for typography, orientation layout, colour, and composition.
 - `motion-api.md` for exact globals and call shapes.
+- `libraries.md` for the public facades, dependency graph, and React install path.
 
 Run `vanillasky validate` until every sandbox error is resolved. A contact sheet
 is necessary but insufficient for custom motion: open Studio and watch the

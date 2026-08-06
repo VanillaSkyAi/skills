@@ -16,7 +16,7 @@ export it in the bundled local Studio. No account or cloud renderer.
 | | |
 | --- | --- |
 | **28 scene templates** | Hooks, stats, device mockups, social cards, explainers, closers — each with a variable schema and a preferred duration. [Browse](https://vanillasky.ai/templates) |
-| **7 shared libs** | The motion vocabulary, text fitting, and the brand token resolver — all installable, all readable |
+| **5 scene-authoring libraries** | Video config, theme, motion, typography, and backgrounds — five stable entrypoints, all installable, all readable. [Explore](https://vanillasky.ai/libs) |
 | **12 licensed tracks** | Bundled with the CLI, tagged by mood and energy, no download step. [Listen](https://vanillasky.ai/audio) |
 | **4 formats** | `launch`, `review`, `milestone`, `update` — each with its own slot contract the validator enforces |
 | **A local editor** | `vanillasky studio` — timeline, variables, music, live preview, MP4 export. No account, no upload |
@@ -55,6 +55,7 @@ These are the exact Markdown files rendered on vanillasky.ai:
 - [Studio workflow](docs/studio.md)
 - [VideoConfig reference](docs/config.md)
 - [Templates and registry](docs/registry.md)
+- [Scene authoring libraries](docs/libraries.md)
 - [CLI reference](docs/cli.md)
 - [Brand and DESIGN.md](docs/brand.md)
 - [Contributing](docs/contributing.md)
@@ -96,7 +97,7 @@ your project's `components.json`:
 
 ```bash
 npx shadcn add @vanillasky/bigNumber      # a template
-npx shadcn add @vanillasky/animation-utils # a shared library
+npx shadcn add @vanillasky/motion          # a shared library
 ```
 
 Without that `registries` entry the `@vanillasky` namespace does not

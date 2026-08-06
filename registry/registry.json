@@ -12,10 +12,10 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -52,11 +52,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -138,10 +133,10 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -173,11 +168,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -274,9 +264,10 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -308,11 +299,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -359,9 +345,10 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -388,11 +375,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -439,12 +421,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -486,11 +467,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -612,10 +588,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -652,11 +629,6 @@
           "path": "src/lib/parse-list.ts",
           "type": "registry:lib",
           "target": "vanillasky/parse-list.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -720,11 +692,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -756,11 +728,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -840,10 +807,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -880,11 +848,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -955,10 +918,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -990,11 +954,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -1079,11 +1038,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -1115,11 +1074,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -1182,11 +1136,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -1223,11 +1177,6 @@
           "path": "src/lib/parse-list.ts",
           "type": "registry:lib",
           "target": "vanillasky/parse-list.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -1297,11 +1246,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -1333,11 +1282,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -1448,11 +1392,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -1484,11 +1428,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -1585,8 +1524,9 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -1603,11 +1543,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -1693,8 +1628,9 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -1711,11 +1647,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -1801,11 +1732,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -1842,11 +1773,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -1960,11 +1886,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -1986,11 +1912,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -2132,11 +2053,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -2158,11 +2079,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -2261,11 +2177,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -2282,11 +2198,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -2389,11 +2300,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -2425,11 +2336,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -2512,11 +2418,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -2538,11 +2444,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -2631,11 +2532,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -2672,11 +2573,6 @@
           "path": "src/lib/parse-list.ts",
           "type": "registry:lib",
           "target": "vanillasky/parse-list.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -2762,10 +2658,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -2797,11 +2694,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -2900,10 +2792,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -2930,11 +2823,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -3005,10 +2893,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -3040,11 +2929,6 @@
           "path": "src/lib/parse-list.ts",
           "type": "registry:lib",
           "target": "vanillasky/parse-list.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -3109,11 +2993,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -3150,11 +3034,6 @@
           "path": "src/lib/parse-list.ts",
           "type": "registry:lib",
           "target": "vanillasky/parse-list.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -3218,11 +3097,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -3244,11 +3123,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -3342,12 +3216,11 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
-        "@vanillasky/background-effect",
-        "@vanillasky/color-utils",
-        "@vanillasky/text-archetypes",
-        "@vanillasky/text-utils",
-        "@vanillasky/tokens"
+        "@vanillasky/backgrounds",
+        "@vanillasky/motion",
+        "@vanillasky/theme",
+        "@vanillasky/typography",
+        "@vanillasky/video-config"
       ],
       "files": [
         {
@@ -3379,11 +3252,6 @@
           "path": "src/lib/scene-templates/types.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/types.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
         }
       ],
       "meta": {
@@ -3470,11 +3338,96 @@
       }
     },
     {
-      "name": "animation-utils",
+      "name": "video-config",
       "type": "registry:lib",
-      "title": "Animation Utils",
-      "description": "Core motion vocabulary — `interpolate`, `spring`, `Easing` (incl. `Easing.bezier`), the `SPRING_*` presets, `stagger`, `cubicBezier`. Every custom scene's curves resolve to these; do not reinvent values.",
+      "title": "Video config",
+      "description": "The stable data contract for a renderable VanillaSky video.",
       "files": [
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "lib",
+          "tier": "free",
+          "domain": "foundation",
+          "level": "foundation",
+          "audiences": [
+            "video-makers",
+            "custom-scenes",
+            "react-developers"
+          ],
+          "dependencies": [],
+          "useWhen": "Use it when constructing, validating, or transforming a VideoConfig, or when a scene needs orientation-aware dimensions and safe zones.",
+          "avoidWhen": "Do not use it for visual styling or animation; those decisions belong to theme, motion, typography, and backgrounds."
+        }
+      }
+    },
+    {
+      "name": "theme",
+      "type": "registry:lib",
+      "title": "Theme",
+      "description": "Resolve brand inputs into coherent, readable scene tokens.",
+      "registryDependencies": [
+        "@vanillasky/video-config"
+      ],
+      "files": [
+        {
+          "path": "src/lib/theme/index.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/theme/index.ts"
+        },
+        {
+          "path": "src/lib/theme/colors.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/theme/colors.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/tokens.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/tokens.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "lib",
+          "tier": "free",
+          "domain": "appearance",
+          "level": "foundation",
+          "audiences": [
+            "custom-scenes",
+            "react-developers"
+          ],
+          "dependencies": [
+            "video-config"
+          ],
+          "useWhen": "Use resolveTokens once per scene whenever the visual result should inherit the video's brand, preset, density, or motion intensity coherently.",
+          "avoidWhen": "Do not hardcode fallback colors or font stacks beside it, and do not use it to animate values or paint a background."
+        }
+      }
+    },
+    {
+      "name": "motion",
+      "type": "registry:lib",
+      "title": "Motion",
+      "description": "One deterministic progress-driven API, from raw curves to composed effects.",
+      "dependencies": [
+        "react"
+      ],
+      "files": [
+        {
+          "path": "src/lib/motion/index.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/motion/index.ts"
+        },
+        {
+          "path": "src/lib/vibecode/motion-stdlib.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/vibecode/motion-stdlib.ts"
+        },
         {
           "path": "src/lib/react-animations/animation-utils.ts",
           "type": "registry:lib",
@@ -3484,16 +3437,38 @@
       "meta": {
         "vanillasky": {
           "layer": "lib",
-          "tier": "free"
+          "tier": "free",
+          "domain": "motion",
+          "level": "foundation",
+          "audiences": [
+            "custom-scenes",
+            "react-developers"
+          ],
+          "dependencies": [],
+          "useWhen": "Use it whenever a value changes with scene progress; start with a composed helper, then drop to interpolation or springs when the scene needs custom choreography.",
+          "avoidWhen": "Do not use browser timers, CSS transitions, requestAnimationFrame, or Math.random inside a renderable scene."
         }
       }
     },
     {
-      "name": "text-utils",
+      "name": "typography",
       "type": "registry:lib",
-      "title": "Text Utils",
-      "description": "Text measurement and fitting helpers — notably `fitTextSize(text, baseSize, maxWidth)` for shrink-to-fit copy in fixed-width containers.",
+      "title": "Typography",
+      "description": "Fit text to a fixed frame and give it a complete kinetic lifecycle.",
+      "registryDependencies": [
+        "@vanillasky/motion"
+      ],
       "files": [
+        {
+          "path": "src/lib/typography/index.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/typography/index.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        },
         {
           "path": "src/lib/scene-templates/text-utils.ts",
           "type": "registry:lib",
@@ -3503,130 +3478,66 @@
       "meta": {
         "vanillasky": {
           "layer": "lib",
-          "tier": "free"
+          "tier": "free",
+          "domain": "typography",
+          "level": "composed",
+          "audiences": [
+            "custom-scenes",
+            "react-developers"
+          ],
+          "dependencies": [
+            "motion"
+          ],
+          "useWhen": "Use it for any text-led scene where copy must fit a known box, animate as a coherent lifecycle, or be checked against a fixed scene duration.",
+          "avoidWhen": "Do not shrink copy indefinitely or choose an archetype without checking its allowed canvas and minimum duration."
         }
       }
     },
     {
-      "name": "tokens",
+      "name": "backgrounds",
       "type": "registry:lib",
-      "title": "Tokens",
-      "description": "The canonical brand-token resolver: one derivation path from a config's `style` + `brandKit` to the resolved `accent` / `surface` / `surface_elevated` / `content` / `muted` / `font` / `script_font` tokens, plus `fontStack()`. Read tokens from here instead of hardcoding colors or font stacks.",
-      "files": [
-        {
-          "path": "src/lib/scene-templates/tokens.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/tokens.ts"
-        },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
-        }
-      ],
-      "meta": {
-        "vanillasky": {
-          "layer": "lib",
-          "tier": "free"
-        }
-      }
-    },
-    {
-      "name": "motion-stdlib",
-      "type": "registry:lib",
-      "title": "Motion Stdlib",
-      "description": "The higher-level motion vocabulary custom scenes compose with — `phase`, `staggerWindow`, `punch`, `cascade`, `typewriter`, `countUp`, `particles`, `burst`, `glow`, `vignette`, `grain`, `drift`, `sweep`, `morph`, `orbit`, `pathDraw`. These are already globals inside a `custom_*` scene; install this item when you want them in your own project.",
+      "title": "Backgrounds",
+      "description": "Paint deterministic brand backdrops and keep their visual layer moving.",
       "dependencies": [
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils"
+        "@vanillasky/motion",
+        "@vanillasky/theme"
       ],
       "files": [
         {
-          "path": "src/lib/vibecode/motion-stdlib.ts",
+          "path": "src/lib/backgrounds/index.ts",
           "type": "registry:lib",
-          "target": "vanillasky/vibecode/motion-stdlib.ts"
-        }
-      ],
-      "meta": {
-        "vanillasky": {
-          "layer": "lib",
-          "tier": "free"
-        }
-      }
-    },
-    {
-      "name": "text-archetypes",
-      "type": "registry:lib",
-      "title": "Text Archetypes",
-      "description": "The six kinetic-typography lifecycles every headline runs on — `subtle`, `typewriter`, `wordStagger`, `slam`, `cinematic`, `heroWord` — plus `renderArchetype()` (progress → per-frame transform/opacity), the `ARCHETYPE_SPECS` timing table, and the duration helpers (`minDurationFor`, `effectiveDuration`, `canFit`) that decide whether a line fits its scene.",
-      "registryDependencies": [
-        "@vanillasky/animation-utils"
-      ],
-      "files": [
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
-        }
-      ],
-      "meta": {
-        "vanillasky": {
-          "layer": "lib",
-          "tier": "free"
-        }
-      }
-    },
-    {
-      "name": "color-utils",
-      "type": "registry:lib",
-      "title": "Color Utils",
-      "description": "The scene background renderer — `gradientBackground()` turns a resolved accent/secondary pair plus a background family (`mesh` / `wash` / `spotlight`) into a pure CSS background string, deterministic per progress and safe for the SVG export path (no CSS `filter`).",
-      "dependencies": [
-        "react"
-      ],
-      "registryDependencies": [
-        "@vanillasky/tokens"
-      ],
-      "files": [
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
+          "target": "vanillasky/backgrounds/index.ts"
         },
-        {
-          "path": "src/lib/video-config.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/video-config.ts"
-        }
-      ],
-      "meta": {
-        "vanillasky": {
-          "layer": "lib",
-          "tier": "free"
-        }
-      }
-    },
-    {
-      "name": "background-effect",
-      "type": "registry:lib",
-      "title": "Background Effect",
-      "description": "The nine global background motions — `static`, `slow-zoom-in`, `slow-zoom-out`, `ken-burns`, `drift`, `pulse`, `breathe`, `slow-tilt`, `camera-shake` — as a progress→transform function. This is the `backgroundEffect` vocabulary the model picks from; templates opt in via `usesGlobalBackgroundEffect`.",
-      "registryDependencies": [
-        "@vanillasky/animation-utils"
-      ],
-      "files": [
         {
           "path": "src/lib/scene-templates/background-effect.ts",
           "type": "registry:lib",
           "target": "vanillasky/scene-templates/background-effect.ts"
+        },
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
         }
       ],
       "meta": {
         "vanillasky": {
           "layer": "lib",
-          "tier": "free"
+          "tier": "free",
+          "domain": "appearance",
+          "level": "composed",
+          "audiences": [
+            "custom-scenes",
+            "react-developers"
+          ],
+          "dependencies": [
+            "theme",
+            "motion"
+          ],
+          "useWhen": "Use gradientBackground to paint the scene layer and getBackgroundTransform to add deterministic camera movement across the full scene duration.",
+          "avoidWhen": "Do not apply these transforms to text or interactive chrome, and do not use CSS filter effects in the export path."
         }
       }
     }
