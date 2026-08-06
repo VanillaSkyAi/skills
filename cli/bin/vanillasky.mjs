@@ -7,6 +7,7 @@ import { tracksCommand } from "../lib/audio-library.mjs";
 import { setupCommand } from "../lib/setup.mjs";
 import { updateCommand } from "../lib/update.mjs";
 import { diffCommand } from "../lib/diff.mjs";
+import { templatesCommand } from "../lib/templates.mjs";
 
 const HELP = `vanillasky — validate, render, and share VanillaSky video configs locally
 
@@ -16,6 +17,7 @@ Usage:
   vanillasky studio <config.json> [--no-open] [--fps <n>] [--browser <name>]
   vanillasky validate <config.json> [--json] [--format <id>]
   vanillasky diff <config.json> [--json]
+  vanillasky templates [id] [--json]
   vanillasky tracks [--json]
   vanillasky scope [--json]
   vanillasky brand [path] [--json]
@@ -76,6 +78,7 @@ Examples:
   vanillasky render video.json
   vanillasky render video.json --frame 1.2 --out check.png   # pick a mid-scene time, not a scene boundary
   vanillasky tracks
+  vanillasky templates bigNumber --json
   vanillasky scope                                            # globals a custom_ scene can use
   vanillasky brand
   vanillasky link video.json --base http://localhost:8090
@@ -85,7 +88,8 @@ orientation, music mood (every prompt skippable, merged into
 ~/.vanillasky/config.json) — and offers to scaffold a DESIGN.md for the
 current repo. validate checks structure, template ids, per-template variable schemas, and
 format slot-contract rules; render runs it automatically and refuses invalid
-configs. tracks lists the bundled audio library (use a track via
+configs. templates lists exact ids and use-when guidance; pass one id with
+--json for its complete bundled schema. tracks lists the bundled audio library (use a track via
 "audio": { "trackId": "<id>" }). link prints a zero-install browser-render
 URL (<base>/render#config=<base64url>).
 
@@ -104,7 +108,7 @@ if (!cmd || cmd === "help" || cmd === "--help" || cmd === "-h") {
   process.exit(cmd ? 0 : 1);
 }
 
-const COMMANDS = ["setup", "render", "studio", "validate", "diff", "tracks", "brand", "link", "scope", "update"];
+const COMMANDS = ["setup", "render", "studio", "validate", "diff", "templates", "tracks", "brand", "link", "scope", "update"];
 if (!COMMANDS.includes(cmd)) {
   console.error(`Unknown command "${cmd}" — expected one of: ${COMMANDS.join(", ")}.\n`);
   console.error(HELP);
@@ -162,6 +166,15 @@ if (cmd === "update") {
 
 if (cmd === "tracks") {
   process.exit(tracksCommand({ json: Boolean(values.json) }));
+}
+
+if (cmd === "templates") {
+  const status = templatesCommand({ id: positionals[0] ?? null, json: Boolean(values.json) });
+  // A full JSON catalog is larger than Node's pipe buffer. `process.exit()`
+  // can truncate queued stdout, leaving agents with invalid JSON, so wait for
+  // all prior writes before exiting this command.
+  await new Promise((resolve) => process.stdout.write("", resolve));
+  process.exit(status);
 }
 
 // The exact global surface a `custom_*` scene's componentSource can reach.

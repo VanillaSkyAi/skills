@@ -9,13 +9,22 @@ Browse the visual catalog at [vanillasky.ai/templates](https://vanillasky.ai/tem
 | Layer | Type | Purpose |
 | --- | --- | --- |
 | Templates | `registry:block` | Finished scenes—the default composition path. |
-| Shared libraries | `registry:lib` | Motion, text-fitting, color, background, and brand-token utilities. |
+| Shared libraries | `registry:lib` | Five stable scene-authoring capabilities: video config, theme, motion, typography, and backgrounds. |
 
 Start with a template. Only move to an ejected or custom scene when the catalog genuinely cannot express the brief.
 
 ## The agent catalog
 
-The compact catalog lives at [vanillasky.ai/llms-components.txt](https://vanillasky.ai/llms-components.txt). It contains:
+The bundled CLI is the shortest, offline-safe route:
+
+```bash
+vanillasky templates
+vanillasky templates bigNumber --json
+```
+
+The first command is a concise selection catalog. The second returns the exact schema and defaults for one shortlisted template.
+
+The equivalent web catalog lives at [vanillasky.ai/llms-components.txt](https://vanillasky.ai/llms-components.txt). It contains:
 
 - template IDs and categories;
 - exact variable names, types, and options;
@@ -24,7 +33,7 @@ The compact catalog lives at [vanillasky.ai/llms-components.txt](https://vanilla
 - style presets and text archetypes;
 - dependency and source information.
 
-The public repository contains the same file at `registry/llms-components.txt` for offline use. Agents must read one of these copies and stop rather than inventing an ID or variable.
+The public repository contains the same file at `registry/llms-components.txt`. Agents must use one exact catalog surface and stop rather than inventing an ID or variable.
 
 ## Per-item JSON
 

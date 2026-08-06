@@ -16,6 +16,8 @@ vanillasky render video.json --frame 2.5           # one PNG at t=2.5s (~2s insp
 vanillasky render video.json --sheet --out ./sheet # 5 PNGs per scene + sheet.png
 vanillasky render video.json --draft               # in-browser WebCodecs export (fast)
 vanillasky render video.json --fps 30 --scale 0.5 --pages 4 --out out.mp4
+vanillasky templates                               # concise bundled selection catalog
+vanillasky templates bigNumber --json              # exact schema + defaults for one template
 vanillasky tracks                                  # list the bundled audio library (moods, energy, durations)
 vanillasky brand                                   # show the DESIGN.md brand tokens this directory picks up
 vanillasky link video.json                         # https://vanillasky.ai/render#config=<base64url>
@@ -39,6 +41,8 @@ Validation:
 - Template/format data lives in `lib/registry-data.mjs`, generated from
   `src/` by `npm run gen` at the repo root and committed. A vitest drift
   guard (`cli/lib/registry-data.test.mjs`) fails when it goes stale.
+- `templates` exposes that same generated data directly to agents, so
+  template selection and schema lookup do not require a network fetch.
 
 Requirements:
 

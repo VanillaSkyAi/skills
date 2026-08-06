@@ -11,6 +11,7 @@ vanillasky render <config.json> [options]
 vanillasky studio <config.json> [--no-open] [--fps <n>] [--browser <name>]
 vanillasky validate <config.json> [--json] [--format <id>]
 vanillasky diff <config.json> [--json]
+vanillasky templates [id] [--json]
 vanillasky tracks [--json]
 vanillasky scope [--json]
 vanillasky brand [path] [--json]
@@ -58,6 +59,15 @@ Validation checks:
 - the config's selected format contract.
 
 `--format <id>` overrides the config's `format`; normally the field in `video.json` is sufficient. Validation exits with status 1 on errors.
+
+## templates
+
+```bash
+vanillasky templates
+vanillasky templates bigNumber --json
+```
+
+Lists the exact template IDs, purposes, story jobs, durations, proof requirements, and variable names bundled with the validator. Pass an ID with `--json` to get its complete schema and defaults before composing a scene. This is the fastest agent path and works offline; the website registry remains the source-inspection fallback.
 
 ## studio
 

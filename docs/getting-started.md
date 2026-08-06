@@ -6,7 +6,7 @@
 
 A video is one JSON file: an ordered list of scenes built from curated templates. The normal path is deliberately short:
 
-1. **Compose** — your agent turns the brief into `video.json` using the live template catalog.
+1. **Compose** — your agent inspects the bundled template catalog and turns the brief into `video.json`.
 2. **Validate** — the CLI catches structural mistakes, invalid template variables, and format violations.
 3. **Inspect** — a contact sheet exposes overflow, weak composition, and accidental defaults without waiting for an MP4.
 4. **Open Studio** — review the live preview, adjust scenes, copy, timing, music, and brand.
@@ -84,9 +84,16 @@ The skill runs two read-only checks before composing:
 ```bash
 vanillasky update --check
 vanillasky setup --check
+vanillasky templates
 ```
 
 `update --check` reports whether a newer public release exists. `setup --check` reports the configured browser, default orientation, Pexels key, music preference, and DESIGN.md status.
+
+`templates` lists the exact IDs, jobs, use-when guidance, durations, and variable names bundled with that CLI release. After shortlisting a scene, inspect its complete schema without a web request:
+
+```bash
+vanillasky templates bigNumber --json
+```
 
 A Pexels key is optional. Without one, use supplied media, direct URLs, or templates that do not depend on stock search. A DESIGN.md is optional too; it only provides automatic brand tokens.
 
@@ -103,5 +110,5 @@ A Pexels key is optional. Without one, use supplied media, direct URLs, or templ
 
 - [Use Studio](https://vanillasky.ai/docs/studio) for the default review and export workflow.
 - [Understand VideoConfig](https://vanillasky.ai/docs/config) when you need timing, branding, media, or formats.
-- [Browse templates and the registry](https://vanillasky.ai/docs/registry) before composing or ejecting a scene.
+- [Browse templates and the registry](https://vanillasky.ai/docs/registry) when you want visual examples or need to eject a scene's source.
 - [Read the CLI reference](https://vanillasky.ai/docs/cli) for automation and headless rendering.

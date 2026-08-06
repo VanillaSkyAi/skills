@@ -41,11 +41,19 @@ this official release and expose the included CLI. The official CLI is **not
 published as an npm package**; never install a package merely named
 `vanillasky` from npm.
 
-The skill uses the live template catalog at
+The installed CLI is the fastest catalog interface for agents:
+
+```bash
+vanillasky templates
+vanillasky templates bigNumber --json
+```
+
+It reports the exact templates and schemas bundled with the current release,
+without a web request. The live catalog at
 [vanillasky.ai/llms-components.txt](https://vanillasky.ai/llms-components.txt)
-when online; this repo's `registry/` directory is the equivalent offline
-snapshot (`llms-components.txt` is the index, `r/<name>.json` has each
-item's full variable schema, defaults, and source).
+and this repo's `registry/` snapshot remain useful when you need an item's
+full source (`llms-components.txt` is the index, `r/<name>.json` is the
+complete registry item).
 
 ## Documentation
 

@@ -12,12 +12,12 @@ there; do not make a full MP4 render part of the initial flow.
 
 ## Three non-negotiables
 
-1. **Read the catalog; never guess.** Template ids, variables, categories,
-   durations, presets, and use-when guidance are at
-   `https://vanillasky.ai/llms-components.txt` (repo or standalone install:
-   `registry/llms-components.txt`). Full schemas and source are at
-   `https://vanillasky.ai/r/<name>.json` (`registry/r/<name>.json` offline).
-   If neither copy is reachable, stop rather than inventing an id or variable.
+1. **Read the catalog; never guess.** After resolving the CLI, run
+   `vanillasky templates` for the bundled template map and
+   `vanillasky templates <id> --json` for an exact schema. The live fallback is
+   `https://vanillasky.ai/llms-components.txt`; repo and standalone installs
+   carry `registry/llms-components.txt` plus `registry/r/<name>.json`. If no
+   exact catalog is reachable, stop rather than inventing an id or variable.
 2. **Never invent proof.** Names, quotes, numbers, stats, screenshots, and
    product claims must come from the brief or supplied assets. If a template
    requires evidence the user did not provide, choose another template.
@@ -47,6 +47,7 @@ Then run these before the first video:
 ```bash
 vanillasky update --check
 vanillasky setup --check
+vanillasky templates
 ```
 
 `update --check` reports a newer release without changing anything. If a flag
@@ -77,7 +78,9 @@ on later turns instead of asking the same questions again.
 
 ## Default workflow: hand off in Studio
 
-1. **Compose** `video.json` from the brief and live catalog.
+1. **Compose** `video.json` from the brief and bundled catalog.
+   Inspect the exact schemas for the shortlisted templates with
+   `vanillasky templates <id> --json` before writing their variables.
 2. **Validate** and fix every error:
 
    ```bash

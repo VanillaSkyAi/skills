@@ -536,6 +536,19 @@ export default {
   "templates": {
     "media": {
       "category": "media",
+      "register": "motion-led",
+      "jobs": [
+        "atmosphere",
+        "setup"
+      ],
+      "useWhen": "Full-bleed photo, video, or gradient with open text. Use for hooks, atmospheric body beats, uploaded scenic media, or a concrete product-context sentence over footage.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": true,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": true,
       "minDuration": 1,
       "preferredDuration": 2,
@@ -577,6 +590,19 @@ export default {
     },
     "reaction": {
       "category": "media",
+      "register": "motion-led",
+      "jobs": [
+        "setup",
+        "claim"
+      ],
+      "useWhen": "Use once for funny/meme/self-aware/roast/silly/unhinged/lol videos. Short full-bleed reaction clip with a punchline. Hook or body payoff. Pick reactionTag from the enum; search appends `meme` to nudge Pexels toward expressive footage. Max one per video.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": true,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2.5,
       "preferredDuration": 3,
@@ -640,6 +666,18 @@ export default {
     },
     "confetti": {
       "category": "celebration",
+      "register": "motion-led",
+      "jobs": [
+        "atmosphere"
+      ],
+      "useWhen": "Generic celebration or broad win when no specific emoji theme or numeric milestone is the main point. Prefer emojiBurst for themed emoji celebrations and milestone for numeric achievements.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": true,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 1,
       "preferredDuration": 2,
@@ -659,6 +697,18 @@ export default {
     },
     "emojiBurst": {
       "category": "celebration",
+      "register": "motion-led",
+      "jobs": [
+        "atmosphere"
+      ],
+      "useWhen": "Themed celebration where a small emoji set communicates the moment, such as launch, love, achievement, or delight. Prefer confetti for generic celebration.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": true,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 1,
       "preferredDuration": 2,
@@ -678,6 +728,19 @@ export default {
     },
     "bigNumber": {
       "category": "data",
+      "register": "typography-led",
+      "jobs": [
+        "claim",
+        "proof"
+      ],
+      "useWhen": "One important real number explicitly present in the input: customer count, reduction, uplift, speed claim, percentage, rank, or headline metric. Use only when you can copy the exact number into value/prefix/unit; never invent a number or leave the default.",
+      "textCanvas": "tight",
+      "requiresStat": true,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": true,
       "minDuration": 1.5,
       "preferredDuration": 4,
@@ -741,6 +804,18 @@ export default {
     },
     "barChart": {
       "category": "data",
+      "register": "motion-led",
+      "jobs": [
+        "proof"
+      ],
+      "useWhen": "Comparison, ranking, trend, or multiple values where relative size matters. Use for category comparisons, before/after quantities, or grouped metrics.",
+      "textCanvas": "tight",
+      "requiresStat": true,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2,
       "preferredDuration": 3.5,
@@ -768,6 +843,18 @@ export default {
     },
     "progressRing": {
       "category": "data",
+      "register": "motion-led",
+      "jobs": [
+        "proof"
+      ],
+      "useWhen": "Completion, readiness, health score, goal progress, adoption progress, or percent complete. Do not use for generic uplift, reduction, speed, or loose percentage claims.",
+      "textCanvas": "tight",
+      "requiresStat": true,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2,
       "preferredDuration": 3.5,
@@ -805,6 +892,19 @@ export default {
     },
     "phoneMockup": {
       "category": "device",
+      "register": "device-led",
+      "jobs": [
+        "proof",
+        "atmosphere"
+      ],
+      "useWhen": "Uploaded portrait/mobile UI screenshots or a mobile app workflow. Use one scene for up to three same-orientation phone screens.",
+      "textCanvas": "tight",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": true,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": true,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2,
       "preferredDuration": 3,
@@ -836,6 +936,19 @@ export default {
     },
     "webMockup": {
       "category": "device",
+      "register": "device-led",
+      "jobs": [
+        "proof",
+        "atmosphere"
+      ],
+      "useWhen": "Uploaded landscape or square desktop/web screenshots, dashboard views, or browser/tablet product surfaces. Use one scene for up to three same-orientation screens.",
+      "textCanvas": "tight",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": true,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": true,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2,
       "preferredDuration": 3,
@@ -879,6 +992,19 @@ export default {
     },
     "codeEditor": {
       "category": "device",
+      "register": "device-led",
+      "jobs": [
+        "proof",
+        "atmosphere"
+      ],
+      "useWhen": "Developer product, API, SDK, config, codebase, tests, or code-focused workflow where a short synthetic code sample explains the product mechanism. Prefer over generic brand/card scenes when code is a core input signal.",
+      "textCanvas": "tight",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2,
       "preferredDuration": 3,
@@ -907,6 +1033,19 @@ export default {
     },
     "terminal": {
       "category": "device",
+      "register": "device-led",
+      "jobs": [
+        "proof",
+        "atmosphere"
+      ],
+      "useWhen": "Developer or technical product where a CLI command, install command, log output, deploy/test flow, or status result communicates the workflow better than prose. Prefer when the input includes a command or install snippet.",
+      "textCanvas": "tight",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2,
       "preferredDuration": 3,
@@ -939,6 +1078,19 @@ export default {
     },
     "tweet": {
       "category": "social",
+      "register": "card-led",
+      "jobs": [
+        "claim",
+        "proof"
+      ],
+      "useWhen": "X-style post card with optional 1-4 image grid (tweetImage1..4). Brand-voiced announcement that reads like a real public post, launch quote, founder update, or compact social claim. Avoid for generic product explainers.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": true,
       "minDuration": 2.5,
       "preferredDuration": 3.5,
@@ -997,6 +1149,19 @@ export default {
     },
     "notification": {
       "category": "social",
+      "register": "card-led",
+      "jobs": [
+        "proof",
+        "setup"
+      ],
+      "useWhen": "A real notification-shaped product moment: alert, reminder, task done, system update, approval, message, or 'your X is ready' event. Avoid for generic URL launches, broad brand announcements, or product explanations.",
+      "textCanvas": "tight",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": true,
       "minDuration": 2,
       "preferredDuration": 3,
@@ -1047,6 +1212,19 @@ export default {
     },
     "chatMessenger": {
       "category": "social",
+      "register": "mockup-led",
+      "jobs": [
+        "proof",
+        "setup"
+      ],
+      "useWhen": "Short synthetic Messenger-style conversation when a back-and-forth helps explain a use case, objection, or punchline. Use sparingly because it is long.",
+      "textCanvas": "tight",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 5,
       "preferredDuration": 8,
@@ -1089,6 +1267,19 @@ export default {
     },
     "chatWhatsapp": {
       "category": "social",
+      "register": "mockup-led",
+      "jobs": [
+        "proof",
+        "setup"
+      ],
+      "useWhen": "Short synthetic WhatsApp-style conversation when the product story is naturally conversational or customer-service oriented. Use sparingly because it is long.",
+      "textCanvas": "tight",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 5,
       "preferredDuration": 8,
@@ -1131,6 +1322,19 @@ export default {
     },
     "milestone": {
       "category": "social",
+      "register": "typography-led",
+      "jobs": [
+        "claim",
+        "proof"
+      ],
+      "useWhen": "Real numeric achievement explicitly in the input: users, revenue, years, installs, customers, stars, or adoption count. Use exact targetNumber; never for generic releases, versions, 'free', or proof without an achievement count.",
+      "textCanvas": "open",
+      "requiresStat": true,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2.5,
       "preferredDuration": 4,
@@ -1189,6 +1393,18 @@ export default {
     },
     "reviewStack": {
       "category": "social",
+      "register": "card-led",
+      "jobs": [
+        "proof"
+      ],
+      "useWhen": "Two or more real attributed reviews, ratings, or quotes that should appear as social proof together. Requires real quote/source content.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": true,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2.5,
       "preferredDuration": 4,
@@ -1264,6 +1480,18 @@ export default {
     },
     "testimonial": {
       "category": "social",
+      "register": "card-led",
+      "jobs": [
+        "proof"
+      ],
+      "useWhen": "One real attributed customer quote, testimonial, review, or named endorsement. Do not fabricate names, roles, or quotes.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": true,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2.5,
       "preferredDuration": 4,
@@ -1314,6 +1542,19 @@ export default {
     },
     "incomingCall": {
       "category": "social",
+      "register": "card-led",
+      "jobs": [
+        "setup",
+        "atmosphere"
+      ],
+      "useWhen": "Urgent, interruptive, comeback, or dramatic moment where the brand/product conceptually calls the viewer. Avoid as the default for generic URL launches or calm explanations.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": true,
       "minDuration": 2.5,
       "preferredDuration": 4,
@@ -1367,6 +1608,19 @@ export default {
     },
     "brandMessage": {
       "category": "social",
+      "register": "card-led",
+      "jobs": [
+        "claim",
+        "setup"
+      ],
+      "useWhen": "Single iMessage-style outgoing bubble over media. Use only when a direct 1:1 brand-to-viewer note is the point: thanks, invitation, personal promise, concise launch note. Avoid as generic filler, explanation, or proof.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": true,
       "minDuration": 2.5,
       "preferredDuration": 4,
@@ -1409,6 +1663,19 @@ export default {
     },
     "promptInput": {
       "category": "social",
+      "register": "card-led",
+      "jobs": [
+        "setup",
+        "atmosphere"
+      ],
+      "useWhen": "Centered AI prompt-input demo: pill grows from a circle with sparkles icon, then types the prompt. Use for product PROMPT UX: 'describe what you want', 'ask the AI', or 'show how to prompt'.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": true,
       "minDuration": 2.5,
       "preferredDuration": 4,
@@ -1454,6 +1721,19 @@ export default {
     },
     "beforeAfter": {
       "category": "explainer",
+      "register": "motion-led",
+      "jobs": [
+        "proof",
+        "setup"
+      ],
+      "useWhen": "Clear transformation or contrast between two states, especially symbolic or visual before/after: manual to automated, chaos to order, old way to new way.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": true,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 3,
       "preferredDuration": 4.5,
@@ -1496,6 +1776,19 @@ export default {
     },
     "tripleStats": {
       "category": "data",
+      "register": "typography-led",
+      "jobs": [
+        "claim",
+        "proof"
+      ],
+      "useWhen": "Exactly three peer stats or compact specs from the input with comparable weight. Prefer over bigNumber for three parallel facts. Avoid when one number is the hero or values are just brand/tool names.",
+      "textCanvas": "tight",
+      "requiresStat": true,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2,
       "preferredDuration": 3,
@@ -1545,6 +1838,19 @@ export default {
     },
     "problemSolution": {
       "category": "explainer",
+      "register": "card-led",
+      "jobs": [
+        "setup",
+        "proof"
+      ],
+      "useWhen": "Literal pain-to-fix story where the central message is one problem statement and one solution statement. Avoid for generic SaaS launches without a crisp pain/fix pair.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": true,
       "minDuration": 3,
       "preferredDuration": 5.5,
@@ -1577,6 +1883,19 @@ export default {
     },
     "cardList": {
       "category": "explainer",
+      "register": "card-led",
+      "jobs": [
+        "proof",
+        "setup"
+      ],
+      "useWhen": "Three to five concrete product facts, benefits, use cases, integrations, or feature bullets. Good for product comprehension when the facts are parallel.",
+      "textCanvas": "tight",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": true,
       "minDuration": 2,
       "preferredDuration": 3.5,
@@ -1606,6 +1925,19 @@ export default {
     },
     "steps": {
       "category": "explainer",
+      "register": "card-led",
+      "jobs": [
+        "proof",
+        "setup"
+      ],
+      "useWhen": "Sequential workflow or how-it-works explanation where order matters: connect, generate, review, publish. Avoid for unordered feature lists.",
+      "textCanvas": "tight",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": true,
       "minDuration": 2,
       "preferredDuration": 3.5,
@@ -1634,6 +1966,18 @@ export default {
     },
     "ctaLogo": {
       "category": "closer",
+      "register": "typography-led",
+      "jobs": [
+        "ask"
+      ],
+      "useWhen": "Minimal brand stamp closer when the video already has enough motion or proof and only needs brand, URL, or a simple next action.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": false,
+      "usesGlobalTextEffect": false,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2,
       "preferredDuration": 3.5,
@@ -1683,6 +2027,18 @@ export default {
     },
     "ctaMedia": {
       "category": "closer",
+      "register": "typography-led",
+      "jobs": [
+        "ask"
+      ],
+      "useWhen": "Cinematic media-backed closer with headline and URL. Default closer for launch videos when a final visual beat helps the call to action.",
+      "textCanvas": "open",
+      "requiresStat": false,
+      "requiresQuote": false,
+      "requiresScreenshot": false,
+      "allowsStockMedia": true,
+      "usesGlobalTextEffect": true,
+      "usesGlobalTransition": true,
       "usesGlobalBackgroundEffect": false,
       "minDuration": 2,
       "preferredDuration": 4,
