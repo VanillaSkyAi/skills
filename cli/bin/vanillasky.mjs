@@ -1,12 +1,11 @@
 #!/usr/bin/env node
 import { parseArgs } from "node:util";
-import { renderCommand } from "../lib/render.mjs";
 import { validateCommand, registryData } from "../lib/validate.mjs";
 import { loadConfig, encodeConfig, MAX_USABLE_FRAGMENT, hasInlineMedia } from "../lib/config.mjs";
 import { brandCommand } from "../lib/design-md.mjs";
 import { tracksCommand } from "../lib/audio-library.mjs";
 import { setupCommand } from "../lib/setup.mjs";
-import { studioCommand } from "../lib/studio.mjs";
+import { updateCommand } from "../lib/update.mjs";
 import { diffCommand } from "../lib/diff.mjs";
 
 const HELP = `vanillasky — validate, render, and share VanillaSky video configs locally
@@ -21,6 +20,7 @@ Usage:
   vanillasky scope [--json]
   vanillasky brand [path] [--json]
   vanillasky link <config.json> [--base <url>]
+  vanillasky update [--check] [--skill-dir <path>]
 
 Setup options:
   --check          Print the current setup state (config, Pexels key, default
@@ -44,6 +44,11 @@ Render options:
   --open           Open the finished MP4 with the platform viewer (best-effort)
   --base <url>     Host for the Watch/Studio links in the completion block
                    (default https://vanillasky.ai)
+
+Update options:
+  --check          Report whether a newer release exists, changing nothing
+  --skill-dir <p>  Where to copy the agent skill
+                   (default ~/.claude/skills/vanillasky)
 
 Studio options:
   --no-open        Print the URL instead of opening a browser
@@ -99,7 +104,7 @@ if (!cmd || cmd === "help" || cmd === "--help" || cmd === "-h") {
   process.exit(cmd ? 0 : 1);
 }
 
-const COMMANDS = ["setup", "render", "studio", "validate", "diff", "tracks", "brand", "link", "scope"];
+const COMMANDS = ["setup", "render", "studio", "validate", "diff", "tracks", "brand", "link", "scope", "update"];
 if (!COMMANDS.includes(cmd)) {
   console.error(`Unknown command "${cmd}" — expected one of: ${COMMANDS.join(", ")}.\n`);
   console.error(HELP);
@@ -115,6 +120,7 @@ try {
       out: { type: "string" },
       fps: { type: "string" },
       browser: { type: "string" },
+      "skill-dir": { type: "string" },
       scale: { type: "string" },
       frame: { type: "string" },
       sheet: { type: "boolean" },
@@ -143,6 +149,15 @@ if (cmd === "setup") {
 
 if (cmd === "brand") {
   process.exit(brandCommand(positionals[0] ?? ".", { json: Boolean(values.json) }));
+}
+
+if (cmd === "update") {
+  try {
+    process.exit(await updateCommand({ check: !!values.check, skillDir: values["skill-dir"] ?? null }));
+  } catch (err) {
+    console.error(`[vanillasky] error: ${err?.message ?? err}`);
+    process.exit(1);
+  }
 }
 
 if (cmd === "tracks") {
@@ -241,6 +256,7 @@ const num = (name, raw, def) => {
 
 if (cmd === "studio") {
   try {
+    const { studioCommand } = await import("../lib/studio.mjs");
     await studioCommand(configPath, { open: !values["no-open"], fps: num("fps", values.fps, 30), browser: values.browser ?? null });
     process.exit(0);
   } catch (err) {
@@ -251,6 +267,7 @@ if (cmd === "studio") {
 
 
 try {
+  const { renderCommand } = await import("../lib/render.mjs");
   await renderCommand(configPath, {
     out: values.out,
     fps: num("fps", values.fps, 30),

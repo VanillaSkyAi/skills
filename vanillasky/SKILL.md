@@ -30,6 +30,16 @@ its `registry/r/<id>.json` files are the offline equivalent of
 `npx shadcn add @vanillasky/<id>` — everything the network path provides,
 including template source for ejecting.
 
+## Staying current
+
+`vanillasky update` pulls the latest release into this install: fast-forwards
+the checkout, reinstalls dependencies when they moved, and re-copies the agent
+skill (`~/.claude/skills/vanillasky` is a plain copy that tracks nothing, so it
+is the part that silently goes stale — a CLI with flags its own documentation
+doesn't mention). `vanillasky update --check` reports without changing
+anything. If a flag documented here doesn't exist in your CLI, you are on an
+older release; that is the command to run.
+
 ## First run
 
 Before the first video in a session, run `vanillasky setup --check` — it
