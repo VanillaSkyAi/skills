@@ -104,22 +104,26 @@ config declares.
 - **ffmpeg** — installed automatically via `ffmpeg-static` in the step below;
   falls back to system ffmpeg on PATH (override with `FFMPEG_PATH`).
 
-### First render
+### First video
 
 ```bash
 npm install --prefix cli      # installs ffmpeg-static + playwright-core (the only two deps)
 node cli/bin/vanillasky.mjs validate examples/launch-demo.json
-node cli/bin/vanillasky.mjs render examples/launch-demo.json --frame 2 --out check.png   # one frame (~2s)
-node cli/bin/vanillasky.mjs render examples/launch-demo.json --out launch-demo.mp4       # full render
+node cli/bin/vanillasky.mjs render examples/launch-demo.json --sheet --out sheet
+node cli/bin/vanillasky.mjs studio examples/launch-demo.json
 ```
+
+Inspect `sheet/sheet.png`, then review and edit the video in Studio. Export
+the MP4 from Studio when it is ready; the CLI full-render path is for CI,
+headless use, or an explicit file request.
 
 Optional, for a global `vanillasky` command: `npm install -g ./cli`
 
 Portrait 9:16 and landscape 16:9 are equal citizens — swap in
 `examples/launch-demo-landscape.json` for a 1920x1080 render (the config's
 `orientation` field decides; portrait when omitted).
-`node cli/bin/vanillasky.mjs help` lists everything (contact sheets, draft
-mode, scale/fps, share links).
+`node cli/bin/vanillasky.mjs help` lists the headless/full-render options,
+contact sheets, draft mode, scale/fps, and share links.
 
 ## Ejecting, and staying informed
 

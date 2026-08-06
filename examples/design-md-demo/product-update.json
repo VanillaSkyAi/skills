@@ -1,5 +1,5 @@
 {
-  "format": "launch",
+  "format": "update",
   "orientation": "portrait",
   "audio": { "trackId": "steady-groove-in-c" },
   "scenes": [

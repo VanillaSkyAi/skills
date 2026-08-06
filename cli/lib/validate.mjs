@@ -23,7 +23,7 @@ const { templates: TEMPLATES, aliases: ALIASES, formats: FORMATS, backgroundEffe
 /** Fields that live on the scene object, not inside scene.variables. */
 const SCENE_LEVEL_FIELDS = ["backgroundEffect", "textArchetype"];
 // Mirrors the TimingConfig the scene resolver reads (src/lib/scene-resolver.ts).
-const TIMING_FIELDS = ["startTime", "endTime", "beatStart", "beatEnd", "durationWeight"];
+const TIMING_FIELDS = ["startTime", "endTime", "fixedDuration", "beatStart", "beatEnd", "durationWeight"];
 
 const isCustomId = (id) => typeof id === "string" && id.startsWith(CUSTOM.idPrefix);
 

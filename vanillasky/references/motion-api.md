@@ -23,5 +23,6 @@ From `animation-utils`: `cubicBezier`, `interpolate`, `spring`, `stagger`
 
 From `motion-stdlib`: `phase`, `staggerWindow`, `punch`, `cascade`, `typewriter`, `countUp`, `center`, `glow`, `softShadow`, `vignette`, `meshGradient`, `grain`, `drift`, `pathDraw`, `orbit`, `morph`, `sweep`, `rand01`, `particles`, `burst`
 
-Both are installable: `npx shadcn add @vanillasky/animation-utils`,
+After mapping the `@vanillasky` namespace in `components.json` as described
+in the catalog, both are installable: `npx shadcn add @vanillasky/animation-utils`,
 `npx shadcn add @vanillasky/motion-stdlib`.

@@ -19,8 +19,8 @@
       "templateId": "terminal",
       "variables": {
         "texts": "One command.",
-        "command": "npx vanillasky render launch.json",
-        "output": "✓ config valid — 5 scenes,✓ 450 frames @ 30fps,✓ launch.mp4 · 15s · 9:16",
+        "command": "vanillasky studio launch.json",
+        "output": "✓ config valid — 5 scenes,✓ Studio ready in Chrome,✓ Export MP4 when it feels right",
         "promptPrefix": "$"
       },
       "timing": { "fixedDuration": 3 }
@@ -30,7 +30,7 @@
       "templateId": "cardList",
       "variables": {
         "texts": "Why founders use it",
-        "items": "Validate before you render,Inspect any frame in seconds,Deterministic MP4 output",
+        "items": "Validate before Studio,Inspect every scene in seconds,Export when you're ready",
         "itemEmojis": "✅,🔍,🎬"
       },
       "timing": { "fixedDuration": 3.5 }
@@ -42,7 +42,7 @@
         "authorName": "VanillaSky",
         "authorHandle": "vanillasky_ai",
         "authorVerified": true,
-        "message": "Wrote a JSON file, got a launch video. No timeline, no render farm — just my laptop. 🎬",
+        "message": "Wrote a JSON file, opened Studio, and shaped the video live. No upload, no render farm. 🎬",
         "likes": 214,
         "replies": 12,
         "mediaType": "gradient"
@@ -54,8 +54,7 @@
       "templateId": "ctaLogo",
       "variables": {
         "brandName": "VanillaSky",
-        "url": "vanillasky.ai",
-        "cta": "Render yours"
+        "url": "vanillasky.ai"
       },
       "timing": { "fixedDuration": 3 }
     }
