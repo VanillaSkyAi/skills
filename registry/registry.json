@@ -12,7 +12,9 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/tokens"
       ],
       "files": [
@@ -30,21 +32,6 @@
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/template-text.tsx",
@@ -151,7 +138,9 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/tokens"
       ],
       "files": [
@@ -164,21 +153,6 @@
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/template-text.tsx",
@@ -300,7 +274,8 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/tokens"
       ],
       "files": [
@@ -313,16 +288,6 @@
           "path": "src/lib/scene-templates/confetti-layer.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/confetti-layer.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/template-text.tsx",
@@ -394,7 +359,8 @@
         "react"
       ],
       "registryDependencies": [
-        "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/tokens"
       ],
       "files": [
@@ -407,16 +373,6 @@
           "path": "src/lib/emoji/index.tsx",
           "type": "registry:component",
           "target": "vanillasky/emoji/index.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/template-text.tsx",
@@ -484,6 +440,9 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -509,16 +468,6 @@
           "target": "vanillasky/scene-templates/scene-background.tsx"
         },
         {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
           "path": "src/lib/scene-templates/template-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/template-text.tsx"
@@ -532,11 +481,6 @@
           "path": "src/lib/emoji/emoji-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/emoji/emoji-text.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -669,6 +613,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/tokens"
       ],
       "files": [
@@ -681,11 +627,6 @@
           "path": "src/lib/primitives/charts/BarChart.tsx",
           "type": "registry:component",
           "target": "vanillasky/primitives/charts/BarChart.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/template-text.tsx",
@@ -701,11 +642,6 @@
           "path": "src/lib/emoji/emoji-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/emoji/emoji-text.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -785,6 +721,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -800,11 +738,6 @@
           "target": "vanillasky/primitives/charts/ProgressRing.tsx"
         },
         {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
           "path": "src/lib/scene-templates/template-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/template-text.tsx"
@@ -818,11 +751,6 @@
           "path": "src/lib/emoji/emoji-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/emoji/emoji-text.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -913,6 +841,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/tokens"
       ],
       "files": [
@@ -930,16 +860,6 @@
           "path": "src/lib/primitives/devices/DesignedScreenFill.tsx",
           "type": "registry:component",
           "target": "vanillasky/primitives/devices/DesignedScreenFill.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/template-text.tsx",
@@ -1036,6 +956,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/tokens"
       ],
       "files": [
@@ -1048,16 +970,6 @@
           "path": "src/lib/primitives/devices/DesignedScreenFill.tsx",
           "type": "registry:component",
           "target": "vanillasky/primitives/devices/DesignedScreenFill.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/template-text.tsx",
@@ -1168,6 +1080,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -1183,11 +1097,6 @@
           "target": "vanillasky/primitives/devices/CodeEditor.tsx"
         },
         {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
           "path": "src/lib/scene-templates/template-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/template-text.tsx"
@@ -1201,11 +1110,6 @@
           "path": "src/lib/emoji/emoji-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/emoji/emoji-text.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -1279,6 +1183,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -1294,11 +1200,6 @@
           "target": "vanillasky/primitives/devices/TerminalOutput.tsx"
         },
         {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
           "path": "src/lib/scene-templates/template-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/template-text.tsx"
@@ -1312,11 +1213,6 @@
           "path": "src/lib/emoji/emoji-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/emoji/emoji-text.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -1402,6 +1298,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -1427,19 +1325,9 @@
           "target": "vanillasky/emoji/index.tsx"
         },
         {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -1561,6 +1449,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -1589,16 +1479,6 @@
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -1922,6 +1802,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -1952,19 +1834,9 @@
           "target": "vanillasky/emoji/index.tsx"
         },
         {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -2089,6 +1961,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -2107,16 +1981,6 @@
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -2269,6 +2133,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -2287,16 +2153,6 @@
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -2406,6 +2262,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -2419,16 +2277,6 @@
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -2542,6 +2390,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -2570,16 +2420,6 @@
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -2673,6 +2513,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -2691,16 +2533,6 @@
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -2800,6 +2632,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -2828,16 +2662,6 @@
           "path": "src/lib/scene-templates/template-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/template-text.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -2939,6 +2763,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/tokens"
       ],
       "files": [
@@ -2951,11 +2777,6 @@
           "path": "src/lib/primitives/typography/StatBadgeRow.tsx",
           "type": "registry:component",
           "target": "vanillasky/primitives/typography/StatBadgeRow.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/template-text.tsx",
@@ -2971,11 +2792,6 @@
           "path": "src/lib/emoji/emoji-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/emoji/emoji-text.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -3085,6 +2901,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/tokens"
       ],
       "files": [
@@ -3107,16 +2925,6 @@
           "path": "src/lib/emoji/emoji-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/emoji/emoji-text.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -3198,6 +3006,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/tokens"
       ],
       "files": [
@@ -3210,16 +3020,6 @@
           "path": "src/lib/emoji/index.tsx",
           "type": "registry:component",
           "target": "vanillasky/emoji/index.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/template-text.tsx",
@@ -3310,6 +3110,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -3330,11 +3132,6 @@
           "target": "vanillasky/emoji/index.tsx"
         },
         {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
           "path": "src/lib/scene-templates/template-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/template-text.tsx"
@@ -3343,11 +3140,6 @@
           "path": "src/lib/emoji/emoji-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/emoji/emoji-text.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -3427,6 +3219,8 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -3445,16 +3239,6 @@
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -3559,6 +3343,9 @@
       ],
       "registryDependencies": [
         "@vanillasky/animation-utils",
+        "@vanillasky/background-effect",
+        "@vanillasky/color-utils",
+        "@vanillasky/text-archetypes",
         "@vanillasky/text-utils",
         "@vanillasky/tokens"
       ],
@@ -3572,21 +3359,6 @@
           "path": "src/lib/scene-templates/scene-background.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/scene-background.tsx"
-        },
-        {
-          "path": "src/lib/scene-templates/background-effect.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/background-effect.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/color-utils.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/color-utils.ts"
-        },
-        {
-          "path": "src/lib/scene-templates/text-archetypes.ts",
-          "type": "registry:lib",
-          "target": "vanillasky/scene-templates/text-archetypes.ts"
         },
         {
           "path": "src/lib/scene-templates/template-text.tsx",
@@ -3775,6 +3547,80 @@
           "path": "src/lib/vibecode/motion-stdlib.ts",
           "type": "registry:lib",
           "target": "vanillasky/vibecode/motion-stdlib.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "lib",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "text-archetypes",
+      "type": "registry:lib",
+      "title": "Text Archetypes",
+      "description": "The six kinetic-typography lifecycles every headline runs on — `subtle`, `typewriter`, `wordStagger`, `slam`, `cinematic`, `heroWord` — plus `renderArchetype()` (progress → per-frame transform/opacity), the `ARCHETYPE_SPECS` timing table, and the duration helpers (`minDurationFor`, `effectiveDuration`, `canFit`) that decide whether a line fits its scene.",
+      "registryDependencies": [
+        "@vanillasky/animation-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/text-archetypes.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/text-archetypes.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "lib",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "color-utils",
+      "type": "registry:lib",
+      "title": "Color Utils",
+      "description": "The scene background renderer — `gradientBackground()` turns a resolved accent/secondary pair plus a background family (`mesh` / `wash` / `spotlight`) into a pure CSS background string, deterministic per progress and safe for the SVG export path (no CSS `filter`).",
+      "dependencies": [
+        "react"
+      ],
+      "registryDependencies": [
+        "@vanillasky/tokens"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/color-utils.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/color-utils.ts"
+        },
+        {
+          "path": "src/lib/video-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/video-config.ts"
+        }
+      ],
+      "meta": {
+        "vanillasky": {
+          "layer": "lib",
+          "tier": "free"
+        }
+      }
+    },
+    {
+      "name": "background-effect",
+      "type": "registry:lib",
+      "title": "Background Effect",
+      "description": "The nine global background motions — `static`, `slow-zoom-in`, `slow-zoom-out`, `ken-burns`, `drift`, `pulse`, `breathe`, `slow-tilt`, `camera-shake` — as a progress→transform function. This is the `backgroundEffect` vocabulary the model picks from; templates opt in via `usesGlobalBackgroundEffect`.",
+      "registryDependencies": [
+        "@vanillasky/animation-utils"
+      ],
+      "files": [
+        {
+          "path": "src/lib/scene-templates/background-effect.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/scene-templates/background-effect.ts"
         }
       ],
       "meta": {
