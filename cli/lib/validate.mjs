@@ -22,6 +22,8 @@ const { templates: TEMPLATES, aliases: ALIASES, formats: FORMATS, backgroundEffe
 
 /** Fields that live on the scene object, not inside scene.variables. */
 const SCENE_LEVEL_FIELDS = ["backgroundEffect", "textArchetype"];
+// Mirrors the TimingConfig the scene resolver reads (src/lib/scene-resolver.ts).
+const TIMING_FIELDS = ["startTime", "endTime", "beatStart", "beatEnd", "durationWeight"];
 
 const isCustomId = (id) => typeof id === "string" && id.startsWith(CUSTOM.idPrefix);
 
@@ -155,6 +157,16 @@ export function validateConfig(config, { format, pexelsKeyAvailable = false } = 
     warn("missing-style", 'config.style has no font — the renderer requires one; add e.g. "font": "Inter" (vanillasky render injects this default automatically)');
   }
 
+  // brandKit belongs to style. At the top level it is simply never read, so
+  // the video renders in default colors and the only symptom is a frame that
+  // looks unbranded — the most expensive kind of silent no-op.
+  if (config.brandKit !== undefined) {
+    err(
+      "misplaced-brandkit",
+      'brandKit must live inside "style" — a top-level "brandKit" is never read and the brand silently never applies. Move it to style.brandKit.',
+    );
+  }
+
   // An unknown preset silently falls back to the default at render time —
   // which reads as "the preset did nothing" rather than "the name is wrong".
   const presetId = config.style?.preset;
@@ -222,6 +234,27 @@ export function validateConfig(config, { format, pexelsKeyAvailable = false } = 
       continue;
     }
 
+    // Scene length is startTime/endTime. `duration` is the intuitive guess and
+    // is read by nothing — the scene quietly runs at the template's
+    // preferredDuration and the only symptom is a video of the wrong length.
+    if (scene.timing !== undefined && scene.timing !== null && typeof scene.timing === "object" && !Array.isArray(scene.timing)) {
+      for (const key of Object.keys(scene.timing)) {
+        if (TIMING_FIELDS.includes(key)) continue;
+        const hint = key === "duration"
+          ? ` Scene length is set with startTime + endTime (seconds) — e.g. "timing": { "startTime": 0, "endTime": ${JSON.stringify(scene.timing[key])} }.`
+          : "";
+        err(
+          "unknown-timing-field",
+          `${label(i)}: unknown timing field "${key}" — the renderer never reads it and the scene silently falls back to the template's preferredDuration.${hint} Known fields: ${TIMING_FIELDS.join(", ")}`,
+          i, rawId,
+        );
+      }
+      const { startTime, endTime } = scene.timing;
+      if (typeof startTime === "number" && typeof endTime === "number" && endTime <= startTime) {
+        err("structural", `${label(i)}: timing.endTime (${endTime}) must be greater than timing.startTime (${startTime})`, i, rawId);
+      }
+    }
+
     const vars = scene.variables ?? {};
     const schema = tpl.variableSchema ?? {};
     const schemaNames = Object.keys(schema);
@@ -252,6 +285,16 @@ export function validateConfig(config, { format, pexelsKeyAvailable = false } = 
       if (typeErr) {
         err("type-mismatch", `${label(i)}: variable "${name}" — ${typeErr}`, i, rawId);
       }
+    }
+
+    // ctaLogo renders `cta` only as a fallback for an empty `url`. Setting
+    // both ships copy that never appears on screen.
+    if (canonicalId === "ctaLogo" && !isEmpty(vars.cta) && !isEmpty(vars.url)) {
+      warn(
+        "dead-cta",
+        `${label(i)}: "cta" (${JSON.stringify(vars.cta)}) never renders while "url" is set — ctaLogo shows the CTA only as a fallback for an empty url. Drop one: keep the url as the address, or clear it to stamp the cta instead.`,
+        i, rawId,
+      );
     }
 
     for (const [name, field] of Object.entries(schema)) {

@@ -209,7 +209,7 @@ export async function handleLocalRoute(req, res, url, ctx) {
  * text, not an interface.
  */
 async function startRender(ctx) {
-  const { session, renderCommand } = ctx;
+  const { session, renderCommand, fps } = ctx;
   const outPath = join(dirname(session.path), "video.mp4");
   // Render to a temp name and rename on success: ffmpeg runs with -y, so a
   // failed render would otherwise leave a truncated file where a good one was.
@@ -219,7 +219,7 @@ async function startRender(ctx) {
   try {
     await renderCommand(session.path, {
       out: tmpPath,
-      fps: 30,
+      fps: Number.isFinite(fps) && fps > 0 ? fps : 30,
       scale: 1,
       pages: 4,
       validate: true,

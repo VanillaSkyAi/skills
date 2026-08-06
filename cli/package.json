@@ -1,6 +1,6 @@
 {
   "name": "vanillasky",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Render VanillaSky video configs to MP4 with a local Chrome \u2014 frames, contact sheets, draft and full-quality renders.",
   "type": "module",
   "license": "MIT",

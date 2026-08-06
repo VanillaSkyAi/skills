@@ -120,11 +120,16 @@ change the brief.
 **Never deliver an uninspected video.** The frame/sheet step is mandatory, not
 optional — validation catches schema errors, only your eyes catch a bad frame.
 
-Two things your eyes cannot catch, so check them explicitly:
+Four things your eyes cannot catch on a contact sheet, so check them explicitly:
 - **Audio.** Contact sheets are silent. The renderer warns if the muxed audio
   stops before the video ends — read its output rather than assuming.
 - **The other orientation.** A portrait frame check says nothing about
   landscape. If a config declares one and you claim both work, render both.
+- **Footage judder.** Every frame can be correct while the motion between them
+  stutters — see "Match the render fps to the footage" below. Still frames can
+  never show this; compare the clip's fps against the render fps instead.
+- **Total length.** The render banner prints it (`5 scene(s), 17.5s`). If it
+  doesn't match the durations you set, a timing field didn't apply.
 
 ## Config skeleton
 
@@ -132,12 +137,20 @@ Two things your eyes cannot catch, so check them explicitly:
 {
   "format": "launch",
   "orientation": "portrait",
-  "style": { "font": "Inter" },
+  "style": {
+    "font": "Inter",
+    "preset": "bold",
+    "brandKit": { "accent": "#6D5EF8", "secondary": "#F8B45E" }
+  },
   "scenes": [
     { "id": "s0", "templateId": "media", "variables": { "texts": "Ship it today" }, "timing": {} }
   ]
 }
 ```
+
+**`brandKit` lives inside `style`.** A top-level `brandKit` is not read — the
+brand silently never applies and you find out by looking at a rendered frame.
+The validator now errors on it, but the nesting is the thing to remember.
 
 `orientation` picks the frame: `"portrait"` (9:16, 1080x1920) or
 `"landscape"` (16:9, 1920x1080). Both are first-class — every template is
@@ -162,6 +175,20 @@ it explicitly.
 `cinematic`, `heroWord`) are documented with use-when guidance in
 [references/motion.md](references/motion.md).
 
+`backgroundEffect` is one of exactly nine values — `static`, `slow-zoom-in`,
+`slow-zoom-out`, `ken-burns`, `drift`, `pulse`, `breathe`, `slow-tilt`,
+`camera-shake` — and only templates whose registry item sets
+`usesGlobalBackgroundEffect` consume it. Setting it on a template that ignores
+it is an error, not a silent no-op.
+
+**Scene duration is `timing.startTime` + `timing.endTime`, in seconds.**
+There is no `timing.duration` — a config that sets one gets the template's
+`preferredDuration` instead, and the only symptom is a video that isn't the
+length you asked for. Set both fields, and make them contiguous across scenes
+(scene N's `endTime` is scene N+1's `startTime`); `timing: {}` falls back to
+`preferredDuration`. A whole-video length check after rendering (`17.5s` in the
+render banner) is the cheapest way to catch a timing field that didn't apply.
+
 A Pexels key is worth setting up front: it powers both `mediaKeyword`
 resolution here AND stock search inside `vanillasky studio`, so without one the
 user's media picker is empty. It's free at pexels.com/api.
@@ -171,6 +198,29 @@ is set (free at pexels.com/api; env var, or `~/.vanillasky/config.json`
 `{ "pexelsApiKey": "..." }` — env wins; `--no-pexels` opts out). Without a
 key, set a direct `mediaUrl` or the scene falls back to its brand gradient
 (the validator warns about this).
+
+**Keyword resolution is not deterministic.** Every render re-queries Pexels and
+can return a different clip, so "same config = same MP4" holds only once the
+resolved URL is in the config. The render log prints what it picked — paste
+those URLs into `mediaUrl` before you share or re-render a config you're happy
+with. While you're there, prefer the 1080x1920 (portrait) or 1920x1080
+(landscape) rendition: the picker often lands on a 720p file that then gets
+upscaled to the render size.
+
+### Match the render fps to the footage
+
+Stock footage is frequently **25fps** while `render` defaults to **30fps**.
+That ratio isn't an integer, so one output frame in six is a duplicate and the
+footage visibly stutters — the video reads as cheap without any single frame
+looking wrong, and a contact sheet cannot show it. Check the clip
+(`ffprobe -show_entries stream=r_frame_rate <url>`) and either pick a rendition
+whose fps divides the render rate, or render at the footage rate:
+`vanillasky render video.json --fps 25`. The Studio's **Export MP4** takes the
+same flag — `vanillasky studio video.json --fps 25` — and defaults to 30 like
+`render` does, so a config that needs 25 needs it on both commands. 25fps is a
+standard delivery rate and every social platform accepts it. Mixing 25fps and
+30fps clips in one video means one of them will judder whatever you choose —
+prefer a consistent set.
 
 ## Audio
 
@@ -202,7 +252,10 @@ bleeds into a branded config.
 Tradeoff: `colors.background`/`surface` → `brandKit.bg` collapses gradient-led
 templates to a flat brand backdrop — prefer omitting `background`/`surface`
 from DESIGN.md (or leaving `bg` unset) when scenes should keep their generated
-brand gradients.
+brand gradients. **This is a property of `brandKit.bg` itself, not of DESIGN.md
+ingestion:** setting `bg` by hand flattens every scene in the video the same
+way. Set `accent` and `secondary` and let the preset generate the background;
+reach for `bg` only when a flat backdrop is the intent.
 
 ## Slot contract (formats)
 
@@ -240,9 +293,22 @@ closer is always the address (brand / URL / action).
 - No numbers in the closer. If a body already proved the stat, the closer
   stamping it again reads as boring, not emphatic.
 - Never place same-template or same-category scenes adjacent (`media` is exempt
-  only for multiple distinct user-provided assets).
+  only for multiple distinct user-provided assets). Category is not guessable
+  from a template's name — `beforeAfter` and `cardList` are both `explainer`.
+  The category column in the index is the only source; check it before ordering
+  scenes rather than discovering the clash at validate time.
 - A `media` scene without a `backgroundEffect` is a static stock photo, not a
   scene — and don't repeat one effect across every footage scene; vary it.
+- Give footage scenes at least 3s. `media`'s 2s `preferredDuration` is a floor
+  for a bridge beat, not a shot: at 2s a clip registers as a flash, and pairing
+  it with a moving `backgroundEffect` and staggered text makes the cut read as
+  rushed even though nothing is technically wrong.
+- `ctaLogo`'s `cta` renders ONLY when `url` is empty. Setting both ships the
+  CTA as dead config that never appears on screen — pick one: the URL as the
+  address, or `cta` for a "Coming soon" / "Available now" stamp.
+- Card templates silently drop items that don't fit their duration —
+  `cardList` at its 3.5s preferred shows three. Count what actually appears in
+  the contact sheet rather than assuming every item you wrote made it in.
 - Never ship a gradient-only scene when the template has a `mediaKeyword`
   slot; `mediaKeyword` must be a standalone English noun, never derived from
   the copy text.

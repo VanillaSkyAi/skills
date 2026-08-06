@@ -24,18 +24,18 @@
 
 The 10 templates to reach for first — one per motion archetype, register-diverse.
 
-| Template | Use when | Register | Jobs | Duration | Variables | Tier |
-|---|---|---|---|---|---|---|
-| `media` | **Archetype: hook.** The default opener — full-frame footage with a text effect riding the motion; also the atmospheric body bridge. Full-bleed photo, video, or gradient with open text. Use for hooks, atmospheric body beats, uploaded scenic media, or a concrete product-context sentence over footage. | motion-led | atmosphere, setup | 1–2s | 6 | free |
-| `bigNumber` | **Archetype: stat-pop.** Hero number counts up and pops; everything else stays quiet. One important real number explicitly present in the input: customer count, reduction, uplift, speed claim, percentage, rank, or headline metric. Use only when you can copy the exact number into value/prefix/unit; never invent a number or leave the default. {needs stat} | typography-led | claim, proof | 1.5–4s | 11 | free |
-| `tweet` | **Archetype: social card.** Brand-voiced post that reads like a real public post. X-style post card with optional 1-4 image grid (tweetImage1..4). Brand-voiced announcement that reads like a real public post, launch quote, founder update, or compact social claim. Avoid for generic product explainers. | card-led | claim, proof | 2.5–3.5s | 10 | free |
-| `testimonial` | **Archetype: reveal-slide.** Quote card fades/scales in, inner content word-by-word. One real attributed customer quote, testimonial, review, or named endorsement. Do not fabricate names, roles, or quotes. {needs quote} | card-led | proof | 2.5–4s | 8 | free |
-| `phoneMockup` | **Archetype: mockup-zoom.** Phone chrome slides up and settles; real portrait UI only. Uploaded portrait/mobile UI screenshots or a mobile app workflow. Use one scene for up to three same-orientation phone screens. {needs screenshot} | device-led | proof, atmosphere | 2–3s | 5 | free |
-| `terminal` | **Archetype: dev device.** A command or log output IS the content; synthesize from the input. Developer or technical product where a CLI command, install command, log output, deploy/test flow, or status result communicates the workflow better than prose. Prefer when the input includes a command or install snippet. | device-led | proof, atmosphere | 2–3s | 5 | free |
-| `steps` | **Archetype: card-grid-stagger.** Ordered cards spring in one at a time. Sequential workflow or how-it-works explanation where order matters: connect, generate, review, publish. Avoid for unordered feature lists. | card-led | proof, setup | 2–3.5s | 4 | free |
-| `beforeAfter` | **Archetype: transformation.** Two states, one contrast. Clear transformation or contrast between two states, especially symbolic or visual before/after: manual to automated, chaos to order, old way to new way. | motion-led | proof, setup | 3–4.5s | 7 | free |
-| `milestone` | **Archetype: celebrate-burst.** Number + particles radiating from center. Real numeric achievement explicitly in the input: users, revenue, years, installs, customers, stars, or adoption count. Use exact targetNumber; never for generic releases, versions, 'free', or proof without an achievement count. {needs stat} | typography-led | claim, proof | 2.5–4s | 10 | free |
-| `ctaLogo` | **Archetype: text-slam closer.** Prefer over ctaMedia when a real logo exists or 2+ scenes already ran full-frame footage. Minimal brand stamp closer when the video already has enough motion or proof and only needs brand, URL, or a simple next action. | typography-led | ask | 2–3.5s | 8 | free |
+| Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
+|---|---|---|---|---|---|---|---|
+| `media` | **Archetype: hook.** The default opener — full-frame footage with a text effect riding the motion; also the atmospheric body bridge. Full-bleed photo, video, or gradient with open text. Use for hooks, atmospheric body beats, uploaded scenic media, or a concrete product-context sentence over footage. | undefined | motion-led | atmosphere, setup | 1–2s | 6 | free |
+| `bigNumber` | **Archetype: stat-pop.** Hero number counts up and pops; everything else stays quiet. One important real number explicitly present in the input: customer count, reduction, uplift, speed claim, percentage, rank, or headline metric. Use only when you can copy the exact number into value/prefix/unit; never invent a number or leave the default. {needs stat} | undefined | typography-led | claim, proof | 1.5–4s | 11 | free |
+| `tweet` | **Archetype: social card.** Brand-voiced post that reads like a real public post. X-style post card with optional 1-4 image grid (tweetImage1..4). Brand-voiced announcement that reads like a real public post, launch quote, founder update, or compact social claim. Avoid for generic product explainers. | undefined | card-led | claim, proof | 2.5–3.5s | 10 | free |
+| `testimonial` | **Archetype: reveal-slide.** Quote card fades/scales in, inner content word-by-word. One real attributed customer quote, testimonial, review, or named endorsement. Do not fabricate names, roles, or quotes. {needs quote} | undefined | card-led | proof | 2.5–4s | 8 | free |
+| `phoneMockup` | **Archetype: mockup-zoom.** Phone chrome slides up and settles; real portrait UI only. Uploaded portrait/mobile UI screenshots or a mobile app workflow. Use one scene for up to three same-orientation phone screens. {needs screenshot} | undefined | device-led | proof, atmosphere | 2–3s | 5 | free |
+| `terminal` | **Archetype: dev device.** A command or log output IS the content; synthesize from the input. Developer or technical product where a CLI command, install command, log output, deploy/test flow, or status result communicates the workflow better than prose. Prefer when the input includes a command or install snippet. | undefined | device-led | proof, atmosphere | 2–3s | 5 | free |
+| `steps` | **Archetype: card-grid-stagger.** Ordered cards spring in one at a time. Sequential workflow or how-it-works explanation where order matters: connect, generate, review, publish. Avoid for unordered feature lists. | undefined | card-led | proof, setup | 2–3.5s | 4 | free |
+| `beforeAfter` | **Archetype: transformation.** Two states, one contrast. Clear transformation or contrast between two states, especially symbolic or visual before/after: manual to automated, chaos to order, old way to new way. | undefined | motion-led | proof, setup | 3–4.5s | 7 | free |
+| `milestone` | **Archetype: celebrate-burst.** Number + particles radiating from center. Real numeric achievement explicitly in the input: users, revenue, years, installs, customers, stars, or adoption count. Use exact targetNumber; never for generic releases, versions, 'free', or proof without an achievement count. {needs stat} | undefined | typography-led | claim, proof | 2.5–4s | 10 | free |
+| `ctaLogo` | **Archetype: text-slam closer.** Prefer over ctaMedia when a real logo exists or 2+ scenes already ran full-frame footage. Minimal brand stamp closer when the video already has enough motion or proof and only needs brand, URL, or a simple next action. | undefined | typography-led | ask | 2–3.5s | 8 | free |
 
 ## Text archetypes (scene-level `textArchetype`)
 
@@ -68,6 +68,18 @@ Unset resolves to the default, which is the original look.
 | `editorial` | Calm vertical wash, lighter and wider-tracked headlines, centered. Reviews, thoughtful updates, premium or B2B brands — when the copy should feel considered rather than shouted. | wash | centered, lighter, wider tracking, larger (1.08×) |
 | `stark` | Single hard spotlight on near-black, uppercase and tightly tracked. Dev tools, technical claims, high-contrast statements — maximum weight on very few words. | spotlight | top, uppercase, heavier, tighter tracking |
 
+## Background effects (scene-level `backgroundEffect`)
+
+Continuous background motion for the whole scene. Set on the SCENE, never
+inside `variables`. A footage scene without one is a static stock photo, not a
+scene — and repeating one effect across every footage scene reads as a tic, so
+vary it.
+
+`static`, `slow-zoom-in`, `slow-zoom-out`, `ken-burns`, `drift`, `pulse`, `breathe`, `slow-tilt`, `camera-shake`
+
+Only these templates consume it — setting it on any other template is a
+validation error, not a silent no-op: `bigNumber`, `brandMessage`, `cardList`, `incomingCall`, `media`, `notification`, `problemSolution`, `promptInput`, `steps`, `tweet`.
+
 ## Full catalog
 
 The remaining templates, by category. Core templates above also belong to these
@@ -75,56 +87,56 @@ categories (category shown per template in its registry item's `meta.vanillasky.
 
 ### media
 
-| Template | Use when | Register | Jobs | Duration | Variables | Tier |
-|---|---|---|---|---|---|---|
-| `reaction` | Use once for funny/meme/self-aware/roast/silly/unhinged/lol videos. Short full-bleed reaction clip with a punchline. Hook or body payoff. Pick reactionTag from the enum; search appends `meme` to nudge Pexels toward expressive footage. Max one per video. | motion-led | setup, claim | 2.5–3s | 4 | free |
+| Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
+|---|---|---|---|---|---|---|---|
+| `reaction` | Use once for funny/meme/self-aware/roast/silly/unhinged/lol videos. Short full-bleed reaction clip with a punchline. Hook or body payoff. Pick reactionTag from the enum; search appends `meme` to nudge Pexels toward expressive footage. Max one per video. | media | motion-led | setup, claim | 2.5–3s | 4 | free |
 
 ### celebration
 
-| Template | Use when | Register | Jobs | Duration | Variables | Tier |
-|---|---|---|---|---|---|---|
-| `confetti` | *Runner-up — prefer `milestone` for numeric achievements, `emojiBurst` for themed celebration.* Generic celebration or broad win when no specific emoji theme or numeric milestone is the main point. Prefer emojiBurst for themed emoji celebrations and milestone for numeric achievements. | motion-led | atmosphere | 1–2s | 2 | free |
-| `emojiBurst` | Themed celebration where a small emoji set communicates the moment, such as launch, love, achievement, or delight. Prefer confetti for generic celebration. | motion-led | atmosphere | 1–2s | 2 | free |
+| Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
+|---|---|---|---|---|---|---|---|
+| `confetti` | *Runner-up — prefer `milestone` for numeric achievements, `emojiBurst` for themed celebration.* Generic celebration or broad win when no specific emoji theme or numeric milestone is the main point. Prefer emojiBurst for themed emoji celebrations and milestone for numeric achievements. | undefined | motion-led | atmosphere | 1–2s | 2 | free |
+| `emojiBurst` | Themed celebration where a small emoji set communicates the moment, such as launch, love, achievement, or delight. Prefer confetti for generic celebration. | undefined | motion-led | atmosphere | 1–2s | 2 | free |
 
 ### data
 
-| Template | Use when | Register | Jobs | Duration | Variables | Tier |
-|---|---|---|---|---|---|---|
-| `barChart` | Comparison, ranking, trend, or multiple values where relative size matters. Use for category comparisons, before/after quantities, or grouped metrics. {needs stat} | motion-led | proof | 2–3.5s | 4 | free |
-| `progressRing` | Completion, readiness, health score, goal progress, adoption progress, or percent complete. Do not use for generic uplift, reduction, speed, or loose percentage claims. {needs stat} | motion-led | proof | 2–3.5s | 6 | free |
-| `tripleStats` | Exactly three peer stats or compact specs from the input with comparable weight. Prefer over bigNumber for three parallel facts. Avoid when one number is the hero or values are just brand/tool names. {needs stat} | typography-led | claim, proof | 2–3s | 8 | free |
+| Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
+|---|---|---|---|---|---|---|---|
+| `barChart` | Comparison, ranking, trend, or multiple values where relative size matters. Use for category comparisons, before/after quantities, or grouped metrics. {needs stat} | undefined | motion-led | proof | 2–3.5s | 4 | free |
+| `progressRing` | Completion, readiness, health score, goal progress, adoption progress, or percent complete. Do not use for generic uplift, reduction, speed, or loose percentage claims. {needs stat} | undefined | motion-led | proof | 2–3.5s | 6 | free |
+| `tripleStats` | Exactly three peer stats or compact specs from the input with comparable weight. Prefer over bigNumber for three parallel facts. Avoid when one number is the hero or values are just brand/tool names. {needs stat} | undefined | typography-led | claim, proof | 2–3s | 8 | free |
 
 ### device
 
-| Template | Use when | Register | Jobs | Duration | Variables | Tier |
-|---|---|---|---|---|---|---|
-| `webMockup` | Uploaded landscape or square desktop/web screenshots, dashboard views, or browser/tablet product surfaces. Use one scene for up to three same-orientation screens. {needs screenshot} | device-led | proof, atmosphere | 2–3s | 7 | free |
-| `codeEditor` | *Paired with `terminal` — prefer `terminal` when the input has a command/install/log; `codeEditor` for code/config samples.* Developer product, API, SDK, config, codebase, tests, or code-focused workflow where a short synthetic code sample explains the product mechanism. Prefer over generic brand/card scenes when code is a core input signal. | device-led | proof, atmosphere | 2–3s | 4 | free |
+| Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
+|---|---|---|---|---|---|---|---|
+| `webMockup` | Uploaded landscape or square desktop/web screenshots, dashboard views, or browser/tablet product surfaces. Use one scene for up to three same-orientation screens. {needs screenshot} | undefined | device-led | proof, atmosphere | 2–3s | 7 | free |
+| `codeEditor` | *Paired with `terminal` — prefer `terminal` when the input has a command/install/log; `codeEditor` for code/config samples.* Developer product, API, SDK, config, codebase, tests, or code-focused workflow where a short synthetic code sample explains the product mechanism. Prefer over generic brand/card scenes when code is a core input signal. | undefined | device-led | proof, atmosphere | 2–3s | 4 | free |
 
 ### social
 
-| Template | Use when | Register | Jobs | Duration | Variables | Tier |
-|---|---|---|---|---|---|---|
-| `notification` | A real notification-shaped product moment: alert, reminder, task done, system update, approval, message, or 'your X is ready' event. Avoid for generic URL launches, broad brand announcements, or product explanations. | card-led | proof, setup | 2–3s | 8 | free |
-| `chatMessenger` | Short synthetic Messenger-style conversation when a back-and-forth helps explain a use case, objection, or punchline. Use sparingly because it is long. | mockup-led | proof, setup | 5–8s | 7 — `msg1`..`msg5` + `dateChip1`/`dateChip2`, NOT a `bubbles` array | free |
-| `chatWhatsapp` | *Runner-up — prefer `chatMessenger` unless the story is explicitly customer-service/WhatsApp shaped.* Short synthetic WhatsApp-style conversation when the product story is naturally conversational or customer-service oriented. Use sparingly because it is long. | mockup-led | proof, setup | 5–8s | 7 — `msg1`..`msg5` + `dateChip1`/`dateChip2`, NOT a `bubbles` array | free |
-| `reviewStack` | Two or more real attributed reviews, ratings, or quotes that should appear as social proof together. Requires real quote/source content. {needs quote} | card-led | proof | 2.5–4s | 14 — `review1Title`/`review1Body`/`review1Author` × 3, NOT a `reviews` array | free |
-| `incomingCall` | Urgent, interruptive, comeback, or dramatic moment where the brand/product conceptually calls the viewer. Avoid as the default for generic URL launches or calm explanations. | card-led | setup, atmosphere | 2.5–4s | 9 — `callerName`, NOT `brandName` | free |
-| `brandMessage` | Single iMessage-style outgoing bubble over media. Use only when a direct 1:1 brand-to-viewer note is the point: thanks, invitation, personal promise, concise launch note. Avoid as generic filler, explanation, or proof. | card-led | claim, setup | 2.5–4s | 6 | free |
-| `promptInput` | Centered AI prompt-input demo: pill grows from a circle with sparkles icon, then types the prompt. Use for product PROMPT UX: 'describe what you want', 'ask the AI', or 'show how to prompt'. | card-led | setup, atmosphere | 2.5–4s | 7 — `promptText`, NOT `prompt` | free |
+| Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
+|---|---|---|---|---|---|---|---|
+| `notification` | A real notification-shaped product moment: alert, reminder, task done, system update, approval, message, or 'your X is ready' event. Avoid for generic URL launches, broad brand announcements, or product explanations. | undefined | card-led | proof, setup | 2–3s | 8 | free |
+| `chatMessenger` | Short synthetic Messenger-style conversation when a back-and-forth helps explain a use case, objection, or punchline. Use sparingly because it is long. | undefined | mockup-led | proof, setup | 5–8s | 7 — `msg1`..`msg5` + `dateChip1`/`dateChip2`, NOT a `bubbles` array | free |
+| `chatWhatsapp` | *Runner-up — prefer `chatMessenger` unless the story is explicitly customer-service/WhatsApp shaped.* Short synthetic WhatsApp-style conversation when the product story is naturally conversational or customer-service oriented. Use sparingly because it is long. | undefined | mockup-led | proof, setup | 5–8s | 7 — `msg1`..`msg5` + `dateChip1`/`dateChip2`, NOT a `bubbles` array | free |
+| `reviewStack` | Two or more real attributed reviews, ratings, or quotes that should appear as social proof together. Requires real quote/source content. {needs quote} | undefined | card-led | proof | 2.5–4s | 14 — `review1Title`/`review1Body`/`review1Author` × 3, NOT a `reviews` array | free |
+| `incomingCall` | Urgent, interruptive, comeback, or dramatic moment where the brand/product conceptually calls the viewer. Avoid as the default for generic URL launches or calm explanations. | undefined | card-led | setup, atmosphere | 2.5–4s | 9 — `callerName`, NOT `brandName` | free |
+| `brandMessage` | Single iMessage-style outgoing bubble over media. Use only when a direct 1:1 brand-to-viewer note is the point: thanks, invitation, personal promise, concise launch note. Avoid as generic filler, explanation, or proof. | undefined | card-led | claim, setup | 2.5–4s | 6 | free |
+| `promptInput` | Centered AI prompt-input demo: pill grows from a circle with sparkles icon, then types the prompt. Use for product PROMPT UX: 'describe what you want', 'ask the AI', or 'show how to prompt'. | undefined | card-led | setup, atmosphere | 2.5–4s | 7 — `promptText`, NOT `prompt` | free |
 
 ### explainer
 
-| Template | Use when | Register | Jobs | Duration | Variables | Tier |
-|---|---|---|---|---|---|---|
-| `problemSolution` | Literal pain-to-fix story where the central message is one problem statement and one solution statement. Avoid for generic SaaS launches without a crisp pain/fix pair. | card-led | setup, proof | 3–5.5s | 5 | free |
-| `cardList` | Three to five concrete product facts, benefits, use cases, integrations, or feature bullets. Good for product comprehension when the facts are parallel. | card-led | proof, setup | 2–3.5s | 4 | free |
+| Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
+|---|---|---|---|---|---|---|---|
+| `problemSolution` | Literal pain-to-fix story where the central message is one problem statement and one solution statement. Avoid for generic SaaS launches without a crisp pain/fix pair. | undefined | card-led | setup, proof | 3–5.5s | 5 | free |
+| `cardList` | Three to five concrete product facts, benefits, use cases, integrations, or feature bullets. Good for product comprehension when the facts are parallel. | undefined | card-led | proof, setup | 2–3.5s | 4 | free |
 
 ### closer
 
-| Template | Use when | Register | Jobs | Duration | Variables | Tier |
-|---|---|---|---|---|---|---|
-| `ctaMedia` | *Closer fallback — prefer `ctaLogo` when a real logo exists or 2+ scenes already ran full-frame footage.* Cinematic media-backed closer with headline and URL. Default closer for launch videos when a final visual beat helps the call to action. | typography-led | ask | 2–4s | 8 | free |
+| Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
+|---|---|---|---|---|---|---|---|
+| `ctaMedia` | *Closer fallback — prefer `ctaLogo` when a real logo exists or 2+ scenes already ran full-frame footage.* Cinematic media-backed closer with headline and URL. Default closer for launch videos when a final visual beat helps the call to action. | undefined | typography-led | ask | 2–4s | 8 | free |
 ## Libs (`registry:lib`)
 
 Shared vocabulary for custom scenes. Import from these instead of hardcoding

@@ -38,6 +38,10 @@ export async function studioCommand(configPath, opts = {}) {
       return { errors: r.errors ?? [], warnings: r.warnings ?? [] };
     },
     renderCommand,
+    // Export MP4 in the editor is the same renderer as `vanillasky render`,
+    // so it needs the same fps. Hardcoding 30 here silently re-introduced
+    // judder on 25fps footage that the CLI render had just avoided.
+    fps: Number.isFinite(opts.fps) && opts.fps > 0 ? opts.fps : 30,
     getPexelsApiKey,
     searchPexels,
     loadTrackLibrary,

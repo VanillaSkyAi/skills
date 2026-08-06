@@ -14,7 +14,7 @@ const HELP = `vanillasky — validate, render, and share VanillaSky video config
 Usage:
   vanillasky setup [--check]
   vanillasky render <config.json> [options]
-  vanillasky studio <config.json> [--no-open]
+  vanillasky studio <config.json> [--no-open] [--fps <n>]
   vanillasky validate <config.json> [--json] [--format <id>]
   vanillasky diff <config.json> [--json]
   vanillasky tracks [--json]
@@ -222,16 +222,6 @@ if (cmd === "diff") {
   process.exit(diffCommand(configPath, { json: Boolean(values.json) }));
 }
 
-if (cmd === "studio") {
-  try {
-    await studioCommand(configPath, { open: !values["no-open"] });
-    process.exit(0);
-  } catch (err) {
-    console.error(`[vanillasky] error: ${err?.message ?? err}`);
-    process.exit(1);
-  }
-}
-
 const num = (name, raw, def) => {
   if (raw === undefined) return def;
   const n = Number(raw);
@@ -241,6 +231,17 @@ const num = (name, raw, def) => {
   }
   return n;
 };
+
+if (cmd === "studio") {
+  try {
+    await studioCommand(configPath, { open: !values["no-open"], fps: num("fps", values.fps, 30) });
+    process.exit(0);
+  } catch (err) {
+    console.error(`[vanillasky] error: ${err?.message ?? err}`);
+    process.exit(1);
+  }
+}
+
 
 try {
   await renderCommand(configPath, {
