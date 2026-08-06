@@ -1,16 +1,18 @@
 # Contributing to VanillaSky
 
-> The public registry is a shared catalog. Contribute a template, primitive, track, fixture, or documentation improvement once, and it can reach every agent using the next VanillaSky release.
+> The public registry is a shared catalog. Contribute a template, shared library, track, fixture, or documentation improvement once, and it can reach every agent using the next VanillaSky release.
 
 ## What can be contributed
 
 | Artifact | Registry type | Acceptance bar |
 | --- | --- | --- |
 | Scene template | `registry:block` | Fills a real gap, follows template constraints, and passes export QA. |
-| Motion primitive | `registry:lib` API | Has a clear composition use and belongs in the documented custom-scene sandbox. |
+| Shared library | `registry:lib` | Provides reusable motion, text, color, background, or brand behavior across multiple scenes. |
 | Music track | Manifest entry | Includes complete metadata and verified redistribution rights. |
 | Format definition | `registry:file` | Represents a distinct story contract with a composition rationale. |
 | Docs, fixtures, bugs | — | Clear, reproducible, and useful to public users. |
+
+Internal scene elements are not a public registry contribution type today. A reusable visual should enter as a complete scene template; shared behavior should enter as a library only after it has more than one real consumer.
 
 ## Where contributions start
 

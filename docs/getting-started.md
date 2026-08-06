@@ -22,6 +22,11 @@ With the `skills` CLI, which supports Claude Code, Codex, Cursor, and 75+ other 
 npx skills add VanillaSkyAi/skills --skill vanillasky
 ```
 
+That installs the agent instructions. On first use, the skill runs its bundled
+`scripts/install-cli.mjs` bootstrapper to clone the official public release and
+put its local CLI on `PATH`. The official CLI is **not published as an npm
+package**: never install a package merely named `vanillasky` from npm.
+
 Or clone the public repository and copy the skill manually:
 
 ```bash
@@ -29,9 +34,7 @@ git clone https://github.com/VanillaSkyAi/skills vanillasky-skills
 cp -R vanillasky-skills/vanillasky ~/.claude/skills/vanillasky
 ```
 
-The repository includes the skill, CLI, scene registry, music, examples, and these same documentation files.
-
-`npx skills add` installs the agent instructions. The local Studio and renderer are shipped in the public repository's `cli/` directory, so clone that repository once before running the CLI commands below.
+The repository includes the skill, CLI, scene registry, music, examples, and these same documentation files. The local Studio and renderer live in its `cli/` directory.
 
 ## Requirements
 

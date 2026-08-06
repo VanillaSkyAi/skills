@@ -9,7 +9,7 @@ express the brief. A custom scene is a rare escape hatch, not the default path.
 2. **Adjust variables** — read `registry/r/<id>.json` for the complete schema.
 3. **Eject** — create a `custom_*` scene with `componentSource`, based on a
    registry item's source.
-4. **Compose from scope** — use sandbox primitives such as `CountUpNumber`,
+4. **Compose from scope** — use sandbox scene elements such as `CountUpNumber`,
    `TweetCard`, or `PhoneFrame` inside a custom body.
 
 For an ejected scene, record its origin:
@@ -59,11 +59,15 @@ work verbatim as `componentSource`; reshape it into the sandbox contract.
   `requestAnimationFrame`.
 - The body does not paint the global background or repeat the main title; the
   frame around it already owns background, title, and safe zones.
-- Use helpers and primitives reported by `vanillasky scope`. Most primitives
-  occupy the whole frame, so normally use one per scene and compose around it.
+- Use helpers and scene elements reported by `vanillasky scope`.
+- Default to one focal scene element per scene and compose text or custom motion
+  around it. Most current elements own the focal frame.
+- Do not place scene elements side by side unless each one explicitly accepts
+  caller-defined bounds and you have verified the non-overlapping layout in
+  both orientations.
 
 The sandbox provides React helpers, motion functions, color utilities, text
-fitting, and registered primitives as globals. `motion-api.md` is the generated
+fitting, and internal scene elements as globals. `motion-api.md` is the generated
 API reference; do not rely on remembered names.
 
 ## Required reading and verification

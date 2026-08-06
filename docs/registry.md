@@ -1,16 +1,15 @@
 # Templates and the registry
 
-> Every scene template and shared library ships through a public, shadcn-compatible registry with its schema and source. The catalog also documents the sandbox primitives exposed by those libraries. Agents read it before composing; developers can inspect or eject any item.
+> Every scene template and shared library ships through a public, shadcn-compatible registry with its schema and source. Agents read it before composing; developers can inspect or eject any item.
 
 Browse the visual catalog at [vanillasky.ai/templates](https://vanillasky.ai/templates).
 
-## Registry layers
+## Two public layers
 
 | Layer | Type | Purpose |
 | --- | --- | --- |
 | Templates | `registry:block` | Finished scenes—the default composition path. |
-| Sandbox APIs | `registry:lib` members | Motion, text, color, and background primitives exposed to custom scenes. |
-| Libraries | `registry:lib` | Shared motion, text-fitting, and brand-token utilities. |
+| Shared libraries | `registry:lib` | Motion, text-fitting, color, background, and brand-token utilities. |
 
 Start with a template. Only move to an ejected or custom scene when the catalog genuinely cannot express the brief.
 
@@ -23,7 +22,7 @@ The compact catalog lives at [vanillasky.ai/llms-components.txt](https://vanilla
 - preferred durations and format roles;
 - use-when guidance;
 - style presets and text archetypes;
-- primitive prop schemas.
+- dependency and source information.
 
 The public repository contains the same file at `registry/llms-components.txt` for offline use. Agents must read one of these copies and stop rather than inventing an ID or variable.
 
@@ -74,6 +73,8 @@ vanillasky diff video.json
 `diff` reports changes; it never merges them into your custom source.
 
 Before writing a custom scene, run `vanillasky scope` to list the exact globals available inside the sandbox. The validator rejects imports, unsupported globals, and other contract violations instead of rendering a blank scene.
+
+The sandbox also exposes internal scene elements such as counters, cards, and device frames. They are an advanced authoring capability, not a third public registry layer. Most own the focal frame, so custom scenes should normally use one and compose text or custom motion around it.
 
 ## Offline behavior
 

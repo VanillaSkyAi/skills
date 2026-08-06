@@ -36,6 +36,11 @@ cp -R vanillasky-skills/vanillasky ~/.claude/skills/vanillasky
 npx skills add VanillaSkyAi/skills --skill vanillasky
 ```
 
+On first use, the skill runs its bundled `scripts/install-cli.mjs` to clone
+this official release and expose the included CLI. The official CLI is **not
+published as an npm package**; never install a package merely named
+`vanillasky` from npm.
+
 The skill uses the live template catalog at
 [vanillasky.ai/llms-components.txt](https://vanillasky.ai/llms-components.txt)
 when online; this repo's `registry/` directory is the equivalent offline
@@ -70,16 +75,15 @@ No account, no upload, no telemetry. The AI chat from the hosted Studio is
 deliberately absent — that is what lets the whole editor ship inside the skill
 with no backend.
 
-## The registry — components, not just templates
+## The registry — templates and shared libraries
 
-The catalog has three layers, all shadcn-conformant and all shipped with
+The catalog has two public layers. Both are shadcn-conformant and ship with
 source:
 
 | Layer | Type | What it is |
 | --- | --- | --- |
 | Templates | `registry:block` | Finished scenes — the default path. Pick one, set variables, render. |
-| Sandbox APIs | `registry:lib` members | Motion, text, color, and background primitives exposed to custom scenes. |
-| Libs | `registry:lib` | Shared vocabulary: motion curves (`animation-utils`), text fitting (`text-utils`), and the canonical brand tokens (`tokens`). |
+| Shared libraries | `registry:lib` | Reusable motion, text, color, background, and brand vocabulary for scene authors. |
 
 Every item's JSON carries its own source in `files[0].content` plus its full
 dependency closure, so you can read or eject any of it without installing

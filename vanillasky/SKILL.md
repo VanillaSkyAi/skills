@@ -27,7 +27,22 @@ there; do not make a full MP4 render part of the initial flow.
 
 ## Start the session
 
-Run these before the first video:
+First resolve the CLI. The official VanillaSky CLI is **not published as an
+npm package**. Never search npm, run `npm install vanillasky`, or use a package
+that merely owns that name. If `command -v vanillasky` fails, resolve this
+skill's installed directory from the path of this `SKILL.md`, then run its
+official bootstrapper:
+
+```bash
+node <installed-skill-directory>/scripts/install-cli.mjs
+```
+
+The bootstrapper clones only `https://github.com/VanillaSkyAi/skills.git` into
+`~/.vanillasky/release`, installs the dependencies declared by that checkout,
+and exposes its local CLI on `PATH`. Stop if the checkout origin differs or
+the script fails; do not substitute a registry package.
+
+Then run these before the first video:
 
 ```bash
 vanillasky update --check
@@ -201,7 +216,7 @@ Use the lowest rung that expresses the brief:
 1. Template with purpose-written copy.
 2. Template with adjusted variables.
 3. Ejected/custom scene based on a registry item.
-4. Custom scene composed from sandbox primitives.
+4. Custom scene composed from sandbox scene elements.
 
 The default path stops at rung 2. Before using rung 3 or 4, read
 [references/custom-scenes.md](references/custom-scenes.md),
