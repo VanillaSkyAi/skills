@@ -1,16 +1,15 @@
 # VanillaSky skills
 
 Agent skills for [VanillaSky](https://vanillasky.ai) — turn a prompt into a
-finished social video (MP4, vertical 9:16 or landscape 16:9). Launch videos,
-milestone posts, product updates, customer reviews: your agent composes a
-`VideoConfig` JSON from curated scene templates and renders it locally with
-the bundled `vanillasky` CLI. Deterministic — same config, same MP4.
+finished social video (MP4, vertical 9:16 or landscape 16:9). Your agent
+composes, validates, and inspects a `VideoConfig`; you review, refine, and
+export it in the bundled local Studio. No account or cloud renderer.
 
 ## Skills
 
 | Skill | What it does |
 | --- | --- |
-| [`vanillasky`](vanillasky/) | Compose + render finished social videos from a brief. Curated scene templates, music tracks, motion/composition rules, brand ingestion from your repo's DESIGN.md. |
+| [`vanillasky`](vanillasky/) | Compose + inspect a finished social video from a brief, then hand it to the user in Studio for review and export. |
 
 ## What's in the box
 
@@ -43,6 +42,18 @@ when online; this repo's `registry/` directory is the equivalent offline
 snapshot (`llms-components.txt` is the index, `r/<name>.json` has each
 item's full variable schema, defaults, and source).
 
+## Documentation
+
+These are the exact Markdown files rendered on vanillasky.ai:
+
+- [Getting started](docs/getting-started.md)
+- [Studio workflow](docs/studio.md)
+- [VideoConfig reference](docs/config.md)
+- [Templates and registry](docs/registry.md)
+- [CLI reference](docs/cli.md)
+- [Brand and DESIGN.md](docs/brand.md)
+- [Contributing](docs/contributing.md)
+
 ## Edit it without writing JSON
 
 ```bash
@@ -67,7 +78,7 @@ source:
 | Layer | Type | What it is |
 | --- | --- | --- |
 | Templates | `registry:block` | Finished scenes — the default path. Pick one, set variables, render. |
-| Primitives | `registry:ui` | The building blocks templates are made of — cards, device chrome, counters, charts. Compose them when no template fits. |
+| Sandbox APIs | `registry:lib` members | Motion, text, color, and background primitives exposed to custom scenes. |
 | Libs | `registry:lib` | Shared vocabulary: motion curves (`animation-utils`), text fitting (`text-utils`), and the canonical brand tokens (`tokens`). |
 
 Every item's JSON carries its own source in `files[0].content` plus its full
@@ -81,7 +92,7 @@ your project's `components.json`:
 
 ```bash
 npx shadcn add @vanillasky/bigNumber      # a template
-npx shadcn add @vanillasky/countUpNumber  # a primitive
+npx shadcn add @vanillasky/animation-utils # a shared library
 ```
 
 Without that `registries` entry the `@vanillasky` namespace does not
