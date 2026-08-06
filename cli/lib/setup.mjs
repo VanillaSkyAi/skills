@@ -66,6 +66,9 @@ export function checkState({ env = process.env, configPath = USER_CONFIG_PATH, c
   const musicMood = typeof config.musicMood === "string" && config.musicMood.trim()
     ? config.musicMood.trim()
     : null;
+  const browser = typeof config.browser === "string" && config.browser.trim()
+    ? config.browser.trim()
+    : null;
 
   let designMd = null;
   const found = findDesignMd(cwd);
@@ -74,7 +77,7 @@ export function checkState({ env = process.env, configPath = USER_CONFIG_PATH, c
     designMd = { path: found, design: design && hasBrandTokens(design) ? design : null, error };
   }
 
-  return { configPath, configExists: exists, configMalformed: malformed, config, pexels, orientation, musicMood, cwd, designMd };
+  return { configPath, configExists: exists, configMalformed: malformed, config, pexels, orientation, musicMood, browser, cwd, designMd };
 }
 
 /** Render the state as human/agent-readable lines. */
@@ -92,6 +95,7 @@ export function formatCheck(state) {
 
   row("orientation", state.orientation ?? 'not set — derive or ask per video (a config without "orientation" renders portrait)');
   row("music mood", state.musicMood ?? "not set — pick per video with `vanillasky tracks`");
+  row("browser", state.browser ?? 'system default — `vanillasky studio` opens wherever macOS/your desktop points http://, which may not be the browser you work in. Pin one with --browser or set "browser" here.');
 
   if (!state.designMd) {
     row("DESIGN.md", `none found from ${state.cwd} — \`vanillasky setup\` can generate one`);

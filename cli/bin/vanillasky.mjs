@@ -14,7 +14,7 @@ const HELP = `vanillasky — validate, render, and share VanillaSky video config
 Usage:
   vanillasky setup [--check]
   vanillasky render <config.json> [options]
-  vanillasky studio <config.json> [--no-open] [--fps <n>]
+  vanillasky studio <config.json> [--no-open] [--fps <n>] [--browser <name>]
   vanillasky validate <config.json> [--json] [--format <id>]
   vanillasky diff <config.json> [--json]
   vanillasky tracks [--json]
@@ -47,6 +47,12 @@ Render options:
 
 Studio options:
   --no-open        Print the URL instead of opening a browser
+  --browser <name> Open in a specific browser instead of the system default
+                   (macOS app name, e.g. "Google Chrome"; an executable
+                   elsewhere). Persist it as "browser" in
+                   ~/.vanillasky/config.json.
+  --fps <n>        Frames per second for the editor's Export MP4 (default 30);
+                   match your footage — 25fps clips judder at 30
 
 Validate options:
   --json           Machine-readable JSON output
@@ -108,6 +114,7 @@ try {
     options: {
       out: { type: "string" },
       fps: { type: "string" },
+      browser: { type: "string" },
       scale: { type: "string" },
       frame: { type: "string" },
       sheet: { type: "boolean" },
@@ -234,7 +241,7 @@ const num = (name, raw, def) => {
 
 if (cmd === "studio") {
   try {
-    await studioCommand(configPath, { open: !values["no-open"], fps: num("fps", values.fps, 30) });
+    await studioCommand(configPath, { open: !values["no-open"], fps: num("fps", values.fps, 30), browser: values.browser ?? null });
     process.exit(0);
   } catch (err) {
     console.error(`[vanillasky] error: ${err?.message ?? err}`);

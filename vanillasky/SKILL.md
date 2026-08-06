@@ -105,7 +105,16 @@ change the brief.
    editor — scene list, per-scene variables, template swap, motion, live
    preview — served from localhost, saving straight back to the file. From
    there the user edits and presses **Export MP4**, which runs this same
-   renderer and writes `video.mp4` next to the config.
+   renderer and writes `video.mp4` next to the config — and opens it when it's
+   done.
+
+   It opens in whatever browser the OS has registered for `http://`, which is
+   not always the one the user is looking at: a machine whose default is Arc
+   while the user works in Chrome opens the Studio somewhere they never see,
+   and the report you get is "it didn't open". Pass
+   `--browser "Google Chrome"` (a macOS app name; an executable elsewhere), or
+   persist it as `"browser"` in `~/.vanillasky/config.json`. `setup --check`
+   shows which it will use.
 
    Two things this changes for you:
    - **A full render is no longer a precondition for delivering.** The preview

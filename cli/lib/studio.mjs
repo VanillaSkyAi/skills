@@ -9,7 +9,6 @@
  * never sent in HTTP requests, so it stays out of Referer headers and server
  * logs. The page reads it once and strips it from history.
  */
-import { spawn } from "node:child_process";
 import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import { resolveDist, startServer } from "./server.mjs";
@@ -19,6 +18,8 @@ import { renderCommand } from "./render.mjs";
 import { getPexelsApiKey, searchPexels } from "./pexels.mjs";
 import { loadTrackLibrary } from "./audio-library.mjs";
 import { LocalSession } from "./local-session.mjs";
+import { openInBrowser, openNotice } from "./open-browser.mjs";
+import { readUserConfig } from "./setup.mjs";
 
 export async function studioCommand(configPath, opts = {}) {
   const path = resolve(configPath);
@@ -56,7 +57,13 @@ export async function studioCommand(configPath, opts = {}) {
   if (!getPexelsApiKey()) {
     console.log(`[vanillasky] no Pexels key — stock search is off. Add one free at pexels.com/api, then \`vanillasky setup\``);
   }
-  if (opts.open !== false) openInBrowser(url);
+  if (opts.open !== false) {
+    // Explicit flag wins, then the saved preference, then the OS default.
+    const configured = readUserConfig().config?.browser;
+    const browser = opts.browser ?? (typeof configured === "string" && configured.trim() ? configured.trim() : null);
+    console.log(openNotice(browser));
+    openInBrowser(url, { browser });
+  }
 
   await new Promise((resolvePromise) => {
     let stopping = false;
@@ -70,18 +77,4 @@ export async function studioCommand(configPath, opts = {}) {
     process.on("SIGINT", stop);
     process.on("SIGTERM", stop);
   });
-}
-
-/** Best-effort browser launch — a failed opener never fails the command. */
-function openInBrowser(url) {
-  try {
-    const [cmd, args] = process.platform === "darwin" ? ["open", [url]]
-      : process.platform === "win32" ? ["cmd", ["/c", "start", "", url]]
-      : ["xdg-open", [url]];
-    const child = spawn(cmd, args, { stdio: "ignore", detached: true });
-    child.on("error", () => console.warn("[vanillasky] couldn't open a browser — copy the URL above"));
-    child.unref();
-  } catch {
-    console.warn("[vanillasky] couldn't open a browser — copy the URL above");
-  }
 }
