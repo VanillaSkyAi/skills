@@ -7,10 +7,11 @@
 A video is one JSON file: an ordered list of scenes built from curated templates. The normal path is deliberately short:
 
 1. **Compose** — your agent inspects the bundled template catalog and turns the brief into `video.json`.
-2. **Validate** — the CLI catches structural mistakes, invalid template variables, and format violations.
-3. **Inspect** — a contact sheet exposes overflow, weak composition, and accidental defaults without waiting for an MP4.
-4. **Open Studio** — review the live preview, adjust scenes, copy, timing, music, and brand.
-5. **Export** — the user exports the MP4 from Studio when the video is ready.
+2. **Resolve** — when stock search is used, the CLI pins the chosen media URLs into the config.
+3. **Validate** — the CLI catches structural mistakes, invalid template variables, and format violations.
+4. **Inspect** — a contact sheet exposes overflow, weak composition, and accidental defaults without waiting for an MP4.
+5. **Open Studio** — review the live preview, adjust scenes, copy, timing, music, and brand.
+6. **Export** — the user exports the MP4 from Studio when the video is ready.
 
 The agent and Studio can edit the same file. Studio follows external changes live and warns before either side overwrites unsaved work.
 
@@ -64,6 +65,7 @@ Inspect `sheet/sheet.png`, then review and edit the video in Studio. The user ex
 For a video your agent created in another project, run the same handoff against that file:
 
 ```bash
+vanillasky resolve video.json # only when the config uses mediaKeyword
 vanillasky validate video.json
 vanillasky render video.json --sheet --out ./sheet
 vanillasky studio video.json
@@ -95,7 +97,7 @@ vanillasky templates
 vanillasky templates bigNumber --json
 ```
 
-A Pexels key is optional. Without one, use supplied media, direct URLs, or templates that do not depend on stock search. A DESIGN.md is optional too; it only provides automatic brand tokens.
+A Pexels key is optional. When a config uses `mediaKeyword`, run `vanillasky resolve video.json` before validation to persist the selected URLs. Without a key, use supplied media, direct URLs, or templates that do not depend on stock search. A DESIGN.md is optional too; it only provides automatic brand tokens.
 
 ## What is included
 

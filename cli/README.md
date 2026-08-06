@@ -8,6 +8,7 @@ Portrait 9:16 and landscape 16:9 are both first-class: the config's
 
 ```bash
 vanillasky setup --check                           # print setup state (Pexels key, default orientation, music mood, DESIGN.md)
+vanillasky resolve video.json                      # pin stock-search results into the config
 vanillasky validate video.json                     # schema + template checks, exit 1 on errors
 vanillasky validate video.json --format launch     # also enforce the launch slot contract
 vanillasky validate video.json --json              # machine-readable output
@@ -95,12 +96,18 @@ Stock footage (Pexels):
 
 - With `PEXELS_API_KEY` set (free at [pexels.com/api](https://www.pexels.com/api/);
   env var, or `~/.vanillasky/config.json` `{ "pexelsApiKey": "..." }` — env
-  wins), `render` resolves scenes with a `mediaKeyword` and an empty
-  `mediaUrl` directly against the Pexels API before validating: portrait
+  wins), run `vanillasky resolve video.json` after composing. It resolves every
+  `mediaKeyword` with an empty `mediaUrl`, then atomically writes the chosen URL
+  and poster into the config. The resulting file is portable, validates cleanly,
+  and rerenders deterministically. Resolution uses portrait
   orientation (landscape for landscape configs), video unless the scene pins
   `mediaType: "photo"`, best-HD file for the orientation, and the video
   thumbnail stored as the sibling `mediaPoster`. Each fill is logged;
-  responses are cached per keyword within the run. `--no-pexels` opts out.
+  responses are cached per keyword within the run.
+- `render` can still resolve an unpinned keyword transiently for backwards
+  compatibility; it does not persist that choice. Agents and repeatable
+  workflows should use `resolve` first. `--no-pexels` disables the transient
+  render fallback.
 - Without a key, set a direct `mediaUrl` or the scene falls back to its brand
   gradient (`validate` warns and points at `PEXELS_API_KEY`).
 - Pexels' API guidelines require a **prominent link to Pexels** wherever the

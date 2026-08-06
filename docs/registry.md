@@ -35,6 +35,17 @@ The equivalent web catalog lives at [vanillasky.ai/llms-components.txt](https://
 
 The public repository contains the same file at `registry/llms-components.txt`. Agents must use one exact catalog surface and stop rather than inventing an ID or variable.
 
+## Selection quality
+
+A correct template ID is only the first gate. A strong short video also needs a grounded visual mechanism and visible progression:
+
+- use a notification for an alert, terminal or editor for a developer workflow, chat for a conversation, and a device or browser for a supplied product surface;
+- treat a flat gradient as a deliberate beat, not the automatic background for every scene—three or more scene rows on the same flat background is repetition, even when the typography changes;
+- keep an approved slogan or quote intact in at least one scene instead of manufacturing a story by splitting its fragments across scenes;
+- for sparse briefs, prefer the format's shortest valid story and one tangible supplied or stock visual. Minimal means fewer elements, not identical scenes.
+
+These are selection rules, not new template APIs. The agent skill applies them before the contact-sheet inspection; the sheet is where composition and repetition are finally judged.
+
 ## Per-item JSON
 
 Full details for an item are published at `https://vanillasky.ai/r/<id>.json` and in `registry/r/<id>.json` in the public repository.

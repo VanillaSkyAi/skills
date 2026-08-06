@@ -122,7 +122,7 @@ Audio failures warn and render silently rather than failing the entire video. Co
 
 ## Media
 
-Prefer supplied assets, HTTPS URLs, or local file paths. `mediaKeyword` can search Pexels when `PEXELS_API_KEY` is configured, but search results can change over time. Once a clip works, pin its selected URL into `mediaUrl` for deterministic rerenders.
+Prefer supplied assets, HTTPS URLs, or local file paths. `mediaKeyword` can search Pexels when `PEXELS_API_KEY` is configured. After composing, run `vanillasky resolve video.json`; it atomically pins every selected URL into `mediaUrl` before validation, making the handoff portable and rerenders deterministic. If a search fails, the config is left unchanged.
 
 Avoid base64 media in configs intended for Watch or Studio links; the URL fragment can become too large.
 

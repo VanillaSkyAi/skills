@@ -1,0 +1,73 @@
+{
+  "skill_name": "vanillasky",
+  "evals": [
+    {
+      "id": 1,
+      "name": "grounded-feature-launch",
+      "prompt": "Create a portrait launch video for OrbitOps. We just shipped incident handoffs that cut onboarding a new responder from 45 minutes to 4 minutes. 320 teams used the beta. The product now bundles the timeline, owner, and next action in one handoff. Use only these facts; there are no screenshots or customer quotes.",
+      "expected_output": "A source-grounded launch VideoConfig, clean validation, contact sheet, and Studio handoff command. No full MP4 and no invented proof.",
+      "files": [],
+      "tags": ["launch", "proof"],
+      "expectations": [
+        "The run creates video-brief.md and video.json.",
+        "The agent uses the bundled template catalog and inspects exact schemas.",
+        "video.json validates with zero errors and zero warnings as format launch.",
+        "The run creates a contact sheet and does not render an MP4.",
+        "Every numeric proof used by a proof template comes from the prompt.",
+        "The final response hands video.json to the user with a vanillasky studio command without launching Studio."
+      ],
+      "grading": {
+        "expectedFormat": "launch",
+        "requiredPhrases": ["OrbitOps"],
+        "forbidProofTemplates": false
+      }
+    },
+    {
+      "id": 2,
+      "name": "exact-customer-review",
+      "prompt": "Make a portrait customer review video for Relay. Exact quote: 'Relay cut our weekly reporting from three hours to twelve minutes, and the board finally trusts the numbers.' — Maya Chen, COO at Northstar. Do not add ratings, customer counts, or performance claims that are not in this prompt.",
+      "expected_output": "A review VideoConfig that preserves the supplied quote and attribution, validates cleanly, and is inspected as a contact sheet before Studio handoff.",
+      "files": [],
+      "tags": ["review", "quote", "proof"],
+      "expectations": [
+        "The run creates video-brief.md and video.json.",
+        "The agent uses the bundled template catalog and inspects exact schemas.",
+        "video.json validates with zero errors and zero warnings as format review.",
+        "The run creates a contact sheet and does not render an MP4.",
+        "The supplied quote and attribution are preserved without invented ratings or proof.",
+        "The final response hands video.json to the user with a vanillasky studio command without launching Studio."
+      ],
+      "grading": {
+        "expectedFormat": "review",
+        "requiredPhrases": [
+          "Relay cut our weekly reporting from three hours to twelve minutes, and the board finally trusts the numbers.",
+          "Maya Chen",
+          "Northstar"
+        ],
+        "forbiddenPhrases": ["5 stars", "five stars", "★★★★★"],
+        "forbidProofTemplates": false
+      }
+    },
+    {
+      "id": 3,
+      "name": "mood-without-proof",
+      "prompt": "Create a portrait update video for Still, a focus app. No stats, no quotes, no screenshots, and no customer claims. The only approved copy is the product name Still and the line 'Less noise. More you.' Make it calm, minimal, and spacious.",
+      "expected_output": "A restrained update VideoConfig that does not force unavailable proof into the story, validates cleanly, and reaches the contact-sheet-to-Studio handoff.",
+      "files": [],
+      "tags": ["update", "no-proof"],
+      "expectations": [
+        "The run creates video-brief.md and video.json.",
+        "The agent uses the bundled template catalog and inspects exact schemas.",
+        "video.json validates with zero errors and zero warnings as format update.",
+        "The run creates a contact sheet and does not render an MP4.",
+        "No template requiring a stat, quote, or screenshot is used when the prompt supplies none.",
+        "The final response hands video.json to the user with a vanillasky studio command without launching Studio."
+      ],
+      "grading": {
+        "expectedFormat": "update",
+        "requiredPhrases": ["Still", "Less noise. More you."],
+        "forbidProofTemplates": true
+      }
+    }
+  ]
+}

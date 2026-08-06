@@ -11,6 +11,7 @@ vanillasky render <config.json> [options]
 vanillasky studio <config.json> [--no-open] [--fps <n>] [--browser <name>]
 vanillasky validate <config.json> [--json] [--format <id>]
 vanillasky diff <config.json> [--json]
+vanillasky resolve <config.json> [--json]
 vanillasky templates [id] [--json]
 vanillasky tracks [--json]
 vanillasky scope [--json]
@@ -59,6 +60,17 @@ Validation checks:
 - the config's selected format contract.
 
 `--format <id>` overrides the config's `format`; normally the field in `video.json` is sufficient. Validation exits with status 1 on errors.
+
+## resolve
+
+```bash
+vanillasky resolve video.json
+vanillasky resolve video.json --json
+```
+
+Resolves every Pexels `mediaKeyword` that does not yet have a `mediaUrl`, then atomically writes the selected URLs and posters into the config. Run it after composing and before validation. The persisted config is portable, validates cleanly, and rerenders deterministically; if any search fails, the original file is left unchanged.
+
+Resolution requires a Pexels key from `PEXELS_API_KEY` or `~/.vanillasky/config.json`. Without one, use supplied media, direct URLs, or a gradient. `render` retains transient keyword resolution for backwards compatibility, but it does not persist the result.
 
 ## templates
 

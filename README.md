@@ -186,10 +186,11 @@ Works fully offline out of the box:
 
 The only network use: `npm install`, media URLs in your config's scene
 variables (prefetched; the render refuses to start if any fail),
-`mediaKeyword` auto-resolution when `PEXELS_API_KEY` is set (optional —
-free at [pexels.com/api](https://www.pexels.com/api/); `--no-pexels` opts
-out), and `audio.audioUrl` if set (best-effort — failures render silent,
-never fatal).
+`vanillasky resolve video.json` when `mediaKeyword` and
+`PEXELS_API_KEY` are used (optional — free at
+[pexels.com/api](https://www.pexels.com/api/); selected URLs are persisted for
+deterministic rerenders), and `audio.audioUrl` if set (best-effort — failures
+render silent, never fatal).
 
 If your integration uses Pexels auto-resolution, note Pexels' API guidelines:
 show a prominent link to Pexels alongside published output, and credit

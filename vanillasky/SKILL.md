@@ -1,6 +1,6 @@
 ---
 name: vanillasky
-description: "Make finished social videos (MP4, vertical 9:16 or landscape 16:9 — your choice) from a prompt: launch videos, milestone posts, product updates, customer reviews. Includes curated scene templates, music tracks, and motion/composition rules. Renders via local Chrome or a zero-install browser link."
+description: "Create polished social videos from a prompt—launches, milestones, product updates, and customer reviews—in vertical 9:16 or landscape 16:9. Composes a validated editable video with curated scene templates, music, motion rules, visual inspection, and a Studio handoff for review and MP4 export."
 ---
 
 # VanillaSky — social videos from a config
@@ -81,7 +81,17 @@ on later turns instead of asking the same questions again.
 1. **Compose** `video.json` from the brief and bundled catalog.
    Inspect the exact schemas for the shortlisted templates with
    `vanillasky templates <id> --json` before writing their variables.
-2. **Validate** and fix every error:
+2. **Resolve stock media** when the config contains `mediaKeyword`:
+
+   ```bash
+   vanillasky resolve video.json
+   ```
+
+   This selects a Pexels result and writes the exact `mediaUrl` into the config,
+   making validation and rerenders deterministic. If no Pexels key is available,
+   use supplied media, a direct URL, or `mediaType: "gradient"` instead. Do not
+   rely on render-time search as the handoff state.
+3. **Validate** and fix every error and warning:
 
    ```bash
    vanillasky validate video.json
@@ -89,17 +99,19 @@ on later turns instead of asking the same questions again.
 
    The config's `format` selects the right slot contract; do not hardcode
    `--format launch` for every video. Treat warnings as work to resolve, not
-   decoration.
-3. **Inspect a contact sheet**:
+   decoration, and never describe validation as clean while any remain.
+4. **Inspect a contact sheet**:
 
    ```bash
    vanillasky render video.json --sheet --out ./sheet
    ```
 
    Open `sheet/sheet.png` and inspect the individual frames when needed. Check
-   text overflow, unreadable type, unset/default-looking values, unused assets,
+   Actually open `sheet/sheet.png`; the file's existence is not inspection.
+   Check text overflow, unreadable type, unset/default-looking values, unused assets,
    visual repetition, and critical content outside the middle 75% of the frame.
-4. **Hand off in Studio**:
+   After any visual edit, repeat resolve (when needed), validation, and the sheet.
+5. **Hand off in Studio**:
 
    ```bash
    vanillasky studio video.json
@@ -197,6 +209,18 @@ generated contract. Your job is the judgment the validator cannot make.
 ### Variety and pacing
 
 - Do not make every body a card. Use at least two non-card-led registers.
+- A plain sentence on one flat gradient is a fallback, not automatically a
+  strong hook. Prefer a brief-grounded visual mechanism—a notification for an
+  alert, terminal/editor for a developer workflow, chat for a conversation,
+  device or browser for a supplied product surface. Even an intentionally
+  minimal video needs one tangible visual idea; minimal means fewer elements,
+  not the same gradient and typography in every scene.
+- A coherent palette is not scene variety. Three or more scene rows sharing
+  the same flat background fail this gate even when their type layout differs.
+  Change at least one register with a grounded asset, stock backdrop, template,
+  or restrained effect. When the brief contains too little approved copy or
+  proof to support many distinct scenes, use the format's shortest valid story
+  instead of repeating it.
 - Give footage at least 3 seconds unless it is intentionally a short bridge.
   Vary background motion rather than applying one effect everywhere.
 - A gradient-only media scene should be a deliberate brand beat, not a fallback
@@ -207,6 +231,9 @@ generated contract. Your job is the judgment the validator cannot make.
 ### Copy
 
 - Hook: at most 7 words. CTA: at most 4 words, preferably a command.
+- Preserve every user-approved slogan or quote intact in at least one scene.
+  Do not turn one approved line into several pseudo-distinct scenes by showing
+  its fragments separately; let visual progression carry the other beats.
 - Avoid lists of three generic nouns, categories, or verbs. Rhythm needs
   tension, progression, or a twist—not three synonyms.
 - Keep must-stay-together text inside a nowrap span; never rely on NBSP for SVG
