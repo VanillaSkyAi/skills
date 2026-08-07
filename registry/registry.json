@@ -820,9 +820,34 @@
           "target": "vanillasky/scene-templates/showcase-phone.tsx"
         },
         {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/primitives/devices/product-surface-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/primitives/devices/product-surface-config.ts"
+        },
+        {
           "path": "src/lib/primitives/devices/PhoneFrame.tsx",
           "type": "registry:component",
           "target": "vanillasky/primitives/devices/PhoneFrame.tsx"
+        },
+        {
+          "path": "src/lib/primitives/devices/ProductSurface.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/primitives/devices/ProductSurface.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
         },
         {
           "path": "src/lib/primitives/devices/DesignedScreenFill.tsx",
@@ -833,16 +858,6 @@
           "path": "src/lib/scene-templates/template-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/template-text.tsx"
-        },
-        {
-          "path": "src/lib/emoji/index.tsx",
-          "type": "registry:component",
-          "target": "vanillasky/emoji/index.tsx"
-        },
-        {
-          "path": "src/lib/emoji/emoji-text.tsx",
-          "type": "registry:component",
-          "target": "vanillasky/emoji/emoji-text.tsx"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -892,11 +907,91 @@
               "default": "",
               "description": "Second screen (slides mode)"
             },
+            "screenFit": {
+              "type": "enum",
+              "label": "Screenshot fit",
+              "default": "cover",
+              "options": [
+                "cover",
+                "contain"
+              ],
+              "description": "Use cover for immersive product detail; contain when the full interface must remain visible."
+            },
+            "screenFocusX": {
+              "type": "number",
+              "label": "Horizontal focus (0-100)",
+              "default": 50,
+              "description": "Horizontal percentage of the screenshot to keep in focus. Values are clamped to 0-100."
+            },
+            "screenFocusY": {
+              "type": "number",
+              "label": "Vertical focus (0-100)",
+              "default": 50,
+              "description": "Vertical percentage of the screenshot to keep in focus. Values are clamped to 0-100."
+            },
+            "screenMotion": {
+              "type": "enum",
+              "label": "Screenshot motion",
+              "default": "pushIn",
+              "options": [
+                "still",
+                "pushIn",
+                "pan"
+              ],
+              "description": "Single-screen treatment: pushIn is the professional default; use pan for wide interfaces and still when motion would distract. Multi-screen slides stay still so motions do not compete."
+            },
+            "screenCalloutText": {
+              "type": "string",
+              "label": "Feature callout",
+              "default": "",
+              "description": "Optional 2-4 word annotation anchored to a product detail. Leave empty rather than narrating the headline twice."
+            },
+            "screenCalloutX": {
+              "type": "number",
+              "label": "Callout horizontal position (0-100)",
+              "default": 70,
+              "description": "Horizontal percentage of the product surface for the callout anchor."
+            },
+            "screenCalloutY": {
+              "type": "number",
+              "label": "Callout vertical position (0-100)",
+              "default": 35,
+              "description": "Vertical percentage of the product surface for the callout anchor."
+            },
             "textColor": {
               "type": "color",
               "label": "Text color",
               "default": "",
               "description": "Override text color (leave empty for auto)"
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
             }
           },
           "defaultVariables": {
@@ -904,7 +999,18 @@
             "screenMediaUrl": "",
             "screen1Url": "",
             "screen2Url": "",
-            "textColor": ""
+            "screenFit": "cover",
+            "screenFocusX": 50,
+            "screenFocusY": 50,
+            "screenMotion": "pushIn",
+            "screenCalloutText": "",
+            "screenCalloutX": 70,
+            "screenCalloutY": 35,
+            "textColor": "",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
           }
         }
       }
@@ -931,6 +1037,36 @@
           "target": "vanillasky/scene-templates/showcase-web.tsx"
         },
         {
+          "path": "src/lib/scene-templates/scene-background.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/scene-templates/scene-background.tsx"
+        },
+        {
+          "path": "src/lib/primitives/devices/product-surface-config.ts",
+          "type": "registry:lib",
+          "target": "vanillasky/primitives/devices/product-surface-config.ts"
+        },
+        {
+          "path": "src/lib/primitives/devices/WebMockup.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/primitives/devices/WebMockup.tsx"
+        },
+        {
+          "path": "src/lib/primitives/devices/ProductSurface.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/primitives/devices/ProductSurface.tsx"
+        },
+        {
+          "path": "src/lib/emoji/emoji-text.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/emoji-text.tsx"
+        },
+        {
+          "path": "src/lib/emoji/index.tsx",
+          "type": "registry:component",
+          "target": "vanillasky/emoji/index.tsx"
+        },
+        {
           "path": "src/lib/primitives/devices/DesignedScreenFill.tsx",
           "type": "registry:component",
           "target": "vanillasky/primitives/devices/DesignedScreenFill.tsx"
@@ -939,16 +1075,6 @@
           "path": "src/lib/scene-templates/template-text.tsx",
           "type": "registry:component",
           "target": "vanillasky/scene-templates/template-text.tsx"
-        },
-        {
-          "path": "src/lib/emoji/index.tsx",
-          "type": "registry:component",
-          "target": "vanillasky/emoji/index.tsx"
-        },
-        {
-          "path": "src/lib/emoji/emoji-text.tsx",
-          "type": "registry:component",
-          "target": "vanillasky/emoji/emoji-text.tsx"
         },
         {
           "path": "src/lib/scene-templates/types.ts",
@@ -982,39 +1108,121 @@
                 "browser",
                 "tablet"
               ],
-              "description": "browser shows chrome bar + address bar, tablet shows clean frame"
+              "description": "browser shows chrome and an address bar; tablet uses a clean product frame."
             },
             "texts": {
               "type": "string",
               "label": "Text",
               "default": "See it in action.",
               "required": true,
-              "description": "Title text shown on the scene"
+              "description": "Title text shown above the product."
             },
             "screenMediaUrl": {
               "type": "media",
               "label": "Screenshot",
-              "description": "Screenshot to show in the device window"
+              "description": "Product screenshot shown inside the browser or tablet frame."
             },
             "screen1Url": {
               "type": "media",
-              "label": "Screen 1"
+              "label": "Screen 1",
+              "description": "Optional second product screen. Setting it enables slides mode."
             },
             "screen2Url": {
               "type": "media",
-              "label": "Screen 2"
+              "label": "Screen 2",
+              "description": "Optional third product screen for slides mode."
+            },
+            "screenFit": {
+              "type": "enum",
+              "label": "Screenshot fit",
+              "default": "cover",
+              "options": [
+                "cover",
+                "contain"
+              ],
+              "description": "Use cover for immersive product detail; contain when the full interface must remain visible."
+            },
+            "screenFocusX": {
+              "type": "number",
+              "label": "Horizontal focus (0-100)",
+              "default": 50,
+              "description": "Horizontal percentage of the screenshot to keep in focus. Values are clamped to 0-100."
+            },
+            "screenFocusY": {
+              "type": "number",
+              "label": "Vertical focus (0-100)",
+              "default": 50,
+              "description": "Vertical percentage of the screenshot to keep in focus. Values are clamped to 0-100."
+            },
+            "screenMotion": {
+              "type": "enum",
+              "label": "Screenshot motion",
+              "default": "pushIn",
+              "options": [
+                "still",
+                "pushIn",
+                "pan"
+              ],
+              "description": "Single-screen treatment: pushIn is the professional default; use pan for wide interfaces and still when motion would distract. Multi-screen slides stay still so motions do not compete."
+            },
+            "screenCalloutText": {
+              "type": "string",
+              "label": "Feature callout",
+              "default": "",
+              "description": "Optional 2-4 word annotation anchored to a product detail. Leave empty rather than narrating the headline twice."
+            },
+            "screenCalloutX": {
+              "type": "number",
+              "label": "Callout horizontal position (0-100)",
+              "default": 70,
+              "description": "Horizontal percentage of the product surface for the callout anchor."
+            },
+            "screenCalloutY": {
+              "type": "number",
+              "label": "Callout vertical position (0-100)",
+              "default": 35,
+              "description": "Vertical percentage of the product surface for the callout anchor."
             },
             "addressBarUrl": {
               "type": "string",
               "label": "Address bar URL",
               "default": "yourapp.com",
-              "description": "URL shown in browser chrome (browser frame only)"
+              "description": "URL shown in browser chrome; ignored by the tablet frame."
             },
             "textColor": {
               "type": "color",
               "label": "Text color",
               "default": "",
-              "description": "Override text color (leave empty for auto)"
+              "description": "Override text color; leave empty to use the brand-aware default."
+            },
+            "mediaUrl": {
+              "type": "media",
+              "label": "Background media",
+              "description": "Optional photo or video URL behind this scene. When set, replaces the brand gradient."
+            },
+            "mediaKeyword": {
+              "type": "string",
+              "label": "Background search keyword",
+              "default": "",
+              "description": "2-4 word English term for Pexels stock-footage search (auto-fills mediaUrl)."
+            },
+            "mediaType": {
+              "type": "enum",
+              "label": "Background media type",
+              "default": "auto",
+              "description": "auto detects photo/video from URL. 'gradient' is a deliberate mode — atmospheric brand-color scene with no stock footage.",
+              "options": [
+                "auto",
+                "photo",
+                "video",
+                "gradient"
+              ]
+            },
+            "mediaPoster": {
+              "type": "string",
+              "label": "Background poster image",
+              "default": "",
+              "description": "Still image URL shown while a video backdrop is decoding its first frame. Auto-filled from Pexels' thumbnail when fillPexelsUrls sets a video mediaUrl. Hides the gradient flash that would otherwise appear in the ~50–400ms gap between a <video> mounting and decoding its first frame."
             }
           },
           "defaultVariables": {
@@ -1023,8 +1231,19 @@
             "screenMediaUrl": "",
             "screen1Url": "",
             "screen2Url": "",
+            "screenFit": "cover",
+            "screenFocusX": 50,
+            "screenFocusY": 50,
+            "screenMotion": "pushIn",
+            "screenCalloutText": "",
+            "screenCalloutX": 70,
+            "screenCalloutY": 35,
             "addressBarUrl": "yourapp.com",
-            "textColor": ""
+            "textColor": "",
+            "mediaUrl": "",
+            "mediaKeyword": "",
+            "mediaType": "auto",
+            "mediaPoster": ""
           }
         }
       }

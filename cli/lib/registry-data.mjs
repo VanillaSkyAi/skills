@@ -922,8 +922,56 @@ export default {
         "screen2Url": {
           "type": "media"
         },
+        "screenFit": {
+          "type": "enum",
+          "options": [
+            "cover",
+            "contain"
+          ]
+        },
+        "screenFocusX": {
+          "type": "number"
+        },
+        "screenFocusY": {
+          "type": "number"
+        },
+        "screenMotion": {
+          "type": "enum",
+          "options": [
+            "still",
+            "pushIn",
+            "pan"
+          ]
+        },
+        "screenCalloutText": {
+          "type": "string"
+        },
+        "screenCalloutX": {
+          "type": "number"
+        },
+        "screenCalloutY": {
+          "type": "number"
+        },
         "textColor": {
           "type": "color"
+        },
+        "mediaUrl": {
+          "type": "media"
+        },
+        "mediaKeyword": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "enum",
+          "options": [
+            "auto",
+            "photo",
+            "video",
+            "gradient"
+          ]
+        },
+        "mediaPoster": {
+          "type": "string"
         }
       },
       "defaultVariables": {
@@ -931,7 +979,18 @@ export default {
         "screenMediaUrl": "",
         "screen1Url": "",
         "screen2Url": "",
-        "textColor": ""
+        "screenFit": "cover",
+        "screenFocusX": 50,
+        "screenFocusY": 50,
+        "screenMotion": "pushIn",
+        "screenCalloutText": "",
+        "screenCalloutX": 70,
+        "screenCalloutY": 35,
+        "textColor": "",
+        "mediaUrl": "",
+        "mediaKeyword": "",
+        "mediaType": "auto",
+        "mediaPoster": ""
       }
     },
     "webMockup": {
@@ -973,11 +1032,59 @@ export default {
         "screen2Url": {
           "type": "media"
         },
+        "screenFit": {
+          "type": "enum",
+          "options": [
+            "cover",
+            "contain"
+          ]
+        },
+        "screenFocusX": {
+          "type": "number"
+        },
+        "screenFocusY": {
+          "type": "number"
+        },
+        "screenMotion": {
+          "type": "enum",
+          "options": [
+            "still",
+            "pushIn",
+            "pan"
+          ]
+        },
+        "screenCalloutText": {
+          "type": "string"
+        },
+        "screenCalloutX": {
+          "type": "number"
+        },
+        "screenCalloutY": {
+          "type": "number"
+        },
         "addressBarUrl": {
           "type": "string"
         },
         "textColor": {
           "type": "color"
+        },
+        "mediaUrl": {
+          "type": "media"
+        },
+        "mediaKeyword": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "enum",
+          "options": [
+            "auto",
+            "photo",
+            "video",
+            "gradient"
+          ]
+        },
+        "mediaPoster": {
+          "type": "string"
         }
       },
       "defaultVariables": {
@@ -986,8 +1093,19 @@ export default {
         "screenMediaUrl": "",
         "screen1Url": "",
         "screen2Url": "",
+        "screenFit": "cover",
+        "screenFocusX": 50,
+        "screenFocusY": 50,
+        "screenMotion": "pushIn",
+        "screenCalloutText": "",
+        "screenCalloutX": 70,
+        "screenCalloutY": 35,
         "addressBarUrl": "yourapp.com",
-        "textColor": ""
+        "textColor": "",
+        "mediaUrl": "",
+        "mediaKeyword": "",
+        "mediaType": "auto",
+        "mediaPoster": ""
       }
     },
     "codeEditor": {

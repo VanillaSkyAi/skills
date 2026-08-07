@@ -1,7 +1,7 @@
 {
   "name": "@vanillasky/local-cli",
   "private": true,
-  "version": "0.25.1",
+  "version": "0.26.0",
   "description": "Compose, inspect, edit, and export VanillaSky video configs locally with Studio and Chrome.",
   "type": "module",
   "license": "MIT",
