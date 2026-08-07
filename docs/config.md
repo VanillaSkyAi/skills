@@ -44,8 +44,40 @@
 | `textArchetype` | Optional treatment: `subtle`, `typewriter`, `wordStagger`, `slam`, `cinematic`, or `heroWord`. |
 | `backgroundEffect` | Optional background motion supported by the selected template. |
 | `componentSource` | Source for an ejected or custom scene whose `templateId` begins with `custom_`. |
+| `customTemplate` | Serializable label, duration, variable schema, and defaults for a custom scene. Keeps its declared controls editable after save, share, and reopen. |
 
 `textArchetype` and `backgroundEffect` are scene fields, not entries inside `variables`.
+
+### Editable custom scenes
+
+Custom scene code stays open-ended inside `componentSource`; it is not limited
+to a closed scene-description language. Pair that source with `customTemplate`
+so Studio can reconstruct the editing contract outside the authoring session:
+
+```json
+{
+  "id": "s1",
+  "templateId": "custom_product_flow",
+  "variables": { "headline": "From issue to shipped fix" },
+  "timing": { "fixedDuration": 4 },
+  "componentSource": "function Component({ variables, progress }) { /* ... */ }",
+  "customTemplate": {
+    "label": "Product flow",
+    "variableSchema": {
+      "headline": { "type": "string", "label": "Headline", "required": true }
+    },
+    "defaultVariables": { "headline": "From issue to shipped fix" },
+    "preferredDuration": 4,
+    "usesGlobalTextEffect": true,
+    "usesGlobalTransition": true,
+    "usesGlobalBackgroundEffect": false
+  }
+}
+```
+
+The source owns the visual mechanism. `customTemplate` owns editor metadata;
+it does not constrain the component's layout or animation. Configs created in
+Studio receive this object automatically when they are saved.
 
 ## Timing
 

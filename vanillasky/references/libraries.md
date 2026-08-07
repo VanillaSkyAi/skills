@@ -30,7 +30,7 @@ Defines the complete video, scene, timing, brand, format, and frame-geometry con
 
 **Avoid when:** Do not use it for visual styling or animation; those decisions belong to theme, motion, typography, and backgrounds.
 
-- **Video and scenes:** `VideoConfig`, `SceneConfig`, `AlternativeTemplate`, `SceneOrigin`, `VideoMeta`
+- **Video and scenes:** `VideoConfig`, `SceneConfig`, `CustomTemplateDefinition`, `AlternativeTemplate`, `SceneOrigin`, `VideoMeta`
 - **Timing and audio:** `TimingConfig`, `AudioConfig`, `BeatDetectionConfig`, `BeatMarker`
 - **Style and variables:** `GlobalStyle`, `BrandKit`, `VariableField`, `BackgroundStyle`, `GradientConfig`, `PatternParams`
 - **Frame geometry:** `Orientation`, `VideoDimensions`, `SafeZone`, `getDimensions`, `getSafeZone`, `scaleSafeZone`

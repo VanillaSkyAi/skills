@@ -45,6 +45,13 @@ validator rejects unsupported combinations.
 The six text archetypes are `subtle`, `typewriter`, `wordStagger`, `slam`,
 `cinematic`, and `heroWord`. Read `motion.md` for use-when guidance.
 
+Custom scenes whose `templateId` starts with `custom_` carry their sandboxed
+function in `componentSource`. They should also carry `customTemplate` with the
+label, variable schema, defaults, duration, and global-effect ownership needed
+to reconstruct their Studio controls. See `custom-scenes.md` for the complete
+contract. Custom source stays open-ended; the metadata preserves editability
+instead of constraining the animation.
+
 ## Timing
 
 There are two supported timing modes:

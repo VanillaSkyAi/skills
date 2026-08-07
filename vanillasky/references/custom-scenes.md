@@ -7,8 +7,8 @@ express the brief. A custom scene is a rare escape hatch, not the default path.
 
 1. **Template as-is** — replace defaults with purpose-written copy.
 2. **Adjust variables** — read `registry/r/<id>.json` for the complete schema.
-3. **Eject** — create a `custom_*` scene with `componentSource`, based on a
-   registry item's source.
+3. **Eject** — create a `custom_*` scene with `componentSource` and a
+   `customTemplate` editor definition, based on a registry item's source.
 4. **Compose from scope** — use sandbox scene elements such as `CountUpNumber`,
    `TweetCard`, or `PhoneFrame` inside a custom body.
 
@@ -31,6 +31,32 @@ An ejected scene without origin metadata is an anonymous fork.
 `componentSource` is a function body compiled in a sandbox, not a module. It
 must contain exactly one `function Component({ ... })` and stay below 16,000
 characters.
+
+Keep the source open-ended, but declare every value the user should edit in
+`customTemplate.variableSchema` and give it a matching value in
+`customTemplate.defaultVariables`. The scene's `variables` provide the current
+values. This metadata is what lets Studio rebuild text, media, color, enum,
+number, and boolean controls after the config is saved, shared, or reopened;
+without it the scene can still render, but it reopens as an opaque animation.
+
+```json
+{
+  "templateId": "custom_product_flow",
+  "variables": { "headline": "From issue to shipped fix" },
+  "componentSource": "function Component({ variables, progress }) { /* ... */ }",
+  "customTemplate": {
+    "label": "Product flow",
+    "variableSchema": {
+      "headline": { "type": "string", "label": "Headline", "required": true }
+    },
+    "defaultVariables": { "headline": "From issue to shipped fix" },
+    "preferredDuration": 4
+  }
+}
+```
+
+Do not bury user-facing copy in source literals. Put it in `variables` and
+read it from the component so the Studio field changes the rendered scene.
 
 Every frame receives:
 

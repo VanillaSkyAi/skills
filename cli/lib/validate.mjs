@@ -57,6 +57,85 @@ function customSceneIssues(scene) {
   for (const { source, flags, reason } of CUSTOM.bannedTokens) {
     if (new RegExp(source, flags).test(src)) issues.push(["custom-source-banned", `componentSource: ${reason}`]);
   }
+  const definition = scene.customTemplate;
+  // Backwards compatible: old custom configs render with no generated Studio
+  // controls. New configs should carry the definition so editability survives
+  // save/share/reopen.
+  if (definition === undefined) return issues;
+  if (!definition || typeof definition !== "object" || Array.isArray(definition)) {
+    issues.push(["custom-definition-invalid", "customTemplate must be an object"]);
+    return issues;
+  }
+  const schema = definition.variableSchema;
+  const defaults = definition.defaultVariables;
+  if (!schema || typeof schema !== "object" || Array.isArray(schema)) {
+    issues.push(["custom-definition-invalid", "customTemplate.variableSchema must be an object"]);
+    return issues;
+  }
+  if (!defaults || typeof defaults !== "object" || Array.isArray(defaults)) {
+    issues.push(["custom-definition-invalid", "customTemplate.defaultVariables must be an object"]);
+    return issues;
+  }
+  const allowedTypes = new Set(["string", "number", "boolean", "enum", "media", "color", "data-points"]);
+  for (const [name, field] of Object.entries(schema)) {
+    if (!field || typeof field !== "object" || Array.isArray(field)) {
+      issues.push(["custom-definition-invalid", `customTemplate.variableSchema.${name} must be an object`]);
+      continue;
+    }
+    if (!allowedTypes.has(field.type)) {
+      issues.push(["custom-definition-invalid", `customTemplate.variableSchema.${name}.type is invalid`]);
+    }
+    if (typeof field.label !== "string" || !field.label.trim()) {
+      issues.push(["custom-definition-invalid", `customTemplate.variableSchema.${name}.label is required`]);
+    }
+    if (field.type === "enum" && (!Array.isArray(field.options) || field.options.length === 0)) {
+      issues.push(["custom-definition-invalid", `customTemplate.variableSchema.${name} is an enum but has no options[]`]);
+    }
+    if (!(name in defaults)) {
+      issues.push(["custom-definition-invalid", `customTemplate.defaultVariables is missing key "${name}"`]);
+    }
+  }
+  for (const name of ["label", "description"]) {
+    if (definition[name] !== undefined && typeof definition[name] !== "string") {
+      issues.push(["custom-definition-invalid", `customTemplate.${name} must be a string`]);
+    }
+  }
+  if (definition.category !== undefined && definition.category !== null && typeof definition.category !== "string") {
+    issues.push(["custom-definition-invalid", "customTemplate.category must be a string or null"]);
+  }
+  if (definition.textCanvas !== undefined && !["tight", "open"].includes(definition.textCanvas)) {
+    issues.push(["custom-definition-invalid", 'customTemplate.textCanvas must be "tight" or "open"']);
+  }
+  for (const name of ["usesGlobalTextEffect", "usesGlobalTransition", "usesGlobalBackgroundEffect"]) {
+    if (definition[name] !== undefined && typeof definition[name] !== "boolean") {
+      issues.push(["custom-definition-invalid", `customTemplate.${name} must be a boolean`]);
+    }
+  }
+  for (const name of ["minDuration", "preferredDuration"]) {
+    const value = definition[name];
+    if (value !== undefined && (typeof value !== "number" || !Number.isFinite(value) || value <= 0)) {
+      issues.push(["custom-definition-invalid", `customTemplate.${name} must be a positive finite number`]);
+    }
+  }
+  const variables = scene.variables ?? {};
+  if (!variables || typeof variables !== "object" || Array.isArray(variables)) {
+    issues.push(["structural", "variables must be an object"]);
+    return issues;
+  }
+  for (const [name, value] of Object.entries(variables)) {
+    if (!(name in schema)) {
+      issues.push(["unknown-variable", `unknown variable "${name}" — this custom scene declares: ${Object.keys(schema).join(", ")}`]);
+      continue;
+    }
+    if (isEmpty(value)) continue;
+    const typeError = checkType(value, schema[name]);
+    if (typeError) issues.push(["type-mismatch", `variable "${name}" — ${typeError}`]);
+  }
+  for (const [name, field] of Object.entries(schema)) {
+    if (field.required && !["color", "media"].includes(field.type) && isEmpty(variables[name])) {
+      issues.push(["missing-required", `required variable "${name}" is empty or missing`]);
+    }
+  }
   return issues;
 }
 
