@@ -572,6 +572,9 @@ export default {
             "gradient"
           ]
         },
+        "mediaPoster": {
+          "type": "string"
+        },
         "textColor": {
           "type": "color"
         },
@@ -584,6 +587,7 @@ export default {
         "mediaUrl": "",
         "mediaKeyword": "",
         "mediaType": "auto",
+        "mediaPoster": "",
         "textColor": "",
         "confetti": false
       }
@@ -655,13 +659,17 @@ export default {
         },
         "mediaType": {
           "type": "string"
+        },
+        "mediaPoster": {
+          "type": "string"
         }
       },
       "defaultVariables": {
         "texts": "Still editing manually?",
         "reactionTag": "manual",
         "mediaUrl": "",
-        "mediaType": "video"
+        "mediaType": "video",
+        "mediaPoster": ""
       }
     },
     "confetti": {
@@ -813,10 +821,10 @@ export default {
       "requiresStat": true,
       "requiresQuote": false,
       "requiresScreenshot": false,
-      "allowsStockMedia": false,
+      "allowsStockMedia": true,
       "usesGlobalTextEffect": false,
       "usesGlobalTransition": true,
-      "usesGlobalBackgroundEffect": false,
+      "usesGlobalBackgroundEffect": true,
       "minDuration": 2,
       "preferredDuration": 3.5,
       "variableSchema": {
@@ -830,6 +838,24 @@ export default {
         "chartColor": {
           "type": "color"
         },
+        "mediaUrl": {
+          "type": "media"
+        },
+        "mediaKeyword": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "enum",
+          "options": [
+            "auto",
+            "photo",
+            "video",
+            "gradient"
+          ]
+        },
+        "mediaPoster": {
+          "type": "string"
+        },
         "textColor": {
           "type": "color"
         }
@@ -838,6 +864,10 @@ export default {
         "texts": "Revenue up 300%.",
         "bars": "30,55,45,80,65,95",
         "chartColor": "#00e5a0",
+        "mediaUrl": "",
+        "mediaKeyword": "",
+        "mediaType": "auto",
+        "mediaPoster": "",
         "textColor": ""
       }
     },
@@ -852,10 +882,10 @@ export default {
       "requiresStat": true,
       "requiresQuote": false,
       "requiresScreenshot": false,
-      "allowsStockMedia": false,
+      "allowsStockMedia": true,
       "usesGlobalTextEffect": false,
       "usesGlobalTransition": true,
-      "usesGlobalBackgroundEffect": false,
+      "usesGlobalBackgroundEffect": true,
       "minDuration": 2,
       "preferredDuration": 3.5,
       "variableSchema": {
@@ -877,6 +907,24 @@ export default {
         "chartColor": {
           "type": "color"
         },
+        "mediaUrl": {
+          "type": "media"
+        },
+        "mediaKeyword": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "enum",
+          "options": [
+            "auto",
+            "photo",
+            "video",
+            "gradient"
+          ]
+        },
+        "mediaPoster": {
+          "type": "string"
+        },
         "textColor": {
           "type": "color"
         }
@@ -887,6 +935,10 @@ export default {
         "label": "Complete",
         "unit": "%",
         "chartColor": "#00e5a0",
+        "mediaUrl": "",
+        "mediaKeyword": "",
+        "mediaType": "auto",
+        "mediaPoster": "",
         "textColor": ""
       }
     },
@@ -1120,10 +1172,10 @@ export default {
       "requiresStat": false,
       "requiresQuote": false,
       "requiresScreenshot": false,
-      "allowsStockMedia": false,
+      "allowsStockMedia": true,
       "usesGlobalTextEffect": false,
       "usesGlobalTransition": true,
-      "usesGlobalBackgroundEffect": false,
+      "usesGlobalBackgroundEffect": true,
       "minDuration": 2,
       "preferredDuration": 3,
       "variableSchema": {
@@ -1138,6 +1190,24 @@ export default {
         "filename": {
           "type": "string"
         },
+        "mediaUrl": {
+          "type": "media"
+        },
+        "mediaKeyword": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "enum",
+          "options": [
+            "auto",
+            "photo",
+            "video",
+            "gradient"
+          ]
+        },
+        "mediaPoster": {
+          "type": "string"
+        },
         "textColor": {
           "type": "color"
         }
@@ -1146,6 +1216,10 @@ export default {
         "texts": "Simple as this.",
         "code": "import { create } from \"vanillasky\";\n\nconst video = await create({\n  prompt: \"Launch trailer\",\n  style: \"cinematic\",\n});\n\nconsole.log(video.url);",
         "filename": "app.ts",
+        "mediaUrl": "",
+        "mediaKeyword": "",
+        "mediaType": "auto",
+        "mediaPoster": "",
         "textColor": ""
       }
     },
@@ -1161,10 +1235,10 @@ export default {
       "requiresStat": false,
       "requiresQuote": false,
       "requiresScreenshot": false,
-      "allowsStockMedia": false,
+      "allowsStockMedia": true,
       "usesGlobalTextEffect": false,
       "usesGlobalTransition": true,
-      "usesGlobalBackgroundEffect": false,
+      "usesGlobalBackgroundEffect": true,
       "minDuration": 2,
       "preferredDuration": 3,
       "variableSchema": {
@@ -1182,6 +1256,24 @@ export default {
         "promptPrefix": {
           "type": "string"
         },
+        "mediaUrl": {
+          "type": "media"
+        },
+        "mediaKeyword": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "enum",
+          "options": [
+            "auto",
+            "photo",
+            "video",
+            "gradient"
+          ]
+        },
+        "mediaPoster": {
+          "type": "string"
+        },
         "textColor": {
           "type": "color"
         }
@@ -1191,6 +1283,10 @@ export default {
         "command": "npx vanillasky create --trailer",
         "output": "✓ Scenes composed,✓ Beat-synced to music,✓ Ready to export",
         "promptPrefix": "$",
+        "mediaUrl": "",
+        "mediaKeyword": "",
+        "mediaType": "auto",
+        "mediaPoster": "",
         "textColor": ""
       }
     },
@@ -1904,10 +2000,10 @@ export default {
       "requiresStat": true,
       "requiresQuote": false,
       "requiresScreenshot": false,
-      "allowsStockMedia": false,
+      "allowsStockMedia": true,
       "usesGlobalTextEffect": false,
       "usesGlobalTransition": true,
-      "usesGlobalBackgroundEffect": false,
+      "usesGlobalBackgroundEffect": true,
       "minDuration": 2,
       "preferredDuration": 3,
       "variableSchema": {
@@ -1939,6 +2035,24 @@ export default {
           "type": "string",
           "required": true
         },
+        "mediaUrl": {
+          "type": "media"
+        },
+        "mediaKeyword": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "enum",
+          "options": [
+            "auto",
+            "photo",
+            "video",
+            "gradient"
+          ]
+        },
+        "mediaPoster": {
+          "type": "string"
+        },
         "textColor": {
           "type": "color"
         }
@@ -1951,6 +2065,10 @@ export default {
         "stat2Label": "Uptime",
         "stat3Value": "<50ms",
         "stat3Label": "Latency",
+        "mediaUrl": "",
+        "mediaKeyword": "",
+        "mediaType": "auto",
+        "mediaPoster": "",
         "textColor": ""
       }
     },
@@ -1987,6 +2105,24 @@ export default {
           "type": "string",
           "required": true
         },
+        "mediaUrl": {
+          "type": "media"
+        },
+        "mediaKeyword": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "enum",
+          "options": [
+            "auto",
+            "photo",
+            "video",
+            "gradient"
+          ]
+        },
+        "mediaPoster": {
+          "type": "string"
+        },
         "textColor": {
           "type": "color"
         }
@@ -1996,6 +2132,10 @@ export default {
         "problemText": "Teams waste 40% of time in meetings",
         "solutionLabel": "THE SOLUTION",
         "solutionText": "AI that summarizes in seconds",
+        "mediaUrl": "",
+        "mediaKeyword": "",
+        "mediaType": "auto",
+        "mediaPoster": "",
         "textColor": ""
       }
     },
@@ -2030,6 +2170,24 @@ export default {
           "type": "string",
           "required": true
         },
+        "mediaUrl": {
+          "type": "media"
+        },
+        "mediaKeyword": {
+          "type": "string"
+        },
+        "mediaType": {
+          "type": "enum",
+          "options": [
+            "auto",
+            "photo",
+            "video",
+            "gradient"
+          ]
+        },
+        "mediaPoster": {
+          "type": "string"
+        },
         "textColor": {
           "type": "color"
         }
@@ -2038,6 +2196,10 @@ export default {
         "texts": "What you get.",
         "items": "Automate your savings on energy bills,Cleaner energy without raising your bill,Same account and service guaranteed",
         "itemEmojis": "💰,⚡,🔒",
+        "mediaUrl": "",
+        "mediaKeyword": "",
+        "mediaType": "auto",
+        "mediaPoster": "",
         "textColor": ""
       }
     },

@@ -26,12 +26,12 @@ The 10 templates to reach for first — one per motion archetype, register-diver
 
 | Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
 |---|---|---|---|---|---|---|---|
-| `media` | **Archetype: hook.** The default opener — full-frame footage with a text effect riding the motion; also the atmospheric body bridge. Full-bleed photo, video, or gradient with open text. Use for hooks, atmospheric body beats, uploaded scenic media, or a concrete product-context sentence over footage. | undefined | motion-led | atmosphere, setup | 1–2s | 6 | free |
+| `media` | **Archetype: hook.** The default opener — full-frame footage with a text effect riding the motion; also the atmospheric body bridge. Full-bleed photo, video, or gradient with open text. Use for hooks, atmospheric body beats, uploaded scenic media, or a concrete product-context sentence over footage. | undefined | motion-led | atmosphere, setup | 1–2s | 7 | free |
 | `bigNumber` | **Archetype: stat-pop.** Hero number counts up and pops; everything else stays quiet. One important real number explicitly present in the input: customer count, reduction, uplift, speed claim, percentage, rank, or headline metric. Use only when you can copy the exact number into value/prefix/unit; never invent a number or leave the default. {needs stat} | undefined | typography-led | claim, proof | 1.5–4s | 11 | free |
 | `tweet` | **Archetype: social card.** Brand-voiced post that reads like a real public post. X-style post card with optional 1-4 image grid (tweetImage1..4). Brand-voiced announcement that reads like a real public post, launch quote, founder update, or compact social claim. Avoid for generic product explainers. | undefined | card-led | claim, proof | 2.5–3.5s | 10 | free |
 | `testimonial` | **Archetype: reveal-slide.** Quote card fades/scales in, inner content word-by-word. One real attributed customer quote, testimonial, review, or named endorsement. Do not fabricate names, roles, or quotes. {needs quote} | undefined | card-led | proof | 2.5–4s | 8 | free |
 | `phoneMockup` | **Archetype: mockup-zoom.** Phone chrome slides up and settles; real portrait UI only. Uploaded portrait/mobile UI screenshots or a mobile app workflow. Use one scene for up to three same-orientation phone screens. {needs screenshot} | undefined | device-led | proof, atmosphere | 2–3s | 16 | free |
-| `terminal` | **Archetype: dev device.** A command or log output IS the content; synthesize from the input. Developer or technical product where a CLI command, install command, log output, deploy/test flow, or status result communicates the workflow better than prose. Prefer when the input includes a command or install snippet. | undefined | device-led | proof, atmosphere | 2–3s | 5 | free |
+| `terminal` | **Archetype: dev device.** A command or log output IS the content; synthesize from the input. Developer or technical product where a CLI command, install command, log output, deploy/test flow, or status result communicates the workflow better than prose. Prefer when the input includes a command or install snippet. | undefined | device-led | proof, atmosphere | 2–3s | 9 | free |
 | `steps` | **Archetype: card-grid-stagger.** Ordered cards spring in one at a time. Sequential workflow or how-it-works explanation where order matters: connect, generate, review, publish. Avoid for unordered feature lists. | undefined | card-led | proof, setup | 2–3.5s | 4 | free |
 | `beforeAfter` | **Archetype: transformation.** Two states, one contrast. Clear transformation or contrast between two states, especially symbolic or visual before/after: manual to automated, chaos to order, old way to new way. | undefined | motion-led | proof, setup | 3–4.5s | 7 | free |
 | `milestone` | **Archetype: celebrate-burst.** Number + particles radiating from center. Real numeric achievement explicitly in the input: users, revenue, years, installs, customers, stars, or adoption count. Use exact targetNumber; never for generic releases, versions, 'free', or proof without an achievement count. {needs stat} | undefined | typography-led | claim, proof | 2.5–4s | 10 | free |
@@ -78,7 +78,7 @@ vary it.
 `static`, `slow-zoom-in`, `slow-zoom-out`, `ken-burns`, `drift`, `pulse`, `breathe`, `slow-tilt`, `camera-shake`
 
 Only these templates consume it — setting it on any other template is a
-validation error, not a silent no-op: `bigNumber`, `brandMessage`, `cardList`, `incomingCall`, `media`, `notification`, `problemSolution`, `promptInput`, `steps`, `tweet`.
+validation error, not a silent no-op: `barChart`, `bigNumber`, `brandMessage`, `cardList`, `codeEditor`, `incomingCall`, `media`, `notification`, `problemSolution`, `progressRing`, `promptInput`, `steps`, `terminal`, `tripleStats`, `tweet`.
 
 ## Full catalog
 
@@ -89,7 +89,7 @@ categories (category shown per template in its registry item's `meta.vanillasky.
 
 | Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
 |---|---|---|---|---|---|---|---|
-| `reaction` | Use once for funny/meme/self-aware/roast/silly/unhinged/lol videos. Short full-bleed reaction clip with a punchline. Hook or body payoff. Pick reactionTag from the enum; search appends `meme` to nudge Pexels toward expressive footage. Max one per video. | media | motion-led | setup, claim | 2.5–3s | 4 | free |
+| `reaction` | Use once for funny/meme/self-aware/roast/silly/unhinged/lol videos. Short full-bleed reaction clip with a punchline. Hook or body payoff. Pick reactionTag from the enum; search appends `meme` to nudge Pexels toward expressive footage. Max one per video. | media | motion-led | setup, claim | 2.5–3s | 5 | free |
 
 ### celebration
 
@@ -102,16 +102,16 @@ categories (category shown per template in its registry item's `meta.vanillasky.
 
 | Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
 |---|---|---|---|---|---|---|---|
-| `barChart` | Comparison, ranking, trend, or multiple values where relative size matters. Use for category comparisons, before/after quantities, or grouped metrics. {needs stat} | undefined | motion-led | proof | 2–3.5s | 4 | free |
-| `progressRing` | Completion, readiness, health score, goal progress, adoption progress, or percent complete. Do not use for generic uplift, reduction, speed, or loose percentage claims. {needs stat} | undefined | motion-led | proof | 2–3.5s | 6 | free |
-| `tripleStats` | Exactly three peer stats or compact specs from the input with comparable weight. Prefer over bigNumber for three parallel facts. Avoid when one number is the hero or values are just brand/tool names. {needs stat} | undefined | typography-led | claim, proof | 2–3s | 8 | free |
+| `barChart` | Comparison, ranking, trend, or multiple values where relative size matters. Use for category comparisons, before/after quantities, or grouped metrics. {needs stat} | undefined | motion-led | proof | 2–3.5s | 8 | free |
+| `progressRing` | Completion, readiness, health score, goal progress, adoption progress, or percent complete. Do not use for generic uplift, reduction, speed, or loose percentage claims. {needs stat} | undefined | motion-led | proof | 2–3.5s | 10 | free |
+| `tripleStats` | Exactly three peer stats or compact specs from the input with comparable weight. Prefer over bigNumber for three parallel facts. Avoid when one number is the hero or values are just brand/tool names. {needs stat} | undefined | typography-led | claim, proof | 2–3s | 12 | free |
 
 ### device
 
 | Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
 |---|---|---|---|---|---|---|---|
 | `webMockup` | Uploaded landscape or square desktop/web screenshots, dashboard views, or browser/tablet product surfaces. Use one scene for up to three same-orientation screens. {needs screenshot} | undefined | device-led | proof, atmosphere | 2–3s | 18 | free |
-| `codeEditor` | *Paired with `terminal` — prefer `terminal` when the input has a command/install/log; `codeEditor` for code/config samples.* Developer product, API, SDK, config, codebase, tests, or code-focused workflow where a short synthetic code sample explains the product mechanism. Prefer over generic brand/card scenes when code is a core input signal. | undefined | device-led | proof, atmosphere | 2–3s | 4 | free |
+| `codeEditor` | *Paired with `terminal` — prefer `terminal` when the input has a command/install/log; `codeEditor` for code/config samples.* Developer product, API, SDK, config, codebase, tests, or code-focused workflow where a short synthetic code sample explains the product mechanism. Prefer over generic brand/card scenes when code is a core input signal. | undefined | device-led | proof, atmosphere | 2–3s | 8 | free |
 
 ### social
 
@@ -129,8 +129,8 @@ categories (category shown per template in its registry item's `meta.vanillasky.
 
 | Template | Use when | Category | Register | Jobs | Duration | Variables | Tier |
 |---|---|---|---|---|---|---|---|
-| `problemSolution` | Literal pain-to-fix story where the central message is one problem statement and one solution statement. Avoid for generic SaaS launches without a crisp pain/fix pair. | undefined | card-led | setup, proof | 3–5.5s | 5 | free |
-| `cardList` | Three to five concrete product facts, benefits, use cases, integrations, or feature bullets. Good for product comprehension when the facts are parallel. | undefined | card-led | proof, setup | 2–3.5s | 4 | free |
+| `problemSolution` | Literal pain-to-fix story where the central message is one problem statement and one solution statement. Avoid for generic SaaS launches without a crisp pain/fix pair. | undefined | card-led | setup, proof | 3–5.5s | 9 | free |
+| `cardList` | Three to five concrete product facts, benefits, use cases, integrations, or feature bullets. Good for product comprehension when the facts are parallel. | undefined | card-led | proof, setup | 2–3.5s | 8 | free |
 
 ### closer
 
@@ -147,5 +147,5 @@ curves, colors, or font stacks.
 | `video-config` | — | The stable data contract for a renderable VanillaSky video. | `barChart`, `beforeAfter`, `bigNumber`, `brandMessage`, `cardList`, `chatMessenger`, `chatWhatsapp`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
 | `theme` | — | Resolve brand inputs into coherent, readable scene tokens. | `barChart`, `beforeAfter`, `bigNumber`, `brandMessage`, `cardList`, `chatMessenger`, `chatWhatsapp`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
 | `motion` | — | One deterministic progress-driven API, from raw curves to composed effects. | `barChart`, `beforeAfter`, `bigNumber`, `brandMessage`, `cardList`, `chatMessenger`, `chatWhatsapp`, `codeEditor`, `ctaLogo`, `ctaMedia`, `incomingCall`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
-| `typography` | — | Fit text to a fixed frame and give it a complete kinetic lifecycle. | `barChart`, `beforeAfter`, `bigNumber`, `brandMessage`, `cardList`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
+| `typography` | — | Fit text to a fixed frame and give it a complete kinetic lifecycle. | `barChart`, `beforeAfter`, `bigNumber`, `brandMessage`, `cardList`, `chatMessenger`, `chatWhatsapp`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
 | `backgrounds` | — | Paint deterministic brand backdrops and keep their visual layer moving. | `barChart`, `beforeAfter`, `bigNumber`, `brandMessage`, `cardList`, `codeEditor`, `confetti`, `ctaLogo`, `ctaMedia`, `emojiBurst`, `incomingCall`, `media`, `milestone`, `notification`, `phoneMockup`, `problemSolution`, `progressRing`, `promptInput`, `reaction`, `reviewStack`, `steps`, `terminal`, `testimonial`, `tripleStats`, `tweet`, `webMockup` |
