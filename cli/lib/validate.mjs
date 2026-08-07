@@ -15,6 +15,8 @@ import { readFileSync } from "node:fs";
 import registryData from "./registry-data.mjs";
 import { mergeDesignMdIntoConfig } from "./design-md.mjs";
 import { getPexelsApiKey } from "./pexels.mjs";
+import { validateLocalMediaPaths } from "./local-media.mjs";
+import { preflightMedia } from "./media-preflight.mjs";
 
 export { registryData };
 
@@ -209,7 +211,7 @@ function checkType(value, field) {
  * Validate a parsed VideoConfig.
  * Returns { errors, warnings, format } — issue: { code, sceneIndex?, templateId?, message }.
  */
-export function validateConfig(config, { format, pexelsKeyAvailable = false } = {}) {
+export function validateConfig(config, { format, pexelsKeyAvailable = false, configPath } = {}) {
   const errors = [];
   const warnings = [];
   const err = (code, message, sceneIndex, templateId) =>
@@ -224,6 +226,10 @@ export function validateConfig(config, { format, pexelsKeyAvailable = false } = 
   if (!Array.isArray(config.scenes) || config.scenes.length === 0) {
     err("structural", "config has no scenes[] — a VideoConfig needs at least one scene");
     return { errors, warnings, format: null };
+  }
+
+  if (configPath) {
+    for (const issue of validateLocalMediaPaths(config, configPath)) errors.push(issue);
   }
 
   // The render page hard-requires a style block (templates dereference
@@ -497,7 +503,7 @@ export function formatReport(result, { name = "config" } = {}) {
 }
 
 /** CLI entry: prints the report, returns the exit code. */
-export function validateCommand(configPath, { json = false, format, designMd = true, pexels = true } = {}) {
+export async function validateCommand(configPath, { json = false, format, designMd = true, pexels = true, preflight = false } = {}) {
   const { config, error } = loadConfigForValidation(configPath);
   if (error) {
     if (json) {
@@ -513,7 +519,10 @@ export function validateCommand(configPath, { json = false, format, designMd = t
   if (designMd !== false && config && typeof config === "object") {
     mergeDesignMdIntoConfig(configPath, config, { log: console.error });
   }
-  const result = validateConfig(config, { format, pexelsKeyAvailable: pexels !== false && getPexelsApiKey() !== null });
+  const result = validateConfig(config, { format, configPath, pexelsKeyAvailable: pexels !== false && getPexelsApiKey() !== null });
+  if (preflight && result.errors.length === 0) {
+    result.errors.push(...await preflightMedia(config));
+  }
   if (json) {
     console.log(JSON.stringify({ valid: result.errors.length === 0, format: result.format, errors: result.errors, warnings: result.warnings }, null, 2));
   } else {

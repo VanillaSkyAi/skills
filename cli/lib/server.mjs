@@ -6,7 +6,7 @@
  * referencing stale JS hashes renders a blank page).
  */
 import { createServer } from "node:http";
-import { existsSync, statSync, readFileSync } from "node:fs";
+import { createReadStream, existsSync, statSync, readFileSync } from "node:fs";
 import { handleLocalRoute } from "./local-routes.mjs";
 import { join, extname, dirname, resolve, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -52,11 +52,46 @@ export function startServer(dist, opts = {}) {
         const url = new URL(req.url, "http://localhost");
         const pathname = decodeURIComponent(url.pathname);
 
+        if (opts.localMedia && pathname.startsWith("/__media/") && req.method === "GET") {
+          const host = req.headers.host ?? "";
+          const localHost = host === `127.0.0.1:${boundPort}` || host === `localhost:${boundPort}` || host === `[::1]:${boundPort}`;
+          if (!localHost) {
+            res.writeHead(403, { "Content-Type": "text/plain", "Cache-Control": "no-store" });
+            res.end("bad Host");
+            return;
+          }
+          const entry = opts.localMedia.entry(pathname);
+          if (!entry) {
+            res.writeHead(404, { "Content-Type": "text/plain", "Cache-Control": "no-store" });
+            res.end("media not registered");
+            return;
+          }
+          const size = statSync(entry.path).size;
+          const match = /^bytes=(\d+)-(\d*)$/.exec(req.headers.range ?? "");
+          const start = match ? Number(match[1]) : 0;
+          const end = match && match[2] ? Math.min(Number(match[2]), size - 1) : size - 1;
+          if (start < 0 || start >= size || end < start) {
+            res.writeHead(416, { "Content-Range": `bytes */${size}` });
+            res.end();
+            return;
+          }
+          res.writeHead(match ? 206 : 200, {
+            "Content-Type": entry.contentType,
+            "Content-Length": String(end - start + 1),
+            "Accept-Ranges": "bytes",
+            "Cache-Control": "no-cache",
+            ...(match ? { "Content-Range": `bytes ${start}-${end}/${size}` } : {}),
+          });
+          createReadStream(entry.path, { start, end }).pipe(res);
+          return;
+        }
+
         if (session && pathname.startsWith("/__local/")) {
           void handleLocalRoute(req, res, url, {
             session, port: boundPort, validate: opts.validate, renderCommand: opts.renderCommand,
             getPexelsApiKey: opts.getPexelsApiKey, searchPexels: opts.searchPexels,
             loadTrackLibrary: opts.loadTrackLibrary,
+            localMedia: opts.localMedia,
           });
           return;
         }

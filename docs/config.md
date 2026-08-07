@@ -158,7 +158,21 @@ Prefer supplied assets, HTTPS URLs, or local file paths. `mediaKeyword` can sear
 
 Avoid base64 media in configs intended for Watch or Studio links; the URL fragment can become too large.
 
-Media is prefetched before a render. Unreachable URLs fail early rather than producing black scenes.
+Local image/video paths may be absolute, `file://`, or relative to
+`video.json`. CLI Studio and render serve them automatically while keeping the
+original path in the file. Hosted links reject local paths; upload those assets
+and use HTTPS before sharing.
+
+Capture a product page or local HTML prototype into a media slot with:
+
+```bash
+vanillasky capture prototype.html --out assets/product.png
+```
+
+Remote media is prefetched before a render. `vanillasky validate video.json
+--preflight` performs the same HTTP and MIME checks without rendering.
+Unreachable or non-media responses fail early rather than producing black
+scenes.
 
 ## Formats
 

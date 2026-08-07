@@ -11,6 +11,7 @@ vanillasky setup --check                           # print setup state (Pexels k
 vanillasky resolve video.json                      # pin stock-search results into the config
 vanillasky validate video.json                     # schema + template checks, exit 1 on errors
 vanillasky validate video.json --format launch     # also enforce the launch slot contract
+vanillasky validate video.json --preflight         # fetch remote media; verify HTTP + MIME
 vanillasky validate video.json --json              # machine-readable output
 vanillasky render video.json                       # full render → ./video.mp4 (validates first)
 vanillasky render video.json --frame 2.5           # one PNG at t=2.5s (~2s inspect)
@@ -23,6 +24,7 @@ vanillasky tracks                                  # list the bundled audio libr
 vanillasky brand                                   # show the DESIGN.md brand tokens this directory picks up
 vanillasky link video.json                         # https://vanillasky.ai/render#config=<base64url>
 vanillasky link video.json --base http://localhost:8090
+vanillasky capture prototype.html --out assets/ui.png
 ```
 
 Validation:
@@ -36,6 +38,12 @@ Validation:
   and same-template adjacency, slow-hook templates at scene 0).
 - `render` runs the same validation first and refuses invalid configs;
   `--no-validate` bypasses.
+- Local image/video paths are validated for existence and file type, then
+  served through the CLI's loopback server for Studio and render. The paths in
+  `video.json` stay unchanged. Hosted `link` URLs reject local files because a
+  remote browser cannot access this machine.
+- `validate --preflight` also fetches each remote image/video and checks its
+  HTTP status and MIME type before a sheet or full render can turn it black.
 - A config without a `style` block gets a warning from `validate` (the render
   page requires one); `render` injects a minimal default
   (`{ "font": "Inter" }`) instead of crashing.
@@ -88,8 +96,13 @@ DESIGN.md ingestion:
 
 Config notes:
 
-- Media URLs in scene variables must be directly fetchable — they are
-  prefetched and the render refuses to start if any fail (no black scenes).
+- Remote media URLs must be directly fetchable — render preflights them and
+  refuses to start if any fail or return a non-image/video MIME type.
+- Local image/video paths can be absolute, `file://`, or relative to
+  `video.json`; Studio and render serve them automatically while the CLI is
+  running. Use HTTPS URLs before generating a hosted share link.
+- `vanillasky capture <url-or-file> --out assets/screen.png` turns a product
+  page or local HTML prototype into a local screenshot ready for a media slot.
 - Proxy env vars (`HTTPS_PROXY`/`NO_PROXY`) are passed into the browser.
 
 Stock footage (Pexels):

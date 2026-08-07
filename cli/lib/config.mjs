@@ -4,6 +4,7 @@
  * (computeTotalDuration) and src/lib/scene-duration.ts (getSceneDuration).
  */
 import { readFileSync } from "node:fs";
+import { listMediaReferences } from "./local-media.mjs";
 
 const FALLBACK_SCENE_DURATION = 3;
 const MIN_SCENE_DURATION = 0.5;
@@ -133,17 +134,8 @@ export function sceneTimeRanges(config) {
 
 /** All http(s) media URLs referenced by scene variables (mirrors Render.tsx's preload walk). */
 export function collectMediaUrls(config) {
-  const urls = new Set();
-  for (const scene of config.scenes) {
-    for (const val of Object.values(scene.variables ?? {})) {
-      if (typeof val === "string" && /^https?:\/\//.test(val)) urls.add(val);
-    }
-  }
-  // The brand logo lives outside scenes but is still an <img src> the capture
-  // has to fetch, and a published config always references it by URL. Without
-  // it here a dead logo URL is silently invisible in the closer instead of
-  // failing the render like every other unreachable media URL.
-  const logo = config.style?.brandKit?.logoDataUrl;
-  if (typeof logo === "string" && /^https?:\/\//.test(logo)) urls.add(logo);
+  const urls = new Set(listMediaReferences(config)
+    .map((ref) => ref.value)
+    .filter((value) => typeof value === "string" && /^https?:\/\//.test(value)));
   return [...urls];
 }

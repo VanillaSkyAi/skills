@@ -94,7 +94,7 @@ on later turns instead of asking the same questions again.
 3. **Validate** and fix every error and warning:
 
    ```bash
-   vanillasky validate video.json
+   vanillasky validate video.json --preflight
    ```
 
    The config's `format` selects the right slot contract; do not hardcode
@@ -121,8 +121,8 @@ on later turns instead of asking the same questions again.
    their unsaved edits surface as a conflict instead of being overwritten. The
    user exports the MP4 from Studio when satisfied.
 
-   If the wrong browser opens, pass `--browser "Google Chrome"` or persist the
-   browser in `~/.vanillasky/config.json`. Use `--no-open` in a remote shell.
+   If the wrong browser opens, pass `--browser "Google Chrome"`; that choice is
+   saved for later Studio sessions. Use `--no-open` in a remote shell.
 
 **Do not render a full MP4 by default.** Render it yourself only when the user
 explicitly asks for the file or when Studio cannot be used (CI/headless):
@@ -170,6 +170,12 @@ Start from this shape, then use the catalog's exact schemas:
 - Prefer a real HTTPS URL or local path for media. Base64 media makes share
   links too large, and `mediaKeyword` results must be pinned to `mediaUrl` for
   deterministic rerenders.
+- Local image/video paths are first-class in CLI Studio and render: they may be
+  absolute, `file://`, or relative to `video.json`, and the CLI serves them
+  without changing the file. They cannot work in a hosted `vanillasky link`.
+- For a local HTML prototype or product page, run
+  `vanillasky capture <url-or-file> --out assets/product.png`, then use that
+  PNG path in `screenMediaUrl`.
 
 Read [references/config.md](references/config.md) when the config needs
 branding, media resolution, explicit timing, FPS matching, or link behavior.

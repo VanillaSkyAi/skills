@@ -9,6 +9,7 @@ import { updateCommand } from "../lib/update.mjs";
 import { diffCommand } from "../lib/diff.mjs";
 import { templatesCommand } from "../lib/templates.mjs";
 import { resolveMediaCommand } from "../lib/resolve-media.mjs";
+import { listLocalMediaReferences } from "../lib/local-media.mjs";
 
 const HELP = `vanillasky — validate, render, and share VanillaSky video configs locally
 
@@ -16,9 +17,10 @@ Usage:
   vanillasky setup [--check]
   vanillasky render <config.json> [options]
   vanillasky studio <config.json> [--no-open] [--fps <n>] [--browser <name>]
-  vanillasky validate <config.json> [--json] [--format <id>]
+  vanillasky validate <config.json> [--json] [--format <id>] [--preflight]
   vanillasky diff <config.json> [--json]
   vanillasky resolve <config.json> [--json]
+  vanillasky capture <url-or-file> [--out <png>] [--width <n>] [--height <n>]
   vanillasky templates [id] [--json]
   vanillasky tracks [--json]
   vanillasky scope [--json]
@@ -67,12 +69,19 @@ Validate options:
   --json           Machine-readable JSON output
   --format <id>    Enforce a format's slot contract (e.g. launch);
                    defaults to the config's "format" field when present
+  --preflight      Fetch every remote image/video and verify its HTTP status
+                   and MIME type before Studio or a full render
 
 Diff options:
   --json           Machine-readable JSON output
 
 Resolve options:
   --json           Machine-readable JSON output
+
+Capture options:
+  --out <path>     Screenshot path (default ./capture.png)
+  --width <n>      Browser viewport width (default 1440)
+  --height <n>     Browser viewport height (default 900)
 
 Link options:
   --base <url>     Host for the render link (default https://vanillasky.ai)
@@ -81,6 +90,7 @@ Examples:
   vanillasky setup --check
   vanillasky validate video.json --format launch
   vanillasky resolve video.json
+  vanillasky capture prototype.html --out assets/product.png
   vanillasky render video.json
   vanillasky render video.json --frame 1.2 --out check.png   # pick a mid-scene time, not a scene boundary
   vanillasky tracks
@@ -115,7 +125,7 @@ if (!cmd || cmd === "help" || cmd === "--help" || cmd === "-h") {
   process.exit(cmd ? 0 : 1);
 }
 
-const COMMANDS = ["setup", "render", "studio", "validate", "diff", "resolve", "templates", "tracks", "brand", "link", "scope", "update"];
+const COMMANDS = ["setup", "render", "studio", "validate", "diff", "resolve", "capture", "templates", "tracks", "brand", "link", "scope", "update"];
 if (!COMMANDS.includes(cmd)) {
   console.error(`Unknown command "${cmd}" — expected one of: ${COMMANDS.join(", ")}.\n`);
   console.error(HELP);
@@ -146,6 +156,9 @@ try {
       open: { type: "boolean" },
       "no-open": { type: "boolean" },
       check: { type: "boolean" },
+      preflight: { type: "boolean" },
+      width: { type: "string" },
+      height: { type: "string" },
     },
   }));
 } catch (err) {
@@ -192,6 +205,31 @@ if (cmd === "resolve") {
   process.exit(await resolveMediaCommand(positionals[0], { json: Boolean(values.json) }));
 }
 
+if (cmd === "capture") {
+  if (!positionals[0]) {
+    console.error("Usage: vanillasky capture <url-or-file> [--out <png>] [--width <n>] [--height <n>]");
+    process.exit(1);
+  }
+  const positive = (name, raw, fallback) => {
+    if (raw === undefined) return fallback;
+    const value = Number(raw);
+    if (!Number.isFinite(value) || value <= 0) throw new Error(`--${name} must be a positive number`);
+    return Math.round(value);
+  };
+  try {
+    const { captureCommand } = await import("../lib/capture.mjs");
+    await captureCommand(positionals[0], {
+      out: values.out,
+      width: positive("width", values.width, 1440),
+      height: positive("height", values.height, 900),
+    });
+    process.exit(0);
+  } catch (err) {
+    console.error(`[vanillasky] error: ${err?.message ?? err}`);
+    process.exit(1);
+  }
+}
+
 // The exact global surface a `custom_*` scene's componentSource can reach.
 // Custom source has no imports — everything below is already in scope — so
 // this list is the difference between composing and guessing.
@@ -236,17 +274,26 @@ if (!configPath) {
 }
 
 if (cmd === "validate") {
-  process.exit(validateCommand(configPath, {
+  process.exit(await validateCommand(configPath, {
     json: Boolean(values.json),
     format: values.format,
     designMd: !values["no-design-md"],
     pexels: !values["no-pexels"],
+    preflight: Boolean(values.preflight),
   }));
 }
 
 if (cmd === "link") {
   try {
     const config = loadConfig(configPath);
+    const localMedia = listLocalMediaReferences(config, configPath);
+    if (localMedia.length > 0) {
+      console.error(
+        `[vanillasky] error: this config references ${localMedia.length} local media file${localMedia.length === 1 ? "" : "s"}.\n` +
+        `  Local paths work in \`vanillasky studio\` and \`vanillasky render\`, but a hosted link cannot access this Mac. Upload the media and use https URLs before sharing.`,
+      );
+      process.exit(1);
+    }
     const base = (values.base ?? "https://vanillasky.ai").replace(/\/+$/, "");
     const b64 = encodeConfig(config);
     const inline = hasInlineMedia(config);

@@ -19,7 +19,8 @@ import { getPexelsApiKey, searchPexels } from "./pexels.mjs";
 import { loadTrackLibrary } from "./audio-library.mjs";
 import { LocalSession } from "./local-session.mjs";
 import { openInBrowser, openNotice } from "./open-browser.mjs";
-import { readUserConfig } from "./setup.mjs";
+import { persistBrowserPreference, readUserConfig } from "./setup.mjs";
+import { LocalMediaRegistry } from "./local-media.mjs";
 
 export async function studioCommand(configPath, opts = {}) {
   const path = resolve(configPath);
@@ -31,11 +32,12 @@ export async function studioCommand(configPath, opts = {}) {
   const dist = resolveDist();
   const session = new LocalSession(path);
   session.startWatching();
+  const localMedia = new LocalMediaRegistry();
 
   const server = await startServer(dist, {
     session,
     validate: (cfg) => {
-      const r = validateConfig(cfg);
+      const r = validateConfig(cfg, { configPath: path });
       return { errors: r.errors ?? [], warnings: r.warnings ?? [] };
     },
     renderCommand,
@@ -46,6 +48,7 @@ export async function studioCommand(configPath, opts = {}) {
     getPexelsApiKey,
     searchPexels,
     loadTrackLibrary,
+    localMedia,
   });
 
   const url = `${server.baseUrl}/studio#token=${session.token}`;
@@ -57,6 +60,7 @@ export async function studioCommand(configPath, opts = {}) {
   if (!getPexelsApiKey()) {
     console.log(`[vanillasky] no Pexels key — stock search is off. Add one free at pexels.com/api, then \`vanillasky setup\``);
   }
+  if (opts.browser) persistBrowserPreference(opts.browser);
   if (opts.open !== false) {
     // Explicit flag wins, then the saved preference, then the OS default.
     const configured = readUserConfig().config?.browser;

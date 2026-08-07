@@ -85,8 +85,19 @@ Keyword resolution is nondeterministic. Once a clip works, copy the selected URL
 from the log into `mediaUrl`. Prefer a rendition matching the output dimensions
 instead of upscaling a 720p file.
 
-Base64 `data:` media renders but usually makes Watch and Studio URL fragments
-too large. A URL or local path preserves link generation.
+Local image/video paths may be absolute, `file://`, or relative to
+`video.json`. `vanillasky studio` and `render` serve them automatically and
+keep the original path in the config. They cannot work in a hosted share link;
+upload them and use HTTPS before running `vanillasky link`.
+
+For a product page or local HTML prototype, capture a viewport first:
+
+```bash
+vanillasky capture prototype.html --out assets/product.png --width 1440 --height 900
+```
+
+Then use `assets/product.png` as `screenMediaUrl`. Base64 `data:` media renders
+but usually makes Watch and Studio URL fragments too large.
 
 ## Footage FPS
 

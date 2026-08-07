@@ -66,7 +66,7 @@ For a video your agent created in another project, run the same handoff against 
 
 ```bash
 vanillasky resolve video.json # only when the config uses mediaKeyword
-vanillasky validate video.json
+vanillasky validate video.json --preflight
 vanillasky render video.json --sheet --out ./sheet
 vanillasky studio video.json
 ```
@@ -98,6 +98,14 @@ vanillasky templates bigNumber --json
 ```
 
 A Pexels key is optional. When a config uses `mediaKeyword`, run `vanillasky resolve video.json` before validation to persist the selected URLs. Without a key, use supplied media, direct URLs, or templates that do not depend on stock search. A DESIGN.md is optional too; it only provides automatic brand tokens.
+
+Local media paths can point to screenshots and clips by absolute path or
+relative to `video.json`; Studio and render serve them automatically. To turn a product
+page or local HTML prototype into an editable scene asset, run:
+
+```bash
+vanillasky capture prototype.html --out assets/product.png
+```
 
 ## What is included
 

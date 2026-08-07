@@ -27,6 +27,8 @@ import { validateConfig, formatReport } from "./validate.mjs";
 import { mergeDesignMdIntoConfig } from "./design-md.mjs";
 import { resolveBundledTrack } from "./audio-library.mjs";
 import { getPexelsApiKey, fillPexelsMedia } from "./pexels.mjs";
+import { LocalMediaRegistry, rewriteLocalMediaPaths } from "./local-media.mjs";
+import { preflightMedia } from "./media-preflight.mjs";
 
 const READY_TIMEOUT_MS = 60_000;
 const FRAME_SETTLE_TIMEOUT_MS = 10_000;
@@ -59,7 +61,7 @@ export async function renderCommand(configPath, opts) {
     }
   }
   if (opts.validate !== false) {
-    const result = validateConfig(config);
+    const result = validateConfig(config, { configPath });
     if (result.errors.length > 0) {
       console.error(formatReport(result, { name: configPath }));
       throw new Error("config failed validation — fix the errors above, or bypass with --no-validate");
@@ -88,7 +90,9 @@ export async function renderCommand(configPath, opts) {
   const ffmpegPath = mode === "full" ? resolveFfmpeg() : tryResolveFfmpeg();
 
   const dist = resolveDist();
-  const server = await startServer(dist);
+  const localMedia = new LocalMediaRegistry();
+  const server = await startServer(dist, { localMedia });
+  const browserConfig = rewriteLocalMediaPaths(config, configPath, localMedia);
   const tmpDir = mkdtempSync(join(tmpdir(), "vanillasky-"));
   let browser = null;
 
@@ -104,8 +108,8 @@ export async function renderCommand(configPath, opts) {
     console.log(`[vanillasky] browser: ${launched.label}`);
 
     const shared = {
-      baseUrl: server.baseUrl, b64: encodeConfig(config),
-      W, H, baseW, baseH, scale, fps, duration, config, orientation,
+      baseUrl: server.baseUrl, b64: encodeConfig(browserConfig),
+      W, H, baseW, baseH, scale, fps, duration, config: browserConfig, orientation,
       ffmpegPath, tmpDir, tStart,
     };
 
@@ -131,24 +135,10 @@ async function prefetchMedia(config) {
   const urls = collectMediaUrls(config);
   if (!urls.length) return;
   console.log(`[vanillasky] prefetching ${urls.length} media URL(s)...`);
-  const ctx = await request.newContext({ proxy: proxyOption() });
-  const failures = [];
-  await Promise.all(urls.map(async (url) => {
-    try {
-      let res = await ctx.head(url, { timeout: 15_000 }).catch(() => null);
-      if (!res || !res.ok()) {
-        // Some CDNs reject HEAD — retry as a ranged GET.
-        res = await ctx.get(url, { timeout: 20_000, headers: { Range: "bytes=0-1023" } });
-      }
-      if (!res.ok()) failures.push(`${url} → HTTP ${res.status()}`);
-    } catch (err) {
-      failures.push(`${url} → ${String(err.message ?? err).split("\n")[0]}`);
-    }
-  }));
-  await ctx.dispose();
+  const failures = await preflightMedia(config);
   if (failures.length) {
     throw new Error(
-      `media prefetch failed — refusing to render (these scenes would come out black):\n  ${failures.join("\n  ")}`,
+      `media prefetch failed — refusing to render (these scenes would come out black):\n  ${failures.map((issue) => issue.message).join("\n  ")}`,
     );
   }
 }

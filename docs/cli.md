@@ -9,9 +9,10 @@
 vanillasky setup [--check]
 vanillasky render <config.json> [options]
 vanillasky studio <config.json> [--no-open] [--fps <n>] [--browser <name>]
-vanillasky validate <config.json> [--json] [--format <id>]
+vanillasky validate <config.json> [--json] [--format <id>] [--preflight]
 vanillasky diff <config.json> [--json]
 vanillasky resolve <config.json> [--json]
+vanillasky capture <url-or-file> [--out <png>] [--width <n>] [--height <n>]
 vanillasky templates [id] [--json]
 vanillasky tracks [--json]
 vanillasky scope [--json]
@@ -48,6 +49,7 @@ vanillasky update
 ```bash
 vanillasky validate video.json
 vanillasky validate video.json --json
+vanillasky validate video.json --preflight
 ```
 
 Validation checks:
@@ -60,6 +62,10 @@ Validation checks:
 - the config's selected format contract.
 
 `--format <id>` overrides the config's `format`; normally the field in `video.json` is sufficient. Validation exits with status 1 on errors.
+
+Local image/video paths are checked for existence and supported file type.
+`--preflight` also fetches every remote image/video and rejects unreachable
+URLs or non-media MIME types before they can become black scenes.
 
 ## resolve
 
@@ -91,6 +97,20 @@ vanillasky studio video.json --no-open
 ```
 
 Studio is the default handoff. It opens the local visual editor, follows external file changes, autosaves user edits, and exports the final MP4. Read the [Studio guide](https://vanillasky.ai/docs/studio) for the full workflow.
+
+An explicit `--browser` choice is saved for later Studio sessions. Local media
+paths are served by the same loopback process and remain unchanged in the JSON.
+
+## capture
+
+```bash
+vanillasky capture https://example.com/product --out assets/product.png
+vanillasky capture prototype.html --out assets/product.png --width 1440 --height 900
+```
+
+Captures one browser viewport from a public URL or local HTML prototype. Use
+the resulting local PNG in `screenMediaUrl` or another media field; Studio and
+render serve it automatically.
 
 ## render
 
@@ -126,6 +146,9 @@ vanillasky link video.json
 ```
 
 Prints zero-install Watch and Studio URLs. The config is encoded in the URL fragment and is not uploaded. `--base <url>` changes the host.
+
+Hosted links reject local media paths because a remote browser cannot access
+files on this machine. Upload those assets and replace them with HTTPS URLs.
 
 ## tracks
 

@@ -13,6 +13,7 @@
 import { spawn } from "node:child_process";
 import { createReadStream, existsSync, lstatSync, realpathSync, renameSync, unlinkSync } from "node:fs";
 import { dirname, join } from "node:path";
+import { restoreLocalMediaPaths, rewriteLocalMediaPaths } from "./local-media.mjs";
 
 const MAX_CONFIG_BYTES = 8 * 1024 * 1024;
 
@@ -88,12 +89,15 @@ export async function handleLocalRoute(req, res, url, ctx) {
 
   try {
     if (route === "/config" && req.method === "GET") {
-      return json(res, 200, session.snapshot()), true;
+      const snapshot = session.snapshot();
+      if (ctx.localMedia) snapshot.config = rewriteLocalMediaPaths(snapshot.config, session.path, ctx.localMedia);
+      return json(res, 200, snapshot), true;
     }
 
     if (route === "/config" && req.method === "POST") {
       const body = JSON.parse(await readBody(req, MAX_CONFIG_BYTES));
-      const config = body?.config;
+      const browserConfig = body?.config;
+      const config = ctx.localMedia ? restoreLocalMediaPaths(browserConfig, ctx.localMedia) : browserConfig;
       if (!config || typeof config !== "object" || !Array.isArray(config.scenes)) {
         return json(res, 400, { error: "body must be { config } with a scenes array" }), true;
       }
@@ -101,7 +105,10 @@ export async function handleLocalRoute(req, res, url, ctx) {
       if (result.conflict) {
         // Not an error the user caused — the file moved under them. The page
         // keeps its draft and offers reload-or-overwrite.
-        return json(res, 409, { conflict: true, config: result.config, revision: result.revision }), true;
+        const conflictConfig = ctx.localMedia
+          ? rewriteLocalMediaPaths(result.config, session.path, ctx.localMedia)
+          : result.config;
+        return json(res, 409, { conflict: true, config: conflictConfig, revision: result.revision }), true;
       }
       // A config that fails validation is still THEIR file and still gets
       // written — refusing the save would lose work mid-edit. The errors come
@@ -118,7 +125,12 @@ export async function handleLocalRoute(req, res, url, ctx) {
         "Referrer-Policy": "no-referrer",
       });
       res.write(": connected\n\n");
-      const send = (event) => res.write(`data: ${JSON.stringify(event)}\n\n`);
+      const send = (event) => {
+        const outgoing = event?.type === "config" && ctx.localMedia
+          ? { ...event, config: rewriteLocalMediaPaths(event.config, session.path, ctx.localMedia) }
+          : event;
+        res.write(`data: ${JSON.stringify(outgoing)}\n\n`);
+      };
       const heartbeat = setInterval(() => res.write(": ping\n\n"), 15_000);
       const off = session.addListener(send);
       const cleanup = () => { clearInterval(heartbeat); off(); };

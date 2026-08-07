@@ -54,6 +54,13 @@ export function writeUserConfig(updates, { configPath = USER_CONFIG_PATH, log = 
   return { merged, existed: exists && !malformed };
 }
 
+/** Save a Studio --browser choice so later invocations use it automatically. */
+export function persistBrowserPreference(browser, options = {}) {
+  const value = typeof browser === "string" ? browser.trim() : "";
+  if (!value) return null;
+  return writeUserConfig({ browser: value }, options);
+}
+
 // ─── State inspection ───────────────────────────────────────────
 
 /** Gather everything setup cares about into one plain object. */
