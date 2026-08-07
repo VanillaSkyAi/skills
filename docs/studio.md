@@ -8,6 +8,12 @@ vanillasky studio video.json
 
 Studio opens at `http://127.0.0.1:<port>/studio`. The scene timeline, variables, music, preview, file writes, and export all run locally.
 
+## Edit visually, without giving up agent control
+
+![VanillaSky Studio with editable scene controls, live portrait preview, timeline, and export](https://vanillasky.ai/docs-assets/studio.webp)
+
+Select a scene in the timeline to edit the selected scene's copy, timing, background, template, and style while the real video plays beside it. The visual editor and `video.json` stay in sync, so Studio is a review surface—not a separate rebuild of the agent's work.
+
 ## Why Studio is the handoff
 
 Rendering an MP4 just to discover that the hook is weak or a title wraps badly is a slow feedback loop. Studio shows the composed video immediately and makes the final creative decisions visible before export.
