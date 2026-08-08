@@ -147,6 +147,7 @@ Start from this shape, then use the catalog's exact schemas:
   "style": {
     "font": "Inter",
     "preset": "bold",
+    "defaultTransition": "cut",
     "brandKit": { "accent": "#6D5EF8", "secondary": "#F8B45E" }
   },
   "audio": { "trackId": "<from vanillasky tracks>" },
@@ -162,6 +163,10 @@ Start from this shape, then use the catalog's exact schemas:
 ```
 
 - `brandKit` belongs inside `style`; choose a style preset deliberately.
+- Set `style.defaultTransition` deliberately. Use `cut` for text-led and
+  product-demo sequences: a whole-scene crossfade double-exposes outgoing and
+  incoming words and UI. Use `dip-to-black` or `flash` only when that veil is
+  part of the intended edit.
 - `textArchetype` and `backgroundEffect` are scene fields, not variables.
 - `timing.fixedDuration` sets a standalone scene length. Explicit timelines use
   contiguous `startTime` + `endTime`; `timing.duration` is not a field.
@@ -214,6 +219,11 @@ generated contract. Your job is the judgment the validator cannot make.
 
 ### Variety and pacing
 
+- Write one brief-specific art direction sentence before choosing templates
+  (for example, "restrained editorial proof with warm human detail"). Give
+  each scene a distinct editorial function and visual register—tension,
+  product reveal, detail, proof, or close—rather than filling the same generic
+  hook → mockup → stat sequence for every brief.
 - Do not make every body a card. Use at least two non-card-led registers.
 - A plain sentence on one flat gradient is a fallback, not automatically a
   strong hook. Prefer a brief-grounded visual mechanism—a notification for an
@@ -227,10 +237,17 @@ generated contract. Your job is the judgment the validator cannot make.
   or restrained effect. When the brief contains too little approved copy or
   proof to support many distinct scenes, use the format's shortest valid story
   instead of repeating it.
+- A brand background color is not a command to flatten the whole video. Unless
+  a deliberately flat art direction is the point, omit `brandKit.bg` so the
+  accent and secondary colors can create atmosphere; use grounded photo/video
+  backdrops selectively rather than unrelated stock in every scene.
 - Give footage at least 3 seconds unless it is intentionally a short bridge.
   Vary background motion rather than applying one effect everywhere.
 - A gradient-only media scene should be a deliberate brand beat, not a fallback
   chosen because stock or supplied media was inconvenient.
+- Do not repeat the same browser or phone mockup treatment across consecutive
+  product scenes. Change the crop, scale, angle, or focal detail; use one scene
+  to establish the product and another to demonstrate the relevant surface.
 - Inspect what actually appears: duration-limited templates may omit later
   items even when the config contains them.
 

@@ -242,6 +242,34 @@ export function validateConfig(config, { format, pexelsKeyAvailable = false, con
     warn("missing-style", 'config.style has no font — the renderer requires one; add e.g. "font": "Inter" (vanillasky render injects this default automatically)');
   }
 
+  // The renderer's backwards-compatible fallback is a whole-scene
+  // crossfade. That double-exposes outgoing and incoming headlines and UI,
+  // which repeatedly read as a visual defect in skill benchmarks. New
+  // multi-scene configs should choose an intentional cut or veil transition.
+  if (style && config.scenes.length >= 3 && (style.defaultTransition === undefined || style.defaultTransition === "crossfade")) {
+    warn(
+      "text-crossfade",
+      'style.defaultTransition is missing or "crossfade" — whole-scene crossfade double-exposes text and product UI. Use "cut" for text-led/product scenes, or choose "dip-to-black"/"flash" deliberately.',
+    );
+  }
+
+  // brandKit.bg replaces generated gradients with a single solid color. A
+  // long sequence without real backdrop media then becomes a flat slide deck,
+  // even when the templates themselves vary.
+  const brandBg = style?.brandKit?.bg;
+  if (typeof brandBg === "string" && brandBg.trim()) {
+    const flatSceneCount = config.scenes.filter((scene) => {
+      const vars = scene?.variables ?? {};
+      return isEmpty(vars.mediaUrl) || vars.mediaType === "gradient";
+    }).length;
+    if (flatSceneCount >= 3) {
+      warn(
+        "flat-background-repetition",
+        `style.brandKit.bg flattens ${flatSceneCount} scene backgrounds to one color — omit bg to preserve generated brand atmosphere, or give enough scenes grounded photo/video backdrops so fewer than three rows stay flat.`,
+      );
+    }
+  }
+
   // brandKit belongs to style. At the top level it is simply never read, so
   // the video renders in default colors and the only symptom is a frame that
   // looks unbranded — the most expensive kind of silent no-op.
@@ -344,6 +372,17 @@ export function validateConfig(config, { format, pexelsKeyAvailable = false, con
     const schema = tpl.variableSchema ?? {};
     const schemaNames = Object.keys(schema);
 
+    if (canonicalId === "ctaMedia" && !isEmpty(vars.headline) && !isEmpty(vars.cta)) {
+      const normalizeCopy = (value) => String(value).trim().toLocaleLowerCase().replace(/\s+/g, " ");
+      if (normalizeCopy(vars.headline) === normalizeCopy(vars.cta)) {
+        warn(
+          "duplicate-closer-copy",
+          `${label(i)}: "headline" and "cta" repeat ${JSON.stringify(String(vars.headline).trim())} — the template renders both. Keep the main closing message in headline and use cta only for a distinct action, or leave cta empty.`,
+          i, rawId,
+        );
+      }
+    }
+
     for (const [name, value] of Object.entries(vars)) {
       if (SCENE_LEVEL_FIELDS.includes(name)) {
         err(
@@ -370,16 +409,6 @@ export function validateConfig(config, { format, pexelsKeyAvailable = false, con
       if (typeErr) {
         err("type-mismatch", `${label(i)}: variable "${name}" — ${typeErr}`, i, rawId);
       }
-    }
-
-    // ctaLogo renders `cta` only as a fallback for an empty `url`. Setting
-    // both ships copy that never appears on screen.
-    if (canonicalId === "ctaLogo" && !isEmpty(vars.cta) && !isEmpty(vars.url)) {
-      warn(
-        "dead-cta",
-        `${label(i)}: "cta" (${JSON.stringify(vars.cta)}) never renders while "url" is set — ctaLogo shows the CTA only as a fallback for an empty url. Drop one: keep the url as the address, or clear it to stamp the cta instead.`,
-        i, rawId,
-      );
     }
 
     for (const [name, field] of Object.entries(schema)) {

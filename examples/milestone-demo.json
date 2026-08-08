@@ -3,6 +3,7 @@
   "orientation": "portrait",
   "style": {
     "font": "Manrope",
+    "defaultTransition": "cut",
     "brandKit": { "accent": "#6C5CE7", "secondary": "#00CEC9" }
   },
   "audio": { "trackId": "soft-celebration-win" },

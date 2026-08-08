@@ -29,6 +29,7 @@ import { resolveBundledTrack } from "./audio-library.mjs";
 import { getPexelsApiKey, fillPexelsMedia } from "./pexels.mjs";
 import { LocalMediaRegistry, rewriteLocalMediaPaths } from "./local-media.mjs";
 import { preflightMedia } from "./media-preflight.mjs";
+import { prepareSheetOutputDirectory } from "./sheet-output.mjs";
 
 const READY_TIMEOUT_MS = 60_000;
 const FRAME_SETTLE_TIMEOUT_MS = 10_000;
@@ -397,7 +398,7 @@ async function runFrame(browser, shared, opts) {
 
 async function runSheet(browser, shared, opts) {
   const outDir = resolve(opts.out ?? "sheet");
-  mkdirSync(outDir, { recursive: true });
+  prepareSheetOutputDirectory(outDir);
 
   const ranges = sceneTimeRanges(shared.config);
   // 5 evenly-spaced samples per scene at fractions .1/.3/.5/.7/.9 — stays

@@ -3,6 +3,7 @@
   "orientation": "portrait",
   "style": {
     "font": "Inter",
+    "defaultTransition": "cut",
     "brandKit": { "accent": "#E25081", "secondary": "#ED992C" }
   },
   "audio": { "trackId": "launchpad-loop" },

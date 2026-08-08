@@ -3615,7 +3615,7 @@
               "label": "Steps",
               "default": "Describe,Preview,Export",
               "required": true,
-              "description": "JSON array of step labels (max 3 steps). Keep each label to 1-3 words. Send as an array so labels with internal punctuation render correctly. Example: [\"Describe\", \"Preview\", \"Export\"]"
+              "description": "JSON array of step labels (max 4 steps). Keep each label to 1-3 words. Send as an array so labels with internal punctuation render correctly. Example: [\"Capture\", \"Detect\", \"Route\", \"Notify\"]"
             },
             "stepEmojis": {
               "type": "string",
@@ -3701,13 +3701,13 @@
               "type": "string",
               "label": "URL",
               "default": "yoursite.com",
-              "description": "URL shown below the logo. Leave empty to fall back to CTA text."
+              "description": "Optional address shown below the CTA."
             },
             "cta": {
               "type": "string",
-              "label": "CTA fallback",
+              "label": "CTA",
               "default": "",
-              "description": "Optional. Shown ONLY when url is empty — use for 'Coming soon', 'Available now', etc. Leave empty when a URL is set; it would never render."
+              "description": "Optional action line shown above the URL. Keep it to four words."
             },
             "mediaUrl": {
               "type": "media",
@@ -3836,13 +3836,13 @@
               "type": "string",
               "label": "URL",
               "default": "www.yoursite.com",
-              "description": "URL shown at the bottom. Leave empty to use CTA fallback text."
+              "description": "Optional address shown below the CTA."
             },
             "cta": {
               "type": "string",
-              "label": "CTA fallback",
+              "label": "CTA",
               "default": "",
-              "description": "Optional text shown only when URL is empty."
+              "description": "Optional action line shown above the URL. Keep it to four words."
             },
             "mediaUrl": {
               "type": "media",

@@ -11,6 +11,7 @@
   "style": {
     "font": "Inter",
     "preset": "bold",
+    "defaultTransition": "cut",
     "brandKit": {
       "accent": "#6D5EF8",
       "secondary": "#F8B45E"
@@ -122,6 +123,8 @@ Templates respond to both orientations, but screenshots and copy still need visu
 
 Optional `style.density` values are `airy`, `normal`, and `packed`. Optional `style.motion` values are `calm`, `normal`, and `punchy`.
 
+Set `style.defaultTransition` deliberately. `cut` is the strong default for text-led and product-demo sequences. A whole-scene crossfade blends outgoing and incoming words and product UI; reserve `dip-to-black` or `flash` for an intentional edit.
+
 Brand tokens live inside `style.brandKit`:
 
 ```json
@@ -138,7 +141,7 @@ Brand tokens live inside `style.brandKit`:
 }
 ```
 
-Setting `brandKit.bg` deliberately replaces generated gradients with a flat background. Repositories with a DESIGN.md can fill these values automatically; [brand documentation](https://vanillasky.ai/docs/brand) explains the mapping.
+Setting `brandKit.bg` deliberately replaces generated gradients with a flat background. Do not let a brand background color flatten three or more scenes into one slide-deck register; omit it to preserve generated atmosphere and add grounded photo/video backdrops selectively. Repositories with a DESIGN.md can fill these values automatically; [brand documentation](https://vanillasky.ai/docs/brand) explains the mapping.
 
 ## Audio
 

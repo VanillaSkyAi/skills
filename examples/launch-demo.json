@@ -1,7 +1,7 @@
 {
   "format": "launch",
   "orientation": "portrait",
-  "style": { "font": "Inter" },
+  "style": { "font": "Inter", "defaultTransition": "cut" },
   "audio": { "trackId": "launch-sequence-alpha" },
   "scenes": [
     {

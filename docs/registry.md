@@ -41,6 +41,7 @@ A correct template ID is only the first gate. A strong short video also needs a 
 
 - use a notification for an alert, terminal or editor for a developer workflow, chat for a conversation, and a device or browser for a supplied product surface;
 - treat a flat gradient as a deliberate beat, not the automatic background for every scene—three or more scene rows on the same flat background is repetition, even when the typography changes;
+- do not let a brand background color flatten the entire sequence; preserve generated atmosphere and use only story-grounded stock or supplied media;
 - keep an approved slogan or quote intact in at least one scene instead of manufacturing a story by splitting its fragments across scenes;
 - for sparse briefs, prefer the format's shortest valid story and one tangible supplied or stock visual. Minimal means fewer elements, not identical scenes.
 
@@ -97,6 +98,8 @@ vanillasky diff video.json
 Before writing a custom scene, run `vanillasky scope` to list the exact globals available inside the sandbox. The validator rejects imports, unsupported globals, and other contract violations instead of rendering a blank scene.
 
 The sandbox also exposes internal scene elements such as counters, cards, and device frames. They are an advanced authoring capability, not a third public registry layer. Most own the focal frame, so custom scenes should normally use one and compose text or custom motion around it.
+
+Before selecting templates, write one brief-specific art direction sentence and assign each scene a distinct editorial function and visual register: tension, product reveal, detail, proof, or close. This prevents every story from collapsing into the same hook → mockup → stat sequence. Do not repeat the same browser or phone mockup treatment in consecutive product scenes; change the crop, scale, angle, or focal detail so one establishes the product and the next demonstrates it.
 
 ## Offline behavior
 

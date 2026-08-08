@@ -1,6 +1,7 @@
 {
   "format": "update",
   "orientation": "portrait",
+  "style": { "defaultTransition": "cut" },
   "audio": { "trackId": "steady-groove-in-c" },
   "scenes": [
     {

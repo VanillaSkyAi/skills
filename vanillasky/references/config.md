@@ -20,6 +20,7 @@ inject `{ "font": "Inter" }`, but linked configs do not get that fallback.
     "preset": "editorial",
     "density": "normal",
     "motion": "normal",
+    "defaultTransition": "cut",
     "brandKit": {
       "accent": "#6D5EF8",
       "secondary": "#F8B45E"
@@ -32,6 +33,9 @@ inject `{ "font": "Inter" }`, but linked configs do not get that fallback.
   same default by habit.
 - `density` is `airy`, `normal`, or `packed`; `motion` is `calm`, `normal`, or
   `punchy`.
+- `defaultTransition` should normally be `cut` for text-led and product-demo
+  scenes. A whole-scene crossfade blends both scenes' text and UI; use
+  `dip-to-black` or `flash` only as a deliberate edit.
 - `brandKit` lives inside `style`. `accent` and `secondary` preserve generated
   gradients. Setting `brandKit.bg` deliberately flattens every scene to that
   background.
@@ -145,7 +149,9 @@ VanillaSky walks upward from the config and reads
 
 Config-explicit values win. Use `vanillasky brand` to inspect the resolved
 result and `--no-design-md` to opt out. Background/surface tokens create a flat
-background; omit them when generated brand gradients are preferable.
+background. If that turns three or more scenes into the same row of black or a
+single brand color, opt out; generated brand atmosphere is usually the stronger
+video treatment.
 
 The working directory is only a logged fallback when the config's directory
 tree has no DESIGN.md and the config carries no brand kit.

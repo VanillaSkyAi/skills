@@ -1,7 +1,7 @@
 {
   "format": "launch",
   "orientation": "landscape",
-  "style": { "font": "Inter" },
+  "style": { "font": "Inter", "defaultTransition": "cut" },
   "audio": { "trackId": "commercial-drive" },
   "scenes": [
     {
